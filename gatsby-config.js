@@ -10,11 +10,11 @@ module.exports = {
       resolve: `gatsby-source-graphql`,
       options: {
         // This type will contain remote schema Query type
-        typeName: `WP`,
+        typeName: `WordPress`,
         // refetching the data
         refetchInterval: 60,
         // This is field under which it's accessible
-        fieldName: `wp`,
+        fieldName: `wordpress`,
         // Url to query from
         url: `http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/graphql`,
       },

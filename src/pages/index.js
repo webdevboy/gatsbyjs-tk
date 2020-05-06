@@ -4,8 +4,8 @@ import { graphql } from "gatsby"
 const ComponentName = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
 
 export const query = graphql`
-  query RootQueryToPageConnectioy {
-    wp {
+  query RootQueryToPageConnection {
+    wordpress {
       pages {
         edges {
           node {
