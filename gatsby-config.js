@@ -5,6 +5,26 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    // Setup WPGraphQL.com to be the source
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        // This type will contain remote schema Query type
+        typeName: `WP`,
+        // refetching the data
+        refetchInterval: 60,
+        // This is field under which it's accessible
+        fieldName: `wp`,
+        // Url to query from
+        url: `http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/graphql`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "wp-project",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
