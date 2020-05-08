@@ -1,11 +1,11 @@
 @import "src/styles/variables.scss";
 
 .footer {
-  background-color: $color-gold;
-  text-align: center;
-  padding: 30px 20px 60px;
-
   .opt-in {
+    background-color: $color-gold;
+    text-align: center;
+    padding: 30px 20px 60px;
+
     h2 {
       font-family: $font-regular;
       font-weight: 400;
@@ -40,7 +40,7 @@
         &::placeholder {
           color: rgba(#000000, 0.7);
           font-size: 12px;
-          font-family: Arial, Helvetica, sans-serif;
+          font-family: $font-serif;
         }
       }
 
@@ -51,8 +51,75 @@
         color: $color-gold;
         border: none;
         margin-top: 10px;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: $font-serif;
         border-radius: 4px;
+      }
+    }
+  }
+
+  .site-links {
+    background-color: $color-gray;
+    padding: 60px 20px;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+
+      &:checked {
+        + .tab-label {
+          &::after {
+            transform: rotate(-90deg);
+          }
+        }
+
+        ~ .tab-content {
+          max-height: 100vh; // TODO: fix this
+        }
+      }
+    }
+
+    .tabs {
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: $font-serif;
+      font-size: 14px;
+    }
+
+    .tab {
+      width: 100%;
+      color: white;
+      overflow: hidden;
+
+      .tab-label {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        font-weight: bold;
+        cursor: pointer;
+        border-top: 1px solid rgba(white, 0.5);
+
+        &::after {
+          content: "\276F";
+          width: 1em;
+          height: 1em;
+          text-align: center;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+
+      .tab-content {
+        max-height: 0;
+        color: color;
+        transition: all 0.3s ease-in-out;
+
+        a {
+          display: block;
+          color: white;
+          padding: 15px 0;
+          border-top: 1px solid rgba(white, 0.5);
+          text-decoration: none;
+        }
       }
     }
   }
