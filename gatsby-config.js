@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
     // Setup WPGraphQL.com to be the source
     {
