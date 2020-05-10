@@ -41,7 +41,12 @@ export default class IndexPage extends React.Component {
   render() {
       return (
           <div>
-              <Link to="/account">Go to your account</Link>
+              <nav>
+                    <Link to="/">Home</Link>{" "}
+                    <Link to="/account/">My Account</Link>{" "}
+                    <Link to="/account/posts/">Posts</Link>{" "}
+                    <Link to="/account/pages/">Pages</Link>{" "}
+              </nav>
               <h1>Hi people</h1>
               <p>Submit the form below and check your browser console!</p>
               <div>
