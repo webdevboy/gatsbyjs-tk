@@ -16,17 +16,20 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
+      <nav>
+        <Link to="/">
+          <span style={{ color: "white", padding: "10px" }}>Home</span>
         </Link>
-      </h1>
+        <Link to="/account/">
+          <span style={{ color: "white", padding: "10px" }}>My Account</span>
+        </Link>{" "}
+        <Link to="/account/posts/">
+          <span style={{ color: "white", padding: "10px" }}>Posts</span>
+        </Link>{" "}
+        <Link to="/account/pages/">
+          <span style={{ color: "white", padding: "10px" }}>Pages</span>
+        </Link>{" "}
+      </nav>
     </div>
   </header>
 )
