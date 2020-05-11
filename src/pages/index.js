@@ -1,67 +1,90 @@
-// ./src/pages/index.js
-import React from "react"
-import { Link } from "gatsby"
-import addToMailchimp from 'gatsby-plugin-mailchimp'
+import React, { useState } from "react"
+import addToMailchimp from "gatsby-plugin-mailchimp"
+import Layout from "src/components/layout"
+import Logo from "src/components/Logo/logo"
 
-export default class IndexPage extends React.Component {
-  state = {
-      name: null,
-      email: null,
+const IndexPage = ({ data }) => {
+  const [name, setName] = useState(null)
+  const [email, setEmail] = useState(null)
+  // const { homepage } = data.wordpress.pages.edges[0].node
+
+  const handleEmailChange = e => {
+    console.log(`${e.target.name} : ${e.target.value}`)
+    setEmail(e.target.value)
   }
 
-  _handleChange = (e) => {
-      console.log({
-          [`${e.target.name}`]: e.target.value,
-      });
-      this.setState({
-          [`${e.target.name}`]: e.target.value,
-      });
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    addToMailchimp(email, { name, email })
+      .then(({ msg, result }) => {
+        console.log("msg", `${result}: ${msg}`)
+
+        if (result !== "success") {
+          throw new Error(msg)
+        }
+      })
+      .catch(err => {
+        console.log("err", err)
+      })
   }
 
-  _handleSubmit = (e) => {
-      e.preventDefault();
-
-      console.log('submit', this.state);
-
-      addToMailchimp(this.state.email, this.state)
-          .then(({ msg, result }) => {
-              console.log('msg', `${result}: ${msg}`);
-
-              if (result !== 'success') {
-                  throw msg;
-              }
-              alert(msg);
-          })
-          .catch((err) => {
-              console.log('err', err);
-              alert(err);
-          });
-  }
-
-  render() {
-      return (
-          <div>
-              <nav>
-                    <Link to="/">Home</Link>{" "}
-                    <Link to="/account/">My Account</Link>{" "}
-                    <Link to="/account/posts/">Posts</Link>{" "}
-                    <Link to="/account/pages/">Pages</Link>{" "}
-              </nav>
-              <h1>Hi people</h1>
-              <p>Submit the form below and check your browser console!</p>
-              <div>
-                  <form onSubmit={this._handleSubmit}>
-                      <input
-                          type="email"
-                          onChange={this._handleChange}
-                          placeholder="email"
-                          name="email"
-                      />
-                      <br />
-                      <input type="submit" />
-                  </form>
-              </div>
-          </div>
-      );
-  }
+  return (
+    <Layout>
+      <div>
+        <Logo theme={"dark"} />
+      </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            onChange={handleEmailChange}
+            placeholder="email"
+            name="email"
+          />
+          <br />
+          <input type="submit" />
+        </form>
+      </div>
+    </Layout>
+  )
 }
+
+export const query = graphql`
+  query RootQueryToPageConnection {
+    wordpress {
+      pages {
+        edges {
+          node {
+            homepage {
+              hero {
+                sourceUrl
+                id
+                altText
+              }
+              logo {
+                id
+                sourceUrl
+                altText
+              }
+            }
+            themeSelect {
+              fieldGroupName
+              themeSelect
+            }
+          }
+        }
+      }
+      mediaItems {
+        nodes {
+          sourceUrl
+          id
+          title
+          altText
+        }
+      }
+    }
+  }
+`
+
+export default IndexPage

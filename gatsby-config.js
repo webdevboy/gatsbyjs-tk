@@ -9,13 +9,15 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-root-import`,
+    `gatsby-plugin-sass`,
     // Gatsby MailChimp
     {
-      resolve: 'gatsby-plugin-mailchimp',
+      resolve: "gatsby-plugin-mailchimp",
       options: {
-          endpoint: process.env.MAILCHIMP_ENDPOINT, 
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
-  } ,
+    },
     // Setup WPGraphQL.com to be the source
     {
       resolve: `gatsby-source-graphql`,
