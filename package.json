@@ -36,7 +36,10 @@
     "deploy": "npm run build && gatsby-plugin-s3 deploy",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "rm -rf .cache && npm run develop",
+    "prestart": "rm -rf .cache",
+    "start": "npm run develop",
+    "prestart:https": "rm -rf .cache",
+    "start:https": "npm run develop --https",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
