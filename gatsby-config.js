@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -7,6 +11,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
+    // Gatsby MailChimp
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
+      },
+    },
     // Setup WPGraphQL.com to be the source
     {
       resolve: `gatsby-source-graphql`,
@@ -18,13 +29,13 @@ module.exports = {
         // This is field under which it's accessible
         fieldName: `wordpress`,
         // Url to query from
-        url: `http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/graphql`,
+        url: process.env.WP_GRAPHQL_ENDPOINT,
       },
     },
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "wp-project",
+        bucketName: process.env.S3_HOSTING_ENDPOINT,
       },
     },
     `gatsby-plugin-react-helmet`,
