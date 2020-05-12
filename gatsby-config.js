@@ -9,6 +9,13 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-166107621-1",
+        head: true,
+      },
+    },
     `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
     // Gatsby MailChimp
