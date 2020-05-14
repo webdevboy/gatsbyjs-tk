@@ -1,9 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
 // Colors
 $color-gold: #b3a97e;
 $color-gray: #787276;
 
 // Fonts
-$font-bold: "libre_baskervillebold";
-$font-italic: "libre_baskervilleitalic";
-$font-regular: "libre_baskervilleregular";
-$font-serif: Arial, Helvetica, sans-serif;
+$font-serif: "Libre Baskerville", serif;
+$font-sans-serif: "Inter", sans-serif;
+
+// Font Weights
+$serif-bold: 700;
+$serif-regular: 400;
+$sans-serif-light: 200;
+$sans-serif-regular: 400;
+$sans-serif-bold: 700;
