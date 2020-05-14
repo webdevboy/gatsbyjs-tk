@@ -1,3 +1,6 @@
+// TODO: Kepp for reference
+// TODO: Still need to implement silent authentication
+
 // // src/utils/auth.js
 // import auth0 from "auth0-js"
 // import { navigate } from "gatsby"
