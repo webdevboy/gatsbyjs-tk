@@ -20,13 +20,10 @@ const Header = ({ siteTitle }) => (
         <Link to="/">
           <span style={{ color: "white", padding: "10px" }}>Home</span>
         </Link>
-        <Link to="/account/">
-          <span style={{ color: "white", padding: "10px" }}>My Account</span>
-        </Link>{" "}
-        <Link to="/account/posts/">
+        <Link to="/posts">
           <span style={{ color: "white", padding: "10px" }}>Posts</span>
         </Link>{" "}
-        <Link to="/account/pages/">
+        <Link to="/pages">
           <span style={{ color: "white", padding: "10px" }}>Pages</span>
         </Link>{" "}
       </nav>
