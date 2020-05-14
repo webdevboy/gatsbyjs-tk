@@ -1,34 +1,34 @@
 // ./gatsby-browser.js
 import React from "react"
-import { silentAuth } from "./src/utils/auth"
+// import { silentAuth } from "./src/utils/auth"
 //
 import { navigate } from "gatsby"
 import { AuthProvider } from "react-use-auth"
 
-class SessionCheck extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-    }
-  }
+// class SessionCheck extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = {
+//       loading: true,
+//     }
+//   }
 
-  handleCheckSession = () => {
-    this.setState({ loading: false })
-  }
+//   handleCheckSession = () => {
+//     this.setState({ loading: false })
+//   }
 
-  componentDidMount() {
-    silentAuth(this.handleCheckSession)
-  }
+//   componentDidMount() {
+//     silentAuth(this.handleCheckSession)
+//   }
 
-  render() {
-    return (
-      !this.state.loading && (
-        <React.Fragment>{this.props.children}</React.Fragment>
-      )
-    )
-  }
-}
+//   render() {
+//     return (
+//       !this.state.loading && (
+//         <React.Fragment>{this.props.children}</React.Fragment>
+//       )
+//     )
+//   }
+// }
 
 // gatsby-browser.js
 
