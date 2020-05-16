@@ -3,7 +3,7 @@ import addToMailchimp from "gatsby-plugin-mailchimp"
 import Layout from "src/components/layout"
 import Logo from "src/components/Logo/logo"
 
-const IndexPage = ({ data }) => {
+export default function IndexPage() {
   const [name, setName] = useState(null)
   const [email, setEmail] = useState(null)
   // const { homepage } = data.wordpress.pages.edges[0].node
@@ -32,9 +32,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div>
-        <Logo theme={"dark"} />
-      </div>
-      <div>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
@@ -50,41 +47,39 @@ const IndexPage = ({ data }) => {
   )
 }
 
-export const query = graphql`
-  query RootQueryToPageConnection {
-    wordpress {
-      pages {
-        edges {
-          node {
-            homepage {
-              hero {
-                sourceUrl
-                id
-                altText
-              }
-              logo {
-                id
-                sourceUrl
-                altText
-              }
-            }
-            themeSelect {
-              fieldGroupName
-              themeSelect
-            }
-          }
-        }
-      }
-      mediaItems {
-        nodes {
-          sourceUrl
-          id
-          title
-          altText
-        }
-      }
-    }
-  }
-`
-
-export default IndexPage
+// export const query = graphql`
+//   query RootQueryToPageConnection {
+//     wordpress {
+//       pages {
+//         edges {
+//           node {
+//             homepage {
+//               hero {
+//                 sourceUrl
+//                 id
+//                 altText
+//               }
+//               logo {
+//                 id
+//                 sourceUrl
+//                 altText
+//               }
+//             }
+//             themeSelect {
+//               fieldGroupName
+//               themeSelect
+//             }
+//           }
+//         }
+//       }
+//       mediaItems {
+//         nodes {
+//           sourceUrl
+//           id
+//           title
+//           altText
+//         }
+//       }
+//     }
+//   }
+// `
