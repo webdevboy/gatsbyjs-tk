@@ -1,0 +1,11 @@
+@import "src/styles/variables.scss";
+
+.header {
+  background-color: $color-black;
+  text-align: center;
+  padding: 0 20px;
+
+  img {
+    max-width: 55px;
+  }
+}
