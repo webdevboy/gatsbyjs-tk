@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-const Logo = ({ theme }) => {
+function Logo({ theme }) {
   const data = useStaticQuery(graphql`
     query rootQueryToPageConnectionAndRootQueryToPageConnection {
       wordpress {
