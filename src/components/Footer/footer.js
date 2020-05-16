@@ -2,7 +2,7 @@ import React from "react"
 
 import "./footer.scss"
 
-const Footer = () => {
+function Footer() {
   const handleSubscribeClick = () => {
     console.log("Add user")
   }

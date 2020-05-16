@@ -3,13 +3,15 @@ import addToMailchimp from "gatsby-plugin-mailchimp"
 import Layout from "src/components/layout"
 import Logo from "src/components/Logo/logo"
 
-const IndexPage = ({ data }) => {
+import { useAuth } from "react-use-auth"
+
+function IndexPage({ data }) {
   const [name, setName] = useState(null)
   const [email, setEmail] = useState(null)
+  const { isAuthenticated, login, logout, user } = useAuth()
   // const { homepage } = data.wordpress.pages.edges[0].node
 
   const handleEmailChange = e => {
-    console.log(`${e.target.name} : ${e.target.value}`)
     setEmail(e.target.value)
   }
 
@@ -18,8 +20,6 @@ const IndexPage = ({ data }) => {
 
     addToMailchimp(email, { name, email })
       .then(({ msg, result }) => {
-        console.log("msg", `${result}: ${msg}`)
-
         if (result !== "success") {
           throw new Error(msg)
         }
@@ -31,6 +31,12 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+      <p>Welcome {isAuthenticated() ? user.name : "stranger"}!</p>
+      {localStorage.getItem("useAuth:user") || isAuthenticated() ? (
+        <button onClick={logout}>Logout</button>
+      ) : (
+        <button onClick={login}>Login</button>
+      )}
       <div>
         <Logo theme={"dark"} />
       </div>
