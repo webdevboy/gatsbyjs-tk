@@ -8,9 +8,11 @@ function Post(props) {
   console.log(props)
   const { pageContext } = props
 
+  console.log({ pageContext })
+
   return (
     <Layout>
-      <div>{console.log({ pageContext })}</div>
+      <h1>{pageContext.heroFieldGroup.title || "No Title Entered"}</h1>
     </Layout>
   )
 }

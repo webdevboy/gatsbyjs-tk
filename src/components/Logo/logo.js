@@ -26,7 +26,8 @@ function Logo({ theme }) {
     item => item.imageTheme.isSiteLogo && item.imageTheme.theme === theme
   )
 
-  return <img src={img[0].sourceUrl} alt={img[0].altText} />
+  // return <img src={img[0].sourceUrl || ""} alt={img[0].altText || ""} />
+  return <div></div>
 }
 
 export default Logo
