@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from "react"
+import { Router } from "@reach/router"
 import Layout from "src/components/layout"
-import { useAuth } from "react-use-auth"
+import Post from "src/components/templates/post"
+import PostCollection from "src/components/templates/post-collection"
+import { useStaticQuery, graphql } from "gatsby"
+// import { useAuth } from "react-use-auth"
 
 function Posts() {
-  const { isAuthenticated, user } = useAuth()
-  const [userName, setUserName] = useState("")
-
-  useEffect(() => {
-    if (localStorage.getItem("useAuth:user")) {
-      setUserName(JSON.parse(localStorage.getItem("useAuth:user")).name)
-      return
+  const data = useStaticQuery(graphql`
+    query {
+      wordpress {
+        posts {
+          nodes {
+            id
+            uri
+            title
+          }
+        }
+      }
     }
-
-    if (isAuthenticated()) {
-      setUserName(user.name)
-      return
-    }
-  }, [])
+  `)
 
   return (
-    <Layout>
-      <h1>Hello {userName || "stranger"}, Welcome to Posts!</h1>
-      <p>Hi {isAuthenticated() ? user.email : "unvalidated person"}</p>
-    </Layout>
+    <Router>
+      <PostCollection path={`/posts/`} data={data.wordpress.posts.nodes} />
+      <Post path={`/posts/*`} />
+    </Router>
   )
 }
 
