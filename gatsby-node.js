@@ -47,8 +47,6 @@ exports.createPages = async ({ actions, graphql }) => {
   if (!data || !data.wordpress) return null
 
   data.wordpress.posts.nodes.forEach(post => {
-    console.log({ post })
-
     actions.createPage({
       path: `posts${post.uri}`,
       component: path.resolve("./src/components/templates/post.js"),
