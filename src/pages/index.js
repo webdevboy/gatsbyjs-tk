@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import Layout from "src/components/layout"
+import { Link } from "gatsby"
 import Logo from "src/components/Logo/logo"
 import { useAuth } from "react-use-auth"
 
@@ -48,6 +49,18 @@ export default function IndexPage() {
           <input type="submit" />
         </form>
       </div>
+      <p>
+        <Link to="/events">Go to Events collection</Link>
+      </p>
+      <p>
+        <Link to="/es/events">Go to Spanish Events collection</Link>
+      </p>
+      <p>
+        <Link to="/articles">Go to Articles collection</Link>
+      </p>
+      <p>
+        <Link to="es/articles">Go to Spanish Articles collection</Link>
+      </p>
     </Layout>
   )
 }
