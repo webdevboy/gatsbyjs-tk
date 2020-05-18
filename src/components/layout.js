@@ -14,7 +14,7 @@ import Footer from "src/components/Footer/footer"
 
 import "src/styles/index.scss"
 
-function Layout({ children }) {
+function Layout({ children, theme }) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,7 +27,11 @@ function Layout({ children }) {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        // Implement theme detection
+        theme={theme || "dark"}
+      />
       <div>
         <main>{children}</main>
         <Footer />

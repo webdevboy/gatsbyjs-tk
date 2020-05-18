@@ -1,36 +1,19 @@
 import React from "react"
-import { Link } from "gatsby"
-import Logo from "src/components/Logo/logo"
+import Logo from "src/svgs/tk_logo"
+import Hamburger from "src/svgs/hamburger"
 
 import "./header.scss"
 
-function Header() {
+function Header({ theme }) {
   return (
-    <header className="header">
-      {/* <div className="search"></div> */}
-      <Logo theme="dark" />
-      {/* <div className="hamburger"></div> */}
+    <header className={`header ${theme}`}>
+      <Logo className="logo" />
+      {/* TODO: Implement NAV component */}
+      <button onClick={() => console.log("open nav")}>
+        <Hamburger className="hamburger" />
+      </button>
     </header>
   )
 }
 
 export default Header
-
-{
-  /* <div>
-  <nav>
-    <Link to="/">
-      <span style={{ color: "white", padding: "10px" }}>Home</span>
-    </Link>
-    <Link to="/account/">
-      <span style={{ color: "white", padding: "10px" }}>My Account</span>
-    </Link>{" "}
-    <Link to="/account/posts/">
-      <span style={{ color: "white", padding: "10px" }}>Posts</span>
-    </Link>{" "}
-    <Link to="/account/pages/">
-      <span style={{ color: "white", padding: "10px" }}>Pages</span>
-    </Link>{" "}
-  </nav>
-</div> */
-}

@@ -3,9 +3,40 @@
 .header {
   background-color: $color-black;
   text-align: center;
-  padding: 0 20px;
+  padding: 10px 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+  min-height: 40px;
 
-  img {
-    max-width: 55px;
+  &.light {
+    background-color: white;
+  }
+
+  &.dark {
+    background-color: $color-black;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 55px;
+    height: 40px;
+  }
+
+  button {
+    margin: auto;
+    margin-right: 0;
+    padding: 0;
+    width: 25px;
+    height: 20px;
+
+    .hamburger {
+      width: 25px;
+      height: 20px;
+    }
   }
 }
