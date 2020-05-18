@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import Layout from "src/components/layout"
 import { Link } from "gatsby"
-import Logo from "src/components/Logo/logo"
 import { useAuth } from "react-use-auth"
 
 export default function IndexPage() {
