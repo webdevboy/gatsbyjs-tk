@@ -185,6 +185,41 @@ const photoLayout1X3Fields = `
   }
 `
 
+// const categoryFields = `
+//   categories {
+//     nodes {
+//       name
+//     }
+//   }
+// `
+
+const languageFields = `
+  language {
+    code
+  }
+`
+
+const contentFields = `
+  nodes {
+    id
+    uri
+    slug
+    ${languageFields}
+    ${themeSelectFields}
+    ${heroFields}
+    ${columnCopyFields}
+    ${fullscreenImageFields}
+    ${halfAndHalfFields}
+    ${halfAndHalfReversedFields}
+    ${quoteFields}
+    ${iconGroupFields}
+    ${centerPhotoFields}
+    ${photoLayoutFields}
+    ${photoLayout1X2Fields}
+    ${photoLayout1X3Fields}
+  }
+`
+
 module.exports = {
   themeSelectFields,
   heroFields,
@@ -198,4 +233,6 @@ module.exports = {
   photoLayoutFields,
   photoLayout1X2Fields,
   photoLayout1X3Fields,
+  languageFields,
+  contentFields,
 }
