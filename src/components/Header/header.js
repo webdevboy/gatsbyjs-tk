@@ -1,15 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
-import Logo from "src/components/Logo/logo"
+import logo from "src/images/tk_logo.png"
 
 import "./header.scss"
 
-function Header() {
+function Header({ theme }) {
   return (
-    <header className="header">
-      {/* <div className="search"></div> */}
-      <Logo theme="dark" />
-      {/* <div className="hamburger"></div> */}
+    <header className={`header ${theme}`}>
+      <img src={logo} alt="Site logo" />
+      <div className="hamburger"></div>
     </header>
   )
 }

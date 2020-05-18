@@ -4,8 +4,9 @@ import { Link } from "gatsby"
 
 // Props come from gatsby-node
 function Article({ pageContext }) {
+  console.log(pageContext)
   return (
-    <Layout>
+    <Layout theme={pageContext.themeSelect.themeSelect || "light"}>
       <h1>{pageContext.heroFieldGroup.title || "No Title Entered"}</h1>
     </Layout>
   )
