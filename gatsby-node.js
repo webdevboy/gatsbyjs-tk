@@ -1,63 +1,52 @@
 const path = require("path")
 
-const {
-  themeSelectFields,
-  heroFields,
-  columnCopyFields,
-  fullscreenImageFields,
-  halfAndHalfFields,
-  halfAndHalfReversedFields,
-  quoteFields,
-  iconGroupFields,
-  centerPhotoFields,
-  photoLayoutFields,
-  photoLayout1X2Fields,
-  photoLayout1X3Fields,
-} = require("./src/queries/queries.js")
-
-const query = `
-  query {
-    wordpress {
-      posts(where: { status: PUBLISH }) {
-        nodes {
-          uri
-          ${themeSelectFields}
-          ${heroFields}
-          ${columnCopyFields}
-          ${fullscreenImageFields}
-          ${halfAndHalfFields}
-          ${halfAndHalfReversedFields}
-          ${quoteFields}
-          ${iconGroupFields}
-          ${centerPhotoFields}
-          ${photoLayoutFields}
-          ${photoLayout1X2Fields}
-          ${photoLayout1X3Fields}
-        }
-      }
-    }
-  }
-`
+const { contentFields } = require("./src/queries/queries.js")
 
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
-    ${query}
+    query {
+      wordpress {
+        articles {
+          ${contentFields}
+        }
+        events {
+          ${contentFields}
+        }
+      }
+    }
   `)
 
   if (!data || !data.wordpress) return null
 
-  data.wordpress.posts.nodes.forEach(post => {
-    actions.createPage({
-      path: `posts${post.uri}`,
-      component: path.resolve("./src/components/templates/post.js"),
-      context: {
-        ...post,
-        id: post.id,
-        slug: post.uri,
-        title: post.title,
-      },
+  if (data.wordpress.articles && data.wordpress.articles.nodes) {
+    data.wordpress.articles.nodes.forEach(article => {
+      actions.createPage({
+        path: article.uri,
+        component: path.resolve("./src/components/templates/article.js"),
+        context: {
+          ...article,
+          id: article.id,
+          slug: article.uri,
+          title: article.title,
+        },
+      })
     })
-  })
+  }
+
+  if (data.wordpress.events && data.wordpress.events.nodes) {
+    data.wordpress.events.nodes.forEach(event => {
+      actions.createPage({
+        path: event.uri,
+        component: path.resolve("./src/components/templates/event.js"),
+        context: {
+          ...event,
+          id: event.id,
+          slug: event.uri,
+          title: event.title,
+        },
+      })
+    })
+  }
 }
 
 // ./gatsby-node.js
@@ -70,12 +59,6 @@ exports.onCreatePage = async ({ page, actions }) => {
   // only on the client.
   if (page.path.match(/^\/account/)) {
     page.matchPath = "/account/*"
-    // Update the page.
-    createPage(page)
-  }
-
-  if (page.path.match(/^\/posts/)) {
-    page.matchPath = "/posts/*"
     // Update the page.
     createPage(page)
   }
