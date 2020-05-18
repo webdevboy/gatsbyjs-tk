@@ -29,7 +29,8 @@ function Layout({ children, theme }) {
     <>
       <Header
         siteTitle={data.site.siteMetadata.title}
-        theme={theme || "light"}
+        // Implement theme detection
+        theme={theme || "dark"}
       />
       <div>
         <main>{children}</main>

@@ -10,6 +10,14 @@
   position: relative;
   min-height: 40px;
 
+  &.light {
+    background-color: white;
+  }
+
+  &.dark {
+    background-color: $color-black;
+  }
+
   .logo {
     position: absolute;
     left: 50%;
