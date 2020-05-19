@@ -7,7 +7,7 @@ import Footer from "src/components/Footer/footer"
 import "src/styles/index.scss"
 import { useEffect } from "react"
 
-function Layout({ children, theme }) {
+function Layout({ children, theme, title }) {
   useEffect(() => {
     document.body.classList.add("wrapper")
     document.body.classList.add(theme)
@@ -15,7 +15,7 @@ function Layout({ children, theme }) {
 
   return (
     <>
-      <Header theme={theme || "light"} />
+      <Header theme={theme || "light"} title={title} />
       <div>
         <main>{children}</main>
         <Footer />

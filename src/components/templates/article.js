@@ -8,8 +8,9 @@ import Hero from "src/components/Hero/hero"
 // Props come from gatsby-node
 function Article({ pageContext }) {
   const theme = pageContext.themeSelect.themeSelect || "light"
+
   return (
-    <Layout theme={theme}>
+    <Layout theme={theme} title={pageContext.heroFieldGroup.title || null}>
       <Hero data={pageContext.heroFieldGroup} theme={theme} />
     </Layout>
   )
