@@ -2,12 +2,15 @@ import React from "react"
 import Layout from "src/components/layout"
 import { Link } from "gatsby"
 
+// Components
+import Hero from "src/components/Hero/hero"
+
 // Props come from gatsby-node
 function Article({ pageContext }) {
-  console.log(pageContext)
+  const theme = pageContext.themeSelect.themeSelect || "light"
   return (
-    <Layout theme={pageContext.themeSelect.themeSelect || "light"}>
-      <h1>{pageContext.heroFieldGroup.title || "No Title Entered"}</h1>
+    <Layout theme={theme}>
+      <Hero data={pageContext.heroFieldGroup} theme={theme} />
     </Layout>
   )
 }
