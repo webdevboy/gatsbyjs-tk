@@ -32,7 +32,7 @@ module.exports = {
         // This type will contain remote schema Query type
         typeName: `WordPress`,
         // refetching the data
-        refetchInterval: 60,
+        // refetchInterval: 60,
         // This is field under which it's accessible
         fieldName: `wordpress`,
         // Url to query from
