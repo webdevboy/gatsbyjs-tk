@@ -2,6 +2,8 @@
 
 $color-white: #ffffff;
 $color-black: #000000;
+$viewport-medium: "only screen and (min-device-width: 834px)";
+$viewport-large: "only screen and (min-device-width: 1440px)";
 
 .hero {
   &.dark {
@@ -21,6 +23,15 @@ $color-black: #000000;
       height: 680px;
       object-fit: cover;
       object-position: center;
+
+      @media #{$viewport-medium} {
+        height: 385px;
+        object-position: top center;
+      }
+
+      @media #{$viewport-large} {
+        height: 660px;
+      }
     }
   }
 
@@ -33,6 +44,14 @@ $color-black: #000000;
     padding: 40px 10px;
     margin: -240px auto 0;
     max-width: 85%;
+
+    @media #{$viewport-medium} {
+      margin-top: -40px;
+    }
+
+    @media #{$viewport-large} {
+      margin-top: -60px;
+    }
 
     .name {
       font-family: $font-sans-serif;
