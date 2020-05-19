@@ -3,7 +3,6 @@ import React from "react"
 import "./hero.scss"
 
 export default function Hero({ data, theme }) {
-  console.log(data)
   return (
     <div className={`hero ${theme}`}>
       <div className="image-container">
