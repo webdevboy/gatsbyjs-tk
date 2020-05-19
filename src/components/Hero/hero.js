@@ -15,7 +15,11 @@ export default function Hero({ data, theme }) {
         <hr />
         {data.authors.length &&
           data.authors.split(",").map(author => {
-            return <p className="attribution">{author}</p>
+            return (
+              <p className="attribution" key={author}>
+                {author}
+              </p>
+            )
           })}
       </div>
     </div>
