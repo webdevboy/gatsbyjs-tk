@@ -29,10 +29,14 @@ function Layout({ children, theme }) {
     <>
       <Header
         siteTitle={data.site.siteMetadata.title}
-        // Implement theme detection
-        theme={theme || "dark"}
+        // TODO: Implement theme detection
+        theme={theme || "light"}
       />
-      <div>
+      <div
+        style={{
+          backgroundColor: theme === "dark" ? "#1b1b1b" : "#ffffff",
+        }}
+      >
         <main>{children}</main>
         <Footer />
       </div>
