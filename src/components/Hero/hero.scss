@@ -1,10 +1,5 @@
 @import "src/styles/variables.scss";
 
-$color-white: #ffffff;
-$color-black: #000000;
-$viewport-medium: "only screen and (min-device-width: 834px)";
-$viewport-large: "only screen and (min-device-width: 1440px)";
-
 .hero {
   &.dark {
     .block {

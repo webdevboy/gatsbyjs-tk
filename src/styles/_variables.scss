@@ -6,6 +6,10 @@ $color-gray: #787276;
 $color-black: #1b1b1b;
 $color-white: #ffffff;
 
+// Breakpoints
+$viewport-medium: "only screen and (min-device-width: 834px)";
+$viewport-large: "only screen and (min-device-width: 1440px)";
+
 // Fonts
 $font-serif: "Libre Baskerville", serif;
 $font-sans-serif: "Inter", sans-serif;
