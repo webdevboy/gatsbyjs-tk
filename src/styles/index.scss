@@ -1,2 +1,14 @@
 @import "variables";
 @import "normalize";
+
+body {
+  &.wrapper {
+    margin: 0 auto;
+    max-width: 1920px;
+    background-color: $color-white;
+
+    &.dark {
+      background-color: $color-black;
+    }
+  }
+}

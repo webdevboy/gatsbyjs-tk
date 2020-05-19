@@ -1,42 +1,22 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "src/components/Header/header"
 import Footer from "src/components/Footer/footer"
 
 import "src/styles/index.scss"
+import { useEffect } from "react"
 
 function Layout({ children, theme }) {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  useEffect(() => {
+    document.body.classList.add("wrapper")
+    document.body.classList.add(theme)
+  })
 
   return (
     <>
-      <Header
-        siteTitle={data.site.siteMetadata.title}
-        // TODO: Implement theme detection
-        theme={theme || "light"}
-      />
-      <div
-        style={{
-          backgroundColor: theme === "dark" ? "#1b1b1b" : "#ffffff",
-        }}
-      >
+      <Header theme={theme || "light"} />
+      <div>
         <main>{children}</main>
         <Footer />
       </div>
