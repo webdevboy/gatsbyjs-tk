@@ -1,0 +1,75 @@
+@import "src/styles/variables.scss";
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+.hero {
+  &.dark {
+    .block {
+      background-color: #1b1b1b;
+      color: $color-white;
+
+      hr {
+        background-color: $color-white;
+      }
+    }
+  }
+
+  .image-container {
+    img {
+      width: 100%;
+      height: 680px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .block {
+    background-color: $color-white;
+    color: $color-black;
+    margin-top: -240px;
+    text-align: center;
+    position: relative;
+    padding: 40px 10px;
+    margin: -240px auto 0;
+    max-width: 85%;
+
+    .name {
+      font-family: $font-sans-serif;
+      font-weight: $sans-serif-bold;
+      font-size: 9px;
+      margin-top: 0;
+    }
+
+    .headline,
+    .byline {
+      font-family: $font-sans-serif;
+      font-weight: $sans-serif-bold;
+    }
+
+    .headline {
+      font-size: 25px;
+      margin-bottom: 45px;
+    }
+
+    .byline {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      height: 1px;
+      max-width: 50px;
+      border: none;
+      background-color: black;
+      margin-bottom: 20px;
+    }
+
+    .attribution {
+      font-size: 10px;
+      margin: 0;
+      font-family: $font-sans-serif;
+      font-weight: $sans-serif-regular;
+    }
+  }
+}
