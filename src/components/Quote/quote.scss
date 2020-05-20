@@ -1,0 +1,31 @@
+@import "src/styles/variables";
+
+.quote {
+  blockquote {
+    margin: 40px 20px 60px;
+
+    @media #{$viewport-medium} {
+      max-width: 75%;
+      margin: 65px auto;
+    }
+
+    @media #{$viewport-large} {
+      max-width: 70%;
+    }
+
+    p {
+      font-size: 21px;
+      font-family: $font-sans-serif;
+      color: $color-white;
+      text-align: center;
+
+      @media #{$viewport-medium} {
+        font-size: 25px;
+      }
+
+      @media #{$viewport-large} {
+        font-size: 32px;
+      }
+    }
+  }
+}
