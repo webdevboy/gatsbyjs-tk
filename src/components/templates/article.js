@@ -6,6 +6,7 @@ import { Link } from "gatsby"
 import Hero from "src/components/Hero/hero"
 import ColumnCopy from "src/components/ColumnCopy/column-copy"
 import Quote from "src/components/Quote/quote"
+import ColumnIcon from "src/components/ColumnIcon/column-icon"
 
 // Props come from gatsby-node
 function Article({ pageContext }) {
@@ -16,6 +17,7 @@ function Article({ pageContext }) {
       <Hero data={pageContext.heroFieldGroup} theme={theme} />
       <ColumnCopy data={pageContext.columnCopyFieldGroups} theme={theme} />
       <Quote data={pageContext.quoteFieldGroup} theme={theme} />
+      <ColumnIcon data={pageContext.iconFieldGroups} theme={theme} />
     </Layout>
   )
 }
