@@ -90,8 +90,8 @@
 }
 
 .photo {
-  position: relative;
   font-family: $font-sans-serif;
+  padding: 60px 0;
 
   &.centered {
     max-width: 90%;
@@ -102,10 +102,14 @@
     }
   }
 
-  .bg {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+  .bg-wrapper {
+    position: relative;
+
+    .bg {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   .cutline {

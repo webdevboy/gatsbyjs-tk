@@ -67,25 +67,28 @@ export default function Photo({ data, centered, theme }) {
         centered,
       })}
     >
-      <img
-        className="bg"
-        src={data.image.sourceUrl}
-        alt={data.image.altText || "Image"}
-      />
+      <div className="bg-wrapper">
+        <img
+          className="bg"
+          src={data.image.sourceUrl}
+          alt={data.image.altText || "Image"}
+        />
+        {window.innerWidth >= 1024 && (
+          <MessageGrid
+            gridCount={9}
+            message={data.text.floatingText.text}
+            plot={data.text.floatingText.position.toLowerCase()}
+          />
+        )}
+        <PhotoPopup
+          title={data.text.popup.title}
+          content={data.text.popup.content}
+        />
+      </div>
+      {/* TODO: Add field in Wordpress */}
       <p className="cutline">
         Posible cutline center aligned Inter regular 10 Points
       </p>
-      {window.innerWidth >= 1024 && (
-        <MessageGrid
-          gridCount={9}
-          message={data.text.floatingText.text}
-          plot={data.text.floatingText.position.toLowerCase()}
-        />
-      )}
-      <PhotoPopup
-        title={data.text.popup.title}
-        content={data.text.popup.content}
-      />
     </div>
   )
 }
