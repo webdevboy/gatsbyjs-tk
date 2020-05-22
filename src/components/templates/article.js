@@ -7,7 +7,7 @@ import Hero from "src/components/Hero/hero"
 import ColumnCopy from "src/components/ColumnCopy/column-copy"
 import Quote from "src/components/Quote/quote"
 import ColumnIcon from "src/components/ColumnIcon/column-icon"
-import FullScreenPhoto from "src/components/FullScreenPhoto/full-screen-photo"
+import Photo from "src/components/Photo/photo"
 
 // Props come from gatsby-node
 function Article({ pageContext }) {
@@ -19,8 +19,9 @@ function Article({ pageContext }) {
       <ColumnCopy data={pageContext.columnCopyFieldGroups} theme={theme} />
       <Quote data={pageContext.quoteFieldGroup} theme={theme} />
       <ColumnIcon data={pageContext.iconFieldGroups} theme={theme} />
-      <FullScreenPhoto
+      <Photo
         data={pageContext.fullscreenImageFieldGroup}
+        centered={true} // false for fullscreen treatment
         theme={theme}
       />
     </Layout>

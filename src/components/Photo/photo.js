@@ -4,7 +4,7 @@ import * as cx from "classnames"
 // Components
 import Plus from "src/svgs/plus"
 
-import "./full-screen-photo.scss"
+import "./photo.scss"
 
 function MessageGrid({ gridCount, message, plot }) {
   const grid = Array.from({ length: gridCount }, (x, i) => i)
@@ -58,14 +58,23 @@ function PhotoPopup({ title, content }) {
   )
 }
 
-export default function FullScreenPhoto({ data, theme }) {
+export default function Photo({ data, centered, theme }) {
   return (
-    <div className={`full-screen-photo ${theme}`}>
+    <div
+      className={cx({
+        photo: true,
+        [theme]: true,
+        centered,
+      })}
+    >
       <img
-        className="photo"
+        className="bg"
         src={data.image.sourceUrl}
         alt={data.image.altText || "Image"}
       />
+      <p className="cutline">
+        Posible cutline center aligned Inter regular 10 Points
+      </p>
       {window.innerWidth >= 1024 && (
         <MessageGrid
           gridCount={9}
