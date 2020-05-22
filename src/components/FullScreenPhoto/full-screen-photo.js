@@ -31,9 +31,34 @@ function MessageGrid({ gridCount, message, plot }) {
   )
 }
 
-export default function FullScreenPhoto({ data, theme }) {
+function PhotoPopup({ title, content }) {
   const [popupOpen, popupOpenSet] = useState(false)
 
+  return (
+    <>
+      <div
+        className={cx({
+          popup: true,
+          show: popupOpen,
+          hide: !popupOpen,
+        })}
+      >
+        <h4>{title}</h4>
+        <p>{content}</p>
+      </div>
+      <button className="open-popup" onClick={() => popupOpenSet(!popupOpen)}>
+        <Plus
+          className={cx({
+            plus: !popupOpen,
+            close: popupOpen,
+          })}
+        />
+      </button>
+    </>
+  )
+}
+
+export default function FullScreenPhoto({ data, theme }) {
   return (
     <div className={`full-screen-photo ${theme}`}>
       <img
@@ -48,24 +73,10 @@ export default function FullScreenPhoto({ data, theme }) {
           plot={data.text.floatingText.position.toLowerCase()}
         />
       )}
-      <div
-        className={cx({
-          popup: true,
-          show: popupOpen,
-          hide: !popupOpen,
-        })}
-      >
-        <h4>{data.text.popup.title}</h4>
-        <p>{data.text.popup.content}</p>
-      </div>
-      <button className="open-popup" onClick={() => popupOpenSet(!popupOpen)}>
-        <Plus
-          className={cx({
-            plus: !popupOpen,
-            close: popupOpen,
-          })}
-        />
-      </button>
+      <PhotoPopup
+        title={data.text.popup.title}
+        content={data.text.popup.content}
+      />
     </div>
   )
 }
