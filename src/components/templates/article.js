@@ -8,6 +8,7 @@ import ColumnCopy from "src/components/ColumnCopy/column-copy"
 import Quote from "src/components/Quote/quote"
 import ColumnIcon from "src/components/ColumnIcon/column-icon"
 import Photo from "src/components/Photo/photo"
+import PhotoLayout from "src/components/PhotoLayout/photo-layout"
 
 // Props come from gatsby-node
 function Article({ pageContext }) {
@@ -24,6 +25,17 @@ function Article({ pageContext }) {
         centered={true} // false for fullscreen treatment
         theme={theme}
       />
+      <PhotoLayout
+        data={pageContext.photoLayout1X2}
+        layout="1x2"
+        reversed={false}
+        theme={theme}
+      />
+      {/* <PhotoLayout
+        data={pageContext.photoLayout1X3}
+        layout="1x3"
+        theme={theme}
+      /> */}
     </Layout>
   )
 }
