@@ -3,8 +3,6 @@ import React, { useState } from "react"
 import "./photo-layout.scss"
 
 function Photo({ url, altText, cutline }) {
-  const [height, heightSet] = useState("")
-
   return (
     <div className="photo-item">
       <img src={url} alt={altText} />
