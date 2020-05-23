@@ -51,9 +51,8 @@
     width: 32%;
   }
 
-  @media #{$viewport-medium} {
+  @media #{$viewport-large} {
     padding: 50px;
-    width: 23%;
   }
 
   &.show {
