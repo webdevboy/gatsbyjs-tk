@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
+import * as cx from "classnames"
 
 import "./photo-layout.scss"
 
@@ -11,18 +12,24 @@ function Photo({ url, altText, cutline }) {
   )
 }
 
-function PhotoLayout({ data, theme, reversed }) {
-  const photoOrder = reversed
-    ? Object.keys(data.photoLayout1x2).reverse()
-    : Object.keys(data.photoLayout1x2)
-
-  const photos = photoOrder.map(key => data.photoLayout1x2[key])
+function PhotoLayout({ data, theme, layout }) {
+  const photos = Object.keys(data.photoLayout1x2).map(
+    key => data.photoLayout1x2[key]
+  )
 
   return (
-    <div className={`photo-layout ${theme}`}>
-      {photos.map(photo => {
+    <div
+      className={cx({
+        "photo-layout": true,
+        [theme]: true,
+        split: layout === "split",
+        half: layout === "half",
+      })}
+    >
+      {photos.map((photo, key) => {
         return (
           <Photo
+            key={key}
             url={photo.image.sourceUrl}
             alt={photo.image.altText}
             cutline={photo.cutline}

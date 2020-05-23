@@ -6,8 +6,19 @@
   @media #{$viewport-medium} {
     padding: 60px 40px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
     grid-gap: 40px;
+  }
+
+  &.split {
+    @media #{$viewport-medium} {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &.half {
+    @media #{$viewport-medium} {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .photo-item {

@@ -27,8 +27,12 @@ function Article({ pageContext }) {
       />
       <PhotoLayout
         data={pageContext.photoLayout1X2}
-        layout="1x2"
-        reversed={false}
+        layout="split" // half
+        theme={theme}
+      />
+      <PhotoLayout
+        data={pageContext.photoLayout1X2}
+        layout="half" // half
         theme={theme}
       />
       {/* <PhotoLayout
