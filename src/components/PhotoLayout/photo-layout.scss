@@ -1,31 +1,46 @@
 @import "src/styles/variables";
 
 .photo-layout {
-  padding: 60px 40px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 40px;
+  padding: 60px 20px;
+
+  @media #{$viewport-medium} {
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 40px;
+  }
 
   .photo-item {
-    position: relative;
+    @media #{$viewport-medium} {
+      position: relative;
+    }
 
     img {
-      height: 100%;
       width: 100%;
-      object-fit: cover;
-      object-position: center;
+
+      @media #{$viewport-medium} {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
     }
 
     .cutline {
-      position: absolute;
-      bottom: 0;
-      transform: translate(-50%, 100%);
-      padding-top: 5px;
-      margin: 0;
       font-size: 10px;
       font-family: $font-sans-serif;
-      left: 50%;
       color: $color-cutline;
+      width: 100%;
+      text-align: center;
+
+      @media #{$viewport-medium} {
+        padding-top: 5px;
+        margin: 0;
+        position: absolute;
+        transform: translate(-50%, 100%);
+        bottom: 0;
+        left: 50%;
+      }
     }
   }
 }

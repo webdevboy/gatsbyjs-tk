@@ -6,12 +6,8 @@ function Photo({ url, altText, cutline }) {
   const [height, heightSet] = useState("")
 
   return (
-    <div className="photo-item" style={{ height }}>
-      <img
-        src={url}
-        alt={altText}
-        onLoad={e => heightSet(e.currentTarget.getBoundingClientRect().height)}
-      />
+    <div className="photo-item">
+      <img src={url} alt={altText} />
       <p className="cutline">{cutline}</p>
     </div>
   )
