@@ -127,20 +127,20 @@ const centerPhotoFields = `
   }
 `
 
-const photoLayoutFields = `
-  photoLayoutFieldGroup {
-    photoLayout {
-      photoLandscape {
-        ${mediaFields}
-      }
-      landscapeCutline
-      photoPortrait {
-        ${mediaFields}
-      }
-      portraitCutline
-    }
-  }
-`
+// const photoLayoutFields = `
+//   photoLayoutFieldGroup {
+//     photoLayout {
+//       photoLandscape {
+//         ${mediaFields}
+//       }
+//       landscapeCutline
+//       photoPortrait {
+//         ${mediaFields}
+//       }
+//       portraitCutline
+//     }
+//   }
+// `
 
 const photoLayout1X2Fields = `
 photoLayout1X2 {
@@ -215,7 +215,6 @@ const contentFields = `
     ${quoteFields}
     ${iconGroupFields}
     ${centerPhotoFields}
-    ${photoLayoutFields}
     ${photoLayout1X2Fields}
     ${photoLayout1X3Fields}
   }
@@ -231,7 +230,6 @@ module.exports = {
   quoteFields,
   iconGroupFields,
   centerPhotoFields,
-  photoLayoutFields,
   photoLayout1X2Fields,
   photoLayout1X3Fields,
   languageFields,
