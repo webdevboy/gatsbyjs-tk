@@ -9,6 +9,7 @@ import Quote from "src/components/Quote/quote"
 import ColumnIcon from "src/components/ColumnIcon/column-icon"
 import Photo from "src/components/Photo/photo"
 import PhotoLayout from "src/components/PhotoLayout/photo-layout"
+import ImageSlider from "src/components/ImageSlider/image-slider"
 
 // Props come from gatsby-node
 function Article({ pageContext }) {
@@ -35,11 +36,7 @@ function Article({ pageContext }) {
         layout="half" // half
         theme={theme}
       />
-      {/* <PhotoLayout
-        data={pageContext.photoLayout1X3}
-        layout="1x3"
-        theme={theme}
-      /> */}
+      <ImageSlider data={pageContext.photoLayout1X3} theme={theme} />
     </Layout>
   )
 }
