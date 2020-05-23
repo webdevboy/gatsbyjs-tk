@@ -73,13 +73,11 @@ export default function Photo({ data, centered, theme }) {
           src={data.image.sourceUrl}
           alt={data.image.altText || "Image"}
         />
-        {window.innerWidth >= 1024 && (
-          <MessageGrid
-            gridCount={9}
-            message={data.text.floatingText.text}
-            plot={data.text.floatingText.position.toLowerCase()}
-          />
-        )}
+        <MessageGrid
+          gridCount={9}
+          message={data.text.floatingText.text}
+          plot={data.text.floatingText.position.toLowerCase()}
+        />
         <PhotoPopup
           title={data.text.popup.title}
           content={data.text.popup.content}

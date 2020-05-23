@@ -1,16 +1,20 @@
 @import "src/styles/variables";
 
 .grid {
-  display: grid;
-  grid-template-columns: 2fr 0fr 2fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 40px;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   padding: 60px 40px;
+
+  @media #{$viewport-medium} {
+    display: grid;
+    grid-template-columns: 2fr 0fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 40px;
+  }
 
   @media #{$viewport-large} {
     grid-template-columns: 1fr 1fr 1fr;
@@ -39,8 +43,10 @@
   transition-duration: 0.3s;
   border-radius: 8px;
   max-width: 420px;
+  display: none;
 
   @media #{$viewport-medium} {
+    display: inline-block;
     padding: 50px;
     width: 32%;
   }
@@ -80,7 +86,11 @@
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
-  display: inline-block;
+  display: none;
+
+  @media #{$viewport-medium} {
+    display: inline-block;
+  }
 
   svg {
     &.plus {
