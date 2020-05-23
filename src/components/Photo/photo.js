@@ -59,6 +59,7 @@ function PhotoPopup({ title, content }) {
 }
 
 export default function Photo({ data, centered, theme }) {
+  console.log({ data })
   return (
     <div
       className={cx({
@@ -85,10 +86,7 @@ export default function Photo({ data, centered, theme }) {
           content={data.text.popup.content}
         />
       </div>
-      {/* TODO: Add field in Wordpress */}
-      <p className="cutline">
-        Posible cutline center aligned Inter regular 10 Points
-      </p>
+      <p className="cutline">{data.cutline}</p>
     </div>
   )
 }
