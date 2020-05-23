@@ -59,7 +59,6 @@ function PhotoPopup({ title, content }) {
 }
 
 export default function Photo({ data, centered, theme }) {
-  console.log({ data })
   return (
     <div
       className={cx({

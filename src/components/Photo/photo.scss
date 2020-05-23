@@ -2,7 +2,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 0fr 2fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 40px;
   position: absolute;
@@ -11,6 +11,10 @@
   bottom: 0;
   right: 0;
   padding: 60px 40px;
+
+  @media #{$viewport-large} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
   .cell {
     display: flex;
