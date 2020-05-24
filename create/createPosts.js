@@ -7,7 +7,7 @@ const {
   createPostWithTemplate,
 } = require("./utils")
 
-const filePathToComponents = "../src/layouts/"
+const filePathToComponents = "../src/components/"
 const templateCacheFolder = ".template-cache"
 const layoutMapping = require("./layouts")
 // const postTemplate = require.resolve("../src/templates/page/template.js")

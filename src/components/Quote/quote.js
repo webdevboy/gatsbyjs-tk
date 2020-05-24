@@ -2,11 +2,11 @@ import React from "react"
 
 import "./quote.scss"
 
-export default function Quote({ data, theme }) {
+export default function Quote({ quote }) {
   return (
-    <div className={`quote ${theme}`}>
+    <div >
       <blockquote>
-        <p>{data.quote}</p>
+        <p>{quote}</p>
       </blockquote>
     </div>
   )

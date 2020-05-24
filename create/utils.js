@@ -5,7 +5,7 @@ module.exports.getAllLayoutsData = () => {
 
   let allLayoutsString = ""
 
-  const fileArray = glob.sync("./src/layouts/**/*.data.js")
+  const fileArray = glob.sync("./src/components/**/*.data.js")
 
   fileArray.forEach(function (file) {
     let queryStringFunction = require(path.resolve(file))

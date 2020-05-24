@@ -1,5 +1,5 @@
 import React from "react"
-import Hero from "../layouts/Hero"
+import Hero from "../components/Hero"
 
 const AllLayouts = ({ layoutData }) => {
   const layoutType = layoutData.fieldGroupName

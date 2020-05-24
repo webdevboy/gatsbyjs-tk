@@ -6,8 +6,8 @@ import Layout from "../src/components/Layout"
 import SEO from "../src/components/SEO"
 
 // Sections
-import Hero from 'src/layouts/Hero';
-import Quote from 'src/layouts/Quote';
+import Hero from 'src/components/Hero';
+import Quote from 'src/components/Quote';
 
 const Post = ({ pageContext }) => {
   const {
