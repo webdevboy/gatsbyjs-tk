@@ -1,26 +1,9 @@
-const _uniqBy = require("lodash.uniqby")
-const _isEmpty = require("lodash.isempty")
+const { getAllLayoutsData } = require("./utils")
 
-const {
-  getAllLayoutsData,
-  createTemplate,
-  createPostWithTemplate,
-} = require("./utils")
+const postTemplate = require.resolve("../src/templates/post/")
+// const pageTemplate = require.resolve("src/templates/page/")
 
-const filePathToComponents = "../src/components/"
-const templateCacheFolder = ".template-cache"
-const layoutMapping = require("./layouts")
-// const postTemplate = require.resolve("../src/templates/page/template.js")
-
-const postTemplate = require.resolve("../src/templates/post/index.js")
-
-// const { FluidImageFragment } = require("../src/templates/fragments")
 const { PostTemplateFragment } = require("../src/templates/post/data")
-
-// # This will make sure to only get the parent nodes and no children
-//             where: {
-//                 parent: null
-//             }
 
 const GET_POSTS = layouts => `
   ${PostTemplateFragment(layouts)}
@@ -36,8 +19,6 @@ const GET_POSTS = layouts => `
   }
 `
 
-const allPosts = []
-
 /**
  * This is the export which Gatbsy will use to process.
  *
@@ -46,6 +27,11 @@ const allPosts = []
  */
 module.exports = async ({ actions, graphql, reporter }, options) => {
   const layouts = getAllLayoutsData()
+  const allPosts = []
+
+  // TODO: Implement logic to distinguish Posts/Pages
+  // const template = isPost ? postTemplate : pageTemplate;
+  const component = postTemplate
 
   /**
    * This is the method from Gatsby that we're going
@@ -61,9 +47,9 @@ module.exports = async ({ actions, graphql, reporter }, options) => {
    * @param variables
    * @returns {Promise<*>}
    */
-  const fetchPages = async () =>
+  const fetchPosts = async () =>
     /**
-     * Fetch pages using the GET_POSTS query and the variables passed in.
+     * Fetch pages using the GET_PAGES query and the variables passed in.
      */
     await graphql(GET_POSTS(layouts)).then(({ data }) => {
       /**
@@ -74,8 +60,6 @@ module.exports = async ({ actions, graphql, reporter }, options) => {
           posts: { nodes },
         },
       } = data
-
-      // console.log({ wordpress })
 
       /**
        * Map over the post for later creation
@@ -91,66 +75,27 @@ module.exports = async ({ actions, graphql, reporter }, options) => {
     })
 
   /**
-   * Kick off our `fetchPages` method which will get us all
+   * Kick off our `fetchPosts` method which will get us all
    * the pages we need to create individual pages.
    */
-  await fetchPages().then(wpPosts => {
+  await fetchPosts().then(wpPosts => {
     wpPosts &&
-      wpPosts.map(post => {
-        let postPath = `${post.slug}`
+      wpPosts.map(context => {
+        let path = `/${context.slug}/`
 
         /**
          * If the page is the front page, the page path should not be the uri,
          * but the root path '/'.
          */
-        // if (post.isFrontPage) {
-        //   postPath = "/"
+        // if (page.isFrontPage) {
+        //   path = "/"
         // }
 
-        /**
-         * Filter out empty objects. This can happen, if for some reason you
-         * don't query for a specific layout (UnionType), that is potentially
-         * there.
-         */
-        const layouts = post.components.contents.filter(el => {
-          return !_isEmpty(el)
-        })
+        createPage({ path, component, context })
 
-        let mappedLayouts = []
-
-        if (layouts && layouts.length > 0) {
-          /**
-           * Removes all duplicates, as we only need to import each layout once
-           */
-          const UniqueLayouts = _uniqBy(layouts, "fieldGroupName")
-
-          console.log({ UniqueLayouts })
-
-          /**
-           * Maps data and prepares object for our template generation.
-           */
-          mappedLayouts = UniqueLayouts.map(layout => {
-            return {
-              layoutType: layout.fieldGroupName,
-              componentName: layoutMapping[layout.fieldGroupName],
-              filePath:
-                filePathToComponents + layoutMapping[layout.fieldGroupName],
-            }
-          })
-        }
-
-        createPostWithTemplate({
-          createTemplate: createTemplate,
-          templateCacheFolder: templateCacheFolder,
-          postTemplate: postTemplate,
-          post: post,
-          postPath: postPath,
-          mappedLayouts: mappedLayouts,
-          createPage: createPage,
-          reporter: reporter,
-        })
+        reporter.info(`created: ${context.slug}`)
       })
 
-    reporter.info(`# -----> PAGES TOTAL: ${wpPosts.length}`)
+    reporter.info(`# -----> TOTAL: ${wpPosts.length}`)
   })
 }

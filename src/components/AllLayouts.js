@@ -1,5 +1,6 @@
 import React from "react"
 import Hero from "../components/Hero"
+import Quote from "../components/Quote"
 
 const AllLayouts = ({ layoutData }) => {
   const layoutType = layoutData.fieldGroupName
@@ -19,10 +20,9 @@ const AllLayouts = ({ layoutData }) => {
   const layouts = {
     // WordPress_Post_Components_Contents_ArticleHero: Hero,
     post_Components_Contents_ArticleHero: Hero,
+    post_Components_Contents_Quote: Quote,
     page_default: Default,
   }
-
-  console.log(layouts[layoutType])
 
   /**
    * If layout type is not existing in our mapping, it shows our Default instead.
