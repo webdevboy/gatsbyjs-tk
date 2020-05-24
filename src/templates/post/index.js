@@ -43,7 +43,7 @@ ${imports
       console.log(`../layouts/${componentName}`)
 
       // return `import ${componentName} from '${filePath}';`
-      return `import ${componentName} from 'src/layouts/${componentName}';`
+      return `import ${componentName} from 'src/components/${componentName}';`
     }
   })
   .join("\n")}
