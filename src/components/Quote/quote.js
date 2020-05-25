@@ -1,10 +1,10 @@
 import React from "react"
 
-import "./quote.scss"
+import "./Quote.scss"
 
 export default function Quote({ quote }) {
   return (
-    <div >
+    <div className="quote">
       <blockquote>
         <p>{quote}</p>
       </blockquote>
