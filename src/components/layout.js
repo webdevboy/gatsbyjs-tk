@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 
 import Header from "src/components/Header/header"
 import Footer from "src/components/Footer/footer"
+import { useEffect } from "react"
 
 import "src/styles/index.scss"
-import { useEffect } from "react"
 
 function Layout({ children, theme, title }) {
   useEffect(() => {
