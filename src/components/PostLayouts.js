@@ -1,9 +1,8 @@
 import React from "react"
-import PostHero from "./PostHero"
-import Quote from "src/components/Quote"
+import { PostHero, Quote } from "src/components"
 
 const PostLayouts = ({ layoutData }) => {
-  const layoutType = layoutData.fieldGroupName
+  const layoutType = layoutData.fieldGroupName || "No field group name found"
 
   /**
    * Default component

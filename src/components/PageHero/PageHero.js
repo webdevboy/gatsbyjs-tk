@@ -1,10 +1,10 @@
 import React from "react"
 
-import "./HomepageHero.scss"
+import "./PageHero.scss"
 
-export default function HomepageHero({ logo, image }) {
+export default function PageHero({ logo, image }) {
   return (
-    <div className="homepage-hero">
+    <div className="page-hero">
       <div className="image-container">
         <img src={image.sourceUrl} alt={image.altText} />
       </div>

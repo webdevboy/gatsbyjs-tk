@@ -1,19 +1,19 @@
 import React from "react"
-import HomepageHero from "src/components/HomepageHero"
+import { PageHero } from "src/components"
 
-const AllLayouts = ({ layoutData }) => {
-  const layoutType = layoutData.fieldGroupName
+const PageLayouts = ({ layoutData }) => {
+  const layoutType = layoutData.fieldGroupName || "No field group name found"
 
   // Default component
   const Default = () => (
     <div>
-      In PostLayouts the mapping of this component is missing: {layoutType}
+      In PageLayouts the mapping of this component is missing: {layoutType}
     </div>
   )
 
   // Mapping the fieldGroupName(s) to our components
   const layouts = {
-    page_Components_Contents_HomepageHero: HomepageHero,
+    page_Components_Contents_HomepageHero: PageHero,
     default: Default,
   }
 
@@ -25,4 +25,4 @@ const AllLayouts = ({ layoutData }) => {
   return <ComponentTag {...layoutData} />
 }
 
-export default AllLayouts
+export default PageLayouts
