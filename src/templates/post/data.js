@@ -6,6 +6,10 @@ const PostTemplateFragment = layouts => `
     language {
       code
     }
+    themeSelect {
+      fieldGroupName
+      themeSelect
+    }
     components {
       contents {
         ${layouts}
