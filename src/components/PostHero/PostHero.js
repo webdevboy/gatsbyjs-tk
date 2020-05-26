@@ -4,9 +4,12 @@ import "./PostHero.scss"
 
 export default function Hero({ authors, byline, title, heroImage }) {
   return (
+
     <div className="post-hero">
       <div className="image-container">
-        <img src={heroImage.sourceUrl} alt="" />
+        {heroImage && heroImage.sourceUrl && (
+          <img src={heroImage.sourceUrl} alt="" />
+        )}
       </div>
       <div className="block">
         <p className="name">Destination</p>
