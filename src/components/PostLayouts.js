@@ -30,7 +30,7 @@ const PostLayouts = ({ layoutData, theme }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} {...theme} />
+  return <ComponentTag {...layoutData} theme={theme} />
 }
 
 export default PostLayouts
