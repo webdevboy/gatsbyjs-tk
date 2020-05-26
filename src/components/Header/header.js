@@ -2,7 +2,7 @@ import React from "react"
 //import { Link } from "gatsby"
 import Logo from "src/svgs/tk_logo"
 import Hamburger from "src/svgs/hamburger"
-import Language from "../Language/Language"
+import Language from "../Language/language"
 import { FormattedMessage, Link } from "gatsby-plugin-intl"
 
 import "./header.scss"

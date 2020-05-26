@@ -3,22 +3,10 @@ import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl"
 import browserLang from 'browser-lang';
 
 
-// return the preferred language in browser: e.g. "ko-KR" or "ko".
-const myLanguage = browserLang({
-  languages: ['en', 'es'], 
-  fallback: 'en',
-});
-
-
 const languageName = {
   en: "EN",
   es: "ES",
-  zh: "ZH"
-}
-
-const myFunction = (lang) => {
-  console.log("inside my function")
-  changeLocale(lang)
+  zh: "ZH",
 }
 
 const Language = () => {
