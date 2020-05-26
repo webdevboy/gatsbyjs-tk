@@ -7,6 +7,10 @@ const PageTemplateFragment = layouts => `
     language {
       code
     }
+    themeSelect {
+      fieldGroupName
+      themeSelect
+    }
     components {
       contents {
         ${layouts}

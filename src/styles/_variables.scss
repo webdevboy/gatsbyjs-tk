@@ -8,8 +8,8 @@ $color-white: #ffffff;
 $color-cutline: #787276;
 
 // Breakpoints
-$viewport-medium: "only screen and (min-device-width: 834px)";
-$viewport-large: "only screen and (min-device-width: 1440px)";
+$viewport-medium: "only screen and (min-width: 834px)";
+$viewport-large: "only screen and (min-width: 1440px)";
 
 // Fonts
 $font-serif: "Libre Baskerville", serif;

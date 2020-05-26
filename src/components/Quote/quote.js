@@ -4,10 +4,10 @@ import "./Quote.scss"
 
 export default function Quote({ quote }) {
   return (
-    <div className="quote">
+    <section className="quote">
       <blockquote>
-        <p>{quote}</p>
+        <p>"{quote}"</p>
       </blockquote>
-    </div>
+    </section>
   )
 }

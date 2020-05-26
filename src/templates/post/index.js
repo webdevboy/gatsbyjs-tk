@@ -10,10 +10,14 @@ const Post = ({ pageContext }) => {
   const layouts = components.contents || []
 
   return (
-    <Layout>
+    <Layout theme={pageContext.themeSelect.themeSelect}>
       <SEO title={title || "Untitled"} />
       {layouts.map((layout, index) => (
-        <PostLayouts key={index} layoutData={layout} />
+        <PostLayouts
+          key={index}
+          layoutData={layout}
+          theme={pageContext.themeSelect.themeSelect}
+        />
       ))}
     </Layout>
   )

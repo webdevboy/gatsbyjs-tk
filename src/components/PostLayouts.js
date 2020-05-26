@@ -1,9 +1,8 @@
 import React from "react"
-import PostHero from "./PostHero"
-import Quote from "src/components/Quote"
+import { PostHero, Quote, CopyColumns, PhotoBackground } from "src/components"
 
-const PostLayouts = ({ layoutData }) => {
-  const layoutType = layoutData.fieldGroupName
+const PostLayouts = ({ layoutData, theme }) => {
+  const layoutType = layoutData.fieldGroupName || "No field group name found"
 
   /**
    * Default component
@@ -20,6 +19,8 @@ const PostLayouts = ({ layoutData }) => {
   const layouts = {
     post_Components_Contents_ArticleHero: PostHero,
     post_Components_Contents_Quote: Quote,
+    post_Components_Contents_Columns: CopyColumns,
+    post_Components_Contents_LargePhoto: PhotoBackground,
     default: Default,
   }
 
@@ -30,7 +31,7 @@ const PostLayouts = ({ layoutData }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} />
+  return <ComponentTag {...layoutData} theme={theme} type={"post"} />
 }
 
 export default PostLayouts

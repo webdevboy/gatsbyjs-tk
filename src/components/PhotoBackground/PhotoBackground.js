@@ -4,7 +4,7 @@ import * as cx from "classnames"
 // Components
 import Plus from "src/svgs/plus"
 
-import "./photo.scss"
+import "./PhotoBackground.scss"
 
 function MessageGrid({ gridCount, message, plot }) {
   const grid = Array.from({ length: gridCount }, (x, i) => i)
@@ -58,32 +58,45 @@ function PhotoPopup({ title, content }) {
   )
 }
 
-export default function Photo({ data, centered, theme }) {
+// export default function PhotoBackground({ data, centered, theme }) {
+export default function PhotoBackground({
+  cutline,
+  fieldGroupName,
+  floatingBodyText,
+  floatingHeadline,
+  floatingPreHeadline,
+  floatingTextPosition,
+  fullScreen,
+  image,
+  linkText,
+  linkUrl,
+  popup,
+  theme,
+}) {
   return (
     <div
       className={cx({
         photo: true,
         [theme]: true,
-        centered,
+        centered: !fullScreen,
       })}
     >
       <div className="bg-wrapper">
-        <img
-          className="bg"
-          src={data.image.sourceUrl}
-          alt={data.image.altText || "Image"}
-        />
+        {image && image.sourceUrl && (
+          <img
+            className="bg"
+            src={image.sourceUrl}
+            alt={image.altText || "Image"}
+          />
+        )}
         <MessageGrid
           gridCount={9}
-          message={data.text.floatingText.text}
-          plot={data.text.floatingText.position.toLowerCase()}
+          message={floatingBodyText}
+          plot={floatingTextPosition.toLowerCase()}
         />
-        <PhotoPopup
-          title={data.text.popup.title}
-          content={data.text.popup.content}
-        />
+        <PhotoPopup title={popup.headline} content={popup.popupCopy} />
       </div>
-      <p className="cutline">{data.cutline}</p>
+      <p className="cutline">{cutline}</p>
     </div>
   )
 }
