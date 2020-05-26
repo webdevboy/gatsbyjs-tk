@@ -1,0 +1,46 @@
+@import "src/styles/variables";
+
+.copy-columns {
+  padding: 40px 20px;
+  color: $color-black;
+  font-family: $font-sans-serif;
+  font-size: 13px;
+
+  &.dark {
+    color: $color-white;
+  }
+
+  @media #{$viewport-medium} {
+    padding: 60px 40px;
+    display: grid;
+    grid-gap: 40px;
+  }
+
+  .group {
+    &:first-child {
+      @media #{$viewport-large} {
+        grid-column-start: 2;
+        grid-column-end: 3;
+      }
+
+      .icon-container {
+        margin-top: 0;
+      }
+    }
+
+    .icon-container {
+      display: block;
+      text-align: center;
+      margin: 40px auto 0;
+
+      @media #{$viewport-medium} {
+        margin: 0 auto;
+      }
+    }
+
+    .headline,
+    .subhead {
+      text-align: center;
+    }
+  }
+}
