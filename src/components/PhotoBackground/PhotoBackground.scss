@@ -11,7 +11,7 @@
 
   @media #{$viewport-medium} {
     display: grid;
-    grid-template-columns: 2fr 0fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 40px;
   }

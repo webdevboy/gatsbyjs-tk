@@ -1,7 +1,7 @@
 import React from "react"
 import { PageHero } from "src/components"
 
-const PageLayouts = ({ layoutData }) => {
+const PageLayouts = ({ layoutData, theme }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
 
   // Default component
@@ -22,7 +22,7 @@ const PageLayouts = ({ layoutData }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} />
+  return <ComponentTag {...layoutData} theme={theme} type={"post"} />
 }
 
 export default PageLayouts

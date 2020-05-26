@@ -1,5 +1,5 @@
 import React from "react"
-import { PostHero, Quote, CopyColumns } from "src/components"
+import { PostHero, Quote, CopyColumns, PhotoBackground } from "src/components"
 
 const PostLayouts = ({ layoutData, theme }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
@@ -20,6 +20,7 @@ const PostLayouts = ({ layoutData, theme }) => {
     post_Components_Contents_ArticleHero: PostHero,
     post_Components_Contents_Quote: Quote,
     post_Components_Contents_Columns: CopyColumns,
+    post_Components_Contents_LargePhoto: PhotoBackground,
     default: Default,
   }
 
@@ -30,7 +31,7 @@ const PostLayouts = ({ layoutData, theme }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={theme} />
+  return <ComponentTag {...layoutData} theme={theme} type={"post"} />
 }
 
 export default PostLayouts
