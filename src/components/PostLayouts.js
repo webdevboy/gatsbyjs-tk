@@ -1,7 +1,7 @@
 import React from "react"
 import { PostHero, Quote, CopyColumns } from "src/components"
 
-const PostLayouts = ({ layoutData }) => {
+const PostLayouts = ({ layoutData, theme }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
 
   /**
@@ -30,7 +30,7 @@ const PostLayouts = ({ layoutData }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} />
+  return <ComponentTag {...layoutData} {...theme} />
 }
 
 export default PostLayouts
