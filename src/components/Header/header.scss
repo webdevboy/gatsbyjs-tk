@@ -10,12 +10,26 @@
   position: relative;
   min-height: 40px;
 
+  @media #{$viewport-medium} {
+    padding: 20px;
+  }
+
   &.light {
-    background-color: white;
+    background-color: $color-white;
+    color: $color-black;
+
+    span {
+      color: $color-black;
+    }
   }
 
   &.dark {
     background-color: $color-black;
+    color: $color-white;
+
+    span {
+      color: $color-white;
+    }
   }
 
   .logo {
@@ -33,10 +47,40 @@
     padding: 0;
     width: 25px;
     height: 20px;
+    background-color: transparent;
+    border: none;
 
-    .hamburger {
-      width: 25px;
-      height: 20px;
+    @media #{$viewport-medium} {
+      margin-left: 0;
+      width: auto;
+      height: auto;
+    }
+
+    span {
+      @media #{$viewport-medium} {
+        display: flex;
+        flex-flow: row nowrap;
+        align-content: center;
+      }
+
+      .hamburger {
+        width: 25px;
+        height: 20px;
+        fill: $color-white;
+      }
+
+      .title {
+        display: none;
+
+        @media #{$viewport-medium} {
+          font-family: $font-sans-serif;
+          font-weight: $sans-serif-regular;
+          display: inline-block;
+          margin: 0;
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
     }
   }
 }

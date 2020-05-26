@@ -1,4 +1,6 @@
+/* eslint jsx-a11y/anchor-is-valid: 0 */
 import React from "react"
+import { FormattedMessage } from "gatsby-plugin-intl"
 
 import "./footer.scss"
 
@@ -18,7 +20,7 @@ function Footer() {
         </p>
         <div className="inputs">
           <input placeholder="Email" type="text" name="email" id="email" />
-          <button onClick={handleSubscribeClick}>SUBSCRIBE</button>
+          <button onClick={handleSubscribeClick}><FormattedMessage id="subscribe-btn" /></button>
         </div>
       </div>
       <div className="site-links">
