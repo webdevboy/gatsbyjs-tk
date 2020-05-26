@@ -10,6 +10,19 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en`, `es`, `zh`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/es` when connecting `/`
+        redirect: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-166107621-1",
