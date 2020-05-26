@@ -12,10 +12,17 @@ export default function CopyColumns({ columns, theme }) {
       window.innerWidth < LARGE_BREAKPOINT
     ) {
       layoutSet(`repeat(${columns.length}, 2fr)`)
+      return
     }
 
     if (window.innerWidth >= LARGE_BREAKPOINT) {
       layoutSet(`1fr repeat(${columns.length}, 2fr) 1fr`)
+      return
+    }
+
+    if (window.innerWidth < MEDIUM_BREAKPOINT) {
+      layoutSet("")
+      return
     }
   }
 
