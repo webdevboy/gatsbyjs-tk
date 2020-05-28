@@ -10,8 +10,6 @@ import {
 const PostLayouts = ({ layoutData, theme }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
 
-  console.log(layoutData)
-
   /**
    * Default component
    */
