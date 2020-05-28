@@ -5,15 +5,12 @@ module.exports = () => {
       fieldGroupName
       floatingBodyText
       floatingHeadline
-      floatingPreHeadline
       floatingTextPosition
       fullScreen
       image {
         altText
         sourceUrl
       }
-      linkText
-      linkUrl
       popup {
         fieldGroupName
         headline

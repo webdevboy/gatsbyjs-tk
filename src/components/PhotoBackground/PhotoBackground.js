@@ -58,18 +58,12 @@ function PhotoPopup({ title, content }) {
   )
 }
 
-// export default function PhotoBackground({ data, centered, theme }) {
 export default function PhotoBackground({
   cutline,
-  fieldGroupName,
   floatingBodyText,
-  floatingHeadline,
-  floatingPreHeadline,
   floatingTextPosition,
   fullScreen,
   image,
-  linkText,
-  linkUrl,
   popup,
   theme,
 }) {
