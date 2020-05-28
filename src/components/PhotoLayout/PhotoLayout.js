@@ -29,8 +29,6 @@ function PhotoLayout({
     { ...imageTwo, cutline: cutlineTwo },
   ]
 
-  console.log(photos)
-
   return (
     <section
       className={cx({
