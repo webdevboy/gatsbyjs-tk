@@ -1,7 +1,7 @@
 import React from "react"
 import * as cx from "classnames"
 
-import "./photo-layout.scss"
+import "./PhotoLayout.scss"
 
 function Photo({ url, altText, cutline }) {
   return (
@@ -12,31 +12,45 @@ function Photo({ url, altText, cutline }) {
   )
 }
 
-function PhotoLayout({ data, theme, layout }) {
-  const photos = Object.keys(data.photoLayout1x2).map(
-    key => data.photoLayout1x2[key]
-  )
+function PhotoLayout({
+  cutlineOne,
+  cutlineTwo,
+  imageOne,
+  imageTwo,
+  split,
+  theme,
+}) {
+  if (!cutlineOne || !cutlineTwo || !imageOne || !imageTwo) {
+    return
+  }
+
+  const photos = [
+    { ...imageOne, cutline: cutlineOne },
+    { ...imageTwo, cutline: cutlineTwo },
+  ]
+
+  console.log(photos)
 
   return (
-    <div
+    <section
       className={cx({
         "photo-layout": true,
         [theme]: true,
-        split: layout === "split",
-        half: layout === "half",
+        "bias-layout": !split,
+        "half-layout": split,
       })}
     >
       {photos.map((photo, key) => {
         return (
           <Photo
             key={key}
-            url={photo.image.sourceUrl}
-            alt={photo.image.altText}
+            url={photo.sourceUrl}
+            alt={photo.altText}
             cutline={photo.cutline}
           />
         )
       })}
-    </div>
+    </section>
   )
 }
 
