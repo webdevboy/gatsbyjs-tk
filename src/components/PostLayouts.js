@@ -5,6 +5,7 @@ import {
   CopyColumns,
   PhotoBackground,
   PhotoLayout,
+  FiftyFifty,
 } from "src/components"
 
 const PostLayouts = ({ layoutData, theme }) => {
@@ -28,6 +29,7 @@ const PostLayouts = ({ layoutData, theme }) => {
     post_Components_Contents_Columns: CopyColumns,
     post_Components_Contents_LargePhoto: PhotoBackground,
     post_Components_Contents_ImageLayouts: PhotoLayout,
+    post_Components_Contents_FiftyFifty: FiftyFifty,
     default: Default,
   }
 
