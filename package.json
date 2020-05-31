@@ -47,7 +47,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "prestart": "gatsby clean",
-    "start": "gatsby develop",
+    "start": "gatsby develop -H 0.0.0.0",
     "prestart:https": "gatsby clean",
     "start:https": "gatsby develop --https",
     "serve": "gatsby serve",
