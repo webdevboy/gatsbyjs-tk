@@ -2,10 +2,9 @@ import React from "react"
 
 import "./PostHero.scss"
 
-export default function Hero({ authors, byline, title, heroImage }) {
+export default function Hero({ authors, byline, title, heroImage, theme }) {
   return (
-
-    <div className="post-hero">
+    <div className={`post-hero ${theme}`}>
       <div className="image-container">
         {heroImage && heroImage.sourceUrl && (
           <img src={heroImage.sourceUrl} alt="" />

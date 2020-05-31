@@ -9,13 +9,13 @@
     grid-gap: 40px;
   }
 
-  &.split {
+  &.bias-layout {
     @media #{$viewport-medium} {
       grid-template-columns: 1fr 2fr;
     }
   }
 
-  &.half {
+  &.half-layout {
     @media #{$viewport-medium} {
       grid-template-columns: 1fr 1fr;
     }

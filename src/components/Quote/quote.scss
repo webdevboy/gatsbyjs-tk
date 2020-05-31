@@ -1,6 +1,12 @@
 @import "src/styles/variables";
 
 .quote {
+  color: $color-black;
+
+  &.dark {
+    color: $color-white;
+  }
+
   @media #{$viewport-large} {
     display: grid;
     grid-template-columns: 1fr repeat(4, 1fr) 1fr;
@@ -22,7 +28,6 @@
     p {
       font-size: 21px;
       font-family: $font-sans-serif;
-      color: $color-white;
       text-align: center;
 
       @media #{$viewport-medium} {
