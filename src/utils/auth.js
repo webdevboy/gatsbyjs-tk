@@ -38,7 +38,7 @@ export const login = () => {
   auth.authorize()
 }
 
-const setSession = cb => (err, authResult) => {
+const setSession = (cb = () => {}) => (err, authResult) => {
   if (err) {
     navigate("/")
     cb()
