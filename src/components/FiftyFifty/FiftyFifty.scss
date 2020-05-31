@@ -8,10 +8,21 @@
   @media #{$viewport-large} {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    min-height: 985px;
   }
 
   &.reversed {
-    direction: rtl;
+    .copy-block {
+      grid-row: 1;
+    }
+
+    .image-block {
+      grid-row: 2;
+
+      @media #{$viewport-large} {
+        grid-row: auto;
+      }
+    }
   }
 
   .image-block,
