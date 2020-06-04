@@ -2,12 +2,13 @@ import React from "react"
 //import { Link } from "gatsby"
 import Logo from "src/svgs/tk_logo"
 import Hamburger from "src/svgs/hamburger"
+import Close from "src/svgs/close"
 import Language from "../Language/language"
 import { FormattedMessage, Link } from "gatsby-plugin-intl"
 
 import "./header.scss"
 
-function Header({ theme, title }) {
+function Header({ theme, title, showNav, setShowNav }) {
   return (
     <header className={`header ${theme}`}>
       <Link to="/">
@@ -15,9 +16,13 @@ function Header({ theme, title }) {
       </Link>
       {/* TODO: Implement NAV component */}
       <Language />
-      <button onClick={() => console.log("open nav")}>
+      <button onClick={() => setShowNav()}>
         <span>
-          <Hamburger className="hamburger" />
+          {showNav ? (
+            <Close className="close" />
+          ) : (
+            <Hamburger className="hamburger" />
+          )}
           <p className="title">{title}</p>
         </span>
       </button>
