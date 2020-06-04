@@ -9,6 +9,7 @@
   align-items: center;
   position: relative;
   min-height: 40px;
+  z-index: 101;
 
   @media #{$viewport-medium} {
     padding: 20px;
