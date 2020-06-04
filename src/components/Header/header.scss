@@ -20,6 +20,12 @@
 
     span {
       color: $color-black;
+
+      .close,
+      .hamburger {
+        fill: $color-black;
+        stroke: $color-black;
+      }
     }
   }
 
@@ -33,6 +39,7 @@
       .close,
       .hamburger {
         fill: $color-white;
+        stroke: $color-white;
       }
     }
   }
@@ -71,13 +78,13 @@
       .hamburger {
         width: 25px;
         height: 20px;
-        fill: $color-black;
+        // fill: $color-black;
       }
 
       .close {
         width: 31px;
         height: 31px;
-        fill: $color-black;
+        // fill: $color-black;
       }
 
       .title {
