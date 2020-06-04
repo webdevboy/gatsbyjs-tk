@@ -22,7 +22,7 @@ function Layout({ children, theme, title }) {
         showNav={showNav}
         setShowNav={() => setShowNav(!showNav)}
       />
-      {showNav && <Navigation />}
+      {showNav && <Navigation theme={theme} />}
       <div>
         <main>{children}</main>
         <Footer />
