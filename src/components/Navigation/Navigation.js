@@ -7,19 +7,12 @@ import "./Navigation.scss"
 function ItemWithSubNav({ menu, getUrlPath }) {
   const [showSubMenu, setShowSubMenu] = useState(false)
 
-  const handleClick = event => {
-    event.preventDefault()
-    setShowSubMenu(true)
-  }
-
-  const goBack = event => {
-    event.preventDefault()
-    setShowSubMenu(false)
-  }
-
   return (
     <li className="with-menu" key={menu.id}>
-      <button onClick={handleClick}>{menu.name}</button>
+      <button className="open-menu" onClick={() => setShowSubMenu(true)}>
+        {menu.name}
+        <span className="arrow next"></span>
+      </button>
       <ul
         className={cx({
           "sub-menu": true,
@@ -27,7 +20,7 @@ function ItemWithSubNav({ menu, getUrlPath }) {
         })}
       >
         <li className="go-back">
-          <button onClick={goBack}>
+          <button onClick={() => setShowSubMenu(false)}>
             <span className="arrow prev"></span>
             {menu.name}
           </button>
@@ -76,7 +69,6 @@ function Navigation({ theme, showNav }) {
   }
 
   return wordpress ? (
-    // <nav className={`navigation ${theme}`}>
     <nav
       className={cx({
         navigation: true,
