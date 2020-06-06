@@ -84,6 +84,12 @@
       left: 4px;
       top: 45%;
     }
+
+    &.next {
+      transform: rotate(135deg);
+      right: 4px;
+      top: 42%;
+    }
   }
 
   ul {
@@ -92,8 +98,18 @@
     position: relative;
     background-color: $color-white;
 
+    li {
+      > button {
+        color: $color-white;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        text-align: left;
+      }
+    }
+
     > li {
-      border-bottom: 1px solid #d8d8d8;
+      border-bottom: 1px solid $color-white;
       list-style: none;
       font-size: 16px;
       padding: 15px 0;
@@ -118,6 +134,7 @@
           width: calc(100% - 80px);
           height: 100%;
           top: 0;
+          z-index: 1;
 
           &.show {
             left: 0;
@@ -142,5 +159,6 @@
   }
 
   .main-menu {
+    min-height: 100%;
   }
 }
