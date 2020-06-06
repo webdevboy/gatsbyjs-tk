@@ -8,11 +8,34 @@
     text-align: center;
     padding: 30px 20px 60px;
 
+    @media #{$viewport-medium} {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-column-gap: 40px;
+    }
+
+    @media #{$viewport-large} {
+      height: 620px;
+      align-content: center;
+    }
+
     h2 {
       font-family: $font-sans-serif;
       font-weight: $serif-regular;
       margin-bottom: 10px;
       font-size: 32px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        font-size: 46px;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        font-size: 55px;
+      }
     }
 
     p {
@@ -21,10 +44,33 @@
       font-size: 13px;
       margin-bottom: 30px;
       line-height: 20px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
     }
 
     .inputs {
       position: relative;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: baseline;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
 
       .message {
         text-align: left;
@@ -56,6 +102,10 @@
         background-color: transparent;
         border-radius: 4px;
         transition: border 0.2s ease-in-out;
+
+        @media #{$viewport-medium} {
+          flex: 1 0 66%;
+        }
 
         &::-webkit-input-placeholder {
           color: rgba(#000000, 0.7);
@@ -94,6 +144,12 @@
         margin-top: 10px;
         font-family: $font-sans-serif;
         border-radius: 4px;
+
+        @media #{$viewport-medium} {
+          margin: 0;
+          flex: 1 0 33%;
+          margin-left: 10px;
+        }
       }
     }
   }
