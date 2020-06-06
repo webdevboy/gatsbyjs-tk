@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Instagram(props) {
   return (
-    <svg {...props} width="25" height="25" xmlns="http://www.w3.org/2000/svg">
+    <svg {...props} viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
       <g fill="#FFF" fillRule="nonzero">
         <path d="M12.39 6.244c-3.442 0-6.293 2.803-6.293 6.294a6.274 6.274 0 006.293 6.293c3.49 0 6.293-2.852 6.293-6.293 0-3.442-2.851-6.294-6.293-6.294zm0 10.325a4.05 4.05 0 01-4.032-4.031 4.05 4.05 0 014.032-4.032 4.05 4.05 0 014.032 4.032 4.05 4.05 0 01-4.032 4.031z" />
         <circle cx="18.929" cy="6.097" r="1.426" />
