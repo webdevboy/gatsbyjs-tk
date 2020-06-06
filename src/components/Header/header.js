@@ -14,7 +14,6 @@ function Header({ theme, title, showNav, setShowNav }) {
       <Link to="/">
         <Logo className="logo" />
       </Link>
-      {/* TODO: Implement NAV component */}
       {/* <Language /> */}
       <button onClick={() => setShowNav()}>
         <span>
