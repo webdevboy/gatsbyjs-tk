@@ -21,7 +21,7 @@ function Footer() {
     }, 3000)
   }
 
-  const addUser = email => {
+  const handleOptin = email => {
     const emailRegExp = new RegExp(
       /(^[A-Za-z0-9._%+-]{1,64}@(?:(([A-Za-z-]*[\d]*[A-Za-z-]+[\d]*){1,63})\.){1,125}[A-Za-z]{2,63}$)/
     )
@@ -72,7 +72,7 @@ function Footer() {
             value={email}
             onChange={handleEmailChange}
           />
-          <button onClick={() => addUser(email)}>
+          <button onClick={() => handleOptin(email)}>
             <FormattedMessage id="subscribe-btn" />
           </button>
         </div>
