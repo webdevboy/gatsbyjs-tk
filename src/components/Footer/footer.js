@@ -20,7 +20,9 @@ function Footer() {
         </p>
         <div className="inputs">
           <input placeholder="Email" type="text" name="email" id="email" />
-          <button onClick={handleSubscribeClick}><FormattedMessage id="subscribe-btn" /></button>
+          <button onClick={handleSubscribeClick}>
+            <FormattedMessage id="subscribe-btn" />
+          </button>
         </div>
       </div>
       <div className="site-links">
