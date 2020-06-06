@@ -52,11 +52,11 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="opt-in">
-        <h2>Keep Tasting</h2>
+        <h2>
+          <FormattedMessage id="footer-optin-headline" />
+        </h2>
         <p>
-          Stay up to date with the latest from Tasting Kitchen, Asia’s premier
-          epicurean lifestyle magazine, presenting the best in fine food and
-          drink, art and design, and luxury travel across the globe.
+          <FormattedMessage id="footer-optin-copy" />
         </p>
         <div className="inputs">
           <p className={cx("message", { show: error || submitted })}>
@@ -124,10 +124,7 @@ function Footer() {
           </ul>
         </div>
         <p className="about">
-          Tasting Kitchen is a celebration of the finest restaurants, greatest
-          chefs and most delicious food. Our mission is simple: to share our
-          enthusiasm for all the great culinary experiences the world has to
-          offer.
+          <FormattedMessage id="footer-about" />
         </p>
         <div className="logo">
           <SiteLogo fill="white" />

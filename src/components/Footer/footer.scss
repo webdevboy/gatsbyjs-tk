@@ -157,6 +157,12 @@
     background-color: $color-gray;
     padding: 60px 20px;
 
+    @media #{$viewport-medium} {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: baseline;
+    }
+
     input {
       position: absolute;
       opacity: 0;
@@ -180,6 +186,11 @@
       overflow: hidden;
       font-family: $font-sans-serif;
       font-size: 14px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
     }
 
     .tab {
@@ -220,6 +231,11 @@
     }
 
     .social-container {
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
+
       ul {
         display: flex;
         flex-flow: row nowrap;
@@ -239,12 +255,22 @@
       font-size: 11px;
       font-family: $font-sans-serif;
       margin-bottom: 40px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
     }
 
     .logo {
       display: flex;
       align-items: flex-end;
       margin-bottom: 20px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 4;
+      }
 
       svg {
         width: 50px;
@@ -255,6 +281,7 @@
         color: $color-white;
         font-weight: $sans-serif-light;
         font-size: 13px;
+        text-transform: uppercase;
       }
     }
 
@@ -262,6 +289,12 @@
       font-size: 11px;
       color: $color-white;
       font-family: $font-sans-serif;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 4;
+        grid-column-end: 6;
+        grid-row-start: 4;
+      }
     }
   }
 }
