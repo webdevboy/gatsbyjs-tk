@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Logo(props) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg">
+    <svg {...props} viewBox="0 0 60 42" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" fillRule="evenodd">
         <path d="M0 0h55.438v39.694H0z" />
         <path
