@@ -1,12 +1,50 @@
 /* eslint jsx-a11y/anchor-is-valid: 0 */
-import React from "react"
+import React, { useState } from "react"
+import * as cx from "classnames"
 import { FormattedMessage } from "gatsby-plugin-intl"
+import addToMailchimp from "gatsby-plugin-mailchimp"
 
 import "./footer.scss"
 
 function Footer() {
-  const handleSubscribeClick = () => {
-    console.log("Add user")
+  const [email, setEmail] = useState("")
+  const [error, setError] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleError = () => {
+    setError(true)
+
+    setTimeout(() => {
+      setError(false)
+    }, 3000)
+  }
+
+  const addUser = email => {
+    const emailRegExp = new RegExp(
+      /(^[A-Za-z0-9._%+-]{1,64}@(?:(([A-Za-z-]*[\d]*[A-Za-z-]+[\d]*){1,63})\.){1,125}[A-Za-z]{2,63}$)/
+    )
+
+    if (emailRegExp.test(email)) {
+      addToMailchimp(email)
+        .then(({ msg, result }) => {
+          if (result !== "success") {
+            throw new Error(msg)
+          }
+          console.log({ msg, result })
+          setSubmitted(true)
+        })
+        .catch(err => {
+          console.log({ err })
+          handleError()
+        })
+    } else {
+      handleError()
+    }
+  }
+
+  const handleEmailChange = event => {
+    event.preventDefault()
+    setEmail(event.target.value)
   }
 
   return (
@@ -18,9 +56,21 @@ function Footer() {
           dolor etatiti ipsum dolor sit ametait consectetur aditing elit, sed
           doesnts it eiusmodilai tepo incidiad unt ut labore et dolori.
         </p>
+        <p className={cx("message", { show: error || submitted })}>
+          {!error && !submitted && `Please Enter a valid email`}
+          {error && `Please Enter a valid email`}
+          {submitted && `Submitted`}
+        </p>
         <div className="inputs">
-          <input placeholder="Email" type="text" name="email" id="email" />
-          <button onClick={handleSubscribeClick}>
+          <input
+            placeholder="Email"
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <button onClick={() => addUser(email)}>
             <FormattedMessage id="subscribe-btn" />
           </button>
         </div>

@@ -19,6 +19,19 @@
       font-size: 13px;
       margin-bottom: 30px;
       line-height: 20px;
+
+      &.message {
+        text-align: left;
+        opacity: 0;
+        margin: 0;
+        transition: opacity 0.3s ease-out;
+        font-family: $font-sans-serif;
+        font-family: 10px;
+
+        &.show {
+          opacity: 1;
+        }
+      }
     }
 
     .inputs {
@@ -31,16 +44,38 @@
 
       input {
         display: block;
-        border: 1px solid black;
+        border: 1px solid $color-black;
         width: 100%;
         box-sizing: border-box;
         background-color: transparent;
         border-radius: 4px;
+        transition: border 0.2s ease-in-out;
+
+        &::-webkit-input-placeholder {
+          color: rgba(#000000, 0.7);
+          font-size: 12px;
+          font-family: $font-sans-serif;
+        }
+
+        &::-moz-placeholder {
+          color: rgba(#000000, 0.7);
+          font-size: 12px;
+          font-family: $font-sans-serif;
+          font-size: 13px;
+        }
+
+        &:-ms-input-placeholder {
+          color: rgba(#000000, 0.7);
+          font-size: 12px;
+          font-family: $font-sans-serif;
+          font-size: 13px;
+        }
 
         &::placeholder {
           color: rgba(#000000, 0.7);
           font-size: 12px;
-          font-family: $font-serif;
+          font-family: $font-sans-serif;
+          font-size: 13px;
         }
       }
 
