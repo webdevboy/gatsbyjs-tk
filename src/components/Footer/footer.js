@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import * as cx from "classnames"
 import { FormattedMessage } from "gatsby-plugin-intl"
 import addToMailchimp from "gatsby-plugin-mailchimp"
+import { Facebook, Pinterest, Twitter, Instagram, SiteLogo } from "src/svgs"
 
 import "./footer.scss"
 
@@ -10,6 +11,7 @@ function Footer() {
   const [email, setEmail] = useState("")
   const [error, setError] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const date = new Date()
 
   const handleError = () => {
     setError(true)
@@ -99,6 +101,42 @@ function Footer() {
             </div>
           </div>
         </div>
+        <div className="social-container">
+          <ul>
+            <li>
+              <a href="https://www.instagram.com/tastingkitchen">
+                <Instagram />
+              </a>
+            </li>
+            <li>
+              {/* TODO: Get URL for Pinterest */}
+              <Pinterest />
+            </li>
+            <li>
+              <a href="https://twitter.com/tastingkitchen8">
+                <Twitter />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/tastingkitchen/">
+                <Facebook />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <p className="about">
+          Tasting Kitchen is a celebration of the finest restaurants, greatest
+          chefs and most delicious food. Our mission is simple: to share our
+          enthusiasm for all the great culinary experiences the world has to
+          offer.
+        </p>
+        <div className="logo">
+          <SiteLogo fill="white" />
+          <span>TASTING KITCHEN</span>
+        </div>
+        <p className="copyright">
+          &copy; {date.getFullYear()} Tasting Kitchen. All Rights Reserved
+        </p>
       </div>
     </footer>
   )

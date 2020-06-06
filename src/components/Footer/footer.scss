@@ -1,6 +1,8 @@
 @import "src/styles/variables.scss";
 
 .footer {
+  margin-top: 30px;
+
   .opt-in {
     background-color: $color-gold;
     text-align: center;
@@ -117,7 +119,7 @@
     .tabs {
       border-radius: 8px;
       overflow: hidden;
-      font-family: $font-serif;
+      font-family: $font-sans-serif;
       font-size: 14px;
     }
 
@@ -156,6 +158,51 @@
           text-decoration: none;
         }
       }
+    }
+
+    .social-container {
+      ul {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        padding: 50px 0 30px;
+
+        li {
+          list-style: none;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    .about {
+      color: $color-white;
+      font-size: 11px;
+      font-family: $font-sans-serif;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 20px;
+
+      svg {
+        width: 50px;
+      }
+
+      span {
+        font-family: $font-sans-serif;
+        color: $color-white;
+        font-weight: $sans-serif-light;
+        font-size: 13px;
+      }
+    }
+
+    .copyright {
+      font-size: 11px;
+      color: $color-white;
+      font-family: $font-sans-serif;
     }
   }
 }
