@@ -52,18 +52,18 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="opt-in">
-        <h2>Join the inner circle.</h2>
+        <h2>Keep Tasting</h2>
         <p>
-          Stay updated with the latest news, stories and events. Lorem ipsum
-          dolor etatiti ipsum dolor sit ametait consectetur aditing elit, sed
-          doesnts it eiusmodilai tepo incidiad unt ut labore et dolori.
-        </p>
-        <p className={cx("message", { show: error || submitted })}>
-          {!error && !submitted && `Please Enter a valid email`}
-          {error && `Please Enter a valid email`}
-          {submitted && `Submitted`}
+          Stay up to date with the latest from Tasting Kitchen, Asia’s premier
+          epicurean lifestyle magazine, presenting the best in fine food and
+          drink, art and design, and luxury travel across the globe.
         </p>
         <div className="inputs">
+          <p className={cx("message", { show: error || submitted })}>
+            {!error && !submitted && `Please Enter a valid email`}
+            {error && `Please Enter a valid email`}
+            {submitted && `Submitted`}
+          </p>
           <input
             placeholder="Email"
             type="email"
@@ -86,7 +86,6 @@ function Footer() {
             </label>
             <div className="tab-content">
               <a href="#">Terms</a>
-              <a href="#">Shipping</a>
               <a href="#">FAQs</a>
             </div>
           </div>

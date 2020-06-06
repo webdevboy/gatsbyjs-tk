@@ -9,34 +9,38 @@
     padding: 30px 20px 60px;
 
     h2 {
-      font-family: $font-serif;
+      font-family: $font-sans-serif;
       font-weight: $serif-regular;
       margin-bottom: 10px;
       font-size: 32px;
     }
 
     p {
-      font-family: $font-serif;
+      font-family: $font-sans-serif;
       font-weight: $serif-regular;
       font-size: 13px;
       margin-bottom: 30px;
       line-height: 20px;
+    }
 
-      &.message {
+    .inputs {
+      position: relative;
+
+      .message {
         text-align: left;
         opacity: 0;
         margin: 0;
         transition: opacity 0.3s ease-out;
         font-family: $font-sans-serif;
         font-family: 10px;
+        position: absolute;
+        transform: translateY(-100%);
 
         &.show {
           opacity: 1;
         }
       }
-    }
 
-    .inputs {
       input,
       button {
         padding: 15px;
