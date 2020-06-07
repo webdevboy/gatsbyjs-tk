@@ -165,10 +165,10 @@
     }
 
     @media #{$viewport-large} {
-      height: 360px;
-      padding: 0 60px;
+      padding: 100px 60px 40px;
       align-content: center;
       align-items: center;
+      grid-row-gap: 70px;
     }
 
     input {
@@ -225,7 +225,7 @@
         padding: 15px 0;
         font-weight: bold;
         cursor: pointer;
-        border-top: 1px solid rgba(white, 0.5);
+        border-top: 1px solid rgba($color-white, 0.5);
 
         @media #{$viewport-large} {
           border: none;
@@ -251,9 +251,9 @@
 
         a {
           display: block;
-          color: white;
+          color: $color-white;
           padding: 15px 0;
-          border-top: 1px solid rgba(white, 0.5);
+          border-top: 1px solid rgba($color-white, 0.5);
           text-decoration: none;
 
           @media #{$viewport-large} {
@@ -326,6 +326,7 @@
       @media #{$viewport-large} {
         grid-column-start: 1;
         grid-column-end: 3;
+        margin: 0;
       }
 
       svg {
