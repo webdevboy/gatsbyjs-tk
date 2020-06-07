@@ -1,13 +1,11 @@
 import React from "react"
 
-import "./image-slider.scss"
+import "./PhotoLayout1X3.scss"
 
-export default function ImageSlider({ data, theme }) {
-  const photos = Object.values(data.photoLayout1x3)
-
+export default function PhotoLayout1X3({ content, theme }) {
   return (
-    <div className={`image-slider ${theme}`}>
-      {photos.map((photo, key) => {
+    <div className={`photo-layout-1x3 ${theme}`}>
+      {content.map((photo, key) => {
         return (
           <div className="slide" key={key}>
             <div className="img-wrap">
