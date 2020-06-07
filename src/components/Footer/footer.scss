@@ -198,6 +198,7 @@
       @media #{$viewport-medium} {
         grid-column-start: 2;
         grid-column-end: 6;
+        border: none;
       }
 
       @media #{$viewport-large} {

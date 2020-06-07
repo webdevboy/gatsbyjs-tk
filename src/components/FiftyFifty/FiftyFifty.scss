@@ -29,7 +29,6 @@
   .copy-block {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    justify-content: center;
     align-content: center;
     padding: 60px 0;
     direction: ltr;
@@ -37,11 +36,11 @@
     .wrapper {
       grid-column-start: 2;
       grid-column-end: 6;
+      align-self: center;
     }
   }
 
   .image-block {
-    min-height: 300px;
     text-align: center;
 
     img {
@@ -51,12 +50,12 @@
 
   .copy-block {
     position: relative;
-    min-height: 300px;
 
     .wrapper {
       h4 {
         font-size: 16px;
         font-weight: $sans-serif-regular;
+        margin-top: 0;
       }
 
       p {
