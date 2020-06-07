@@ -190,10 +190,10 @@
     }
 
     .tabs {
-      border-radius: 8px;
       overflow: hidden;
       font-family: $font-sans-serif;
       font-size: 14px;
+      border-bottom: 1px solid rgba($color-white, 0.5);
 
       @media #{$viewport-medium} {
         grid-column-start: 2;
@@ -212,7 +212,7 @@
 
     .tab {
       width: 100%;
-      color: white;
+      color: $color-white;
       overflow: hidden;
 
       @media #{$viewport-large} {
