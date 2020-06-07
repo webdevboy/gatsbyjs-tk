@@ -298,6 +298,7 @@
       font-size: 12px;
       font-family: $font-sans-serif;
       margin-bottom: 40px;
+      line-height: 1.8;
 
       @media #{$viewport-medium} {
         grid-column-start: 2;
@@ -309,7 +310,6 @@
         grid-column-end: 3;
         grid-row-start: 1;
         margin: 0;
-        line-height: 1.5;
       }
     }
 
