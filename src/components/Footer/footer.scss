@@ -346,15 +346,16 @@
       font-size: 11px;
       color: $color-white;
       font-family: $font-sans-serif;
-      text-align: right;
+      text-align: left;
 
       @media #{$viewport-medium} {
         grid-column-start: 4;
         grid-column-end: 6;
         grid-row-start: 4;
+        text-align: right;
       }
 
-      @media #{$viewport-medium} {
+      @media #{$viewport-large} {
         grid-column-start: 5;
         grid-column-end: 7;
         grid-row-start: 2;
