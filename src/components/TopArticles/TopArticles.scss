@@ -16,29 +16,29 @@
     }
 
     @media #{$viewport-large} {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         padding: 40px 41px 100px 56px;
     }
 
     .featured-article {
-        width: 100%;
         padding: 21px 20px;
         box-sizing: border-box;
-        display: flex;
+        display: grid;
         justify-content: center;
         align-items: flex-start;
+        grid-template-columns: 100%;
         background-color: $color-white;
 
         @media #{$viewport-medium} {
             padding: 21px 20px;
+            grid-template-columns: 68%;
         }
 
         @media #{$viewport-large} {
-            width: 50%;
+            grid-template-columns: 61%;
             padding: 0;
         }
-
-
 
         .featured-article__inner {
             width: 100%;
@@ -51,12 +51,11 @@
             }
 
             @media #{$viewport-medium} {
-                width: 68%;
+                
                 padding: 110px 0;
             }
 
             @media #{$viewport-large} {
-                width: 61%;
                 padding: 131px 0;
                 height: auto;
             }
@@ -86,36 +85,30 @@
 
     .top_articles__columns {
         display: block;
-        justify-content: flex-start;
-        align-items: flex-start;
         margin-top: 40px;
-        width: 100%;
 
         @media #{$viewport-medium} {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 41px;
             margin-top: 50px;
         }
 
         @media #{$viewport-large} {
-            justify-content: flex-start;
             margin-top: 0;
-            width: 50%;
+            column-gap: 0;
         }
 
         .top_articles__columns__column {
             position: relative;
             padding-left: 0;
-            width: 100%;
 
             @media #{$viewport-medium} {
                 padding-left: 0;
-                width: 30%;
             }
 
             @media #{$viewport-large} {
                 padding-left: 41px;
-                width: calc(33% - 41px);
             }
 
             .top_articles__columns__column__divider {
