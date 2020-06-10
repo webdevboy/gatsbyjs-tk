@@ -1,10 +1,12 @@
-const { getAllLayoutsData } = require("./utils")
+const { getAllLayoutsData, getCategoryLayoutData } = require("./utils")
 
 const pageTemplate = require.resolve("../src/templates/page/")
 const postTemplate = require.resolve("../src/templates/post/")
+const categoryTemplate = require.resolve("../src/templates/category")
 
 const { PageTemplateFragment } = require("../src/templates/page/data")
 const { PostTemplateFragment } = require("../src/templates/post/data")
+const { CategoryTemplateFragment } = require("../src/templates/category/data")
 
 const GET_PAGES = () => `
   ${PageTemplateFragment(getAllLayoutsData("page"))}
@@ -34,6 +36,20 @@ const GET_POSTS = () => `
   }
 `
 
+const GET_CATEGORIES = () => `
+  ${CategoryTemplateFragment(getCategoryLayoutData())}
+
+  query GET_PAGES($first:Int $after:String) {
+    wordpress {
+      pages(first: $first after: $after) {
+        nodes {                
+          ...CategoryTemplateFragment
+        }
+      }
+    }
+  }
+`
+
 /**
  * This is the export which Gatbsy will use to process.
  *
@@ -43,9 +59,11 @@ const GET_POSTS = () => `
 module.exports = async ({ actions, graphql, reporter }) => {
   const allPages = []
   const allPosts = []
+  const allCategories = [];
 
   const postsQuery = GET_POSTS()
   const pagesQuery = GET_PAGES()
+  const categoriesQuery = GET_CATEGORIES();
 
   /**
    * This is the method from Gatsby that we're going
@@ -107,6 +125,21 @@ module.exports = async ({ actions, graphql, reporter }) => {
    * Kick off our `fetchPages`/`fetchPosts` method which will get us all
    * the pages we need to create individual pages.
    */
+
+  const fetchCategories = async () =>
+    await graphql(categoriesQuery).then(({ data }) => {
+      
+      const {
+        wordpress: {
+          pages: { nodes },
+        },
+      } = data
+
+      nodes && nodes.map(page => allCategories.push(page))
+      console.log(allCategories);
+      return allCategories
+    })
+
   await fetchPosts().then(posts => {
     posts &&
       posts.map(context => {
@@ -148,4 +181,18 @@ module.exports = async ({ actions, graphql, reporter }) => {
 
     reporter.info(`# -----> TOTAL: ${pages.length}`)
   })
+
+  await fetchCategories().then(pages => {
+    pages &&
+      pages.map(context => {
+        if (context.slug === "category") {
+          const { nodes: categories } = context.childPages;
+          console.log(categories);
+          categories.map(category => {
+              createPage({ path: `/category/${category.slug}`, component: categoryTemplate, context: category });
+              reporter.info(`created: /category/${context.slug}`)
+          });
+        }
+      })
+  });
 }

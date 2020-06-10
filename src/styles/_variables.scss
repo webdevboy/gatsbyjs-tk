@@ -3,11 +3,13 @@
 // Colors
 $color-gold: #b3a97e;
 $color-gray: #787276;
+$color-lightgray: #F3F4F5;
 $color-black: #1b1b1b;
 $color-white: #ffffff;
 $color-cutline: #787276;
 
 // Breakpoints
+$viewport-small: "only screen and (min-width: 375px)";
 $viewport-medium: "only screen and (min-width: 834px)";
 $viewport-large: "only screen and (min-width: 1440px)";
 
@@ -21,3 +23,4 @@ $serif-regular: 400;
 $sans-serif-light: 200;
 $sans-serif-regular: 400;
 $sans-serif-bold: 700;
+$sans-serif-semibold: 500;

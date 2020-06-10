@@ -1,5 +1,5 @@
 import React from "react"
-import { PageHero } from "src/components"
+import { PageHero, TopArticles } from "src/components"
 
 const PageLayouts = ({ layoutData, theme }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
@@ -14,6 +14,7 @@ const PageLayouts = ({ layoutData, theme }) => {
   // Mapping the fieldGroupName(s) to our components
   const layouts = {
     page_Components_Contents_HomepageHero: PageHero,
+    page_Components_Contents_TopArticles: TopArticles,
     default: Default,
   }
 
