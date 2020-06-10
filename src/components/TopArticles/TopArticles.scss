@@ -47,17 +47,16 @@
             color: $color-gray;
 
             @media #{$viewport-small} {
-                width: 749px;
                 padding: 21px 20px;
             }
 
             @media #{$viewport-medium} {
-                width: 485px;
+                width: 68%;
                 padding: 110px 0;
             }
 
             @media #{$viewport-large} {
-                width: 398px;
+                width: 61%;
                 padding: 131px 0;
                 height: auto;
             }
