@@ -4,17 +4,17 @@ import Layout from "src/components/Layout"
 import SEO from "src/components/seo"
 import PageLayouts from "src/components/PageLayouts"
 
-const Page = ({ pageContext }) => {
+const Page = ({ pageContext, location }) => {
   const { title, components } = pageContext
 
   const layouts = components.contents || []
 
   return (
     <Layout theme={pageContext.themeSelect.themeSelect}>
-      <SEO title={title || "Untitled"} />
-      {layouts.map((layout, index) => (
-        <PageLayouts key={index} layoutData={layout} />
-      ))}
+        <SEO title={title || "Untitled"} />
+        {layouts.map((layout, index) => {
+            return <PageLayouts key={index} layoutData={layout} />
+        })}
     </Layout>
   )
 }

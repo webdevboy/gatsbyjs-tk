@@ -1,10 +1,12 @@
-const { getAllLayoutsData } = require("./utils")
+const { getAllLayoutsData, getCategoryLayoutData } = require("./utils")
 
-const pageTemplate = require.resolve("../src/templates/page/")
-const postTemplate = require.resolve("../src/templates/post/")
+const pageTemplate = require.resolve("../src/templates/page/");
+const postTemplate = require.resolve("../src/templates/post/");
+const categoryTempalte = require.resolve("../src/templates/category/");
 
 const { PageTemplateFragment } = require("../src/templates/page/data")
 const { PostTemplateFragment } = require("../src/templates/post/data")
+const { CategoryTemplateFragment } = require("../src/templates/category/data")
 
 const GET_PAGES = () => `
   ${PageTemplateFragment(getAllLayoutsData("page"))}
@@ -14,6 +16,20 @@ const GET_PAGES = () => `
       pages(first: $first after: $after) {
         nodes {                
           ...PageTemplateFragment
+        }
+      }
+    }
+  }
+`
+
+const GET_CATEGORIES = () => `
+  ${CategoryTemplateFragment(getCategoryLayoutData())}
+  
+  query GET_PAGES($first:Int $after:String) {
+    wordpress {
+      pages(first: $first after: $after) {
+        nodes {                
+          ...CategoryTemplateFragment
         }
       }
     }
@@ -32,7 +48,7 @@ const GET_POSTS = () => `
       }
     }
   }
-`
+`;
 
 /**
  * This is the export which Gatbsy will use to process.
@@ -41,24 +57,57 @@ const GET_POSTS = () => `
  * @returns {Promise<void>}
  */
 module.exports = async ({ actions, graphql, reporter }) => {
-  const allPages = []
-  const allPosts = []
+    const allPages = [];
+    const allPosts = [];
+    const allCategories = [];
 
-  const postsQuery = GET_POSTS()
-  const pagesQuery = GET_PAGES()
-
+    const postsQuery = GET_POSTS();
+    const pagesQuery = GET_PAGES();
+    const categoriesQuery = GET_CATEGORIES();
   /**
    * This is the method from Gatsby that we're going
    * to use to create pages in our static site.
    */
-  const { createPage } = actions
+    const { createPage } = actions
 
   /**
    * Fetch posts.
    *
    * @returns {Promise<*>}
    */
-  const fetchPosts = async () =>
+
+    const handlePageCreation = (context, parentSlug, template) => {
+        let path = `${parentSlug ? `/${parentSlug}` : ''}/${context.slug}/`;
+        console.log(path);
+        /*
+         * If the page is the front page, the page path should not be the uri,
+         * but the root path '/'.
+         */
+        if (context.isFrontPage) {
+            path = "/"
+        }
+
+        createPage({ path, component: template || pageTemplate, context });
+
+        reporter.info(`created: ${context.slug}`);
+    }
+
+    const handleCategoryPageCreation = (context, parentSlug, template) => {
+
+        if (context.childPages && context.childPages.nodes && context.childPages.nodes.length > 0) {
+            const { nodes: categories } = context.childPages;
+            console.log(categories);
+            categories.map(category => {
+                createPage({ path: category.uri, component: categoryTempalte, context: category });
+            });
+        }
+        else {
+            handlePageCreation(context, parentSlug, template);
+        }
+        
+    }
+
+    const fetchPosts = async () =>
     await graphql(postsQuery).then(({ data }) => {
       // Extract the data from the GraphQL query results
       const {
@@ -103,49 +152,64 @@ module.exports = async ({ actions, graphql, reporter }) => {
       return allPages
     })
 
+    const fetchCategories = async () =>
+        await graphql(categoriesQuery).then(({ data }) => {
+            
+            const {
+                wordpress: {
+                    pages: { nodes },
+                },
+            } = data
+
+            nodes && nodes.map(category => allCategories.push(category));
+
+            return allCategories;
+        })
+
   /**
    * Kick off our `fetchPages`/`fetchPosts` method which will get us all
    * the pages we need to create individual pages.
    */
-  await fetchPosts().then(posts => {
-    posts &&
-      posts.map(context => {
-        let path = `/${context.slug}/`
+    await fetchPosts().then(posts => {
+        posts &&
+            posts.map(context => {
+                let path = `/${context.slug}/`
 
-        /**
-         * If the page is the front page, the page path should not be the uri,
-         * but the root path '/'.
-         */
-        // if (context.isFrontPage) {
-        //   path = "/"
-        // }
+                /**
+                 * If the page is the front page, the page path should not be the uri,
+                 * but the root path '/'.
+                 */
+                // if (context.isFrontPage) {
+                //   path = "/"
+                // }
 
-        createPage({ path, component: postTemplate, context })
+                createPage({ path, component: postTemplate, context });
 
-        reporter.info(`created: ${context.slug}`)
-      })
+                reporter.info(`created: ${context.slug}`)
+            })
 
-    reporter.info(`# -----> TOTAL: ${posts.length}`)
-  })
+        reporter.info(`# -----> TOTAL: ${posts.length}`)
+    });
 
-  await fetchPages().then(pages => {
-    pages &&
-      pages.map(context => {
-        let path = `/${context.slug}/`
+    await fetchPages().then(pages => {
+        pages &&
+            pages.map(context => {
+                handlePageCreation(context);
+            });
 
-        /**
-         * If the page is the front page, the page path should not be the uri,
-         * but the root path '/'.
-         */
-        if (context.isFrontPage) {
-          path = "/"
-        }
+        reporter.info(`# -----> TOTAL: ${pages.length}`);
+    });
 
-        createPage({ path, component: pageTemplate, context })
-
-        reporter.info(`created: ${context.slug}`)
-      })
-
-    reporter.info(`# -----> TOTAL: ${pages.length}`)
-  })
+    await fetchCategories().then(pages => {
+        pages &&
+            pages.map(context => {
+                if (context.slug === "category") {
+                    const { nodes: categories } = context.childPages;
+                    console.log(categories);
+                    categories.map(category => {
+                        handleCategoryPageCreation(category, context.slug, categoryTempalte);
+                    });
+                }
+            });
+    });
 }

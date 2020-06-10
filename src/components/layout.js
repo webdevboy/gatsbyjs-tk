@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import Header from "src/components/Header/header"
 import Footer from "src/components/Footer/footer"
 import Navigation from "src/components/Navigation/Navigation"
+import TopArticles from "src/components/TopArticles/TopArticles";
 
 import "src/styles/index.scss"
 
@@ -22,7 +23,8 @@ function Layout({ children, theme, title }) {
         showNav={showNav}
         setShowNav={() => setShowNav(!showNav)}
       />
-      <Navigation theme={theme} showNav={showNav} />
+      {/* {showNav && <Navigation theme={theme} />} */}
+        <Navigation theme={theme} showNav={showNav} />
       <div>
         <main>{children}</main>
         <Footer />

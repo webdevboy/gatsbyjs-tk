@@ -16,6 +16,26 @@ const PageTemplateFragment = layouts => `
         ${layouts}
       }
     }
+    childPages {
+        nodes {
+            id
+            title
+            slug
+            isFrontPage
+            language {
+                code
+            }
+            themeSelect {
+                fieldGroupName
+                themeSelect
+            }
+            components {
+              contents {
+                ${layouts}
+              }
+            }
+        }
+    }
   }
 `
 

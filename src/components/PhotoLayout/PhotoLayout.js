@@ -5,7 +5,7 @@ import "./PhotoLayout.scss"
 
 function Photo({ url, altText, cutline }) {
   return (
-    <div className="photo-item">
+      <div className="photo-item">
       <img src={url} alt={altText} />
       <p className="cutline">{cutline}</p>
     </div>

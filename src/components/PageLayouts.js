@@ -1,9 +1,9 @@
 import React from "react"
-import { PageHero } from "src/components"
+import { PageHero, TopArticles } from "src/components"
 
 const PageLayouts = ({ layoutData, theme }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
-
+    console.log(layoutType);
   // Default component
   const Default = () => (
     <div>
@@ -12,9 +12,10 @@ const PageLayouts = ({ layoutData, theme }) => {
   )
 
   // Mapping the fieldGroupName(s) to our components
-  const layouts = {
-    page_Components_Contents_HomepageHero: PageHero,
-    default: Default,
+    const layouts = {
+        page_Components_Contents_TopArticles: TopArticles,
+        page_Components_Contents_HomepageHero: PageHero,
+        default: Default,
   }
 
   // If layout type is not existing in our mapping, it shows our Default instead.
