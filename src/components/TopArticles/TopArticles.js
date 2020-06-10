@@ -100,21 +100,35 @@ export default function TopArticles(props) {
                 </div>
                 <div className="top_articles__columns">
                     <div className="top_articles__columns__column">
-                        {articles.column1 && articles.column1.length > 0 && getArticles(articles.column1).map((article, index) => (
-                            <Article key={index} {...article} />
-                        ))}
-                        <div className="top_articles__columns__column__divider" />
+                        {articles.column1 && articles.column1.length > 0 && (
+                            <div>
+                                {getArticles(articles.column1).map((article, index) => (
+                                    <Article key={index} {...article} />
+                                ))}
+                                <div className="top_articles__columns__column__divider" />
+                            </div>
+                        )}
+                        
                     </div>
                     <div className="top_articles__columns__column">
-                        {articles.column2 && articles.column2.length > 0 && getArticles(articles.column2).map((article, index) => (
-                            <Article key={index} {...article} />
-                        ))}
-                        <div className="top_articles__columns__column__divider" />
+                        {articles.column2 && articles.column2.length > 0 && (
+                            <div>
+                                {getArticles(articles.column2).map((article, index) => (
+                                    <Article key={index} {...article} />
+                                ))}
+                                <div className="top_articles__columns__column__divider" />
+                            </div>
+                        )}
                     </div>
                     <div className="top_articles__columns__column">
-                        {articles.column3 && articles.column3.length > 0 && getArticles(articles.column3).map((article, index) => (
-                            <Article key={index} {...article} />
-                        ))}
+                        {articles.column3 && articles.column3.length > 0 && (
+                            <div>
+                                {getArticles(articles.column3).map((article, index) => (
+                                    <Article key={index} {...article} />
+                                ))}
+                                <div className="top_articles__columns__column__divider" />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
