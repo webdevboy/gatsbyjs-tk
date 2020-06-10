@@ -77,7 +77,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
    * @returns {Promise<*>}
    */
   const fetchPosts = async () =>
-    await graphql(postsQuery).then(({ data }) => {
+    await graphql(postsQuery, { first: 1000 }).then(({ data }) => {
       // Extract the data from the GraphQL query results
       const {
         wordpress: {
