@@ -1,5 +1,7 @@
 @import "src/styles/variables.scss";
 
+
+
 .top-articles__hero {
     width: 100%;
 }
@@ -20,7 +22,18 @@
         grid-template-columns: 1fr 1fr;
         padding: 40px 41px 100px 56px;
     }
-
+    &.container {
+        margin: 0 auto;
+        width: 100%;
+      
+        @media #{$viewport-medium} {
+            width: 833px;
+        }
+      
+        @media #{$viewport-large} {
+            width: 1399px;
+        }
+    }
     .featured-article {
         padding: 21px 20px;
         box-sizing: border-box;
@@ -45,13 +58,10 @@
             height: 100%;
             padding: 0;
             color: $color-gray;
-
-            @media #{$viewport-small} {
-                padding: 21px 20px;
-            }
-
+            
             @media #{$viewport-medium} {
-                
+                padding: 21px 20px;
+                box-sizing: border-box;
                 padding: 110px 0;
             }
 
@@ -66,11 +76,8 @@
                 height: 503px;
                 box-sizing: border-box;
                 background-size: cover;
-
-                @media #{$viewport-small} {
-                    height: 503px;
-                    padding: 21px 20px;
-                }
+                background-position: center;
+                padding: 21px 20px;
 
                 @media #{$viewport-medium} {
                     height: 730px;
@@ -147,6 +154,7 @@
                 width: 100%;
                 height: 444px;
                 background-size: cover;
+                background-position: center;
 
                 @media #{$viewport-medium} {
                     height: 293px;

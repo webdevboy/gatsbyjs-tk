@@ -21,22 +21,3 @@ body {
     padding: 0;
   }
 }
-
-
-.container {
-  margin: 0 auto;
-  width: 100%;
-  
-
-  @media #{$viewport-small} {
-      width: 374px;
-  }
-
-  @media #{$viewport-medium} {
-      width: 833px;
-  }
-
-  @media #{$viewport-large} {
-      width: 1399px;
-  }
-}

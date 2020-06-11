@@ -41,7 +41,7 @@ const GET_CATEGORIES = () => `
 
   query GET_PAGES($first:Int $after:String) {
     wordpress {
-      pages(first: $first after: $after) {
+      categories(first: $first after: $after) {
         nodes {                
           ...CategoryTemplateFragment
         }
@@ -127,16 +127,14 @@ module.exports = async ({ actions, graphql, reporter }) => {
    */
 
   const fetchCategories = async () =>
-    await graphql(categoriesQuery).then(({ data }) => {
-      
+    await graphql(categoriesQuery, { first: 1000 }).then(({ data }) => {
       const {
         wordpress: {
-          pages: { nodes },
+          categories: { nodes },
         },
       } = data
 
       nodes && nodes.map(page => allCategories.push(page))
-      console.log(allCategories);
       return allCategories
     })
 
@@ -182,17 +180,12 @@ module.exports = async ({ actions, graphql, reporter }) => {
     reporter.info(`# -----> TOTAL: ${pages.length}`)
   })
 
-  await fetchCategories().then(pages => {
-    pages &&
-      pages.map(context => {
-        if (context.slug === "category") {
-          const { nodes: categories } = context.childPages;
-          console.log(categories);
-          categories.map(category => {
-              createPage({ path: `/category/${category.slug}`, component: categoryTemplate, context: category });
-              reporter.info(`created: /category/${context.slug}`)
-          });
-        }
+  await fetchCategories().then(categories => {
+    categories &&
+      categories.map(category => {
+        console.log(category);
+        createPage({ path: `/category/${category.slug}`, component: categoryTemplate, context: category });
+        reporter.info(`created: /category/${category.slug}`)
       })
   });
 }

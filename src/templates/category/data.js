@@ -24,33 +24,59 @@ const SubCategoryTemplate = layouts => `
 `;
 
 const CategoryTemplateFragment = layouts => `
-  fragment CategoryTemplateFragment on WordPress_Page {
+  fragment CategoryTemplateFragment on WordPress_Category {
     id
     slug
-    childPages {
+    uri
+    name
+    description
+    posts {
         nodes {
             id
-            title
             slug
-            isFrontPage
-            language {
-                code
+            title
+            uri
+            author {
+                id
+                name
             }
-            themeSelect {
-                fieldGroupName
-                themeSelect
+            categories {
+                nodes {
+                  name
+                }
             }
             components {
                 contents {
                     ${layouts}
                 }
             }
-            ${SubCategoryTemplate(layouts)}
         }
     }
   }
 `
 
+
+// childPages {
+//     nodes {
+//         id
+//         title
+//         slug
+//         isFrontPage
+//         language {
+//             code
+//         }
+//         themeSelect {
+//             fieldGroupName
+//             themeSelect
+//         }
+//         components {
+//             contents {
+//                 ${layouts}
+//             }
+//         }
+//         ${SubCategoryTemplate(layouts)}
+//     }
+// }
 
 
 

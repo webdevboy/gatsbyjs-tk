@@ -8,12 +8,13 @@ module.exports = () => {
         altText
         sourceUrl
       }
-      preHeadline
       reverse
-      linkText
-      linkUrl
       copyBackgroundColor
-      imageBackgroundColor
     }
   `
 }
+
+// imageBackgroundColor
+// linkText
+// linkUrl
+// preHeadline
