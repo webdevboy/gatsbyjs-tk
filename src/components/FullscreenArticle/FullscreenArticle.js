@@ -24,7 +24,6 @@ function FullscreenArticle({ article, articleInfoPosition }) {
   }
 
   const articleObject = getArticle();
-  console.log(articleInfoPosition);
   if(!articleObject) return null;
   return (
     <div className={`fullscreen-article ${articleInfoPosition.toLowerCase().replace(" ", "-")}`} style={{ backgroundImage: articleObject.heroUrl ? `url("${articleObject.heroUrl}")` : '' }}>
