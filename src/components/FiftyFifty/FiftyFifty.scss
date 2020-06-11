@@ -32,6 +32,7 @@
     align-content: center;
     padding: 60px 0;
     direction: ltr;
+    column-gap: 40px;
 
     .wrapper {
       grid-column-start: 2;
@@ -60,6 +61,9 @@
 
       p {
         font-size: 12px;
+        font-family: $font-serif;
+        font-weight: $serif-regular;
+        line-height: 18px;
       }
     }
 
@@ -76,13 +80,11 @@
       }
 
       &.arrow-up {
-        border-bottom: 15px solid $color-white;
         top: 0;
         transform: translate(-50%, -100%);
       }
 
       &.arrow-down {
-        border-top: 15px solid $color-white;
         bottom: 0;
         transform: translate(-50%, 100%);
       }
