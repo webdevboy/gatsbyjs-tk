@@ -10,12 +10,11 @@ module.exports = () => {
       }
       reverse
       copyBackgroundColor
-      copyColor
     }
   `
 }
 
 // imageBackgroundColor
-// linkText
-// linkUrl
 // preHeadline
+// linkUrl
+// linkText
