@@ -3,7 +3,8 @@
 .copy-columns {
   padding: 0 20px;
   color: $color-black;
-  font-family: $font-sans-serif;
+  font-family: $font-serif;
+  line-height: 20px;
   font-size: 13px;
 
   &.dark {
@@ -11,7 +12,8 @@
   }
 
   @media #{$viewport-medium} {
-    padding: 60px 40px;
+    font-size: 12px;
+    padding: 0 40px;
     display: grid;
     grid-gap: 40px;
   }

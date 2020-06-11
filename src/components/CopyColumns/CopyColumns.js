@@ -4,24 +4,24 @@ import { MEDIUM_BREAKPOINT, LARGE_BREAKPOINT } from "src/utils/breakpoints"
 import "./CopyColumns.scss"
 
 export default function CopyColumns({ columns, theme }) {
-  const [layout, layoutSet] = useState("")
+  const [layout, setLayout] = useState("")
 
   const handleLayout = () => {
     if (
       window.innerWidth >= MEDIUM_BREAKPOINT &&
       window.innerWidth < LARGE_BREAKPOINT
     ) {
-      layoutSet(`repeat(${columns.length}, 2fr)`)
+      setLayout(`repeat(${columns.length}, 2fr)`)
       return
     }
 
     if (window.innerWidth >= LARGE_BREAKPOINT) {
-      layoutSet(`1fr repeat(${columns.length}, 2fr) 1fr`)
+      setLayout(`1fr repeat(${columns.length}, 2fr) 1fr`)
       return
     }
 
     if (window.innerWidth < MEDIUM_BREAKPOINT) {
-      layoutSet("")
+      setLayout("")
       return
     }
   }
