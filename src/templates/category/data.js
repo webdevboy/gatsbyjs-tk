@@ -1,28 +1,3 @@
-const SubCategoryTemplate = layouts => `
-    childPages {
-        nodes {
-            id
-            title
-            slug
-            uri
-            isFrontPage
-            language {
-                code
-            }
-            themeSelect {
-                fieldGroupName
-                themeSelect
-            }
-            components {
-                contents {
-                    ${layouts}
-                }
-            }
-
-        }
-    }
-`;
-
 const CategoryTemplateFragment = layouts => `
   fragment CategoryTemplateFragment on WordPress_Category {
     id
@@ -54,30 +29,6 @@ const CategoryTemplateFragment = layouts => `
     }
   }
 `
-
-
-// childPages {
-//     nodes {
-//         id
-//         title
-//         slug
-//         isFrontPage
-//         language {
-//             code
-//         }
-//         themeSelect {
-//             fieldGroupName
-//             themeSelect
-//         }
-//         components {
-//             contents {
-//                 ${layouts}
-//             }
-//         }
-//         ${SubCategoryTemplate(layouts)}
-//     }
-// }
-
 
 
 
