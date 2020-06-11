@@ -27,7 +27,7 @@ function FullscreenArticle({ article, articleInfoPosition }) {
   if(!articleObject) return null;
   return (
     <div className={`fullscreen-article ${articleInfoPosition.toLowerCase().replace(" ", "-")}`} style={{ backgroundImage: articleObject.heroUrl ? `url("${articleObject.heroUrl}")` : '' }}>
-      <div className="fullscreen-article__info centered">
+      <div className="fullscreen-article__info">
         {articleObject.category && <div className="fullscreen-article__info__category">{articleObject.category.name}</div>}
         {articleObject.title && <div className="fullscreen-article__info__title">{articleObject.title}</div>}
         {articleObject.byline && (
