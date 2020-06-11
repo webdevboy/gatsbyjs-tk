@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import Header from "src/components/Header/header"
 import Footer from "src/components/Footer/footer"
 import Navigation from "src/components/Navigation/Navigation"
+import FullscreenArticle from "src/components/FullscreenArticle/FullscreenArticle";
 
 import "src/styles/index.scss"
 
@@ -24,6 +25,7 @@ function Layout({ children, theme, title }) {
       />
       <Navigation theme={theme} showNav={showNav} />
       <div>
+        <FullscreenArticle />
         <main>{children}</main>
         <Footer />
       </div>
