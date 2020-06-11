@@ -7,6 +7,7 @@ import {
   PhotoLayout,
   FiftyFifty,
   PhotoLayout1X3,
+  Spacer,
 } from "src/components"
 
 const PostLayouts = ({ layoutData, theme }) => {
@@ -32,6 +33,7 @@ const PostLayouts = ({ layoutData, theme }) => {
     post_Components_Contents_ImageLayouts: PhotoLayout,
     post_Components_Contents_FiftyFifty: FiftyFifty,
     post_Components_Contents_1x3Layout: PhotoLayout1X3,
+    post_Components_Contents_Spacer: Spacer,
     default: Default,
   }
 
