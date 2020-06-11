@@ -25,7 +25,6 @@ function Layout({ children, theme, title }) {
       />
       <Navigation theme={theme} showNav={showNav} />
       <div>
-        <FullscreenArticle />
         <main>{children}</main>
         <Footer />
       </div>
