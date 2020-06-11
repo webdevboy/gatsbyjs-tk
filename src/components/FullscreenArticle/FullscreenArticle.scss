@@ -13,9 +13,6 @@
   color: $color-white;
   padding: 20px;
   box-sizing: border-box;
-
-  /* TO REMOVE */
-  margin-bottom: 100px;
   
   @media #{$viewport-medium} {
     min-height: 876px;
