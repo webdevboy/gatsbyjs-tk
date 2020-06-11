@@ -10,7 +10,7 @@ import {
   Spacer,
 } from "src/components"
 
-const PostLayouts = ({ layoutData, theme }) => {
+const PostLayouts = ({ layoutData, categories, theme }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
 
   /**
@@ -44,7 +44,14 @@ const PostLayouts = ({ layoutData, theme }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={theme} type={"post"} />
+  return (
+    <ComponentTag
+      {...layoutData}
+      categories={categories}
+      theme={theme}
+      type={"post"}
+    />
+  )
 }
 
 export default PostLayouts

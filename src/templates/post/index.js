@@ -4,8 +4,20 @@ import Layout from "src/components/Layout"
 import SEO from "src/components/seo"
 import PostLayouts from "src/components/PostLayouts"
 
+const filterCategories = categories => {
+  const cats = categories.nodes.length ? categories.nodes : null
+
+  if (!cats) {
+    return null
+  }
+
+  return cats.filter(
+    cat => cat.name !== "Uncategorized" && cat.name !== "Featured"
+  )
+}
+
 const Post = ({ pageContext }) => {
-  const { title, components } = pageContext
+  const { title, components, categories } = pageContext
 
   const layouts = components.contents || []
 
@@ -16,6 +28,7 @@ const Post = ({ pageContext }) => {
         <PostLayouts
           key={index}
           layoutData={layout}
+          categories={filterCategories(categories)}
           theme={pageContext.themeSelect.themeSelect}
         />
       ))}

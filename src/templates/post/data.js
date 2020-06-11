@@ -10,6 +10,11 @@ const PostTemplateFragment = layouts => `
       fieldGroupName
       themeSelect
     }
+    categories {
+      nodes {
+        name
+      }
+    }
     components {
       contents {
         ${layouts}
