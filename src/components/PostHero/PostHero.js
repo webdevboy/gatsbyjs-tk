@@ -20,7 +20,7 @@ export default function Hero({
         )}
       </div>
       <div className="block">
-        {categoryName && <p className="name">{categoryName}</p>}
+        {categoryName && <p className="category-name">{categoryName}</p>}
         {title && <h1 className="headline">{title}</h1>}
         {byline && <p className="byline">{byline}</p>}
         <hr />
