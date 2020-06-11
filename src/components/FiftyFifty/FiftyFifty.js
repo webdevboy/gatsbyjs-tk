@@ -19,6 +19,7 @@ function FiftyFifty({
         [theme]: true,
         reversed: reverse,
       })}
+      style={{ backgroundColor: copyBackgroundColor }}
     >
       {console.log({ copyColor })}
       <div className="image-block">
@@ -28,10 +29,7 @@ function FiftyFifty({
           </div>
         )}
       </div>
-      <div
-        className="copy-block"
-        style={{ backgroundColor: copyBackgroundColor }}
-      >
+      <div className="copy-block">
         {!reverse && (
           <div
             className="arrow arrow-up"
