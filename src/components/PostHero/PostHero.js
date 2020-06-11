@@ -13,7 +13,7 @@ export default function Hero({
   const categoryName = categories.length ? categories[0].name : null
 
   return (
-    <div className={`post-hero ${theme}`}>
+    <section className={`post-hero ${theme}`}>
       <div className="image-container">
         {heroImage && heroImage.sourceUrl && (
           <img src={heroImage.sourceUrl} alt="" />
@@ -33,6 +33,6 @@ export default function Hero({
             )
           })}
       </div>
-    </div>
+    </section>
   )
 }
