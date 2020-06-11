@@ -2,6 +2,7 @@
 
 .copy-columns {
   padding: 0 20px;
+  margin: 0 auto;
   color: $color-black;
   font-family: $font-serif;
   line-height: 20px;
@@ -12,8 +13,9 @@
   }
 
   @media #{$viewport-medium} {
+    max-width: 85%;
+    padding: 0;
     font-size: 12px;
-    padding: 0 40px;
     display: grid;
     grid-gap: 40px;
   }
@@ -21,12 +23,23 @@
   .group {
     &:first-child {
       @media #{$viewport-large} {
-        grid-column-start: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+
+      @media #{$viewport-xlarge} {
         grid-column-end: 3;
       }
 
       .icon-container {
         margin-top: 0;
+      }
+    }
+
+    &:last-child {
+      @media #{$viewport-xlarge} {
+        grid-column-start: 3;
+        grid-column-end: 5;
       }
     }
 
