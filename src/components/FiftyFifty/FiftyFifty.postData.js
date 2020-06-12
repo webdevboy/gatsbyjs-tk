@@ -14,3 +14,8 @@ module.exports = () => {
     }
   `
 }
+
+// imageBackgroundColor
+// linkText
+// linkUrl
+// preHeadline
