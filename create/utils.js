@@ -17,3 +17,20 @@ module.exports.getAllLayoutsData = type => {
 
   return allLayoutsString
 }
+
+module.exports.getCategoryLayoutData = () => {
+    const glob = require("glob");
+
+    let categoryLayoutString = "";
+
+    fileArray = glob.sync("./src/components/**/*.categoryData.js");
+
+    console.log(fileArray);
+    fileArray.forEach(function (file) {
+        let queryStringFunction = require(path.resolve(file))
+        categoryLayoutString = categoryLayoutString + " \n " + queryStringFunction();
+    });
+
+    return categoryLayoutString;
+};
+
