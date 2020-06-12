@@ -2,18 +2,27 @@ import React from "react"
 
 import "./PostHero.scss"
 
-export default function Hero({ authors, byline, title, heroImage, theme }) {
+export default function Hero({
+  authors,
+  byline,
+  title,
+  heroImage,
+  categories,
+  theme,
+}) {
+  const categoryName = categories.length ? categories[0].name : null
+
   return (
-    <div className={`post-hero ${theme}`}>
+    <section className={`post-hero ${theme}`}>
       <div className="image-container">
         {heroImage && heroImage.sourceUrl && (
           <img src={heroImage.sourceUrl} alt="" />
         )}
       </div>
       <div className="block">
-        <p className="name">Destination</p>
-        <h1 className="headline">{title}</h1>
-        <p className="byline">{byline}</p>
+        {categoryName && <p className="category-name">{categoryName}</p>}
+        {title && <h1 className="headline">{title}</h1>}
+        {byline && <p className="byline">{byline}</p>}
         <hr />
         {authors.length &&
           authors.split(",").map(author => {
@@ -24,6 +33,6 @@ export default function Hero({ authors, byline, title, heroImage, theme }) {
             )
           })}
       </div>
-    </div>
+    </section>
   )
 }

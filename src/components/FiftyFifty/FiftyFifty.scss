@@ -8,7 +8,6 @@
   @media #{$viewport-large} {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    min-height: 985px;
   }
 
   &.reversed {
@@ -30,12 +29,12 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     align-content: center;
-    padding: 60px 0;
     direction: ltr;
+    column-gap: 40px;
 
     .wrapper {
-      grid-column-start: 2;
-      grid-column-end: 6;
+      grid-column-start: 1;
+      grid-column-end: 7;
       align-self: center;
     }
   }
@@ -45,21 +44,43 @@
 
     img {
       max-width: 100%;
+      margin-bottom: -3px;
     }
   }
 
   .copy-block {
     position: relative;
+    padding: 60px 20px;
+
+    @media #{$viewport-medium} {
+      padding: 0;
+    }
 
     .wrapper {
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        align-self: center;
+      }
+
       h4 {
         font-size: 16px;
-        font-weight: $sans-serif-regular;
+        font-family: $font-sans-serif;
+        font-weight: $sans-serif-bold;
         margin-top: 0;
+        line-height: 20px;
+        margin-bottom: 30px;
       }
 
       p {
-        font-size: 12px;
+        font-size: 13px;
+        font-family: $font-serif;
+        font-weight: $serif-regular;
+        line-height: 18px;
+
+        @media #{$viewport-medium} {
+          font-size: 12px;
+        }
       }
     }
 
@@ -76,13 +97,11 @@
       }
 
       &.arrow-up {
-        border-bottom: 15px solid $color-white;
         top: 0;
         transform: translate(-50%, -100%);
       }
 
       &.arrow-down {
-        border-top: 15px solid $color-white;
         bottom: 0;
         transform: translate(-50%, 100%);
       }

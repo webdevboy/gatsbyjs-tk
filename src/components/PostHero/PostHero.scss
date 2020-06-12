@@ -15,7 +15,7 @@
   .image-container {
     img {
       width: 100%;
-      height: 680px;
+      height: 690px;
       object-fit: cover;
       object-position: center;
 
@@ -33,12 +33,13 @@
   .block {
     background-color: $color-white;
     color: $color-black;
-    margin-top: -240px;
+    margin-top: -230px;
     text-align: center;
     position: relative;
-    padding: 44px 10px;
+    padding: 44px 20px;
     margin: -240px auto 0;
     max-width: 85%;
+    box-sizing: border-box;
 
     @media #{$viewport-medium} {
       margin-top: -40px;
@@ -49,11 +50,13 @@
       margin-top: -60px;
     }
 
-    .name {
+    .category-name {
       font-family: $font-sans-serif;
-      font-weight: $sans-serif-bold;
+      font-weight: $sans-serif-light;
       font-size: 9px;
       margin-top: 0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
     .headline,
@@ -64,7 +67,8 @@
 
     .headline {
       font-size: 25px;
-      margin-bottom: 45px;
+      margin-bottom: 20px;
+      font-weight: 400;
 
       @media #{$viewport-large} {
         font-size: 35px;
@@ -74,6 +78,10 @@
     .byline {
       font-size: 15px;
       margin-bottom: 20px;
+      font-family: $font-serif;
+      font-weight: $serif-regular;
+      line-height: 24px;
+      font-size: 15px;
 
       @media #{$viewport-medium} {
         font-size: 16px;
@@ -84,8 +92,8 @@
       height: 1px;
       max-width: 50px;
       border: none;
-      background-color: black;
-      margin-bottom: 20px;
+      // background-color: black;
+      margin-bottom: 18px;
     }
 
     .attribution {
@@ -93,6 +101,7 @@
       margin: 0;
       font-family: $font-sans-serif;
       font-weight: $sans-serif-regular;
+      line-height: 12px;
     }
   }
 }

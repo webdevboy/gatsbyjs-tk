@@ -88,9 +88,11 @@ export default function PhotoBackground({
           message={floatingBodyText}
           plot={floatingTextPosition.toLowerCase()}
         />
-        <PhotoPopup title={popup.headline} content={popup.popupCopy} />
+        {popup.popupCopy && popup.headline && (
+          <PhotoPopup title={popup.headline} content={popup.popupCopy} />
+        )}
       </div>
-      <p className="cutline">{cutline}</p>
+      {cutline && <p className="cutline">{cutline}</p>}
     </div>
   )
 }

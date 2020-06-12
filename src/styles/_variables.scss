@@ -3,14 +3,15 @@
 // Colors
 $color-gold: #b3a97e;
 $color-gray: #787276;
-$color-lightgray: #F3F4F5;
-$color-black: #1b1b1b;
+$color-black: #000000;
+$color-lightgray: #f3f4f5;
 $color-white: #ffffff;
 $color-cutline: #787276;
 
 // Breakpoints
 $viewport-medium: "only screen and (min-width: 834px)";
-$viewport-large: "only screen and (min-width: 1440px)";
+$viewport-large: "only screen and (min-width: 1024px)";
+$viewport-xlarge: "only screen and (min-width: 1440px)";
 
 // Fonts
 $font-serif: "Libre Baskerville", serif;

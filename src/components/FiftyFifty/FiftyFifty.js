@@ -7,12 +7,9 @@ function FiftyFifty({
   copyBlock,
   headline,
   image,
-  preHeadline,
   reverse,
-  linkText,
-  linkUrl,
   copyBackgroundColor,
-  imageBackgroundColor,
+  copyColor,
   theme,
 }) {
   return (
@@ -22,27 +19,39 @@ function FiftyFifty({
         [theme]: true,
         reversed: reverse,
       })}
+      style={{ backgroundColor: copyBackgroundColor }}
     >
-      <div
-        className="image-block"
-        style={{ backgroundColor: imageBackgroundColor }}
-      >
+      <div className="image-block">
         {image.sourceUrl && (
           <div className="wrapper">
             <img src={image.sourceUrl} alt={image.alt || "Foodie image"} />
           </div>
         )}
       </div>
-      <div
-        className="copy-block"
-        style={{ backgroundColor: copyBackgroundColor }}
-      >
-        {!reverse && <div className="arrow arrow-up"></div>}
+      <div className="copy-block">
+        {!reverse && (
+          <div
+            className="arrow arrow-up"
+            style={{
+              borderBottom: `15px solid ${copyBackgroundColor}`,
+            }}
+          ></div>
+        )}
         <div className="wrapper">
-          <h4>{headline}</h4>
-          <p dangerouslySetInnerHTML={{ __html: copyBlock }}></p>
+          <h4 style={{ color: copyColor }}>{headline}</h4>
+          <p
+            style={{ color: copyColor }}
+            dangerouslySetInnerHTML={{ __html: copyBlock }}
+          ></p>
         </div>
-        {reverse && <div className="arrow  arrow-down"></div>}
+        {reverse && (
+          <div
+            className="arrow  arrow-down"
+            style={{
+              borderTop: `15px solid ${copyBackgroundColor}`,
+            }}
+          ></div>
+        )}
       </div>
     </section>
   )

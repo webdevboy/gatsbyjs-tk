@@ -104,7 +104,8 @@
 
 .photo {
   font-family: $font-sans-serif;
-  padding: 60px 0;
+  padding: 0;
+  margin-bottom: -5px;
 
   &.centered {
     max-width: 90%;

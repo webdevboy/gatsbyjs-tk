@@ -10,6 +10,7 @@ module.exports = () => {
       }
       reverse
       copyBackgroundColor
+      copyColor
     }
   `
 }
