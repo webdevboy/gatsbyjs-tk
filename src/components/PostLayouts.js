@@ -17,7 +17,7 @@ const PostLayouts = ({ layoutData, categories, theme }) => {
    * Default component
    */
   const Default = () => (
-    <div>
+    <div style={{ color: theme === "light" ? "black" : "white" }}>
       In PostLayouts the mapping of this component is missing: {layoutType}
     </div>
   )
