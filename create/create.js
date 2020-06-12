@@ -59,11 +59,11 @@ const GET_CATEGORIES = () => `
 module.exports = async ({ actions, graphql, reporter }) => {
   const allPages = []
   const allPosts = []
-  const allCategories = [];
+  const allCategories = []
 
   const postsQuery = GET_POSTS()
   const pagesQuery = GET_PAGES()
-  const categoriesQuery = GET_CATEGORIES();
+  const categoriesQuery = GET_CATEGORIES()
 
   /**
    * This is the method from Gatsby that we're going
@@ -183,9 +183,12 @@ module.exports = async ({ actions, graphql, reporter }) => {
   await fetchCategories().then(categories => {
     categories &&
       categories.map(category => {
-        console.log(category);
-        createPage({ path: `/category/${category.slug}`, component: categoryTemplate, context: category });
+        createPage({
+          path: `/category/${category.slug}`,
+          component: categoryTemplate,
+          context: category,
+        })
         reporter.info(`created: /category/${category.slug}`)
       })
-  });
+  })
 }

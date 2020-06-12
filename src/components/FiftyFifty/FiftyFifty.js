@@ -21,7 +21,6 @@ function FiftyFifty({
       })}
       style={{ backgroundColor: copyBackgroundColor }}
     >
-      {console.log({ copyColor })}
       <div className="image-block">
         {image.sourceUrl && (
           <div className="wrapper">
