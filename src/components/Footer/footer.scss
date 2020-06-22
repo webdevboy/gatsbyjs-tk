@@ -1,0 +1,293 @@
+@import "src/styles/variables.scss";
+
+.footer {
+  .opt-in {
+    background-color: $color-gold;
+    text-align: center;
+    padding: 30px 20px 60px;
+
+    @media #{$viewport-medium} {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-column-gap: 40px;
+    }
+
+    @media #{$viewport-large} {
+      height: 620px;
+      align-content: center;
+    }
+
+    h2 {
+      font-family: $font-serif;
+      font-weight: $serif-regular;
+      margin-bottom: 10px;
+      font-size: 32px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        font-size: 46px;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        font-size: 55px;
+      }
+    }
+
+    p {
+      font-family: $font-serif;
+      font-size: 13px;
+      margin-bottom: 30px;
+      line-height: 20px;
+
+      @media #{$viewport-medium} {
+        font-size: 12px;
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
+    }
+
+    a {
+      padding: 15px;
+      text-decoration: none;
+      width: 100%;
+      max-width: 255px;
+      background-color: black;
+      color: $color-gold;
+      border: none;
+      margin-top: 10px;
+      font-family: $font-sans-serif;
+      border-radius: 4px;
+      font-size: 14px;
+      margin: 0 auto;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
+    }
+  }
+
+  .site-links {
+    background-color: $color-gray;
+    padding: 60px 20px;
+
+    @media #{$viewport-medium} {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: baseline;
+      grid-column-gap: 40px;
+    }
+
+    @media #{$viewport-large} {
+      padding: 100px 60px 40px;
+      align-content: center;
+      align-items: center;
+      grid-row-gap: 70px;
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+
+      &:checked {
+        + .tab-label {
+          &::after {
+            transform: rotate(-90deg);
+          }
+        }
+
+        ~ .tab-content {
+          max-height: 100vh; // TODO: fix this
+        }
+      }
+    }
+
+    .tabs {
+      overflow: hidden;
+      font-family: $font-sans-serif;
+      font-size: 14px;
+      border-bottom: 1px solid rgba($color-white, 0.5);
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        border: none;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 4;
+        grid-column-end: 6;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-column-gap: 40px;
+      }
+    }
+
+    .tab {
+      width: 100%;
+      color: $color-white;
+      overflow: hidden;
+
+      @media #{$viewport-large} {
+        overflow: visible;
+      }
+
+      .tab-label {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        font-weight: bold;
+        cursor: pointer;
+        border-top: 1px solid rgba($color-white, 0.5);
+
+        @media #{$viewport-large} {
+          border: none;
+          pointer-events: none;
+        }
+
+        &::after {
+          content: "\276F";
+          width: 1em;
+          height: 1em;
+          text-align: center;
+          transition: all 0.3s ease-in-out;
+
+          @media #{$viewport-large} {
+            display: none;
+          }
+        }
+      }
+
+      .tab-content {
+        max-height: 0;
+        transition: all 0.3s ease-in-out;
+
+        a {
+          display: block;
+          color: $color-white;
+          padding: 15px 0;
+          border-top: 1px solid rgba($color-white, 0.5);
+          text-decoration: none;
+
+          @media #{$viewport-large} {
+            border: none;
+          }
+        }
+      }
+    }
+
+    .social-container {
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 6;
+        grid-column-end: 7;
+      }
+
+      ul {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        padding: 50px 0 30px;
+
+        li {
+          list-style: none;
+          width: 30px;
+          height: 30px;
+
+          @media #{$viewport-large} {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .about {
+      color: $color-white;
+      font-size: 12px;
+      font-family: $font-sans-serif;
+      margin-bottom: 40px;
+      line-height: 1.8;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        margin: 0;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 20px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 4;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin: 0;
+      }
+
+      svg {
+        width: 50px;
+      }
+
+      span {
+        font-family: $font-sans-serif;
+        color: $color-white;
+        font-weight: $sans-serif-light;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+    }
+
+    .copyright {
+      font-size: 11px;
+      color: $color-white;
+      font-family: $font-sans-serif;
+      text-align: left;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 4;
+        grid-column-end: 6;
+        grid-row-start: 4;
+        text-align: right;
+      }
+
+      @media #{$viewport-large} {
+        grid-column-start: 5;
+        grid-column-end: 7;
+        grid-row-start: 2;
+      }
+    }
+  }
+}

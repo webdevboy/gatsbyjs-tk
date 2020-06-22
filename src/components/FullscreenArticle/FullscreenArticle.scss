@@ -1,0 +1,105 @@
+@import "src/styles/variables";
+
+
+.fullscreen-article {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  min-height: 692px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  justify-content: center;
+  color: $color-white;
+  padding: 53px;
+  box-sizing: border-box;
+  text-align: center;
+  
+  @media #{$viewport-medium} {
+    min-height: 876px;
+    grid-template-columns: 0.65fr;
+    padding: 80px 0;
+  }
+  @media #{$viewport-large} {
+    min-height: 1230px;
+    grid-template-columns: 0.3fr;
+    padding: 158px 55px;
+  }
+
+  &.top-left {
+    align-items: flex-start;
+    @media #{$viewport-large} {
+      justify-content: start;
+      text-align: left;
+    }
+  }
+
+  &.top-right {
+    align-items: flex-start;
+    @media #{$viewport-large} {
+      justify-content: end;
+      text-align: left;
+    }
+  }
+
+  &.bottom-left {
+    align-items: flex-end;
+    @media #{$viewport-large} {
+      justify-content: start;
+      text-align: left;
+    }
+  }
+
+  &.bottom-right {
+    align-items: flex-end;
+    @media #{$viewport-large} {
+      justify-content: flex-end;
+      text-align: left;
+    }
+  }
+
+  .fullscreen-article__info {
+    .fullscreen-article__info__category {
+      font-family: $font-sans-serif;
+      font-size: 10px;
+      font-weight: $sans-serif-regular;
+      line-height: 13px;
+      text-transform: uppercase;
+      color: $color-white;
+    }
+    .fullscreen-article__info__title {
+      margin-top: 10px;
+      font-family: $font-sans-serif;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: $sans-serif-semibold;
+      color: $color-white;
+      @media #{$viewport-medium} {
+        font-size: 32px;
+        line-height: 40px;
+      }
+    }
+    .fullscreen-article__info__description {
+      margin-top: 20px;
+      font-family: $font-serif;
+      font-size: 13px;
+      font-weight: $serif-regular;
+      color: $color-white;
+      @media #{$viewport-medium} {
+        font-size: 15px;
+        line-height: 22px;
+      }
+    }
+    .fullscreen-article__info__more {
+      margin-top: 20px;
+      font-family: $font-sans-serif;
+      font-size: 12px;
+      font-weight: $sans-serif-bold;
+      .fullscreen-article__info__more__link {
+        color: $color-white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+

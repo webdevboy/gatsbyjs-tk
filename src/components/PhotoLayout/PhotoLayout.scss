@@ -1,0 +1,57 @@
+@import "src/styles/variables";
+
+.photo-layout {
+  padding: 60px 20px;
+
+  @media #{$viewport-medium} {
+    padding: 60px 40px;
+    display: grid;
+    grid-gap: 40px;
+  }
+
+  &.bias-layout {
+    @media #{$viewport-medium} {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &.half-layout {
+    @media #{$viewport-medium} {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .photo-item {
+    @media #{$viewport-medium} {
+      position: relative;
+    }
+
+    img {
+      width: 100%;
+
+      @media #{$viewport-medium} {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .cutline {
+      font-size: 10px;
+      font-family: $font-sans-serif;
+      color: $color-cutline;
+      width: 100%;
+      text-align: center;
+
+      @media #{$viewport-medium} {
+        padding-top: 5px;
+        margin: 0;
+        position: absolute;
+        transform: translate(-50%, 100%);
+        bottom: 0;
+        left: 50%;
+      }
+    }
+  }
+}

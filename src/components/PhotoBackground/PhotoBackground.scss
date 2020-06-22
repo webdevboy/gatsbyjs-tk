@@ -1,0 +1,134 @@
+@import "src/styles/variables";
+
+.grid {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 60px 40px;
+
+  @media #{$viewport-medium} {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 40px;
+  }
+
+  @media #{$viewport-large} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .cell {
+    display: flex;
+
+    span {
+      margin: auto 0;
+      color: $color-white;
+    }
+  }
+}
+
+.popup {
+  position: absolute;
+  bottom: 120px;
+  background: $color-black;
+  color: $color-white;
+  padding: 30px;
+  width: 60%;
+  left: 50%;
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  border-radius: 8px;
+  max-width: 417px;
+  display: none;
+  box-sizing: border-box;
+
+  @media #{$viewport-medium} {
+    display: inline-block;
+    padding: 50px;
+    width: 32%;
+  }
+
+  @media #{$viewport-large} {
+    padding: 50px;
+  }
+
+  &.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &.hide {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+
+  h4 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+
+  p {
+    line-height: 1.4;
+    font-size: 12px;
+  }
+}
+
+.open-popup {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+
+  @media #{$viewport-medium} {
+    display: inline-block;
+  }
+
+  svg {
+    &.plus {
+      transform: rotate(0deg);
+    }
+
+    &.close {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.photo {
+  font-family: $font-sans-serif;
+  padding: 0;
+  margin-bottom: -5px;
+
+  &.centered {
+    max-width: 90%;
+    margin: 0 auto;
+
+    @media #{$viewport-large} {
+      max-width: 61%;
+    }
+  }
+
+  .bg-wrapper {
+    position: relative;
+
+    .bg {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .cutline {
+    color: #787276;
+    text-align: center;
+    font-size: 10px;
+  }
+}

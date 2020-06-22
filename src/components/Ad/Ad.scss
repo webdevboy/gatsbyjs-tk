@@ -1,0 +1,52 @@
+@import "src/styles/variables";
+
+.ad {
+  &.container {
+    margin: 0 auto;
+    width: 100%;
+  
+    @media #{$viewport-medium} {
+      width: 833px;
+    }
+  
+    @media #{$viewport-large} {
+      width: 1023px;
+    }
+
+    @media #{$viewport-xlarge} {
+      width: 1399px;
+    }
+  }
+  .ad__img-container {
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
+    height: 658px;
+    @media #{$viewport-medium} {
+      height: 750px;
+    }
+    @media #{$viewport-large} {
+      height: 660px;
+    }
+    .ad__img {
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: $font-sans-serif;
+      font-size: 28px;
+      font-weight: $sans-serif-semibold;
+      color: #fff;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 0 20px;
+      @media #{$viewport-medium} {
+        font-size: 42px;
+      }
+    }
+  }
+  
+}

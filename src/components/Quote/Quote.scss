@@ -1,0 +1,43 @@
+@import "src/styles/variables";
+
+.quote {
+  color: $color-black;
+
+  &.dark {
+    color: $color-white;
+  }
+
+  @media #{$viewport-large} {
+    display: grid;
+    grid-template-columns: 1fr repeat(4, 1fr) 1fr;
+  }
+
+  blockquote {
+    margin: 40px 20px 60px;
+    text-align: center;
+
+    @media #{$viewport-medium} {
+      margin: 60px 20px;
+    }
+
+    @media #{$viewport-large} {
+      margin: 0;
+      grid-column-start: 2;
+      grid-column-end: 6;
+    }
+
+    p {
+      font-size: 21px;
+      font-family: $font-sans-serif;
+      display: inline;
+
+      @media #{$viewport-medium} {
+        font-size: 25px;
+      }
+
+      @media #{$viewport-large} {
+        font-size: 32px;
+      }
+    }
+  }
+}

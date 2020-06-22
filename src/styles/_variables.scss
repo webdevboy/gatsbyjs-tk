@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+// Colors
+$color-gold: #b3a97e;
+$color-gray: #787276;
+$color-darkgray: #282828;
+$color-black: #000000;
+$color-light-black: #1b1b1b;
+$color-darkgray: #282828;
+$color-lightgray: #f3f4f5;
+$color-white: #ffffff;
+$color-cutline: #787276;
+
+// Breakpoints
+$viewport-medium: "only screen and (min-width: 834px)";
+$viewport-large: "only screen and (min-width: 1024px)";
+$viewport-xlarge: "only screen and (min-width: 1440px)";
+
+// Fonts
+$font-serif: "Libre Baskerville", serif;
+$font-sans-serif: "Inter", sans-serif;
+
+// Font Weights
+$serif-bold: 700;
+$serif-regular: 400;
+$sans-serif-light: 200;
+$sans-serif-regular: 400;
+$sans-serif-semibold: 500;
+$sans-serif-bold: 700;
+$sans-serif-semibold: 500;

@@ -1,0 +1,99 @@
+@import "src/styles/variables";
+
+.individual-article {
+  padding: 40px 20px;
+  box-sizing: border-box;
+  @media #{$viewport-medium} {
+    padding: 43px;
+  }
+  @media #{$viewport-large} {
+    padding: 54px;
+    display: grid;
+    grid-template-columns: 1.9fr 1fr;
+    align-items: center;
+  }
+  &.container {
+    margin: 0 auto;
+    width: 100%;
+  
+    @media #{$viewport-medium} {
+        width: 833px;
+    }
+  
+    @media #{$viewport-large} {
+        width: 1023px;
+    }
+    
+    @media #{$viewport-xlarge} {
+      width: 1399px;
+    }
+  }
+  .individual-article__img {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 266px;
+    @media #{$viewport-medium} {
+      height: 596px;
+    }
+    @media #{$viewport-large} {
+      height: 697px;
+    }
+  }
+  .individual-article__info {
+    color: $color-darkgray;
+    @media #{$viewport-medium} {
+      text-align: center;
+    }
+    @media #{$viewport-large} {
+      text-align: left;
+      padding: 0 40px;
+    }
+    
+    .individual-article__info__cuteline {
+      margin-top: 10px;
+      font-size: 10px;
+      font-family: $font-sans-serif;
+      font-weight: $sans-serif-regular;
+      text-transform: uppercase;
+      @media #{$viewport-medium} {
+        margin-top: 40px;
+      }
+    }
+    .individual-article__info__title {
+      margin-top: 10px;
+      font-size: 24px;
+      font-family: $font-sans-serif;
+      font-weight: $sans-serif-semibold;
+      @media #{$viewport-medium} {
+        margin-top: 20px;
+      }
+    }
+    .individual-article__info__description {
+      margin-top: 20px;
+      font-size: 13px;
+      font-family: $font-serif;
+      font-weight: $serif-regular;
+      line-height: 20px;
+      @media #{$viewport-medium} {
+        width: 70%;
+        margin: 20px auto 0 auto;
+      }
+      @media #{$viewport-large} {
+        width: 100%;
+        margin: 20px 0 0 0;
+      }
+    }
+    .individual-article__info__more {
+      margin-top: 20px;
+      font-size: 12px;
+      font-family: $font-sans-serif;
+      font-weight: $sans-serif-bold;
+      .individual-article__info__more__link {
+        text-decoration: none;
+        color: $color-darkgray;
+      }
+    }
+  }
+}
+

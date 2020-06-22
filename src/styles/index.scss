@@ -1,0 +1,23 @@
+// Used in components/Layout.js
+@import 'swiper/swiper.scss';
+@import "variables";
+@import "normalize";
+
+body {
+  &.wrapper {
+    margin: 0 auto;
+    max-width: 1920px;
+    background-color: $color-white;
+
+    &.dark {
+      background-color: $color-black;
+    }
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    padding: 0;
+  }
+}

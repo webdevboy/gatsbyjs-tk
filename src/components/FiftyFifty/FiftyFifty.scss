@@ -1,0 +1,111 @@
+@import "src/styles/variables";
+
+.fifty-fifty {
+  font-family: $font-sans-serif;
+  display: grid;
+  grid-auto-rows: 1fr;
+
+  @media #{$viewport-large} {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  &.reversed {
+    .copy-block {
+      @media #{$viewport-large} {
+        grid-row: 1;
+      }
+    }
+
+    .image-block {
+      @media #{$viewport-large} {
+        grid-row: 2;
+        grid-row: auto;
+      }
+    }
+  }
+
+  .image-block,
+  .copy-block {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-content: center;
+    direction: ltr;
+    column-gap: 40px;
+
+    .wrapper {
+      grid-column-start: 1;
+      grid-column-end: 7;
+      align-self: center;
+    }
+  }
+
+  .image-block {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      margin-bottom: -3px;
+    }
+  }
+
+  .copy-block {
+    position: relative;
+    padding: 60px 20px;
+
+    @media #{$viewport-medium} {
+      padding: 0;
+    }
+
+    .wrapper {
+      @media #{$viewport-medium} {
+        grid-column-start: 2;
+        grid-column-end: 6;
+        align-self: center;
+      }
+
+      h4 {
+        font-size: 16px;
+        font-family: $font-sans-serif;
+        font-weight: $sans-serif-bold;
+        margin-top: 0;
+        line-height: 20px;
+        margin-bottom: 30px;
+      }
+
+      p {
+        font-size: 13px;
+        font-family: $font-serif;
+        font-weight: $serif-regular;
+        line-height: 18px;
+
+        @media #{$viewport-medium} {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .arrow {
+      width: 0;
+      height: 0;
+      position: absolute;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      left: 50%;
+
+      @media #{$viewport-large} {
+        display: none;
+      }
+
+      &.arrow-up {
+        top: 0;
+        transform: translate(-50%, -100%);
+      }
+
+      &.arrow-down {
+        bottom: 0;
+        transform: translate(-50%, 100%);
+      }
+    }
+  }
+}

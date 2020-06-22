@@ -1,0 +1,62 @@
+@import "src/styles/variables";
+
+.photo-layout-1x3 {
+  padding: 60px 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  @media #{$viewport-medium} {
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-gap: 40px;
+  }
+
+  &:after {
+    content: "";
+    width: 20px;
+    display: block;
+    flex: 1 0 20px;
+
+    @media #{$viewport-medium} {
+      display: none;
+    }
+  }
+
+  .slide {
+    margin-right: 20px;
+    flex: 1 0 100%;
+    max-width: 240px;
+
+    @media #{$viewport-medium} {
+      max-width: none;
+      flex: 1 0 auto; // restore default
+      margin: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .img-wrap {
+      img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .cutline {
+      text-align: center;
+      color: $color-cutline;
+      font-family: $font-sans-serif;
+      font-size: 10px;
+    }
+  }
+}

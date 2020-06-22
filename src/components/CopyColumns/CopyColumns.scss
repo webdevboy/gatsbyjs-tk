@@ -1,0 +1,41 @@
+@import "src/styles/variables";
+
+.copy-columns {
+  padding: 0 20px;
+  margin: 0 auto;
+  color: $color-black;
+  font-family: $font-serif;
+  line-height: 20px;
+  font-size: 13px;
+  display: grid;
+
+  &.dark {
+    color: $color-white;
+  }
+
+  @media #{$viewport-medium} {
+    padding: 0;
+    font-size: 12px;
+    display: grid;
+    grid-gap: 40px;
+    padding: 0 40px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .group {
+    .icon-container {
+      display: block;
+      text-align: center;
+      margin: 40px auto 0;
+
+      @media #{$viewport-medium} {
+        margin: 0 auto;
+      }
+    }
+
+    .headline,
+    .subhead {
+      text-align: center;
+    }
+  }
+}

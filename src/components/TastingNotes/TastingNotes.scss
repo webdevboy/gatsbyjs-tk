@@ -1,0 +1,157 @@
+@import "src/styles/variables";
+
+.tasting-notes {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 60px 0;
+  position: relative;
+
+  &.dark {
+    background-color: $color-light-black;
+
+    .tasting-notes__title {
+      color: $color-white;
+    }
+
+    .tasting-notes__slider-container {
+      .tasting-notes__note {
+        color: $color-white;
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  &.container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .tasting-notes__title {
+    font-family: $font-serif;
+    font-size: 25px;
+    color: $color-darkgray;
+    font-weight: $serif-regular;
+    text-align: center;
+
+    @media #{$viewport-medium} {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+
+  .tasting-notes__scrollbar {
+    background: transparent;
+    width: 90%;
+    position: absolute;
+    z-index: 50;
+    height: 3px;
+    top: -30px;
+
+    @media #{$viewport-medium} {
+      width: 300px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media #{$viewport-large} {
+      width: 417px;
+    }
+
+    .swiper-scrollbar-drag {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background: #b3a97e;
+      border-radius: 10px;
+    }
+  }
+
+  .tasting-notes__slider-container {
+    padding: 0 20px;
+    margin-top: 68px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+
+    @media #{$viewport-large} {
+      display: block;
+      padding: 0 54px;
+    }
+
+    .swiper-container {
+      overflow: initial;
+      position: initial;
+
+      @media #{$viewport-medium} {
+        overflow: hidden;
+      }
+    }
+
+    .tasting-notes__note {
+      color: $color-darkgray;
+      width: 100%;
+
+      @media #{$viewport-medium} {
+        margin-bottom: 60px;
+      }
+
+      .tasting-notes__note__img {
+        width: 100%;
+        min-height: 170px;
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .tasting-notes__note__cutline {
+        font-family: $font-sans-serif;
+        font-size: 9px;
+        font-weight: $sans-serif-regular;
+        margin-top: 20px;
+        text-transform: uppercase;
+      }
+
+      .tasting-notes__note__title {
+        font-family: $font-sans-serif;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: $sans-serif-bold;
+        margin-top: 10px;
+
+        @media #{$viewport-medium} {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+
+      .tasting-notes__note__byline {
+        font-family: $font-serif;
+        font-size: 13px;
+        font-weight: $serif-regular;
+        margin-top: 20px;
+
+        @media #{$viewport-medium} {
+          font-size: 12px;
+        }
+      }
+
+      .tasting-notes__note__more {
+        font-family: $font-sans-serif;
+        font-size: 12px;
+        font-weight: $sans-serif-bold;
+        margin-top: 20px;
+
+        .tasting-notes__note__more__link {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
