@@ -50,7 +50,7 @@
     "prestart": "gatsby clean",
     "start": "gatsby develop -H 0.0.0.0",
     "prestart:https": "gatsby clean",
-    "deploy": "gatsby-plugin-s3 deploy --yes",
+    "deploy": "npm run build && gatsby-plugin-s3 deploy --yes",
     "start:https": "gatsby develop --https",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
