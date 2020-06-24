@@ -2,7 +2,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+console.log('process.env.MAILCHIMP_ENDPOINT: ', process.env.MAILCHIMP_ENDPOINT);
+console.log('process.env.WP_GRAPHQL_ENDPOINT: ', process.env.WP_GRAPHQL_ENDPOINT);
 
 module.exports = {
   siteMetadata: {
