@@ -1,8 +1,13 @@
 @import "src/styles/variables";
 
+.individual-article-wrapper {
+  background-color: $color-lightgray;
+}
+
 .individual-article {
   padding: 40px 20px;
   box-sizing: border-box;
+  background-color: $color-white;
   @media #{$viewport-medium} {
     padding: 43px;
   }

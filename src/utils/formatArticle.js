@@ -16,6 +16,7 @@ export const getFormattedArticle = article => {
     imageUrl:
       (imageObj && imageObj.thumbnailImage.sourceUrl) ||
       (imageHeroObj && imageHeroObj.heroImage.sourceUrl),
+    authors: imageHeroObj && imageHeroObj.authors ? `Photography by ${imageHeroObj.authors}` : null,
     cutline: category ? category.name : "",
     title: article.title || (imageObj && imageObj.title),
     byline: bylineObj && bylineObj.byline,

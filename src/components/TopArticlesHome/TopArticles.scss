@@ -53,9 +53,13 @@
         }
 
         @media #{$viewport-large} {
-            grid-template-columns: 61%;
+            grid-template-columns: 68%;
             padding: 0;
             align-items: center;
+        }
+
+        @media #{$viewport-xlarge} {
+            grid-template-columns: 61%;
         }
 
         .featured-article__inner {
@@ -63,7 +67,7 @@
             height: 100%;
             padding: 0;
             color: $color-gray;
-            
+            position: relative;
             @media #{$viewport-medium} {
                 padding: 21px 20px;
                 box-sizing: border-box;
@@ -83,7 +87,7 @@
                 background-size: cover;
                 background-position: center;
                 padding: 21px 20px;
-
+                position: relative;
                 @media #{$viewport-medium} {
                     height: 730px;
                 }
@@ -91,8 +95,29 @@
                 @media #{$viewport-large} {
                     height: 550px;
                 }
+                .feature-article__authors {
+                    position: absolute;
+                    left: -20px;
+                    top: 10px;
+                    writing-mode: vertical-lr;
+                    text-orientation: mixed;
+                    transform: rotate(180deg);
+                    display: none;
+                    letter-spacing: 1px;
+                    @media #{$viewport-medium} {
+                        display: block;
+                        color: $color-darkgray;
+                        font-size: 9px;
+                        line-height: 12px;
+                    }
+    
+                    @media #{$viewport-large} {
+                        color: $color-gray;
+                    }
+                }
             }
         }
+        
     }
 
     .top_articles__columns {
@@ -108,8 +133,8 @@
 
         @media #{$viewport-large} {
             margin-top: 0;
-            padding-left: 30px;
-            column-gap: 30px;
+            padding-left: 20px;
+            column-gap: 20px;
         }
         @media #{$viewport-xlarge} {
             margin-top: 0;
@@ -160,7 +185,7 @@
                 }
     
                 @media #{$viewport-large} {
-                    left: 169px;
+                    left: 164px;
                 }
                 @media #{$viewport-xlarge} {
                     left: 237px;
@@ -172,7 +197,7 @@
                 }
     
                 @media #{$viewport-large} {
-                    left: 323px;
+                    left: 319px;
                 }
                 @media #{$viewport-xlarge} {
                     left: 455px;
@@ -201,6 +226,10 @@
             }
 
             @media #{$viewport-large} {
+                height: 200px;
+            }
+
+            @media #{$viewport-xlarge} {
                 height: 249px;
             }
         }

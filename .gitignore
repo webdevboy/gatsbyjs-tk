@@ -52,11 +52,12 @@ typings/
 *.tgz
 
 # dotenv environment variable files
- .env
+.env.development
+.env.production
 
 # gatsby files
 .cache/
- public/*
+public
 
 # Mac files
 .DS_Store

@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import "./TopArticles.scss"
 
-function Article({ title, byline, category, imageUrl, articleUrl }) {
+function Article({ title, byline, category, imageUrl, articleUrl, authors }) {
   return (
     <div className="top_articles__columns__column__inner">
       <div
@@ -26,7 +26,6 @@ function Article({ title, byline, category, imageUrl, articleUrl }) {
 
 export default function TopArticles(props) {
   const { featuredArticle, articles, theme } = props
-
   const getFormattedArticle = article => {
     if (!article) return null
 
@@ -50,6 +49,10 @@ export default function TopArticles(props) {
       title: article.title,
       byline: bylineObj && bylineObj.byline,
       articleUrl: article.uri,
+      authors:
+        imageHeroObj && imageHeroObj.authors
+          ? `Photography by ${imageHeroObj.authors}`
+          : null,
     }
     return formattedArticle
   }
@@ -69,11 +72,13 @@ export default function TopArticles(props) {
 
   const getArticles = articles => {
     const newArticles = []
-    articles.map(articleObj => {
-      const { article } = articleObj
-      const newArticle = getFormattedArticle(article)
-      newArticles.push(newArticle)
-    })
+    articles &&
+      articles.length &&
+      articles.map(articleObj => {
+        const { article } = articleObj
+        const newArticle = getFormattedArticle(article)
+        newArticles.push(newArticle)
+      })
     return newArticles
   }
 
@@ -92,7 +97,13 @@ export default function TopArticles(props) {
                   style={{
                     backgroundImage: `url("${featuredArticleFormatted.imageUrl}")`,
                   }}
-                />
+                >
+                  {featuredArticleFormatted.authors && (
+                    <div className="feature-article__authors">
+                      {featuredArticleFormatted.authors}
+                    </div>
+                  )}
+                </div>
               )}
               {featuredArticleFormatted.category && (
                 <div className="article__category">

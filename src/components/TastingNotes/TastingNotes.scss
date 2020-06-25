@@ -73,6 +73,12 @@
     }
   }
 
+  .tasting-notes__medium-size {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 41px;
+  }
+
   .tasting-notes__slider-container {
     padding: 0 20px;
     margin-top: 68px;
@@ -104,7 +110,7 @@
 
       .tasting-notes__note__img {
         width: 100%;
-        min-height: 170px;
+        min-height: 175px;
         object-fit: cover;
         object-position: center center;
       }

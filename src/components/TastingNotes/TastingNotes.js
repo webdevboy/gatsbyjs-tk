@@ -102,13 +102,13 @@ function TastingNotes({ headline, notes, type, theme }) {
           </Swiper>
         </div>
         {moreThanMedium && !moreThanLarge && (
-          <>
+          <div className="tasting-notes__medium-size">
             {notes &&
               notes.length > 0 &&
               notes.map((note, index) => (
                 <Note {...getFormattedArticle(note.note)} key={index} />
               ))}
-          </>
+          </div>
         )}
       </div>
     </div>
