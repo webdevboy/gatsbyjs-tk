@@ -4,6 +4,7 @@ require("dotenv").config({
 
 console.log('process.env.WP_GRAPHQL_ENDPOINT', process.env.WP_GRAPHQL_ENDPOINT);
 console.log('process.env.S3_HOSTING_ENDPOINT', process.env.S3_HOSTING_ENDPOINT);
+console.log('process.env.AUTH0_DOMAIN', process.env.AUTH0_DOMAIN);
 
 module.exports = {
   siteMetadata: {
