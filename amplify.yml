@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+        commands:
+            - npm ci 
+    build:
+        commands:
+            - npm run clean && npm run build
+    postBuild:
+        commands:
+            - echo 'BUILD SUCESSFUL'
+  artifacts:
+    baseDirectory: public
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
