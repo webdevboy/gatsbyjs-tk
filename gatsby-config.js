@@ -2,6 +2,9 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+console.log('process.env.WP_GRAPHQL_ENDPOINT', process.env.WP_GRAPHQL_ENDPOINT);
+console.log('process.env.S3_HOSTING_ENDPOINT', process.env.S3_HOSTING_ENDPOINT);
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
