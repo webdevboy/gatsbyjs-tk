@@ -1,6 +1,6 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-166107621-1",
+        trackingId: 'UA-166107621-1',
         head: true,
       },
     },
@@ -20,7 +20,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     // Gatsby MailChimp
     {
-      resolve: "gatsby-plugin-mailchimp",
+      resolve: 'gatsby-plugin-mailchimp',
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
@@ -70,4 +70,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
