@@ -9,6 +9,7 @@ import {
   Ad,
   TastingNotes,
   Spacer,
+  EventsComponent,
 } from "src/components"
 
 const PageLayouts = ({ layoutData, theme }) => {
@@ -31,6 +32,7 @@ const PageLayouts = ({ layoutData, theme }) => {
     page_Components_Contents_Ad: Ad,
     page_Components_Contents_TastingNotes: TastingNotes,
     page_Components_Contents_Spacer: Spacer,
+    page_Components_Contents_Event: EventsComponent,
     default: Default,
   }
 

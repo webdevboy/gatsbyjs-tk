@@ -50,6 +50,8 @@ const GET_CATEGORIES = () => `
   }
 `
 const getLangCode = ctx => {
+  if (!ctx.language || !ctx.language.code) return
+
   const { code } = ctx.language
 
   switch (code) {

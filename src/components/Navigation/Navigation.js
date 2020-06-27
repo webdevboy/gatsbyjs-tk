@@ -85,11 +85,15 @@ function Navigation({ theme, showNav }) {
             // specific check for articles while more posts get added
             return menu.menuItems.nodes.length <= 1 &&
               menu.slug !== "articles" ? (
-              <li key={menu.id}>
-                <Link to={getUrlPath(menu.menuItems.nodes[0].url)}>
-                  {menu.name}
-                </Link>
-              </li>
+              menu.menuItems.nodes.length ? (
+                <li key={menu.id}>
+                  <Link to={getUrlPath(menu.menuItems.nodes[0].url)}>
+                    {menu.name}
+                  </Link>
+                </li>
+              ) : (
+                <></>
+              )
             ) : (
               <ItemWithSubNav
                 key={menu.id}

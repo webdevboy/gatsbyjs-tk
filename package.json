@@ -27,6 +27,7 @@
     "glob": "^7.1.6",
     "lodash.isempty": "^4.4.0",
     "lodash.uniqby": "^4.7.0",
+    "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

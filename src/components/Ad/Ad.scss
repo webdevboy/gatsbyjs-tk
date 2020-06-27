@@ -1,7 +1,10 @@
 @import "src/styles/variables";
 
+
 .ad {
-  &.container {
+  background-color: $color-lightgray;
+  padding: 20px 0;
+  .container {
     margin: 0 auto;
     width: 100%;
   
@@ -22,11 +25,14 @@
     padding: 20px;
     width: 100%;
     height: 658px;
+    background-color: $color-white;
     @media #{$viewport-medium} {
       height: 750px;
+      padding: 43px;
     }
     @media #{$viewport-large} {
       height: 660px;
+      padding: 54px;
     }
     .ad__img {
       height: 100%;

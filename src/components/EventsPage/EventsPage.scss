@@ -1,0 +1,111 @@
+@import "src/styles/variables";
+
+.events-page {
+  background-color: $color-lightgray;
+  padding-bottom: 100px;
+  font-family: $font-sans-serif;
+  .container {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    padding: 100px 20px 70px 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $color-gray;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    @media #{$viewport-medium} {
+      width: 833px;
+      
+      padding: 100px 0 70px 0;
+    }
+
+    @media #{$viewport-large} {
+      width: 1023px;
+      display: grid;
+      column-gap: 60px;
+    }
+    
+    @media #{$viewport-xlarge} {
+      width: 1399px;
+    }
+  }
+  .events-page__img {
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    @media #{$viewport-medium} {
+      min-height: 650px;
+    }
+    @media #{$viewport-large} {
+      min-height: 700px;
+    }
+    @media #{$viewport-xlarge} {
+      min-height: 850px;
+    }
+  }
+  
+  .events-page__body {
+    .events-page__body__cutline {
+      font-weight: $sans-serif-semibold;
+      margin-top: 10px;
+      @media #{$viewport-large} {
+        margin-top: 0;
+      }
+    }
+    .events-page__body__title {
+      font-size: 30px;
+      font-weight: $sans-serif-bold;
+      margin-top: 20px;
+    }
+    .events-page__body__blocks {
+      
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 20px;
+      height: auto;
+      margin-top: 40px;
+      @media #{$viewport-large} {
+        display: grid;
+        height: 160px;
+        column-gap: 20px;
+      }
+      @media #{$viewport-xlarge} {
+        display: grid;
+        height: 189px;
+        column-gap: 50px;
+      }
+      .events-page__body__block {
+        background-color: $color-white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px 20px 20px 20px;
+        font-weight: $sans-serif-bold;
+        text-align: center;
+        margin-top: 20px;
+        max-width: 100%;
+        @media #{$viewport-large} {
+          margin-top: 0;
+          padding: 20px 20px 20px 20px;
+        }
+        @media #{$viewport-xlarge} {
+          padding: 50px 20px 20px 20px;
+        }
+        .events-page__body__block__text {
+          color: #B3A97E;
+          font-size: 12px;
+          margin-top: 20px;
+          @media #{$viewport-xlarge} {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .events-page__body__description {
+      font-family: $font-serif;
+      color: $color-gray;
+      font-size: 15px;
+      margin-top: 40px;
+    }
+  }
+}
+

@@ -51,6 +51,10 @@ export default function TopArticles({ category }) {
       byline: bylineObj && bylineObj.byline,
       articleUrl: article.uri,
       id: article.id,
+      authors:
+        imageHeroObj && imageHeroObj.authors
+          ? `Photography by ${imageHeroObj.authors}`
+          : null,
     }
     return formattedArticle
   }
@@ -75,11 +79,13 @@ export default function TopArticles({ category }) {
 
   const getArticles = articles => {
     const newArticles = []
-    articles.map(article => {
-      const newArticle = getFormattedArticle(article)
-      newArticles.push(newArticle)
-      return article
-    })
+    articles &&
+      articles.length &&
+      articles.map(article => {
+        const newArticle = getFormattedArticle(article)
+        newArticles.push(newArticle)
+        return article
+      })
     return newArticles
   }
   const featuredArticleFormatted = getFeaturedArticle()
@@ -91,6 +97,7 @@ export default function TopArticles({ category }) {
     return isNotFirst && !isFeatured
   })
   const formattedArticles = getArticles(formattedNodes).slice(0, 4)
+  console.log(featuredArticleFormatted)
   return (
     <div className="top-articles-container">
       <div className="top-articles container">
@@ -103,7 +110,13 @@ export default function TopArticles({ category }) {
                   style={{
                     backgroundImage: `url("${featuredArticleFormatted.imageUrl}")`,
                   }}
-                />
+                >
+                  {featuredArticleFormatted.authors && (
+                    <div className="feature-article__authors">
+                      {featuredArticleFormatted.authors}
+                    </div>
+                  )}
+                </div>
               )}
               {name && <div className="article__category">{name}</div>}
               {featuredArticleFormatted.title && (
