@@ -1,14 +1,14 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
-import "./TopArticles.scss"
+import './TopArticles.scss';
 
 function Article({ title, byline, category, imageUrl, articleUrl, authors }) {
   return (
     <div className="top_articles__columns__column__inner">
       <div
         className="top_articles__columns__column__image"
-        style={{ backgroundImage: imageUrl ? `url("${imageUrl}")` : "" }}
+        style={{ backgroundImage: imageUrl ? `url("${imageUrl}")` : '' }}
       />
       {category && <div className="article__category">{category}</div>}
       {title && <div className="article__title">{title}</div>}
@@ -21,31 +21,31 @@ function Article({ title, byline, category, imageUrl, articleUrl, authors }) {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default function TopArticles(props) {
-  const { featuredArticle, articles, theme } = props
-  const getFormattedArticle = article => {
-    if (!article) return null
+  const { featuredArticle, articles, theme } = props;
+  const getFormattedArticle = (article) => {
+    if (!article) return null;
 
     const imageObj =
       article.components.contents &&
-      article.components.contents.find(content => content.thumbnailImage)
+      article.components.contents.find((content) => content.thumbnailImage);
     const imageHeroObj =
       article.components.contents &&
-      article.components.contents.find(content => content.heroImage)
+      article.components.contents.find((content) => content.heroImage);
     const category = article.categories.nodes.find(
-      category => category.name.toLowerCase() !== "featured category"
-    )
+      (category) => category.name.toLowerCase() !== 'featured category'
+    );
     const bylineObj =
       article.components.contents &&
-      article.components.contents.find(content => content.byline)
+      article.components.contents.find((content) => content.byline);
     const formattedArticle = {
       imageUrl:
         (imageObj && imageObj.thumbnailImage.sourceUrl) ||
         (imageHeroObj && imageHeroObj.heroImage.sourceUrl),
-      category: category ? category.name : "",
+      category: category ? category.name : '',
       title: article.title,
       byline: bylineObj && bylineObj.byline,
       articleUrl: article.uri,
@@ -53,37 +53,38 @@ export default function TopArticles(props) {
         imageHeroObj && imageHeroObj.authors
           ? `Photography by ${imageHeroObj.authors}`
           : null,
-    }
-    return formattedArticle
-  }
+    };
+    return formattedArticle;
+  };
 
   const getFeaturedArticle = () => {
-    let fArticle = null
+    let fArticle = null;
     if (featuredArticle) {
-      fArticle = getFormattedArticle(featuredArticle)
+      fArticle = getFormattedArticle(featuredArticle);
     } else {
-      const firstArticle = articles.column1[0]
-        ? articles.column1[0].article
-        : null
-      fArticle = getFormattedArticle(firstArticle)
+      const firstArticle =
+        articles.column1 && articles.column1.length && articles.column1[0]
+          ? articles.column1[0].article
+          : null;
+      fArticle = getFormattedArticle(firstArticle);
     }
-    return fArticle
-  }
+    return fArticle;
+  };
 
-  const getArticles = articles => {
-    const newArticles = []
+  const getArticles = (articles) => {
+    const newArticles = [];
     articles &&
       articles.length &&
-      articles.map(articleObj => {
-        const { article } = articleObj
-        const newArticle = getFormattedArticle(article)
-        newArticles.push(newArticle)
-      })
-    return newArticles
-  }
+      articles.map((articleObj) => {
+        const { article } = articleObj;
+        const newArticle = getFormattedArticle(article);
+        newArticles.push(newArticle);
+      });
+    return newArticles;
+  };
 
-  const featuredArticleFormatted = getFeaturedArticle()
-  const formattedARticles = getArticles(articles)
+  const featuredArticleFormatted = getFeaturedArticle();
+  const formattedARticles = getArticles(articles);
 
   return (
     <div className="top-articles-container">
@@ -177,5 +178,5 @@ export default function TopArticles(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
