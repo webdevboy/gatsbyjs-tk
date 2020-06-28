@@ -6,7 +6,7 @@ frontend:
             - npm ci 
     build:
         commands:
-            - npm run build
+            - npm run clean && npm run build
     postBuild:
         commands:
             - echo 'BUILD SUCESSFUL'
