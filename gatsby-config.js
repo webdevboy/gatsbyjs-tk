@@ -2,6 +2,11 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+console.log('process.env.GATSBY_AUTH0_DOMAIN', process.env.GATSBY_AUTH0_DOMAIN);
+console.log('process.env.GATSBY_AUTH0_CLIENTID', process.env.GATSBY_AUTH0_CLIENTID);
+console.log('process.env.GATSBY_AUTH0_CALLBACK', process.env.GATSBY_AUTH0_CALLBACK);
+console.log('process.env.GATSBY_WP_GRAPHQL_ENDPOINT', process.env.GATSBY_WP_GRAPHQL_ENDPOINT);
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
