@@ -35,7 +35,7 @@ module.exports = {
         // This is field under which it's accessible
         fieldName: `wordpress`,
         // Url to query from
-        url: process.env.WP_GRAPHQL_ENDPOINT,
+        url: process.env.GATSBY_WP_GRAPHQL_ENDPOINT,
       },
     },
     {
