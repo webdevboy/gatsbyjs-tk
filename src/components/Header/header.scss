@@ -1,5 +1,36 @@
 @import "src/styles/variables.scss";
 
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+$min_width: 375px;
+$max_width: 1920px;
+$min_font: 16px;
+$max_font: 22px;
+
 .header {
   background-color: $color-black;
   text-align: center;
@@ -7,7 +38,10 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   min-height: 40px;
   z-index: 101;
 
@@ -54,6 +88,52 @@
     height: 40px;
   }
 
+  .fp-logo-container {
+    position: absolute;
+    left: 50%;
+    transition-duration: $hero-animation-duration;
+    transition-timing-function: ease-out;
+    transition-property: top, width;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+
+    &.on-hero {
+      width: 150px;
+
+      @media #{$viewport-medium} {
+        width: 290px;
+      }
+    }
+
+    &.on-header {
+      width: 55px;
+    }
+
+    .fp-logo {
+      width: 100%;
+    }
+  }
+
+  .sitename {
+    @include fluid-type($min_width, $max_width, $min_font, $max_font);
+    color: $color-white;
+    font-family: $font-sans-serif;
+    letter-spacing: 10px;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+
+    &.show-site-name {
+      opacity: 1;
+      transition-delay: 1s;
+    }
+  }
+
   button {
     margin: auto;
     margin-right: 0;
@@ -69,13 +149,6 @@
       height: auto;
     }
 
-    // > span {
-    //   @media #{$viewport-medium} {
-    //     display: flex;
-    //     flex-flow: row nowrap;
-    //     align-content: center;
-    //   }
-    // }
     .title {
       display: none;
 
@@ -97,50 +170,54 @@
     transform: rotate(0deg);
     transition: 0.5s ease-in-out;
     cursor: pointer;
-  }
 
-  .nav-icon span {
-    display: block;
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    border-radius: 9px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: 0.25s ease-in-out;
-  }
+    &.open {
+      span {
+        &:nth-child(1) {
+          top: 5px;
+          width: 0%;
+          left: 50%;
+        }
 
-  .nav-icon span:nth-child(1) {
-    top: 0px;
-  }
+        &:nth-child(2) {
+          transform: rotate(45deg);
+        }
 
-  .nav-icon span:nth-child(2),
-  .nav-icon span:nth-child(3) {
-    top: 7px;
-  }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
 
-  .nav-icon span:nth-child(4) {
-    top: 14px;
-  }
+        &:nth-child(4) {
+          top: 5px;
+          width: 0%;
+          left: 50%;
+        }
+      }
+    }
 
-  .nav-icon.open span:nth-child(1) {
-    top: 5px;
-    width: 0%;
-    left: 50%;
-  }
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: 0.25s ease-in-out;
 
-  .nav-icon.open span:nth-child(2) {
-    transform: rotate(45deg);
-  }
+      &:nth-child(1) {
+        top: 0px;
+      }
 
-  .nav-icon.open span:nth-child(3) {
-    transform: rotate(-45deg);
-  }
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 7px;
+      }
 
-  .nav-icon.open span:nth-child(4) {
-    top: 5px;
-    width: 0%;
-    left: 50%;
+      &:nth-child(4) {
+        top: 14px;
+      }
+    }
   }
 }

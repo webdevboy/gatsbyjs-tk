@@ -4,24 +4,20 @@ import PropTypes from "prop-types"
 import Header from "src/components/Header/header"
 import Footer from "src/components/Footer/footer"
 import Navigation from "src/components/Navigation/Navigation"
-import EventsComponent from 'src/components/EventsComponent/EventsComponent';
 
 import "src/styles/index.scss"
 
-function Layout({ children, theme, title }) {
+function Layout({ children, theme, title, isFrontPage, heroIsVisible }) {
   const [showNav, setShowNav] = useState(false)
 
   useEffect(() => {
     document.body.classList.add("wrapper")
 
-    if (theme === "dark") {
-      document.body.classList.remove("light")
-    }
+    // remove all theme classes
+    document.body.classList.remove("light")
+    document.body.classList.remove("dark")
 
-    if (theme === "light") {
-      document.body.classList.remove("dark")
-    }
-
+    // apply the current theme
     document.body.classList.add(theme)
   }, [title])
 
@@ -32,6 +28,8 @@ function Layout({ children, theme, title }) {
         title={title}
         showNav={showNav}
         setShowNav={() => setShowNav(!showNav)}
+        isFrontPage={isFrontPage}
+        heroIsVisible={heroIsVisible}
       />
       <Navigation theme={theme} showNav={showNav} />
       <div>

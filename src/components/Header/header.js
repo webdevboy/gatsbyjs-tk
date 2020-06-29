@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useState, useRef, useEffect } from "react"
 import * as cx from "classnames"
 import Logo from "src/svgs/tk_logo"
 import LanguageToggle from "src/components/LanguageToggle/LanguageToggle"
 import LoginLogout from "src/components/LoginLogout/LoginLogout"
 import { Link } from "gatsby"
+import useWindow from "src/hooks/useWindow"
+import { heroAnimationDuration } from "src/utils/styleVars"
 
 import "./header.scss"
 
@@ -18,18 +20,62 @@ function Hamburger({ isOpen }) {
   )
 }
 
-function Header({ theme, title, showNav, setShowNav }) {
+function Header({ theme, showNav, setShowNav, isFrontPage, heroIsVisible }) {
+  const [siteNameTop, setSiteNameTop] = useState(true)
+  const logoContainerRef = useRef(null)
+  const _window = useWindow() || {}
+
+  const getLogoPosY = () => {
+    const smallOffset = 52 // based on logo width 150px
+    const mediumOffset = 103 // based on a logo width 290px
+
+    if (_window.innerWidth < 834) {
+      return _window.outerHeight / 2 + smallOffset
+    }
+
+    return _window.outerHeight / 2 + mediumOffset
+  }
+
+  useEffect(() => {
+    if (heroIsVisible && logoContainerRef && logoContainerRef.current) {
+      setTimeout(() => {
+        setSiteNameTop(logoContainerRef.current.getBoundingClientRect().bottom)
+      }, heroAnimationDuration)
+    }
+  }, [heroIsVisible])
+
   return (
     <header className={`header ${theme}`}>
-      <Link to="/">
-        <Logo className="logo" />
-      </Link>
-      {/* TODO: This needs to be styled */}
+      {!isFrontPage ? (
+        <Link to="/">
+          <Logo className="logo" />
+        </Link>
+      ) : (
+        <>
+          <div
+            ref={logoContainerRef}
+            className={cx("fp-logo-container", {
+              "on-hero": heroIsVisible,
+              "on-header": !heroIsVisible,
+            })}
+            style={{
+              top: isFrontPage && heroIsVisible ? `-${getLogoPosY()}px` : "50%",
+            }}
+          >
+            <Logo className="fp-logo" />
+          </div>
+          <p
+            className={cx("sitename", { "show-site-name": heroIsVisible })}
+            style={{ top: `-${siteNameTop}px` }}
+          >
+            TASTING KITCHEN
+          </p>
+        </>
+      )}
       <LanguageToggle theme={theme} />
       <LoginLogout />
       <button onClick={() => setShowNav()}>
         <Hamburger isOpen={showNav} />
-        {/* {title && <p className="title">{title}</p>} */}
       </button>
     </header>
   )

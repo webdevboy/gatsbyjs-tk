@@ -1,46 +1,48 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
-import "./FullscreenArticle.scss"
+import './FullscreenArticle.scss';
 
 function FullscreenArticle({ article, articleInfoPosition }) {
   const getArticle = () => {
-    let articleObj = null
-    if (!article) return null
-    const { components, categories, uri } = article
+    let articleObj = null;
+    if (!article) return null;
+    const { components, categories, uri } = article;
     if (components.contents && components.contents.length > 0) {
-      const articleHeroObj = components.contents.find(post => post.heroImage)
+      const articleHeroObj = components.contents.find((post) => post.heroImage);
       const category =
         categories.nodes &&
         categories.nodes.length > 0 &&
         categories.nodes.find(
-          node => node.name.toLowerCase() !== "featured category"
-        )
+          (node) => node.name.toLowerCase() !== 'featured category'
+        );
       articleObj = {
-        title: articleHeroObj.title || "",
-        byline: articleHeroObj.byline || "",
+        title: (articleHeroObj && articleHeroObj.title) || '',
+        byline: (articleHeroObj && articleHeroObj.byline) || '',
         heroUrl:
-          articleHeroObj.heroImage && articleHeroObj.heroImage.sourceUrl
+          articleHeroObj &&
+          articleHeroObj.heroImage &&
+          articleHeroObj.heroImage.sourceUrl
             ? articleHeroObj.heroImage.sourceUrl
-            : "",
+            : '',
         category,
         uri,
-      }
+      };
     }
-    return articleObj
-  }
+    return articleObj;
+  };
 
-  const articleObject = getArticle()
-  if (!articleObject) return null
+  const articleObject = getArticle();
+  if (!articleObject) return null;
   return (
     <div
       className={`fullscreen-article ${articleInfoPosition
         .toLowerCase()
-        .replace(" ", "-")}`}
+        .replace(' ', '-')}`}
       style={{
         backgroundImage: articleObject.heroUrl
           ? `url("${articleObject.heroUrl}")`
-          : "",
+          : '',
       }}
     >
       <div className="fullscreen-article__info">
@@ -71,7 +73,7 @@ function FullscreenArticle({ article, articleInfoPosition }) {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default FullscreenArticle
+export default FullscreenArticle;

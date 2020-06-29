@@ -1,7 +1,7 @@
-import React from "react"
-import * as cx from "classnames"
+import React from 'react';
+import * as cx from 'classnames';
 
-import "./PhotoLayout.scss"
+import './PhotoLayout.scss';
 
 function Photo({ url, altText, cutline }) {
   return (
@@ -9,7 +9,7 @@ function Photo({ url, altText, cutline }) {
       <img src={url} alt={altText} />
       <p className="cutline">{cutline}</p>
     </div>
-  )
+  );
 }
 
 function PhotoLayout({
@@ -20,22 +20,18 @@ function PhotoLayout({
   split,
   theme,
 }) {
-  if (!cutlineOne || !cutlineTwo || !imageOne || !imageTwo) {
-    return
-  }
-
   const photos = [
     { ...imageOne, cutline: cutlineOne },
     { ...imageTwo, cutline: cutlineTwo },
-  ]
+  ];
 
-  return (
+  return photos.length ? (
     <section
       className={cx({
-        "photo-layout": true,
+        'photo-layout': true,
         [theme]: true,
-        "bias-layout": !split,
-        "half-layout": split,
+        'bias-layout': !split,
+        'half-layout': split,
       })}
     >
       {photos.map((photo, key) => {
@@ -46,10 +42,12 @@ function PhotoLayout({
             alt={photo.altText}
             cutline={photo.cutline}
           />
-        )
+        );
       })}
     </section>
-  )
+  ) : (
+    <></>
+  );
 }
 
-export default PhotoLayout
+export default PhotoLayout;

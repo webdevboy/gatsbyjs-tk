@@ -1,6 +1,6 @@
 import React from "react"
 import {
-  PageHero,
+  // PageHero,
   TopArticlesHome,
   FullscreenArticle,
   Chefs,
@@ -21,10 +21,13 @@ const PageLayouts = ({ layoutData, theme }) => {
     </div>
   )
 
+  const Empty = () => <></>
+
   // Mapping the fieldGroupName(s) to our components
   const layouts = {
     page_Components_Contents_FullscreenArticle: FullscreenArticle,
-    page_Components_Contents_HomepageHero: PageHero,
+    // page_Components_Contents_HomepageHero: PageHero,
+    page_Components_Contents_HomepageHero: Empty,
     page_Components_Contents_TopArticles: TopArticlesHome,
     page_Components_Contents_Chefs: Chefs,
     page_Components_Contents_SociallyConnected: SociallyConnected,

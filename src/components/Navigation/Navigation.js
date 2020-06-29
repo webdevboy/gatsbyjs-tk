@@ -92,7 +92,7 @@ function Navigation({ theme, showNav }) {
                   </Link>
                 </li>
               ) : (
-                <></>
+                <React.Fragment key={menu.id} />
               )
             ) : (
               <ItemWithSubNav

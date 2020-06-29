@@ -97,7 +97,7 @@ export default function TopArticles({ category }) {
     return isNotFirst && !isFeatured
   })
   const formattedArticles = getArticles(formattedNodes).slice(0, 4)
-  console.log(featuredArticleFormatted)
+
   return (
     <div className="top-articles-container">
       <div className="top-articles container">

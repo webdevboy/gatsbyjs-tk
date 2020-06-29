@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
+import * as cx from "classnames"
 
 import "./PostHero.scss"
 
@@ -11,15 +12,20 @@ export default function Hero({
   theme,
 }) {
   const categoryName = categories.length ? categories[0].name : null
+  const [loaded, setLoaded] = useState(false)
 
   return (
     <section className={`post-hero ${theme}`}>
-      <div className="image-container">
+      <div className={cx("image-container", { loaded })}>
         {heroImage && heroImage.sourceUrl && (
-          <img src={heroImage.sourceUrl} alt="" />
+          <img
+            src={heroImage.sourceUrl}
+            alt=""
+            onLoad={() => setLoaded(true)}
+          />
         )}
       </div>
-      <div className="block">
+      <div className={cx("block", { loaded })}>
         <div className="block-wrapper">
           {categoryName && (
             <p

@@ -1,23 +1,58 @@
 // Used in components/Layout.js
-@import 'swiper/swiper.scss';
+@import "swiper/swiper.scss";
 @import "variables";
 @import "normalize";
 
-body {
-  &.wrapper {
-    margin: 0 auto;
-    max-width: 1920px;
-    background-color: $color-white;
+html {
+  box-sizing: border-box;
 
-    &.dark {
-      background-color: $color-black;
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  &.no-scrolling {
+    overflow: hidden;
+
+    body {
+      height: 100%;
+      overflow: hidden;
     }
   }
 
-  button {
-    border: none;
-    outline: 0;
-    background-color: transparent;
-    padding: 0;
+  body {
+    &.wrapper {
+      margin: 0 auto;
+      max-width: 1920px;
+      background-color: $color-white;
+
+      &.dark {
+        background-color: $color-black;
+      }
+    }
+
+    &.is-front-page {
+      transition: transform $hero-animation-duration ease-out;
+
+      .swipe-container {
+        .swipe-wrapper {
+          overflow: visible;
+
+          &.overflow-scroll {
+            overflow: scroll;
+            overflow: auto;
+            overflow: overlay;
+          }
+        }
+      }
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      background-color: transparent;
+      padding: 0;
+    }
   }
 }
