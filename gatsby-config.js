@@ -18,13 +18,6 @@ module.exports = {
     },
     `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
-    // Gatsby MailChimp
-    {
-      resolve: 'gatsby-plugin-mailchimp',
-      options: {
-        endpoint: process.env.MAILCHIMP_ENDPOINT,
-      },
-    },
     {
       resolve: `gatsby-source-graphql`,
       options: {
@@ -36,12 +29,6 @@ module.exports = {
         fieldName: `wordpress`,
         // Url to query from
         url: process.env.GATSBY_WP_GRAPHQL_ENDPOINT,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: process.env.S3_HOSTING_ENDPOINT,
       },
     },
     `gatsby-plugin-react-helmet`,
