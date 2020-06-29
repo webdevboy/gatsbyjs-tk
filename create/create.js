@@ -57,10 +57,10 @@ const getLangCode = ctx => {
   switch (code) {
     case "EN":
       return ""
-    case "ZH":
-      return "zh"
-    case "ES":
-      return "es"
+    case "ZH_CN":
+      return "zh_cn"
+    case "ZH_TW":
+      return "zh_tw"
     default:
       return ""
   }

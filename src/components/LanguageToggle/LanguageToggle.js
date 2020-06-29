@@ -24,10 +24,10 @@ const LanguageToggle = ({ theme }) => {
     switch (code) {
       case "EN":
         return ""
-      case "ZH":
-        return "zh"
-      case "ES":
-        return "es"
+      case "ZH_CN":
+        return "zh_cn"
+      case "ZH_TW":
+        return "zh_tw"
       default:
         return ""
     }
@@ -40,7 +40,7 @@ const LanguageToggle = ({ theme }) => {
 
     const { pathname } = window.location
 
-    switch (pathname.includes("/es/") || pathname.includes("/zh/")) {
+    switch (pathname.includes("/zh_cn/") || pathname.includes("/zh_tw/")) {
       case true:
         return pathname.split("/")[2]
       case false:
