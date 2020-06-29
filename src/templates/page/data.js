@@ -1,4 +1,4 @@
-const PageTemplateFragment = layouts => `
+const PageTemplateFragment = (layouts) => `
   fragment PageTemplateFragment on WordPress_Page {
     id
     title
@@ -7,16 +7,12 @@ const PageTemplateFragment = layouts => `
     language {
       code
     }
-    themeSelect {
-      fieldGroupName
-      themeSelect
-    }
     components {
       contents {
         ${layouts}
       }
     }
   }
-`
+`;
 
-module.exports.PageTemplateFragment = PageTemplateFragment
+module.exports.PageTemplateFragment = PageTemplateFragment;
