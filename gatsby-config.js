@@ -3,9 +3,18 @@ require('dotenv').config({
 });
 
 console.log('process.env.GATSBY_AUTH0_DOMAIN', process.env.GATSBY_AUTH0_DOMAIN);
-console.log('process.env.GATSBY_AUTH0_CLIENTID', process.env.GATSBY_AUTH0_CLIENTID);
-console.log('process.env.GATSBY_AUTH0_CALLBACK', process.env.GATSBY_AUTH0_CALLBACK);
-console.log('process.env.GATSBY_WP_GRAPHQL_ENDPOINT', process.env.GATSBY_WP_GRAPHQL_ENDPOINT);
+console.log(
+  'process.env.GATSBY_AUTH0_CLIENTID',
+  process.env.GATSBY_AUTH0_CLIENTID
+);
+console.log(
+  'process.env.GATSBY_AUTH0_CALLBACK',
+  process.env.GATSBY_AUTH0_CALLBACK
+);
+console.log(
+  'process.env.GATSBY_WP_GRAPHQL_ENDPOINT',
+  process.env.GATSBY_WP_GRAPHQL_ENDPOINT
+);
 
 module.exports = {
   siteMetadata: {
@@ -23,13 +32,6 @@ module.exports = {
     },
     `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
-    // Gatsby MailChimp
-    {
-      resolve: 'gatsby-plugin-mailchimp',
-      options: {
-        endpoint: process.env.MAILCHIMP_ENDPOINT,
-      },
-    },
     {
       resolve: `gatsby-source-graphql`,
       options: {
@@ -41,12 +43,6 @@ module.exports = {
         fieldName: `wordpress`,
         // Url to query from
         url: process.env.GATSBY_WP_GRAPHQL_ENDPOINT,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: process.env.S3_HOSTING_ENDPOINT,
       },
     },
     `gatsby-plugin-react-helmet`,
