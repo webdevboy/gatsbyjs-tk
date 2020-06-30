@@ -8,6 +8,7 @@
   line-height: 20px;
   font-size: 13px;
   display: grid;
+  color: #282828;
 
   &.dark {
     color: $color-white;
@@ -39,7 +40,6 @@
     }
 
     .copy {
-      color: #282828;
       font-family: $font-serif;
       font-size: 12px;
       line-height: 18px;
