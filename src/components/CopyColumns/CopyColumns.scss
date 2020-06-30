@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .copy-columns {
   padding: 0 20px;
@@ -36,6 +36,13 @@
     .headline,
     .subhead {
       text-align: center;
+    }
+
+    .copy {
+      color: #282828;
+      font-family: $font-serif;
+      font-size: 12px;
+      line-height: 18px;
     }
   }
 }
