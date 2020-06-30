@@ -61,9 +61,13 @@ html {
     .cutline {
       color: #787276;
       font-family: $font-sans-serif;
-      font-size: 10px;
+      font-size: 13px;
       font-style: italic;
       text-align: center;
+
+      @media #{$viewport-medium} {
+        font-size: 10px;
+      }
     }
   }
 }

@@ -14,11 +14,11 @@
   }
 
   blockquote {
-    margin: 40px 20px 60px;
+    margin: 0 20px;
     text-align: center;
 
     @media #{$viewport-medium} {
-      margin: 60px 20px;
+      margin: 0 20px;
     }
 
     @media #{$viewport-large} {
