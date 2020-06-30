@@ -1,7 +1,7 @@
 // Used in components/Layout.js
-@import "swiper/swiper.scss";
-@import "variables";
-@import "normalize";
+@import 'swiper/swiper.scss';
+@import 'variables';
+@import 'normalize';
 
 html {
   box-sizing: border-box;
@@ -31,15 +31,16 @@ html {
         background-color: $color-black;
       }
     }
+
     #main-wrapper {
       &.is-front-page {
         transition: transform $hero-animation-duration ease-out;
         background-color: $color-lightgray;
-  
+
         .swipe-container {
           .swipe-wrapper {
             overflow: visible;
-  
+
             &.overflow-scroll {
               overflow: scroll;
               overflow: auto;
@@ -49,13 +50,20 @@ html {
         }
       }
     }
-    
 
     button {
       border: none;
       outline: 0;
       background-color: transparent;
       padding: 0;
+    }
+
+    .cutline {
+      color: #787276;
+      font-family: $font-sans-serif;
+      font-size: 10px;
+      font-style: italic;
+      text-align: center;
     }
   }
 }

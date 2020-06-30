@@ -1,6 +1,6 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-166107621-1",
+        trackingId: 'UA-166107621-1',
         head: true,
       },
     },
@@ -31,12 +31,12 @@ module.exports = {
         url: process.env.GATSBY_WP_GRAPHQL_ENDPOINT,
       },
     },
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: process.env.S3_HOSTING_ENDPOINT,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-s3`,
+    //   options: {
+    //     bucketName: process.env.S3_HOSTING_ENDPOINT,
+    //   },
+    // },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -70,6 +70,6 @@ module.exports = {
         prefixDefault: false,
         useLangKeyLayout: false,
       },
-    }
+    },
   ],
-}
+};
