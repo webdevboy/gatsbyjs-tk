@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .navigation {
   position: fixed;
@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   height: calc(100vh - 60px);
-  background-color: $color-white;
+  background-color: #f3f4f5;
   font-family: $font-sans-serif;
   color: $color-black;
   z-index: 100;
@@ -27,10 +27,10 @@
   }
 
   &.home-slide {
-    
     @media #{$viewport-medium} {
       top: calc(50% + 60px);
     }
+
     &.slide-in {
       bottom: 0;
       top: calc(50% + 60px);
@@ -89,7 +89,7 @@
       display: block;
       margin-left: -50%;
       margin-top: -50%;
-      content: "";
+      content: '';
       transform: rotate(45deg);
     }
 
@@ -110,7 +110,7 @@
     margin: 0;
     padding: 0 40px;
     position: relative;
-    background-color: $color-white;
+    background-color: #f3f4f5;
 
     li {
       > button {
@@ -123,7 +123,7 @@
     }
 
     > li {
-      border-bottom: 1px solid $color-white;
+      border-bottom: 1px solid #f3f4f5;
       list-style: none;
       font-size: 16px;
       padding: 15px 0;

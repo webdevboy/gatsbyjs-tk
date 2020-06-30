@@ -46,6 +46,18 @@ $max_font: 22px;
   min-height: 60px;
   z-index: 101;
 
+  &:after {
+    content: '';
+    display: block;
+    width: calc(100% - 40px);
+    position: absolute;
+    border: 1px solid #979797;
+    opacity: 0.2;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+
   @media #{$viewport-medium} {
     padding: 20px;
   }
@@ -66,7 +78,7 @@ $max_font: 22px;
 
     .nav-icon {
       span {
-        background: $color-black;
+        background: #787276;
       }
     }
   }
