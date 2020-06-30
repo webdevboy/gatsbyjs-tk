@@ -1,4 +1,4 @@
-@import "src/styles/variables.scss";
+@import 'src/styles/variables.scss';
 
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
@@ -49,13 +49,15 @@ $max_font: 22px;
   @media #{$viewport-medium} {
     padding: 20px;
   }
+
   .header__language-login {
     display: flex;
     justify-content: flex-end;
     align-items: center;
   }
+
   &.light {
-    background-color: $color-white;
+    background-color: $color-bg-light;
     color: $color-black;
 
     .title {
@@ -149,7 +151,6 @@ $max_font: 22px;
     border: none;
     margin-left: 0;
     @media #{$viewport-medium} {
-      
       width: auto;
       height: auto;
     }
