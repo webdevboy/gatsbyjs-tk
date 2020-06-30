@@ -1,10 +1,10 @@
 @import 'src/styles/variables';
 
 .photo-layout {
-  padding: 60px 20px;
+  padding: 0 20px;
 
   @media #{$viewport-medium} {
-    padding: 60px 40px;
+    padding: 0 40px;
     display: grid;
     grid-gap: 40px;
   }
