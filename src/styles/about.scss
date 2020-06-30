@@ -1,0 +1,120 @@
+@import "variables";
+
+.about-page {
+  padding: 60px 20px 100px;
+
+  @media #{$viewport-medium} {
+    padding: 60px 40px 100px;
+  }
+
+  h1 {
+    font-family: $font-serif;
+    font-size: 25px;
+    text-align: center;
+    font-weight: $serif-regular;
+    margin: 0;
+    margin-bottom: 50px;
+
+    @media #{$viewport-medium} {
+      font-size: 32px;
+    }
+
+    @media #{$viewport-large} {
+      font-size: 48px;
+    }
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  .content-block {
+    @media #{$viewport-medium} {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 40px;
+    }
+
+    .img-wrapper {
+      margin-bottom: 20px;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+
+      img {
+        width: 100%;
+        height: 440px;
+        object-fit: cover;
+        object-position: center center;
+
+        @media #{$viewport-medium} {
+          height: 470px;
+        }
+      }
+
+      .cutline {
+        font-size: 9px;
+        font-family: $font-sans-serif;
+        margin: 0;
+        text-align: center;
+      }
+    }
+
+    .copyblock {
+      font-size: 12px;
+      font-family: $font-serif;
+
+      @media #{$viewport-medium} {
+        grid-column-start: 4;
+        grid-column-end: 7;
+      }
+
+      p {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .info-block {
+    .about-sub-head {
+      font-size: 24px;
+      font-family: $font-sans-serif;
+      font-weight: $sans-serif-bold;
+      margin: 50px 0 30px;
+      color: $color-gray;
+    }
+
+    .info-container {
+      padding: 0;
+      margin: 0;
+
+      @media #{$viewport-medium} {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+        column-gap: 40px;
+      }
+
+      li {
+        list-style: none;
+        margin-bottom: 30px;
+
+        p {
+          font-size: 12px;
+          font-family: $font-sans-serif;
+          margin: 0;
+
+          &:first-child {
+            font-size: 14px;
+            font-weight: $sans-serif-bold;
+            margin-bottom: 10px;
+            color: $color-gray;
+          }
+        }
+      }
+    }
+  }
+}

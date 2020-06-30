@@ -1,4 +1,6 @@
 const create = require("./create/create")
+const fs = require("fs-extra")
+const path = require("path")
 
 exports.createPagesStatefully = async ({ graphql, actions, reporter }) => {
   await create({ actions, graphql, reporter })
@@ -24,4 +26,11 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       },
     })
   }
+}
+
+exports.onPostBuild = () => {
+  fs.copySync(
+    path.join(__dirname, "/src/locales"),
+    path.join(__dirname, "/public/locales")
+  )
 }

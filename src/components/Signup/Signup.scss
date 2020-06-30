@@ -1,0 +1,79 @@
+@import "src/styles/variables";
+
+.signup-container {
+  padding: 0 20px 50px 20px;
+  font-family: $font-sans-serif;
+  color: $color-darkgray;
+  box-sizing: border-box;
+  .login__input {
+    margin-bottom: 1.25rem;
+    width: 100%;
+    input {
+      border: 1px solid;
+      border-radius: 3px;
+      width: 100%;
+      padding: 1em;
+      box-sizing: border-box;
+      font-family: $font-sans-serif;
+      outline: none;
+    }
+  }
+  select {
+    border: 1px solid;
+    border-radius: 3px;
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    font-family: $font-sans-serif;
+    outline: none;
+    background-color: $color-white;
+    margin-bottom: 1.25rem;
+  }
+  .login__submit {
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: $color-darkgray;
+    color: $color-white;
+    font-family: $font-sans-serif;
+    border-radius: 3px;
+    width: 100%;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+  .signup__checkbox-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    label {
+      margin-left: 10px;
+      font-size: 15x;
+    }
+  }
+}
+
+
+// input,
+// select {
+//   padding: 1em;
+//   width: 100%;
+//   border: 1px solid;
+//   border-radius: 3px;
+// }
+
+// button {
+//   padding: 1rem;
+// }
+
+// .lost-password a {
+//   color: darkgray;
+// }
+
+// #error-message {
+//   display: none;
+// }
+
+// .nav-buttons {
+//     display: none;
+// }
+

@@ -5,7 +5,7 @@ export const getFormattedArticle = article => {
     article.components.contents.find(content => content.thumbnailImage)
   const imageHeroObj =
     article.components.contents &&
-    article.components.contents.find(content => content.heroImage)
+    article.components.contents.find(content => content.fieldGroupName === 'post_Components_Contents_ArticleHero')
   const category = article.categories.nodes.find(
     category => category.name.toLowerCase() !== "featured category"
   )
@@ -14,11 +14,11 @@ export const getFormattedArticle = article => {
     article.components.contents.find(content => content.byline)
   const formattedArticle = {
     imageUrl:
-      (imageObj && imageObj.thumbnailImage.sourceUrl) ||
-      (imageHeroObj && imageHeroObj.heroImage.sourceUrl),
+      (imageObj && imageObj.thumbnailImage && imageObj.thumbnailImage.sourceUrl) ||
+      (imageHeroObj && imageHeroObj.heroImage && imageHeroObj.heroImage.sourceUrl),
     authors: imageHeroObj && imageHeroObj.authors ? `Photography by ${imageHeroObj.authors}` : null,
     cutline: category ? category.name : "",
-    title: article.title || (imageObj && imageObj.title),
+    title: imageHeroObj && imageHeroObj.title || article.title,
     byline: bylineObj && bylineObj.byline,
     articleUrl: article.uri,
   }

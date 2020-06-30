@@ -1,10 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
+import { useTranslation } from "react-i18next"
+
 
 import "../TopArticlesHome/TopArticles.scss"
 import "./TopArticlesCategory.scss"
+import i18next from "i18next"
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 
-function Article({ title, byline, category, imageUrl, articleUrl }) {
+
+function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
   return (
     <div className="top_articles__columns__column__inner">
       <div
@@ -16,8 +21,8 @@ function Article({ title, byline, category, imageUrl, articleUrl }) {
       {byline && <div className="article__description">{byline}</div>}
       {articleUrl && (
         <div className="article__more">
-          <Link to={articleUrl} className="article__more__link">
-            Read More
+          <Link to={convertLinkLocale(articleUrl, i18n.language)} className="article__more__link">
+            {t('read-more')}
           </Link>
         </div>
       )}
@@ -28,6 +33,8 @@ function Article({ title, byline, category, imageUrl, articleUrl }) {
 export default function TopArticles({ category }) {
   const { name, posts } = category
 
+  const [t, i18n] = useTranslation('article');
+
   const getFormattedArticle = article => {
     if (!article) return null
     const imageObj =
@@ -35,7 +42,7 @@ export default function TopArticles({ category }) {
       article.components.contents.find(content => content.thumbnailImage)
     const imageHeroObj =
       article.components.contents &&
-      article.components.contents.find(content => content.heroImage)
+      article.components.contents.find(content => content.fieldGroupName === 'post_Components_Contents_ArticleHero')
     const category = article.categories.nodes.find(
       category => category.name.toLowerCase() !== "featured category"
     )
@@ -44,10 +51,10 @@ export default function TopArticles({ category }) {
       article.components.contents.find(content => content.byline)
     const formattedArticle = {
       imageUrl:
-        (imageObj && imageObj.thumbnailImage.sourceUrl) ||
-        (imageHeroObj && imageHeroObj.heroImage.sourceUrl),
+        (imageObj && imageObj.thumbnailImage && imageObj.thumbnailImage.sourceUrl) ||
+        (imageHeroObj && imageHeroObj.heroImage && imageHeroObj.heroImage.sourceUrl),
       category: category ? category.name : "",
-      title: article.title,
+      title: imageHeroObj && imageHeroObj.title || article.title,
       byline: bylineObj && bylineObj.byline,
       articleUrl: article.uri,
       id: article.id,
@@ -97,7 +104,6 @@ export default function TopArticles({ category }) {
     return isNotFirst && !isFeatured
   })
   const formattedArticles = getArticles(formattedNodes).slice(0, 4)
-
   return (
     <div className="top-articles-container">
       <div className="top-articles container">
@@ -132,10 +138,10 @@ export default function TopArticles({ category }) {
               {featuredArticleFormatted.articleUrl && (
                 <div className="article__more">
                   <Link
-                    to={featuredArticleFormatted.articleUrl}
+                    to={convertLinkLocale(featuredArticleFormatted.articleUrl, i18n.language)}
                     className="article__more__link"
                   >
-                    Read more
+                    {t('read-more')}
                   </Link>
                 </div>
               )}
@@ -146,15 +152,9 @@ export default function TopArticles({ category }) {
           <div className="top__articles__category">
             {formattedArticles.map((article, index) => (
               <div className="top__articles__category__item" key={index}>
-                <Article {...{ ...article, category: name }} />
+                <Article {...{ ...article, category: name }} t={t} i18n={i18n} />
               </div>
             ))}
-            {formattedArticles.length > 1 && (
-              <div className="top_articles__columns__category__divider first" />
-            )}
-            {formattedArticles.length > 2 && (
-              <div className="top_articles__columns__category__divider second" />
-            )}
           </div>
         </div>
       </div>

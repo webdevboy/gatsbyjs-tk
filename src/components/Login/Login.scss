@@ -1,0 +1,87 @@
+@import "src/styles/variables";
+
+.login-container {
+  padding: 0 20px 50px 20px;
+  box-sizing: border-box;
+  .login__input {
+    margin-bottom: 1.25rem;
+    width: 100%;
+    input {
+      border: 1px solid;
+      border-radius: 3px;
+      width: 100%;
+      padding: 1em;
+      box-sizing: border-box;
+      font-family: $font-sans-serif;
+      outline: none;
+    }
+  }
+  .login__submit {
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: $color-darkgray;
+    color: $color-white;
+    font-family: $font-sans-serif;
+    border-radius: 3px;
+    width: 60%;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  .login__lost-password {
+    display: block;
+    margin: 15px 0 20px 0;
+    font-family: $font-sans-serif;
+    color: $color-gray;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .login__remember {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    label {
+      color: $color-gray;
+      font-size: 15px;
+      font-family: $font-sans-serif;
+      margin-left: 5px;
+    }
+  }
+  .login__facebook {
+    background-color: #285296;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 3px;
+    color: $color-white;
+    font-family: $font-sans-serif;
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+}
+
+
+// input,
+// select {
+//   padding: 1em;
+//   width: 100%;
+//   border: 1px solid;
+//   border-radius: 3px;
+// }
+
+// button {
+//   padding: 1rem;
+// }
+
+// .lost-password a {
+//   color: darkgray;
+// }
+
+// #error-message {
+//   display: none;
+// }
+
+// .nav-buttons {
+//     display: none;
+// }
+

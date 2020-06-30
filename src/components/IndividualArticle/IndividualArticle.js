@@ -1,12 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
+import { useTranslation } from "react-i18next"
 
 import { getFormattedArticle } from "src/utils/formatArticle"
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 import "./IndividualArticle.scss"
 
 function IndividualArticle({ article }) {
   const formattedArticle = getFormattedArticle(article)
+  const [t, i18n] = useTranslation('article');
   return (
     formattedArticle && (
       <div className="individual-article-wrapper">
@@ -38,9 +41,9 @@ function IndividualArticle({ article }) {
               <div className="individual-article__info__more">
                 <Link
                   className="individual-article__info__more__link"
-                  to={formattedArticle.articleUrl}
+                  to={convertLinkLocale(formattedArticle.articleUrl, i18n.language)}
                 >
-                  Read More
+                  {t('read-more')}
                 </Link>
               </div>
             )}

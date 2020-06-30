@@ -1,14 +1,12 @@
 @import "src/styles/variables.scss";
 
-
 .chefs {
   width: 100%;
   max-width: 100%;
-  padding: 60px 0;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: $color-lightgray;
   position: relative;
+  padding: 55px 0;
   .container {
     margin: 0 auto;
     width: 100%;
@@ -33,6 +31,7 @@
     text-align: center;
     padding: 0 21px;
     box-sizing: border-box;
+
     @media #{$viewport-medium} {
       font-size: 32px;
     }
@@ -46,6 +45,7 @@
     top: 115px;
     left: 21px;
     opacity: 1;
+
     .swiper-scrollbar-drag {
       position: relative;
       top: 0px;
@@ -55,86 +55,105 @@
       background: #b3a97e;
       border-radius: 10px;
     }
+
     @media #{$viewport-medium} {
       display: none;
     }
   }
+
   .chefs__columns {
     padding-left: 21px;
     padding-right: 21px;
     width: 100%;
     margin-top: 58px;
     box-sizing: border-box;
+
     @media #{$viewport-medium} {
       width: 100%;
       padding: 0 42px;
       margin-top: 60px;
     }
+
     @media #{$viewport-medium} {
       width: 100%;
       padding: 0 42px;
       margin-top: 90px;
     }
+
     .swiper-container {
       overflow: initial;
       position: initial;
     }
+
     .chefs__columns__column {
       width: 100%;
+
       .chefs__columns__column__img__wrapper {
         padding: 0;
         background-color: $color-white;
+
         @media #{$viewport-xlarge} {
           padding: 50px 50px 100px 50px;
         }
       }
+
       .chefs__columns__column__img {
         width: 100%;
         height: 345px;
         background-image: url("http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/wp-content/uploads/2020/05/tkhp.png");
         background-size: cover;
         background-position: center;
+
         @media #{$viewport-medium} {
           height: 320px;
         }
+
         @media #{$viewport-large} {
           height: 300px;
         }
+
         @media #{$viewport-xlarge} {
           height: 450px;
         }
       }
+
       .chefs__columns__column__info {
         margin-top: 30px;
         text-align: center;
         color: $color-cutline;
+
         @media #{$viewport-xlarge} {
           width: 77%;
           margin: 30px auto 0 auto;
         }
+
         .chefs__columns__column__info_cutline {
           font-family: $font-sans-serif;
           font-size: 10px;
           font-weight: $sans-serif-regular;
           text-transform: uppercase;
         }
+
         .chefs__columns__column__info_title {
           margin-top: 20px;
           font-size: 24px;
           font-family: $font-sans-serif;
           font-weight: $sans-serif-semibold;
         }
+
         .chefs__columns__column__info_description {
           margin-top: 20px;
           font-size: 12px;
           font-family: $font-serif;
           font-weight: $serif-regular;
         }
+
         .chefs__columns__column__info_more {
           margin-top: 20px;
           font-size: 12px;
           font-family: $font-sans-serif;
           font-weight: $sans-serif-bold;
+
           .chefs__columns__column__info_more__link {
             text-decoration: none;
             color: $color-cutline;
@@ -143,6 +162,4 @@
       }
     }
   }
-  
 }
-

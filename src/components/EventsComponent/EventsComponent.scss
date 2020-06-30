@@ -1,8 +1,6 @@
 @import "src/styles/variables";
 
 .events-component {
-  margin-top: 30px;
-  margin-bottom: 30px;
   padding-top: 20px;
   font-family: $font-sans-serif;
   font-weight: $sans-serif-semibold;
@@ -13,65 +11,79 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
   @media #{$viewport-medium} {
     min-height: 520px;
   }
+
   @media #{$viewport-large} {
     min-height: 730px;
   }
+
   .events-component__date {
     text-align: center;
     font-size: 12px;
     font-weight: $sans-serif-bold;
     text-transform: uppercase;
   }
+
   .events-component__day {
     font-size: 120px;
     margin-top: 40px;
     font-family: $font-serif;
     text-align: center;
   }
+
   .event {
     font-family: $font-sans-serif;
     color: $color-black;
     text-align: center;
     padding: 40px;
+
     @media #{$viewport-medium} {
       width: 60%;
       margin: 0 auto;
     }
+
     @media #{$viewport-medium} {
       width: 50%;
       padding: 60px 60px 120px 60px;
     }
+
     .event__cutline {
       font-size: 12px;
     }
+
     .event__title {
       margin-top: 10px;
       font-weight: $serif-bold;
       font-size: 22px;
+
       @media #{$viewport-medium} {
         font-size: 32px;
       }
     }
+
     .event__desc1 {
       margin-top: 20px;
       font-size: 14px;
       font-weight: $sans-serif-semibold;
+
       @media #{$viewport-medium} {
         font-size: 16px;
       }
     }
+
     .event__desc2 {
       margin-top: 20px;
       font-size: 14px;
       font-weight: $sans-serif-semibold;
+
       @media #{$viewport-medium} {
         font-size: 16px;
       }
-      
     }
+
     .event__link {
       text-decoration: none;
       color: $color-black;
@@ -79,7 +91,5 @@
       margin-top: 20px;
       display: block;
     }
-    
   }
 }
-

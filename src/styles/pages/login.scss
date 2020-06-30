@@ -1,0 +1,44 @@
+@import "src/styles/variables";
+
+.login-signup-container {
+  display: block;
+  .signup-container {
+    display: block;
+  }
+  .login-container {
+    display: none;
+  }
+  &.login--active {
+    .signup-container {
+      display: none;
+    }
+    .login-container {
+      display: block;
+    }
+  }
+  @media #{$viewport-medium} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 88px;
+    padding: 0 128px;
+    .signup-container {
+      display: block;
+    }
+    .login-container {
+      display: block;
+    }
+    &.login--active {
+      .signup-container {
+        display: block;
+      }
+      .login-container {
+        display: block;
+      }
+    }
+  }
+
+  @media #{$viewport-xlarge} {
+    column-gap: 216px;
+  }
+}
+

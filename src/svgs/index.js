@@ -7,3 +7,5 @@ export { default as Twitter } from "./twitter"
 export { default as Calendar } from './calendar';
 export { default as Pointer } from './pointer';
 export { default as Cursor } from './cursor';
+export { default as ArrowDown } from "./arrow_down"
+export { default as UserIcon } from './user_icon'

@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import Cookies from 'js-cookie'
+
 
 import Layout from 'src/components/Layout';
 import SEO from 'src/components/seo';
@@ -22,21 +24,21 @@ const FrontPage = ({ pageContext, heroData }) => {
 
   useEffect(() => {
     document.querySelector('html').classList.add('no-scrolling');
-    document.querySelector('body').classList.add('is-front-page');
+    document.querySelector('#main-wrapper').classList.add('is-front-page');
 
-    document.body.style.transform = showHero
-      ? `translateY(0)`
+    document.querySelector('#main-wrapper').style.transform = showHero
+      ? `initial`
       : `translateY(-${_window.outerHeight})`;
 
     return () => {
       document.querySelector('html').classList.remove('no-scrolling');
-      document.querySelector('body').classList.remove('is-front-page');
-      document.body.style.transform = 'translateY(0)';
+      document.querySelector('#main-wrapper').classList.remove('is-front-page');
+      document.querySelector('#main-wrapper').style.transform = 'initial';
     };
   }, []);
 
   useEffect(() => {
-    document.body.style.transform = showHero
+    document.querySelector('#main-wrapper').style.transform = showHero
       ? `translateY(0px)`
       : `translateY(-${_window.outerHeight}px)`;
 
@@ -92,15 +94,17 @@ const FrontPage = ({ pageContext, heroData }) => {
     </>
   );
 };
+  
+function Page ({ pageContext }) {
+  const { title, components } = pageContext
 
-const Page = ({ pageContext }) => {
-  const { title, components } = pageContext;
-
-  const layouts = components.contents || [];
+  
 
   const heroData = pageContext.components.contents.filter(
     (o) => o.fieldGroupName === 'page_Components_Contents_HomepageHero'
   );
+
+  const layouts = components.contents || []
 
   return (
     <>

@@ -1,13 +1,22 @@
 import React from "react"
 import { Link } from "gatsby"
-import { login, logout, isAuthenticated, getProfile } from "../../utils/auth"
+import { logout, isAuthenticated, getProfile } from "../../utils/auth"
+import { useTranslation } from "react-i18next"
+
+import convertLinkLocale from '../../utils/convertLinkLocale';
+import { UserIcon } from '../../svgs';
+import './LoginLogout.scss';
 
 const user = getProfile()
 
 const LoginLogout = () => {
+  const { t, i18n } = useTranslation('common');
   if (isAuthenticated()) {
     return (
-      <>
+      <div className="header__user">
+        <Link to={convertLinkLocale('/account', i18n.language)}>
+          <UserIcon />
+        </Link>
         <a
           href="#logout"
           onClick={e => {
@@ -15,24 +24,16 @@ const LoginLogout = () => {
             logout()
           }}
         >
-          Logout{" "}
+          {t('logout')}{" "}
         </a>
-        <img src={user.picture} width="25px" />
-        <span>{user.nickname}</span>
-      </>
+      </div>
     )
   } else {
     return (
       <>
-        <a
-          href="#login"
-          onClick={e => {
-            e.preventDefault()
-            login()
-          }}
-        >
-          Login{" "}
-        </a>
+        <Link to={convertLinkLocale('/login', i18n.language)} className="header__login-link">
+          {t('login')}{" "}
+        </Link>
       </>
     )
   }

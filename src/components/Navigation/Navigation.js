@@ -1,17 +1,24 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { useTranslation } from "react-i18next"
+import { useLocation } from '@reach/router';
 import { Link } from "gatsby"
 import * as cx from "classnames"
 
+import convertLinkLocale from 'src/utils/convertLinkLocale';
+import MenusZhTw from './Menus.zh_tw';
+import MenusZhCn from './Menus.zh_cn';
+import MenusEn from './Menus.en';
 import "./Navigation.scss"
 
-function ItemWithSubNav({ menu, getUrlPath }) {
+export function ItemWithSubNav({ menu, getUrlPath }) {
   const [showSubMenu, setShowSubMenu] = useState(false)
+  const [t, i18n] = useTranslation('article');
 
   return (
     <li className="with-menu" key={menu.id}>
       <button className="open-menu" onClick={() => setShowSubMenu(true)}>
-        {menu.name}
+        {menu.label}
         <span className="arrow next"></span>
       </button>
       <ul
@@ -23,15 +30,25 @@ function ItemWithSubNav({ menu, getUrlPath }) {
         <li className="go-back">
           <button onClick={() => setShowSubMenu(false)}>
             <span className="arrow prev"></span>
-            {menu.name}
+            {menu.label}
           </button>
         </li>
-        {menu.menuItems.nodes.map(node => {
-          return (
-            <li key={node.id}>
-              <Link to={getUrlPath(node.url)}>{node.label}</Link>
-            </li>
-          )
+        {menu.childItems.nodes.map(node => {
+          if(node.connectedObject) {
+            return (
+              <li key={node.id}>
+                <Link to={convertLinkLocale(`/${node.connectedObject.language.slug}/category/${node.connectedObject.translation.slug}`, i18n.language)}>{node.label}</Link>
+              </li>
+            )
+          }
+          else {
+            return (
+              <li key={node.id}>
+                <Link to={convertLinkLocale(getUrlPath(node.url), i18n.language)}>{node.label}</Link>
+              </li>
+            )
+          }
+          
         })}
       </ul>
     </li>
@@ -39,74 +56,25 @@ function ItemWithSubNav({ menu, getUrlPath }) {
 }
 
 function Navigation({ theme, showNav }) {
-  const { wordpress } = useStaticQuery(
-    graphql`
-      query {
-        wordpress {
-          generalSettings {
-            url
-          }
-          menus {
-            nodes {
-              id
-              name
-              slug
-              menuItems {
-                nodes {
-                  url
-                  id
-                  label
-                }
-              }
-            }
-          }
-        }
+  const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const path = convertLinkLocale(location.pathname,'');
+  const getMenus = lang => {
+    if(!lang) return null;
+    switch(lang.toLowerCase()) {
+      case 'zh_tw': {
+        return <MenusZhTw {...{ theme, showNav, path }} />
       }
-    `
-  )
-
-  const getUrlPath = url => {
-    return url.replace(wordpress.generalSettings.url, "")
+      case 'zh_cn': {
+        return <MenusZhCn {...{ theme, showNav, path }} />
+      }
+      default: {
+        return <MenusEn {...{ theme, showNav, path }} />
+      }
+    }
   }
 
-  return wordpress ? (
-    <nav
-      className={cx({
-        navigation: true,
-        [theme]: true,
-        "slide-in": showNav,
-      })}
-    >
-      <ul className="main-menu">
-        {wordpress.menus &&
-          wordpress.menus.nodes &&
-          wordpress.menus.nodes.length &&
-          wordpress.menus.nodes.map(menu => {
-            // specific check for articles while more posts get added
-            return menu.menuItems.nodes.length <= 1 &&
-              menu.slug !== "articles" ? (
-              menu.menuItems.nodes.length ? (
-                <li key={menu.id}>
-                  <Link to={getUrlPath(menu.menuItems.nodes[0].url)}>
-                    {menu.name}
-                  </Link>
-                </li>
-              ) : (
-                <React.Fragment key={menu.id} />
-              )
-            ) : (
-              <ItemWithSubNav
-                key={menu.id}
-                menu={menu}
-                getUrlPath={getUrlPath}
-              />
-            )
-          })}
-      </ul>
-    </nav>
-  ) : (
-    <div>Error retreiving navigation info</div>
-  )
+  return getMenus(i18n.language);
 }
 
 export default Navigation

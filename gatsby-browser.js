@@ -1,6 +1,18 @@
 // ./gatsby-browser.js
 import React from "react"
 import { silentAuth } from "./src/utils/auth"
+import { globalHistory } from '@reach/router';
+import i18next from 'i18next';
+
+import i18n from "./src/i18n";
+import converLinkLocale from './src/utils/convertLinkLocale';
+
+const LanguageWrapper = ({ children }) => (
+  <div id="main-wrapper">
+    {children}
+  </div>
+)
+
 
 class SessionCheck extends React.Component {
   constructor(props) {
@@ -18,12 +30,30 @@ class SessionCheck extends React.Component {
 
   componentDidMount() {
     silentAuth(this.handleCheckSession)
-  }
 
+    i18next.on('languageChanged', function(lng) {
+      // if(path.indexOf('category') !== - 1) {
+      //   window.location.pathname = converLinkLocale('/', lng);
+      // }
+      // else {
+      //   window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
+      // }
+      window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
+    });
+
+    // Set user pref language
+    if(window && globalHistory.location.pathname.indexOf(i18next.language) == -1 && globalHistory.location.pathname.indexOf('callback') == -1 && i18next.language !== 'en') {
+      window.location.pathname = converLinkLocale(globalHistory.location.pathname, i18next.language);
+    }
+  }
   render() {
     return (
       !this.state.loading && (
-        <React.Fragment>{this.props.children}</React.Fragment>
+        <React.Fragment>
+          <LanguageWrapper>
+            {this.props.children}
+          </LanguageWrapper>
+        </React.Fragment>
       )
     )
   }

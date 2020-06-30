@@ -13,10 +13,13 @@ const GET_PAGES = () => `
   
   query GET_PAGES($first:Int $after:String) {
     wordpress {
-      pages(first: $first after: $after) {
+      pages(first: $first after: $after where: { language: EN }) {
         nodes {                
           ...PageTemplateFragment
         }
+      }
+      defaultLanguage {
+        slug
       }
     }
   }
@@ -32,6 +35,9 @@ const GET_POSTS = () => `
           ...PostTemplateFragment
         }
       }
+      defaultLanguage {
+        slug
+      }
     }
   }
 `
@@ -41,29 +47,29 @@ const GET_CATEGORIES = () => `
 
   query GET_PAGES($first:Int $after:String) {
     wordpress {
-      categories(first: $first after: $after) {
+      categories(first: $first after: $after where: { language: EN }) {
         nodes {                
           ...CategoryTemplateFragment
         }
       }
+      defaultLanguage {
+        slug
+      }
     }
   }
 `
-const getLangCode = ctx => {
-  if (!ctx.language || !ctx.language.code) return
-
-  const { code } = ctx.language
-
-  switch (code) {
-    case "EN":
-      return ""
-    case "ZH_CN":
-      return "zh_cn"
-    case "ZH_TW":
-      return "zh_tw"
-    default:
-      return ""
+const getLangCode = (code, defaultCode) => {
+  if(code === defaultCode) {
+    return '';
   }
+  return code;
+}
+
+const getPath = page => {
+  if(page.isFrontPage) {
+    return `/${page.language.slug === 'en' ? '' : page.language.slug}`;
+  }
+  return `/${page.language.slug}/${page.slug}`;
 }
 
 /**
@@ -98,11 +104,12 @@ module.exports = async ({ actions, graphql, reporter }) => {
       const {
         wordpress: {
           posts: { nodes },
+          defaultLanguage,
         },
       } = data
 
       // Map over the post for later creation
-      nodes && nodes.map(post => allPosts.push(post))
+      nodes && nodes.map(post => allPosts.push({ post, defaultLanguage }))
 
       /**
        * Once we're done, return all the pages
@@ -118,16 +125,16 @@ module.exports = async ({ actions, graphql, reporter }) => {
    * @returns {Promise<*>}
    */
   const fetchPages = async () =>
-    await graphql(pagesQuery).then(({ data }) => {
+    await graphql(pagesQuery, { first: 1000 }).then(({ data }) => {
       // Extract the data from the GraphQL query results
       const {
         wordpress: {
           pages: { nodes },
+          defaultLanguage,
         },
       } = data
-
       // Map over the post for later creation
-      nodes && nodes.map(page => allPages.push(page))
+      nodes && nodes.map(page => allPages.push({ page, defaultLanguage }))
 
       /**
        * Once we're done, return all the pages
@@ -157,12 +164,13 @@ module.exports = async ({ actions, graphql, reporter }) => {
   await fetchPosts().then(posts => {
     posts &&
       posts.map(context => {
+        const { post, defaultLanguage } = context;
         // currently only handling translation in POSTS
-        let path = `${getLangCode(context)}/${context.slug}/`
+        let path = post.language ? `${getLangCode(post.language.slug, defaultLanguage.slug)}/${post.slug}/` : `${post.slug}`
 
-        createPage({ path, component: postTemplate, context })
+        createPage({ path, component: postTemplate, context: post })
 
-        reporter.info(`created: ${context.slug}`)
+        reporter.info(`created: ${post.slug}`)
       })
 
     reporter.info(`# -----> TOTAL: ${posts.length}`)
@@ -171,19 +179,18 @@ module.exports = async ({ actions, graphql, reporter }) => {
   await fetchPages().then(pages => {
     pages &&
       pages.map(context => {
-        let path = `/${context.slug}/`
+        const { page, defaultLanguage } = context;
 
-        /**
-         * If the page is the front page, the page path should not be the uri,
-         * but the root path '/'.
-         */
-        if (context.isFrontPage) {
-          path = "/"
+        createPage({ path: getPath(page), component: pageTemplate, context: page })
+
+        if(page.translations && page.translations.length > 0) {
+          page.translations.map(pageTranslation => {
+            const pageContext = { ...pageTranslation, isFrontPage: page.isFrontPage };
+            createPage({ path: getPath(pageContext), component: pageTemplate, context: pageContext });
+          })
         }
 
-        createPage({ path, component: pageTemplate, context })
-
-        reporter.info(`created: ${context.slug}`)
+        reporter.info(`created: ${page.slug}`)
       })
 
     reporter.info(`# -----> TOTAL: ${pages.length}`)
@@ -193,10 +200,19 @@ module.exports = async ({ actions, graphql, reporter }) => {
     categories &&
       categories.map(category => {
         createPage({
-          path: `/category/${category.slug}`,
+          path: `${`${category.language.slug === 'en' ? '' : `/${category.language.slug}`}`}/category/${category.slug}`,
           component: categoryTemplate,
           context: category,
-        })
+        });
+        if(category.translations && category.translations.length > 0) {
+          category.translations.map(categoryTranslation => {
+            createPage({
+              path: `${categoryTranslation.language.slug}/category/${category.slug}`,
+              component: categoryTemplate,
+              context: categoryTranslation,
+            });
+          });
+        }
         reporter.info(`created: /category/${category.slug}`)
       })
   })

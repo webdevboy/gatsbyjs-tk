@@ -13,7 +13,7 @@ import {
 } from "src/components"
 
 const PageLayouts = ({ layoutData, theme }) => {
-  const layoutType = layoutData.fieldGroupName || "No field group name found"
+  const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found"
   // Default component
   const Default = () => (
     <div>
@@ -44,7 +44,7 @@ const PageLayouts = ({ layoutData, theme }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={theme} type={"page"} />
+  return <ComponentTag {...layoutData} theme={"light"} type={"page"} />
 }
 
 export default PageLayouts

@@ -1,0 +1,46 @@
+@import "src/styles/variables.scss";
+
+.account-container {
+  display: block;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 64px;
+  font-family: $font-sans-serif;
+  color: $color-darkgray;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+  padding: 20px;
+  box-sizing: border-box;
+  @media #{$viewport-medium} {
+    display: grid;
+  }
+  .signup__checkbox-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    label {
+      margin-left: 10px;
+      font-size: 15x;
+    }
+  }
+  .account__update__button {
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: $color-darkgray;
+    color: $color-white;
+    font-family: $font-sans-serif;
+    border-radius: 3px;
+    width: 100%;
+    margin-top: 35px;
+    text-transform: uppercase;
+    cursor: pointer;
+    &.disabled {
+      cursor: initial;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    @media #{$viewport-medium} {
+      width: 60%;
+    }
+  }
+}

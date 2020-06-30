@@ -67,7 +67,7 @@
       border-radius: 4px;
       font-size: 14px;
       margin: 0 auto;
-
+      text-transform: uppercase;
       @media #{$viewport-medium} {
         grid-column-start: 2;
         grid-column-end: 6;

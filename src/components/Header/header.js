@@ -3,6 +3,7 @@ import * as cx from "classnames"
 import Logo from "src/svgs/tk_logo"
 import LanguageToggle from "src/components/LanguageToggle/LanguageToggle"
 import LoginLogout from "src/components/LoginLogout/LoginLogout"
+import { useTranslation } from "react-i18next"
 import { Link } from "gatsby"
 import useWindow from "src/hooks/useWindow"
 import { heroAnimationDuration } from "src/utils/styleVars"
@@ -46,6 +47,9 @@ function Header({ theme, showNav, setShowNav, isFrontPage, heroIsVisible }) {
 
   return (
     <header className={`header ${theme}`}>
+      <button onClick={() => setShowNav()}>
+        <Hamburger isOpen={showNav} />
+      </button>
       {!isFrontPage ? (
         <Link to="/">
           <Logo className="logo" />
@@ -72,11 +76,11 @@ function Header({ theme, showNav, setShowNav, isFrontPage, heroIsVisible }) {
           </p>
         </>
       )}
-      <LanguageToggle theme={theme} />
-      <LoginLogout />
-      <button onClick={() => setShowNav()}>
-        <Hamburger isOpen={showNav} />
-      </button>
+
+      <div className="header__language-login">
+        <LanguageToggle theme={theme} />
+        <LoginLogout />
+      </div>
     </header>
   )
 }

@@ -1,0 +1,61 @@
+@import "src/styles/variables";
+
+.page-limit-modal {
+  position: fixed;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 101;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 0.5fr;
+  .page-limit-modal__body {
+    background-color: $color-white;
+    min-height: 250px;
+    box-shadow: 0 0 8px 0 $color-darkgray;
+    border-radius: 5px;
+    animation: popupAnimation 1s forwards cubic-bezier(0,1.11,.5,1.01);
+    opacity: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    .page-limit-modal__body__title {
+      font-size: 32px;
+      font-family: $font-sans-serif;
+      text-align: center;
+    }
+    .page-limit-modal__body__login-btn {
+      display: block;
+      padding: 1rem;
+      box-sizing: border-box;
+      background-color: $color-darkgray;
+      color: $color-white;
+      font-family: $font-sans-serif;
+      border-radius: 3px;
+      width: 60%;
+      margin-top: 35px;
+      text-transform: uppercase;
+      margin: 0 auto;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+}
+
+@keyframes popupAnimation {
+  0% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

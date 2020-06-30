@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React from "react"
+import { Link } from "gatsby"
+import { useTranslation } from "react-i18next"
 
-import './FullscreenArticle.scss';
+import "./FullscreenArticle.scss"
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 function FullscreenArticle({ article, articleInfoPosition }) {
+  const [t, i18n] = useTranslation('article');
   const getArticle = () => {
     let articleObj = null;
     if (!article) return null;
@@ -65,9 +68,9 @@ function FullscreenArticle({ article, articleInfoPosition }) {
           <div className="fullscreen-article__info__more">
             <Link
               className="fullscreen-article__info__more__link"
-              to={articleObject.uri}
+              to={convertLinkLocale(articleObject.uri, i18n.language)}
             >
-              Read more
+              {t('read-more')}
             </Link>
           </div>
         )}

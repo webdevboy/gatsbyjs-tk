@@ -1,0 +1,16 @@
+@import "src/styles/variables";
+
+.auth-input {
+  margin-bottom: 1.25rem;
+  width: 100%;
+  input {
+    border: 1px solid;
+    border-radius: 3px;
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    font-family: $font-sans-serif;
+    outline: none;
+    background: transparent;
+  }
+}

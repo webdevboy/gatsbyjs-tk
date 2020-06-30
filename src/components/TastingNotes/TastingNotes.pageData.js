@@ -20,8 +20,9 @@ module.exports = () => `
               byline
               title
               heroImage {
-                sourceUrl
+                  sourceUrl
               }
+              fieldGroupName
             }
           }
         }

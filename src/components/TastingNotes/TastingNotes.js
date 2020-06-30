@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Swiper from "react-id-swiper"
 import cx from "classnames"
+import { useTranslation } from "react-i18next"
 
 import { getFormattedArticle } from "src/utils/formatArticle"
 import {
@@ -9,9 +10,10 @@ import {
   LARGE_BREAKPOINT,
   XLARGE_BREAKPOINT,
 } from "src/utils/breakpoints"
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 import "./TastingNotes.scss"
 
-const Note = ({ cutline, title, byline, imageUrl, articleUrl }) => (
+const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => (
   <div className="tasting-notes__note">
     {imageUrl && (
       <img src={imageUrl} className="tasting-notes__note__img" alt="" />
@@ -26,8 +28,8 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl }) => (
     {byline && <div className="tasting-notes__note__byline">{byline}</div>}
     {articleUrl && (
       <div className="tasting-notes__note__more">
-        <Link to={articleUrl} className="tasting-notes__note__more__link">
-          Read More
+        <Link to={convertLinkLocale(articleUrl, i18n.language)} className="tasting-notes__note__more__link">
+          {t('read-more')}
         </Link>
       </div>
     )}
@@ -37,6 +39,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl }) => (
 function TastingNotes({ headline, notes, type, theme }) {
   const [moreThanMedium, setMoreThanMedium] = useState(false)
   const [moreThanLarge, setMoreThanLarge] = useState(false)
+  const [t, i18n] = useTranslation(['article', 'common']);
 
   const setResizeData = width => {
     if (width < MEDIUM_BREAKPOINT) {
@@ -87,7 +90,7 @@ function TastingNotes({ headline, notes, type, theme }) {
   return (
     <div className={`tasting-notes ${theme}`}>
       <div className="tasting-notes__title">
-        {headline ? headline : "Tasting Notes"}
+        {headline ? headline : t('common:tasting-notes')}
       </div>
       <div className="tasting-notes__slider-container">
         <div className={cx({ hidden: moreThanMedium && !moreThanLarge })}>
@@ -96,7 +99,7 @@ function TastingNotes({ headline, notes, type, theme }) {
               notes.length > 0 &&
               notes.map((note, index) => (
                 <div key={index}>
-                  <Note {...getFormattedArticle(note.note)} />
+                  <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n} />
                 </div>
               ))}
           </Swiper>
@@ -106,7 +109,7 @@ function TastingNotes({ headline, notes, type, theme }) {
             {notes &&
               notes.length > 0 &&
               notes.map((note, index) => (
-                <Note {...getFormattedArticle(note.note)} key={index} />
+                <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n} key={index} />
               ))}
           </div>
         )}

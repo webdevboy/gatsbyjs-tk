@@ -5,6 +5,7 @@ const PostTemplateFragment = layouts => `
     slug
     language {
       code
+      slug
     }
     themeSelect {
       fieldGroupName

@@ -1,45 +1,46 @@
 /* eslint jsx-a11y/anchor-is-valid: 0 */
-import React from "react"
+import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { Facebook, Pinterest, Twitter, Instagram, SiteLogo } from "src/svgs"
 import { Link } from "@reach/router"
 
+import getLangLink from 'src/utils/getLangLink';
 import "./footer.scss"
 
 function Footer() {
   const date = new Date()
 
+  const { t, i18n } = useTranslation('footer');
   return (
     <footer className="footer">
       <div className="opt-in">
-        <h2>Keep Tasting</h2>
+        <h2>{t('footer-optin-headline')}</h2>
         <p>
-          Stay up to date with the latest from Tasting Kitchen, Asia’s premier
-          epicurean lifestyle magazine, presenting the best in fine food and
-          drink, art and design, and luxury travel across the globe.
+          {t('footer-optin-copy')}
         </p>
         {/* FIXME: setup to link to sign-up page */}
-        <Link to="/signup">SIGN UP</Link>
+        <Link to={getLangLink('/login', i18n.language)}>{t('signup')}</Link>
       </div>
       <div className="site-links">
         <div className="tabs">
           <div className="tab">
             <input type="checkbox" id="chck1" />
             <label className="tab-label" htmlFor="chck1">
-              Website
+              {t('website')}
             </label>
             <div className="tab-content">
-              <a href="#">Terms</a>
-              <a href="#">FAQs</a>
+              <a href="#">{t('terms')}</a>
+              <a href="#">{t('faqs')}</a>
             </div>
           </div>
           <div className="tab">
             <input type="checkbox" id="chck2" />
             <label className="tab-label" htmlFor="chck2">
-              Info
+              {t('info')}
             </label>
             <div className="tab-content">
-              <a href="#">Subscribe</a>
-              <a href="#">Advertise / Contact</a>
+              <a href="#">{t('subscribe')}</a>
+              <a href="#">{t('advertise-contact')}</a>
             </div>
           </div>
         </div>
@@ -67,10 +68,7 @@ function Footer() {
           </ul>
         </div>
         <p className="about">
-          Tasting Kitchen is a celebration of the finest restaurants, greatest
-          chefs and most delicious food. Our mission is simple: to share our
-          enthusiasm for all the great culinary experiences the world has to
-          offer.
+          {t('footer-about')}
         </p>
         <div className="logo">
           <SiteLogo fill="white" />
@@ -85,3 +83,4 @@ function Footer() {
 }
 
 export default Footer
+

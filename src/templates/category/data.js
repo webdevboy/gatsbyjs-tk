@@ -1,3 +1,32 @@
+
+const postsGql = layouts => {
+  return `
+  posts {
+    nodes {
+        id
+        slug
+        title
+        uri
+        author {
+            id
+            name
+        }
+        categories {
+            nodes {
+              name
+            }
+        }
+        components {
+            contents {
+                ${layouts}
+            }
+        }
+    }
+  }
+`
+};
+
+
 const CategoryTemplateFragment = layouts => `
   fragment CategoryTemplateFragment on WordPress_Category {
     id
@@ -5,28 +34,19 @@ const CategoryTemplateFragment = layouts => `
     uri
     name
     description
-    posts {
-        nodes {
-            id
-            slug
-            title
-            uri
-            author {
-                id
-                name
-            }
-            categories {
-                nodes {
-                  name
-                }
-            }
-            components {
-                contents {
-                    ${layouts}
-                }
-            }
-        }
+    language {
+      code
+      name
+      slug
     }
+    translations {
+      name
+      language {
+        slug
+      }
+      ${postsGql(layouts)}
+    }
+    ${postsGql(layouts)}
   }
 `
 

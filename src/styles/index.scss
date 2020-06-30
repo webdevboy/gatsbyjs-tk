@@ -15,7 +15,7 @@ html {
   &.no-scrolling {
     overflow: hidden;
 
-    body {
+    #main-wrapper {
       height: 100%;
       overflow: hidden;
     }
@@ -31,22 +31,25 @@ html {
         background-color: $color-black;
       }
     }
-
-    &.is-front-page {
-      transition: transform $hero-animation-duration ease-out;
-
-      .swipe-container {
-        .swipe-wrapper {
-          overflow: visible;
-
-          &.overflow-scroll {
-            overflow: scroll;
-            overflow: auto;
-            overflow: overlay;
+    #main-wrapper {
+      &.is-front-page {
+        transition: transform $hero-animation-duration ease-out;
+        background-color: $color-lightgray;
+  
+        .swipe-container {
+          .swipe-wrapper {
+            overflow: visible;
+  
+            &.overflow-scroll {
+              overflow: scroll;
+              overflow: auto;
+              overflow: overlay;
+            }
           }
         }
       }
     }
+    
 
     button {
       border: none;
@@ -55,4 +58,8 @@ html {
       padding: 0;
     }
   }
+}
+
+.blurred {
+  filter: blur(20px) drop-shadow(0 0 0 black);
 }

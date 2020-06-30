@@ -1,14 +1,16 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React from "react"
+import { Link } from "gatsby"
+import { useTranslation } from "react-i18next"
+import getLangLink from '../../utils/getLangLink';
 
-import './TopArticles.scss';
+import "./TopArticles.scss"
 
-function Article({ title, byline, category, imageUrl, articleUrl, authors }) {
+function Article({ title, byline, category, imageUrl, articleUrl, authors, t }) {
   return (
     <div className="top_articles__columns__column__inner">
       <div
         className="top_articles__columns__column__image"
-        style={{ backgroundImage: imageUrl ? `url("${imageUrl}")` : '' }}
+        style={{ backgroundImage: imageUrl ? `url("${imageUrl}")` : "" }}
       />
       {category && <div className="article__category">{category}</div>}
       {title && <div className="article__title">{title}</div>}
@@ -16,76 +18,74 @@ function Article({ title, byline, category, imageUrl, articleUrl, authors }) {
       {articleUrl && (
         <div className="article__more">
           <Link to={articleUrl} className="article__more__link">
-            Read More
+            {t('read-more')}
           </Link>
         </div>
       )}
     </div>
-  );
+  )
 }
 
 export default function TopArticles(props) {
-  const { featuredArticle, articles, theme } = props;
-  const getFormattedArticle = (article) => {
-    if (!article) return null;
+  const { featuredArticle, articles, theme } = props
+  const [t, i18n] = useTranslation('article');
+  const getFormattedArticle = article => {
+    if (!article) return null
 
     const imageObj =
       article.components.contents &&
-      article.components.contents.find((content) => content.thumbnailImage);
+      article.components.contents.find(content => content.thumbnailImage)
     const imageHeroObj =
       article.components.contents &&
-      article.components.contents.find((content) => content.heroImage);
+      article.components.contents.find(content => content.fieldGroupName === 'post_Components_Contents_ArticleHero')
     const category = article.categories.nodes.find(
-      (category) => category.name.toLowerCase() !== 'featured category'
-    );
+      category => category.name.toLowerCase() !== "featured category"
+    )
     const bylineObj =
       article.components.contents &&
-      article.components.contents.find((content) => content.byline);
+      article.components.contents.find(content => content.byline)
     const formattedArticle = {
       imageUrl:
         (imageObj && imageObj.thumbnailImage.sourceUrl) ||
         (imageHeroObj && imageHeroObj.heroImage.sourceUrl),
-      category: category ? category.name : '',
-      title: article.title,
+      category: category ? category.name : "",
+      title: imageHeroObj && imageHeroObj.title || article.title,
       byline: bylineObj && bylineObj.byline,
       articleUrl: article.uri,
       authors:
         imageHeroObj && imageHeroObj.authors
           ? `Photography by ${imageHeroObj.authors}`
           : null,
-    };
-    return formattedArticle;
-  };
+    }
+    return formattedArticle
+  }
 
   const getFeaturedArticle = () => {
-    let fArticle = null;
+    let fArticle = null
     if (featuredArticle) {
-      fArticle = getFormattedArticle(featuredArticle);
+      fArticle = getFormattedArticle(featuredArticle)
     } else {
       const firstArticle =
         articles.column1 && articles.column1.length && articles.column1[0]
           ? articles.column1[0].article
-          : null;
-      fArticle = getFormattedArticle(firstArticle);
+          : null
+      fArticle = getFormattedArticle(firstArticle)
     }
-    return fArticle;
-  };
+    return fArticle
+  }
 
-  const getArticles = (articles) => {
-    const newArticles = [];
-    articles &&
-      articles.length &&
-      articles.map((articleObj) => {
-        const { article } = articleObj;
-        const newArticle = getFormattedArticle(article);
-        newArticles.push(newArticle);
-      });
-    return newArticles;
-  };
+  const getArticles = articles => {
+    const newArticles = []
+    articles && articles.map(articleObj => {
+      const { article } = articleObj
+      const newArticle = getFormattedArticle(article)
+      newArticles.push(newArticle)
+    })
+    return newArticles
+  }
 
-  const featuredArticleFormatted = getFeaturedArticle();
-  const formattedARticles = getArticles(articles);
-
+  const featuredArticleFormatted = getFeaturedArticle()
+  const formattedARticles = getArticles(articles)
   return (
     <div className="top-articles-container">
       <div className={`top-articles container ${theme}`}>
@@ -127,7 +127,7 @@ export default function TopArticles(props) {
                     to={featuredArticleFormatted.articleUrl}
                     className="article__more__link"
                   >
-                    Read more
+                    {t('read-more')}
                   </Link>
                 </div>
               )}
@@ -136,7 +136,7 @@ export default function TopArticles(props) {
         </div>
         <div className="top_articles__columns">
           {formattedARticles.map((article, index) => (
-            <Article key={index} {...article} />
+            <Article key={index} t={t} {...article} />
           ))}
           {formattedARticles.length > 1 && (
             <div className="top_articles__columns__column__divider first" />
@@ -144,39 +144,8 @@ export default function TopArticles(props) {
           {formattedARticles.length > 2 && (
             <div className="top_articles__columns__column__divider second" />
           )}
-          {/* <div className="top_articles__columns__column">
-                        {articles.column1 && articles.column1.length > 0 && (
-                            <div>
-                                {getArticles(articles.column1).map((article, index) => (
-                                    <Article key={index} {...article} />
-                                ))}
-                                <div className="top_articles__columns__column__divider" />
-                            </div>
-                        )}
-                        
-                    </div>
-                    <div className="top_articles__columns__column">
-                        {articles.column2 && articles.column2.length > 0 && (
-                            <div>
-                                {getArticles(articles.column2).map((article, index) => (
-                                    <Article key={index} {...article} />
-                                ))}
-                                <div className="top_articles__columns__column__divider" />
-                            </div>
-                        )}
-                    </div>
-                    <div className="top_articles__columns__column">
-                        {articles.column3 && articles.column3.length > 0 && (
-                            <div>
-                                {getArticles(articles.column3).map((article, index) => (
-                                    <Article key={index} {...article} />
-                                ))}
-                                <div className="top_articles__columns__column__divider" />
-                            </div>
-                        )}
-                    </div> */}
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,13 +1,17 @@
 import React from "react"
 import Swiper from "react-id-swiper"
 import { Link } from "gatsby"
+import { useTranslation } from "react-i18next"
 
 import { MEDIUM_BREAKPOINT } from "src/utils/breakpoints"
 import { getFormattedArticle } from "src/utils/formatArticle"
+import convertLinkLocale from 'src/utils/convertLinkLocale';
+
 
 import "./Chefs.scss"
 
 function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
+  const [t, i18n] = useTranslation('article');
   return (
     <div className="chefs__columns__column">
       {imageUrl && (
@@ -34,10 +38,10 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
 
         <div className="chefs__columns__column__info_more">
           <Link
-            to={articleUrl}
+            to={convertLinkLocale(articleUrl, i18n.language)}
             className="chefs__columns__column__info_more__link"
           >
-            Read More
+            {t('read-more')}
           </Link>
         </div>
       </div>
@@ -45,6 +49,7 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
   )
 }
 function Chefs({ column1, column2, column3 }) {
+  const [t, i18n] = useTranslation('common');
   const params = {
     spaceBetween: 20,
     slidesPerView: 1.5,
@@ -72,7 +77,7 @@ function Chefs({ column1, column2, column3 }) {
   return (
     <div className="chefs">
       <div className="container">
-        <div className="chefs__title">Chefs’ Profile</div>
+        <div className="chefs__title">{t('chefs-profile')}</div>
         <div className="chefs__columns">
           <Swiper {...params}>
             {column1 && (
