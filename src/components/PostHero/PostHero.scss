@@ -1,4 +1,4 @@
-@import "src/styles/variables.scss";
+@import 'src/styles/variables.scss';
 
 .post-hero {
   &.dark {
@@ -75,7 +75,7 @@
 
     .block-wrapper {
       background-color: $color-white;
-      color: $color-black;
+      color: #282828;
       margin-top: -230px;
       text-align: center;
       position: relative;
@@ -109,12 +109,15 @@
       .byline {
         font-family: $font-sans-serif;
         font-weight: $sans-serif-bold;
+        max-width: 634px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .headline {
         font-size: 25px;
         margin-bottom: 20px;
-        font-weight: 400;
+        font-weight: 500;
 
         @media #{$viewport-large} {
           font-size: 35px;
@@ -126,11 +129,13 @@
         margin-bottom: 20px;
         font-family: $font-serif;
         font-weight: $serif-regular;
-        line-height: 24px;
+        line-height: 25px;
         font-size: 15px;
+        color: #787276;
 
         @media #{$viewport-medium} {
           font-size: 16px;
+          margin-bottom: 30px;
         }
       }
 
@@ -139,6 +144,11 @@
         max-width: 50px;
         border: none;
         margin-bottom: 18px;
+        background-color: #787276;
+
+        @media #{$viewport-large} {
+          max-width: 146px;
+        }
       }
 
       .attribution {
