@@ -1,7 +1,7 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .photo-layout-1x3 {
-  padding: 60px 20px;
+  padding: 0 20px;
   display: flex;
   flex-flow: row nowrap;
   overflow: auto;
@@ -12,14 +12,14 @@
   }
 
   @media #{$viewport-medium} {
-    padding: 60px 40px;
+    padding: 0 40px;
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
     grid-gap: 40px;
   }
 
   &:after {
-    content: "";
+    content: '';
     width: 20px;
     display: block;
     flex: 1 0 20px;
