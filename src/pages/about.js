@@ -1,10 +1,10 @@
-import React from "react"
-import Layout from "src/components/layout"
+import React from 'react';
+import Layout from 'src/components/Layout';
 
-import "src/styles/about.scss"
+import 'src/styles/about.scss';
 
 const About = () => {
-  const title = "About Tasting Kitchen"
+  const title = 'About Tasting Kitchen';
 
   return (
     <Layout theme="light" title={title}>
@@ -74,14 +74,14 @@ const About = () => {
               <p>General</p>
               <p>
                 For all customer service questions or comments, sales and
-                distribution enquiries, kindly email{" "}
+                distribution enquiries, kindly email{' '}
                 <b>info@tasting-kitchen.com</b>
               </p>
             </li>
             <li>
               <p>Event</p>
               <p>
-                For event inquiries, please email{" "}
+                For event inquiries, please email{' '}
                 <b>oceantable@tasting-kitchen.com</b>
               </p>
             </li>
@@ -96,10 +96,10 @@ const About = () => {
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default About
+export default About;
 
 // Resources
 // Editorial Team

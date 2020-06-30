@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import LostPassword from 'src/components/LostPassword/LostPassword';
 
 function LostPasswordPage() {
