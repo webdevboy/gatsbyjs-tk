@@ -1,7 +1,7 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .quote {
-  color: $color-black;
+  color: #282828;
 
   &.dark {
     color: $color-white;
@@ -10,6 +10,7 @@
   @media #{$viewport-large} {
     display: grid;
     grid-template-columns: 1fr repeat(4, 1fr) 1fr;
+    grid-gap: 40px;
   }
 
   blockquote {
@@ -28,8 +29,8 @@
 
     p {
       font-size: 21px;
-      font-family: $font-sans-serif;
       display: inline;
+      font-family: $font-serif;
 
       @media #{$viewport-medium} {
         font-size: 25px;
@@ -37,6 +38,8 @@
 
       @media #{$viewport-large} {
         font-size: 32px;
+        line-height: 40px;
+        text-align: center;
       }
     }
   }
