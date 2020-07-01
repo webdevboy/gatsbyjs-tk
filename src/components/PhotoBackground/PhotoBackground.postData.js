@@ -4,7 +4,6 @@ module.exports = () => {
       cutline
       fieldGroupName
       floatingBodyText
-      floatingHeadline
       floatingTextPosition
       fullScreen
       image {
@@ -17,5 +16,5 @@ module.exports = () => {
         popupCopy
       }
     }
-  `
-}
+  `;
+};
