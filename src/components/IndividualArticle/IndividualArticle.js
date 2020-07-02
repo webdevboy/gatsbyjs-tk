@@ -20,7 +20,6 @@ function IndividualArticle({ article }) {
               style={{ backgroundImage: `url("${formattedArticle.imageUrl}")` }}
             />
           )}
-
           <div className="individual-article__info">
             {formattedArticle.cutline && (
               <div className="individual-article__info__cutline">
