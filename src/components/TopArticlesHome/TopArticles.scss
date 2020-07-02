@@ -1,4 +1,4 @@
-@import "src/styles/variables.scss";
+@import 'src/styles/variables.scss';
 
 .top-articles__hero {
   width: 100%;
@@ -186,6 +186,7 @@
     font-weight: $serif-regular;
     margin-top: 20px;
     color: $color-gray;
+    text-transform: uppercase;
   }
 
   .article__title {
