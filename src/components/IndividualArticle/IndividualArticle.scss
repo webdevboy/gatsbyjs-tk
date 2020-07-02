@@ -39,6 +39,7 @@
 
   .individual-article__info {
     color: $color-darkgray;
+    transition: color 0.2s ease-in;
 
     @media #{$viewport-medium} {
       text-align: center;
