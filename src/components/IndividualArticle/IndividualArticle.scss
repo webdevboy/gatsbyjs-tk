@@ -47,7 +47,8 @@
 
     @media #{$viewport-large} {
       text-align: left;
-      padding: 0 40px;
+      padding-left: 40px;
+      padding-right: 0;
       color: #787276;
     }
 
@@ -69,15 +70,20 @@
       }
     }
     .individual-article__info__title {
-      margin-top: 10px;
+      margin: 10px 0 20px;
       font-size: 24px;
       font-family: $font-sans-serif;
       font-weight: $sans-serif-semibold;
 
       @media #{$viewport-medium} {
-        margin-top: 20px;
+        font-size: 32px;
+      }
+
+      @media #{$viewport-xlarge} {
+        margin: 15px 0;
       }
     }
+
     .individual-article__info__description {
       margin-top: 20px;
       font-size: 13px;
