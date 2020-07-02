@@ -1,7 +1,7 @@
-import React from "react"
-import * as cx from "classnames"
+import React from 'react';
+import * as cx from 'classnames';
 
-import "./FiftyFifty.scss"
+import './FiftyFifty.scss';
 
 function FiftyFifty({
   copyBlock,
@@ -15,16 +15,16 @@ function FiftyFifty({
   return (
     <section
       className={cx({
-        "fifty-fifty": true,
+        'fifty-fifty': true,
         [theme]: true,
         reversed: reverse,
       })}
       style={{ backgroundColor: copyBackgroundColor }}
     >
       <div className="image-block">
-        {image.sourceUrl && (
+        {image && image.sourceUrl && (
           <div className="wrapper">
-            <img src={image.sourceUrl} alt={image.alt || "Foodie image"} />
+            <img src={image.sourceUrl} alt={image.alt || 'Foodie image'} />
           </div>
         )}
       </div>
@@ -44,7 +44,7 @@ function FiftyFifty({
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default FiftyFifty
+export default FiftyFifty;
