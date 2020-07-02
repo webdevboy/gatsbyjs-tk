@@ -11,7 +11,7 @@
 
   &.bias-layout {
     @media #{$viewport-medium} {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 2fr 1fr;
     }
   }
 
@@ -28,13 +28,9 @@
 
     img {
       width: 100%;
-
-      @media #{$viewport-medium} {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 }

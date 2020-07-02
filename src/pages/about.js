@@ -13,7 +13,10 @@ const About = () => {
 
         <div className="content-block">
           <div className="img-wrapper">
-            <img src="http://fpoimg.com/450x880?text=Preview" alt="FPO" />
+            <img
+              src="http://w0y.dd0.myftpupload.com/wp-content/uploads/2020/07/about-picture.jpg"
+              alt="About"
+            />
             <p className="cutline">Photography by David Hartung</p>
           </div>
           <div className="copyblock">

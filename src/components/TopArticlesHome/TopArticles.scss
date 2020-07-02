@@ -1,4 +1,4 @@
-@import "src/styles/variables.scss";
+@import 'src/styles/variables.scss';
 
 .top-articles__hero {
   width: 100%;
@@ -86,13 +86,15 @@
 
         .feature-article__authors {
           position: absolute;
-          left: -20px;
-          top: 10px;
+          left: -16px;
+          top: 0;
           writing-mode: vertical-lr;
           text-orientation: mixed;
           transform: rotate(180deg);
           display: none;
           letter-spacing: 1px;
+          font-family: $font-sans-serif;
+          font-weight: $sans-serif-light;
 
           @media #{$viewport-medium} {
             display: block;
@@ -186,6 +188,7 @@
     font-weight: $serif-regular;
     margin-top: 20px;
     color: $color-gray;
+    text-transform: uppercase;
   }
 
   .article__title {
