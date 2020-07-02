@@ -7,7 +7,7 @@ function Photo({ url, altText, cutline }) {
   return (
     <div className="photo-item">
       <img src={url} alt={altText} />
-      <p className="cutline">{cutline}</p>
+      {cutline && <p className="cutline">{cutline}</p>}
     </div>
   );
 }
