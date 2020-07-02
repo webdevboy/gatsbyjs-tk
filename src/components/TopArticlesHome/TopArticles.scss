@@ -87,12 +87,14 @@
         .feature-article__authors {
           position: absolute;
           left: -20px;
-          top: 10px;
+          top: 0;
           writing-mode: vertical-lr;
           text-orientation: mixed;
           transform: rotate(180deg);
           display: none;
           letter-spacing: 1px;
+          font-family: $font-sans-serif;
+          font-weight: $sans-serif-light;
 
           @media #{$viewport-medium} {
             display: block;
