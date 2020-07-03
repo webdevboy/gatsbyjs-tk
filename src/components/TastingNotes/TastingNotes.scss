@@ -132,6 +132,8 @@
     .tasting-notes__note {
       color: $color-darkgray;
       width: 100%;
+      cursor: pointer;
+      transition: color 0.2s ease-in;
 
       @media #{$viewport-medium} {
         margin-bottom: 60px;
@@ -139,6 +141,12 @@
 
       @media #{$viewport-large} {
         color: #787276;
+      }
+
+      &:hover {
+        @media #{$viewport-large} {
+          color: $color-darkgray;
+        }
       }
 
       .tasting-notes__note__img {

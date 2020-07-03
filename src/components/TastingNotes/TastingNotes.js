@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import Swiper from 'react-id-swiper';
 import cx from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -14,9 +14,20 @@ import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
 
 const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => (
-  <div className="tasting-notes__note">
+  <div
+    className="tasting-notes__note"
+    onClick={() => {
+      if (articleUrl) {
+        navigate(convertLinkLocale(articleUrl, i18n.language));
+      }
+    }}
+  >
     {imageUrl && (
-      <img src={imageUrl} className="tasting-notes__note__img" alt="" />
+      <img
+        src={imageUrl}
+        className="tasting-notes__note__img"
+        alt="article thumbnail"
+      />
     )}
     {cutline && (
       <div
