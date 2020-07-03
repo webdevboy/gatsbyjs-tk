@@ -1,4 +1,4 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .tasting-notes {
   box-sizing: border-box;
@@ -51,11 +51,13 @@
     z-index: 50;
     height: 3px;
     top: -30px;
+    overflow: hidden;
+    width: 295px;
+    left: 50%;
+    transform: translateX(-50%);
 
     @media #{$viewport-medium} {
       width: 300px;
-      left: 50%;
-      transform: translateX(-50%);
     }
 
     @media #{$viewport-large} {
@@ -88,12 +90,39 @@
 
     @media #{$viewport-large} {
       display: block;
-      padding: 0 54px;
+      padding: 0;
     }
 
     .swiper-container {
       overflow: initial;
       position: initial;
+
+      .swiper-wrapper {
+        .swiper-slide {
+          width: 100%;
+          max-width: 240px;
+
+          &:first-child {
+            @media #{$viewport-large} {
+              margin-left: 40px;
+            }
+          }
+
+          &:last-child {
+            @media #{$viewport-large} {
+              margin-right: 40px;
+            }
+          }
+
+          @media #{$viewport-medium} {
+            max-width: 222px;
+          }
+
+          @media #{$viewport-large} {
+            max-width: 188px;
+          }
+        }
+      }
 
       @media #{$viewport-medium} {
         overflow: hidden;
@@ -106,6 +135,10 @@
 
       @media #{$viewport-medium} {
         margin-bottom: 60px;
+      }
+
+      @media #{$viewport-large} {
+        color: #787276;
       }
 
       .tasting-notes__note__img {
@@ -128,11 +161,12 @@
         font-size: 18px;
         line-height: 24px;
         font-weight: $sans-serif-bold;
-        margin-top: 10px;
+        margin-top: 16px;
 
         @media #{$viewport-medium} {
           font-size: 16px;
           line-height: 20px;
+          margin-top: 7px;
         }
       }
 
@@ -140,10 +174,16 @@
         font-family: $font-serif;
         font-size: 13px;
         font-weight: $serif-regular;
-        margin-top: 20px;
+        margin-top: 14px;
+        line-height: 18px;
 
         @media #{$viewport-medium} {
           font-size: 12px;
+          margin-top: 23px;
+        }
+
+        @media #{$viewport-large} {
+          margin-top: 20px;
         }
       }
 
@@ -151,7 +191,15 @@
         font-family: $font-sans-serif;
         font-size: 12px;
         font-weight: $sans-serif-bold;
-        margin-top: 20px;
+        margin-top: 11px;
+
+        @media #{$viewport-medium} {
+          margin-top: 17px;
+        }
+
+        @media #{$viewport-medium} {
+          margin-top: 20px;
+        }
 
         .tasting-notes__note__more__link {
           color: inherit;
