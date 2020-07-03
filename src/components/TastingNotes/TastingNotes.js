@@ -39,12 +39,9 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => (
     {byline && <div className="tasting-notes__note__byline">{byline}</div>}
     {articleUrl && (
       <div className="tasting-notes__note__more">
-        <Link
-          to={convertLinkLocale(articleUrl, i18n.language)}
-          className="tasting-notes__note__more__link"
-        >
+        <span className="tasting-notes__note__more__link">
           {t('read-more')}
-        </Link>
+        </span>
       </div>
     )}
   </div>
