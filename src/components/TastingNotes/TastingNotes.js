@@ -1,22 +1,33 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
-import Swiper from "react-id-swiper"
-import cx from "classnames"
-import { useTranslation } from "react-i18next"
+import React, { useState, useEffect } from 'react';
+import { Link, navigate } from 'gatsby';
+import Swiper from 'react-id-swiper';
+import cx from 'classnames';
+import { useTranslation } from 'react-i18next';
 
-import { getFormattedArticle } from "src/utils/formatArticle"
+import { getFormattedArticle } from 'src/utils/formatArticle';
 import {
   MEDIUM_BREAKPOINT,
   LARGE_BREAKPOINT,
   XLARGE_BREAKPOINT,
-} from "src/utils/breakpoints"
+} from 'src/utils/breakpoints';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
-import "./TastingNotes.scss"
+import './TastingNotes.scss';
 
 const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => (
-  <div className="tasting-notes__note">
+  <div
+    className="tasting-notes__note"
+    onClick={() => {
+      if (articleUrl) {
+        navigate(convertLinkLocale(articleUrl, i18n.language));
+      }
+    }}
+  >
     {imageUrl && (
-      <img src={imageUrl} className="tasting-notes__note__img" alt="" />
+      <img
+        src={imageUrl}
+        className="tasting-notes__note__img"
+        alt="article thumbnail"
+      />
     )}
     {cutline && (
       <div
@@ -28,64 +39,66 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => (
     {byline && <div className="tasting-notes__note__byline">{byline}</div>}
     {articleUrl && (
       <div className="tasting-notes__note__more">
-        <Link to={convertLinkLocale(articleUrl, i18n.language)} className="tasting-notes__note__more__link">
+        <span className="tasting-notes__note__more__link">
           {t('read-more')}
-        </Link>
+        </span>
       </div>
     )}
   </div>
-)
+);
 
 function TastingNotes({ headline, notes, type, theme }) {
-  const [moreThanMedium, setMoreThanMedium] = useState(false)
-  const [moreThanLarge, setMoreThanLarge] = useState(false)
+  const [moreThanMedium, setMoreThanMedium] = useState(false);
+  const [moreThanLarge, setMoreThanLarge] = useState(false);
   const [t, i18n] = useTranslation(['article', 'common']);
 
-  const setResizeData = width => {
+  const setLayout = (width) => {
     if (width < MEDIUM_BREAKPOINT) {
-      setMoreThanMedium(false)
-      setMoreThanLarge(false)
-    } else if (width > MEDIUM_BREAKPOINT && width < LARGE_BREAKPOINT) {
-      setMoreThanMedium(true)
-      setMoreThanLarge(false)
+      setMoreThanMedium(false);
+      setMoreThanLarge(false);
+    } else if (width >= MEDIUM_BREAKPOINT && width < LARGE_BREAKPOINT) {
+      setMoreThanMedium(true);
+      setMoreThanLarge(false);
     } else if (width > LARGE_BREAKPOINT) {
-      setMoreThanLarge(true)
-      setMoreThanMedium(false)
+      setMoreThanLarge(true);
+      setMoreThanMedium(false);
     }
-  }
+  };
   useEffect(() => {
-    window.addEventListener("resize", e => {
-      setResizeData(+e.target.screen.width)
-    })
-  }, [])
+    window.addEventListener('resize', (e) => {
+      setLayout(window.innerWidth);
+    });
+
+    setLayout(window.innerWidth);
+  }, []);
 
   const params = {
     spaceBetween: 20,
-    slidesPerView: 1.5,
+    slidesPerView: 'auto',
     noSwiping: false,
     scrollbar: {
-      el: ".tasting-notes__scrollbar",
+      el: '.tasting-notes__scrollbar',
       hide: false,
       draggable: true,
       dragSize: 68,
     },
     breakpoints: {
       [MEDIUM_BREAKPOINT]: {
-        slidesPerView: 4.5,
+        slidesPerView: 'auto',
         spaceBetween: 41,
         scrollbar: {
           dragSize: 125,
         },
       },
       [XLARGE_BREAKPOINT]: {
-        slidesPerView: 6.3,
+        slidesPerView: 'auto',
         spaceBetween: 41,
         scrollbar: {
           dragSize: 125,
         },
       },
     },
-  }
+  };
 
   return (
     <div className={`tasting-notes ${theme}`}>
@@ -109,13 +122,18 @@ function TastingNotes({ headline, notes, type, theme }) {
             {notes &&
               notes.length > 0 &&
               notes.map((note, index) => (
-                <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n} key={index} />
+                <Note
+                  {...getFormattedArticle(note.note)}
+                  t={t}
+                  i18n={i18n}
+                  key={index}
+                />
               ))}
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default TastingNotes
+export default TastingNotes;
