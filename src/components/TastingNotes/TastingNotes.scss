@@ -4,12 +4,17 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
   padding: 60px 0;
   position: relative;
+  background: white;
+  border-top: 1px solid rgba(120, 114, 118, 0.7);
 
   &.dark {
     background-color: $color-light-black;
+
+    .back-to-top {
+      background-color: #000000;
+    }
 
     .tasting-notes__title {
       color: $color-white;
@@ -35,6 +40,24 @@
   &.container {
     margin: 0 auto;
     width: 100%;
+  }
+
+  .back-to-top {
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    padding: 16px 15px 16px;
+    border: 1px solid rgba(120, 114, 118, 0.7);
+    cursor: pointer;
+
+    img {
+      max-width: 100%;
+    }
   }
 
   .tasting-notes__title {
