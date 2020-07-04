@@ -15,7 +15,7 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
         }
       }}
     >
-      {imageUrl && <img src={imageUrl} className="chef-img" alt="Chef" />}
+      {imageUrl && <img src={imageUrl} className="article-img" alt="Chef" />}
       {category && <div className="article__category">{category}</div>}
       {title && <div className="article__title">{title}</div>}
       {byline && <div className="article__description">{byline}</div>}
