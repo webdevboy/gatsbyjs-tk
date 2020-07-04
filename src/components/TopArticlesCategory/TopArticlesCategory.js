@@ -120,7 +120,12 @@ export default function TopArticles({ category }) {
 
   return (
     <div className="top-articles-container section-landing">
-      {name && <h2 className="category-title">{name}</h2>}
+      {name && (
+        <h2
+          className="category-title"
+          dangerouslySetInnerHTML={{ __html: name }}
+        />
+      )}
       <div className="top-articles container">
         <div className="featured-article">
           {featuredArticleFormatted && (

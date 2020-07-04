@@ -11,6 +11,7 @@
     display: grid;
     grid-template-columns: 1fr repeat(4, 1fr) 1fr;
     grid-gap: 40px;
+    grid-row-gap: 0;
   }
 
   blockquote {
@@ -41,6 +42,26 @@
         line-height: 40px;
         text-align: center;
       }
+    }
+  }
+
+  .credit {
+    line-height: 18px;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+    margin: 10px auto 0;
+
+    @media #{$viewport-large} {
+      grid-column-start: 3;
+      grid-column-end: 5;
+    }
+
+    p {
+      margin: 0;
+      line-height: 18px;
+      font-size: 13px;
     }
   }
 }
