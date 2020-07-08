@@ -25,8 +25,8 @@ export default function Hero({
   const { controller } = scrollMagic;
   const scaleAnimationTime = 1500;
   const handleImageLoad = () => {
-    setLoaded(true);
     if(!isBrowser) return;
+    setLoaded(true);
     setTimeout(() => {
       imgContainerRef.current.style.overflow = 'initial';
       pageScroll.current.style.overflowY = 'auto';

@@ -18,7 +18,6 @@ export default function CopyColumns({ columns, theme }) {
 
   const cols = 6;
 
-  const isBrowser = typeof window !== "undefined"
 
   const getColSpan = () => {
     if (!isBrowser) return;
@@ -43,8 +42,6 @@ export default function CopyColumns({ columns, theme }) {
   //     .setTween(sectionToAnimateRef.current, { y: '-150%' })
   //     .addTo(controller);
   // }, [])
-
-  console.log(columns);
 
   return (
     <section className={`copy-columns ${theme}`}>

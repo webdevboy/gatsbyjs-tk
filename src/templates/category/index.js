@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { TweenMax, Power2 } from 'gsap';
 
+import useWindow from 'src/hooks/useWindow';
 import Layout from "src/components/Layout";
 import SEO from "src/components/seo";
 import CategoryLayouts from "src/components/CategoryLayouts";
@@ -8,6 +9,7 @@ import CategoryLayouts from "src/components/CategoryLayouts";
 const Category = ({ pageContext }) => {
   const { name } = pageContext;
   const pageScroll = useRef(null);
+  const _window = useWindow();
 
   useEffect(() => {
     const scrollTime = 1.2;
@@ -24,9 +26,9 @@ const Category = ({ pageContext }) => {
       }
     }
 
-    if(window) {
-      wheelListener1 = window.addEventListener("mousewheel", moveScroll, { passive: false });
-      wheelListener2 = window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
+    if(_window) {
+      wheelListener1 = _window.addEventListener("mousewheel", moveScroll, { passive: false });
+      wheelListener2 = _window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
     }
 
     if(document) {
@@ -35,10 +37,10 @@ const Category = ({ pageContext }) => {
     return () => {
       document.body.style.overflow = 'initial';
       if(wheelListener1) {
-        window.removeEventListener(wheelListener1);
+        _window.removeEventListener(wheelListener1);
       }
       if(wheelListener2) {
-        window.removeEventListener(wheelListener2);
+        _window.removeEventListener(wheelListener2);
       }
     }
   }, []);

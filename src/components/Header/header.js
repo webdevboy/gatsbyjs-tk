@@ -5,6 +5,7 @@ import LanguageToggle from 'src/components/LanguageToggle/LanguageToggle';
 import LoginLogout from 'src/components/LoginLogout/LoginLogout';
 import { Link } from 'gatsby';
 import useWindow from 'src/hooks/useWindow';
+import useDocument from 'src/hooks/useDocument';
 import { heroAnimationDuration } from 'src/utils/styleVars';
 import { useLocation } from '@reach/router';
 
@@ -26,12 +27,14 @@ function Hamburger({ isOpen }) {
 }
 
 function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOptRef }) {
-  const scrollBlock = document.querySelector('.page-scroll-wrapper');
+  const _document = useDocument();
+  if(_document) {
+    scrollBlock = _document.querySelector('.page-scroll-wrapper');
+  }
   const _window = useWindow();
   const progressBarRef = useRef();
   const location = useLocation();
   let scrollListener = null;
-  console.log(headerOptRef)
   useEffect(() => {
     if(progressBarRef) {
       progressBarRef.current.style.width = 0;
@@ -39,7 +42,6 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
     if(scrollBlockRef) {
      
       scrollListener = scrollBlockRef.current.addEventListener('scroll', () => {
-        console.log('asd');
         if(!progressBarRef || !progressBarRef.current) return;
         
         const currentScroll = scrollBlockRef.current.scrollTop;

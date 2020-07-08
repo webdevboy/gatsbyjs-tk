@@ -36,9 +36,9 @@ const FrontPage = ({ pageContext, heroData }) => {
       }
     }
 
-    if(window) {
-      wheelListener1 = window.addEventListener("mousewheel", moveScroll, { passive: false });
-      wheelListener2 = window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
+    if(_window && _window.addEventListener) {
+      wheelListener1 = _window.addEventListener("mousewheel", moveScroll, { passive: false });
+      wheelListener2 = _window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
     }
 
     document.querySelector('html').classList.add('no-scrolling');
@@ -54,10 +54,10 @@ const FrontPage = ({ pageContext, heroData }) => {
       document.querySelector('#main-wrapper').style.transform = 'initial';
 
       if(wheelListener1) {
-        window.removeEventListener(wheelListener1);
+        _window.removeEventListener(wheelListener1);
       }
       if(wheelListener2) {
-        window.removeEventListener(wheelListener2);
+        _window.removeEventListener(wheelListener2);
       }
     };
   }, []);

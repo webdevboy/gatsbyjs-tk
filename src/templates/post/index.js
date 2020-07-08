@@ -8,6 +8,8 @@ import Layout from "src/components/Layout"
 import SEO from "src/components/seo"
 import PostLayouts from "src/components/PostLayouts"
 import PageLimitModal from 'src/components/PageLimitModal/PageLimitModal';
+import useWindow from 'src/hooks/useWindow';
+
 
 const filterCategories = categories => {
   const cats = categories.nodes.length ? categories.nodes : null
@@ -24,6 +26,7 @@ const filterCategories = categories => {
 const Post = ({ pageContext }) => {
   const { title, components, categories } = pageContext;
   const pageScroll = useRef(null);
+  const _window = useWindow();
   const [pageLimitModal, setPageLimitModal] = useState(false);
   useEffect(() => {
     // Increase articles viewed count 
@@ -51,9 +54,9 @@ const Post = ({ pageContext }) => {
       }
     }
 
-    if(window) {
-      wheelListener1 = window.addEventListener("mousewheel", moveScroll, { passive: false });
-      wheelListener2 = window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
+    if(_window && _window.addEventListener) {
+      wheelListener1 = _window.addEventListener("mousewheel", moveScroll, { passive: false });
+      wheelListener2 = _window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
     }
 
     if(document) {
@@ -62,10 +65,10 @@ const Post = ({ pageContext }) => {
     return () => {
       document.body.style.overflow = 'initial';
       if(wheelListener1) {
-        window.removeEventListener(wheelListener1);
+        _window.removeEventListener(wheelListener1);
       }
       if(wheelListener2) {
-        window.removeEventListener(wheelListener2);
+        _window.removeEventListener(wheelListener2);
       }
     }
   }, []);
