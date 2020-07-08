@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, navigate } from 'gatsby';
 import Swiper from 'react-id-swiper';
 import cx from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { Linear } from 'gsap';
+import { isBrowser } from 'src/utils/auth';
+import ScrollMagic from 'scrollmagic';
 
 import { getFormattedArticle } from 'src/utils/formatArticle';
 import {
@@ -13,39 +16,58 @@ import {
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
 
-const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => (
-  <div
-    className="tasting-notes__note"
-    onClick={() => {
-      if (articleUrl) {
-        navigate(convertLinkLocale(articleUrl, i18n.language));
-      }
-    }}
-  >
-    {imageUrl && (
-      <img
-        src={imageUrl}
-        className="tasting-notes__note__img"
-        alt="article thumbnail"
-      />
-    )}
-    {cutline && (
-      <div
-        className="tasting-notes__note__cutline"
-        dangerouslySetInnerHTML={{ __html: cutline }}
-      ></div>
-    )}
-    {title && <div className="tasting-notes__note__title">{title}</div>}
-    {byline && <div className="tasting-notes__note__byline">{byline}</div>}
-    {articleUrl && (
-      <div className="tasting-notes__note__more">
-        <span className="tasting-notes__note__more__link">
-          {t('read-more')}
-        </span>
-      </div>
-    )}
-  </div>
-);
+const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
+  const imgRef = useRef(null);
+  const [scrollMagic, setScrollMagic] = useState({
+    controller: isBrowser ? new ScrollMagic.Controller() : null,
+  });
+  const { controller } = scrollMagic;
+  useEffect(() => {
+    if(!isBrowser) return;
+    new ScrollMagic.Scene({
+      duration: '200%',
+      triggerElement: imgRef.current,
+    })
+      .setTween(imgRef.current, { y: '40%', overwrite: 5, ease: Linear.easeNone })
+      .addTo(controller)
+  }, []);
+  return (
+    <div
+      className="tasting-notes__note"
+      onClick={() => {
+        if (articleUrl) {
+          navigate(convertLinkLocale(articleUrl, i18n.language));
+        }
+      }}
+    >
+      {imageUrl && (
+        <div className="tasting-notes__note__img-wrapper">
+          <img
+            src={imageUrl}
+            className="tasting-notes__note__img"
+            alt="article thumbnail"
+            ref={imgRef}
+          />
+        </div>
+      )}
+      {cutline && (
+        <div
+          className="tasting-notes__note__cutline"
+          dangerouslySetInnerHTML={{ __html: cutline }}
+        ></div>
+      )}
+      {title && <div className="tasting-notes__note__title">{title}</div>}
+      {byline && <div className="tasting-notes__note__byline">{byline}</div>}
+      {articleUrl && (
+        <div className="tasting-notes__note__more">
+          <span className="tasting-notes__note__more__link">
+            {t('read-more')}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function TastingNotes({ headline, notes, type, theme }) {
   const [moreThanMedium, setMoreThanMedium] = useState(false);

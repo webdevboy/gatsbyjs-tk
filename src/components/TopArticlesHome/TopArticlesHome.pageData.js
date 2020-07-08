@@ -4,6 +4,9 @@ const ArticleGql = `
     slug
     title
     uri
+    featuredImage {
+        sourceUrl
+    }
     author {
         id
         name

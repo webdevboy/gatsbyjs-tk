@@ -21,19 +21,14 @@
     margin: 0 auto;
     width: 100%;
   }
-
-  .individual-article__img {
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 266px;
-
-    @media #{$viewport-medium} {
-      height: 596px;
-    }
-
-    @media #{$viewport-large} {
-      height: 697px;
+  .individual-article__img-container {
+    overflow: hidden;
+    .individual-article__img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      transform: scale(1.3);
+      transition: transform 70ms;
     }
   }
 

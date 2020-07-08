@@ -8,6 +8,7 @@
   position: relative;
   background: white;
   border-top: 1px solid rgba(120, 114, 118, 0.7);
+  overflow: hidden;
 
   &.dark {
     background-color: $color-light-black;
@@ -178,11 +179,16 @@
         }
       }
 
+      .tasting-notes__note__img-wrapper {
+        overflow: hidden;
+      }
       .tasting-notes__note__img {
         width: 100%;
         min-height: 175px;
         object-fit: cover;
         object-position: center center;
+        transform: scale(1.3);
+        transition: transform 70ms;
       }
 
       .tasting-notes__note__cutline {

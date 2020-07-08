@@ -3,9 +3,14 @@ import React from "react"
 import { silentAuth } from "./src/utils/auth"
 import { globalHistory } from '@reach/router';
 import i18next from 'i18next';
+import { TimelineMax, TweenMax } from "gsap";
+import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap";
+import ScrollMagic from 'scrollmagic'
 
 import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
+
+ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
 
 const LanguageWrapper = ({ children }) => (
   <div id="main-wrapper">

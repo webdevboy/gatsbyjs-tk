@@ -9,6 +9,9 @@ module.exports = () => `
         title
         slug
         uri
+        featuredImage {
+          sourceUrl
+      }
         categories {
           nodes {
             name

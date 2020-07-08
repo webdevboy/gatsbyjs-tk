@@ -95,6 +95,7 @@
 
       .socially__columns__column__img__wrapper {
         padding: 0;
+        overflow: hidden;
       }
 
       .socially__columns__column__img {
@@ -103,6 +104,8 @@
         background-image: url("http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/wp-content/uploads/2020/05/tkhp.png");
         background-size: cover;
         background-position: center;
+        transform: scale(1.3);
+        transition: transform 70ms;
 
         @media #{$viewport-medium} {
           height: 354px;
