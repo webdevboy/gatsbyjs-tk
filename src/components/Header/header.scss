@@ -45,7 +45,6 @@ $max_font: 22px;
   right: 0;
   min-height: 60px;
   z-index: 101;
-  overflow: hidden;
   &.overflow-visible {
     overflow: initial;
   }
@@ -70,19 +69,28 @@ $max_font: 22px;
     align-items: center;
     transform: translateY(0);
     transition: transform 1s ease-in-out;
+    position: relative;
+    z-index: 10;
     &.scrolled {
       transform: translateY(-80px);
     }
   }
 
-  .header__article {
-    justify-content: space-between;
-    align-items: center;
+  .header__article-wrapper {
+    overflow: hidden;
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
     width: calc(100% - 60px);
+    z-index: 9;
+  }
+
+  .header__article {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     padding-right: 30px;
     font-family: $font-sans-serif;
     font-weight: $sans-serif-bold;

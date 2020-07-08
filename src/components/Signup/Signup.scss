@@ -68,6 +68,9 @@
       pointer-events: none;
       opacity: 0.6;
     }
+    @media #{$viewport-medium} {
+      width: 212px;
+    }
   }
   .signup__checkbox-container {
     display: flex;

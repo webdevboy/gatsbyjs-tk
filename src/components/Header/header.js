@@ -61,7 +61,6 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
           }
         }
       });
-      console.log(scrollListener)
     }
     return function cleanup() {
       if(scrollListener) {
@@ -145,24 +144,26 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       </div>
 
       {isArticlePage && (
-        <div ref={articleHeaderRef} className={`header__article ${theme}`}>
-          <div>{title}</div>
-          <div className="header__article__shares">
-            <div className="header__article__shares__title">
-              Share:
+        <div className="header__article-wrapper">
+          <div ref={articleHeaderRef} className={`header__article ${theme}`}>
+            <div>{title}</div>
+            <div className="header__article__shares">
+              <div className="header__article__shares__title">
+                Share:
+              </div>
+              <a href="#">
+                <img src={Facebook} />
+              </a>
+              <a href="#">
+              <img src={Instagram} />
+              </a>
+              <a href="#">
+                <img src={WeChat} />
+              </a>
+              <a href="#">
+                <img src={Weibo} />
+              </a>
             </div>
-            <a href="#">
-              <img src={Facebook} />
-            </a>
-            <a href="#">
-            <img src={Instagram} />
-            </a>
-            <a href="#">
-              <img src={WeChat} />
-            </a>
-            <a href="#">
-              <img src={Weibo} />
-            </a>
           </div>
         </div>
       )}

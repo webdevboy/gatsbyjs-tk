@@ -45,6 +45,9 @@
       pointer-events: none;
       opacity: 0.6;
     }
+    @media #{$viewport-medium} {
+      width: 212px;
+    }
   }
   .login__lost-password {
     text-decoration: none;
