@@ -46,7 +46,9 @@ $max_font: 22px;
   min-height: 60px;
   z-index: 101;
   overflow: hidden;
-
+  &.overflow-visible {
+    overflow: initial;
+  }
   &:after {
     content: '';
     display: block;

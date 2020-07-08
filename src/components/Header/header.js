@@ -105,10 +105,10 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
     }
   }, [heroIsVisible]);
 
-  console.log(isArticlePage);
-
   return (
-    <header className={`header ${theme}`}>
+    <header className={cx(`header ${theme}`, {
+      'overflow-visible': isFrontPage,  
+    })}>
       <button onClick={() => setShowNav()}>
         <Hamburger isOpen={showNav} />
       </button>
