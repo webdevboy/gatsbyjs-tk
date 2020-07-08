@@ -1,0 +1,16 @@
+@import 'src/styles/variables';
+
+.custom-checkbox {
+  box-sizing: border-box;
+  max-height: 25px;
+  min-height: 25px;
+  max-width: 25px;
+  min-width: 25px;
+  border: 1px solid $color-darkgray;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+

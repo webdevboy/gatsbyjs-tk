@@ -108,6 +108,7 @@ const FrontPage = ({ pageContext, heroData }) => {
             isFrontPage={true}
             heroIsVisible={showHero}
             isFrontPage={pageContext.isFrontPage}
+            pageScroll={containerRef}
           >
             <SEO title={title || 'Untitled'} />
             {layouts.map((layout, index) => (

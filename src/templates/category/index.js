@@ -45,7 +45,7 @@ const Category = ({ pageContext }) => {
 
   return (
     <div className="page-scroll" ref={pageScroll}>
-      <Layout>
+      <Layout pageScroll={pageScroll}>
         <SEO title={name || "Untitled"} />
         <CategoryLayouts categoryData={pageContext} />
       </Layout>

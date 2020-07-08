@@ -30,6 +30,7 @@ export default function Hero({
     setTimeout(() => {
       imgContainerRef.current.style.overflow = 'initial';
       pageScroll.current.style.overflowY = 'auto';
+      pageScroll.current.classList.add('scrollable');
       new ScrollMagic.Scene({
         duration: '200%',
         triggerElement: imgRef.current,

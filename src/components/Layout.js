@@ -7,7 +7,7 @@ import Navigation from "src/components/Navigation/Navigation"
 
 import "src/styles/index.scss"
 
-function Layout({ children, theme, title, isFrontPage, heroIsVisible }) {
+function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll }) {
   const [showNav, setShowNav] = useState(false)
 
   useEffect(() => {
@@ -29,7 +29,9 @@ function Layout({ children, theme, title, isFrontPage, heroIsVisible }) {
         showNav={showNav}
         setShowNav={() => setShowNav(!showNav)}
         isFrontPage={isFrontPage}
+        isArticlePage={isArticlePage}
         heroIsVisible={heroIsVisible}
+        pageScroll={pageScroll}
       />
       <Navigation theme={theme} showNav={showNav} />
       <div>

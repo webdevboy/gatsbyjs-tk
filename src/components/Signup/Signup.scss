@@ -2,43 +2,72 @@
 
 .signup-container {
   padding: 0 20px 50px 20px;
-  font-family: $font-sans-serif;
-  color: $color-darkgray;
   box-sizing: border-box;
   .login__input {
-    margin-bottom: 1.25rem;
+    margin-bottom: 20px;
     width: 100%;
-    input {
-      border: 1px solid;
+    input, select {
+      color: $color-black;
+      font-family: $font-sans-serif;
+      font-size: 14px;
+      line-height: 17px;
+      border: 1px solid $color-darkgray;
       border-radius: 3px;
       width: 100%;
-      padding: 1em;
+      padding: 16px 15px;
       box-sizing: border-box;
-      font-family: $font-sans-serif;
       outline: none;
+      background: transparent;
+      @media #{$viewport-medium} {
+        border: 1px solid $color-account-gray;
+      }
+    }
+    @media #{$viewport-large} {
+      width: 83%;
     }
   }
   select {
-    border: 1px solid;
+    color: $color-black;
+    font-family: $font-sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    border: 1px solid $color-darkgray;
     border-radius: 3px;
     width: 100%;
-    padding: 1em;
+    padding: 16px 15px;
     box-sizing: border-box;
-    font-family: $font-sans-serif;
     outline: none;
-    background-color: $color-white;
-    margin-bottom: 1.25rem;
+    background: transparent;
+    margin-bottom: 20px;
+    @media #{$viewport-medium} {
+      border: 1px solid $color-account-gray;
+    }
+    @media #{$viewport-large} {
+      width: 83%;
+    }
   }
   .login__submit {
-    padding: 1rem;
     box-sizing: border-box;
-    background-color: $color-darkgray;
+    background-color: $color-black;
     color: $color-white;
     font-family: $font-sans-serif;
+    font-size: 14px;
+    font-weight: $sans-serif-semibold;
+    line-height: 17px;
     border-radius: 3px;
     width: 100%;
-    margin-top: 15px;
+    height: 50px;
+    margin-top: 40px;
     text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &.disabled {
+      cursor: initial;
+      pointer-events: none;
+      opacity: 0.6;
+    }
   }
   .signup__checkbox-container {
     display: flex;
@@ -50,30 +79,8 @@
       font-size: 15x;
     }
   }
+  @media #{$viewport-medium} {
+    padding: 0 0 50px 0;
+  }
 }
-
-
-// input,
-// select {
-//   padding: 1em;
-//   width: 100%;
-//   border: 1px solid;
-//   border-radius: 3px;
-// }
-
-// button {
-//   padding: 1rem;
-// }
-
-// .lost-password a {
-//   color: darkgray;
-// }
-
-// #error-message {
-//   display: none;
-// }
-
-// .nav-buttons {
-//     display: none;
-// }
 

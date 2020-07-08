@@ -6,8 +6,13 @@ import LoginLogout from 'src/components/LoginLogout/LoginLogout';
 import { Link } from 'gatsby';
 import useWindow from 'src/hooks/useWindow';
 import { heroAnimationDuration } from 'src/utils/styleVars';
+import { useLocation } from '@reach/router';
 
 import './header.scss';
+import Facebook from 'src/images/Facebook_icon_gray.png';
+import Instagram from 'src/images/Instagram_icon_gray.png';
+import WeChat from 'src/images/WeChat_icon_gray.png';
+import Weibo from 'src/images/Weibo_icon_gray.png';
 
 function Hamburger({ isOpen }) {
   return (
@@ -20,9 +25,65 @@ function Hamburger({ isOpen }) {
   );
 }
 
-function Header({ theme, showNav, setShowNav, isFrontPage, heroIsVisible }) {
+function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOptRef }) {
+  const scrollBlock = document.querySelector('.page-scroll-wrapper');
+  const _window = useWindow();
+  const progressBarRef = useRef();
+  const location = useLocation();
+  let scrollListener = null;
+  console.log(headerOptRef)
+  useEffect(() => {
+    if(progressBarRef) {
+      progressBarRef.current.style.width = 0;
+    }
+    if(scrollBlockRef) {
+     
+      scrollListener = scrollBlockRef.current.addEventListener('scroll', () => {
+        console.log('asd');
+        if(!progressBarRef || !progressBarRef.current) return;
+        
+        const currentScroll = scrollBlockRef.current.scrollTop;
+        const totalScroll = scrollBlockRef.current.scrollHeight - scrollBlockRef.current.clientHeight;
+        const scrollProgress = (currentScroll / totalScroll) * 100;
+        progressBarRef.current.style.width = `${scrollProgress}%`;
+        if(currentScroll > 0 && articleHeaderRef) {
+          articleHeaderRef.current.classList.add('scrolled');
+          headerOptRef.current.classList.add('scrolled');
+          if(logoRef && logoRef.current) {
+            logoRef.current.classList.add('scrolled');
+          }
+        }
+        else {
+          articleHeaderRef.current.classList.remove('scrolled');
+          headerOptRef.current.classList.remove('scrolled');
+          if(logoRef && logoRef.current) {
+            logoRef.current.classList.remove('scrolled');
+          }
+        }
+      });
+      console.log(scrollListener)
+    }
+    return function cleanup() {
+      if(scrollListener) {
+        _window.removeEventListener(scrollListener);
+      }
+    }
+  }, [location.pathname])
+  return (
+    <div className="header-progress-bar-container">
+      <div className="header-progress-bar">
+        <div className="header-progress" ref={progressBarRef} />
+      </div>  
+    </div>
+  )
+}
+
+function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title }) {
   const [siteNameTop, setSiteNameTop] = useState(true);
   const logoContainerRef = useRef(null);
+  const articleHeaderRef = useRef(null);
+  const logoRef = useRef(null);
+  const headerOptRef = useRef(null);
   const _window = useWindow() || {};
 
   const getLogoPosY = () => {
@@ -44,6 +105,8 @@ function Header({ theme, showNav, setShowNav, isFrontPage, heroIsVisible }) {
     }
   }, [heroIsVisible]);
 
+  console.log(isArticlePage);
+
   return (
     <header className={`header ${theme}`}>
       <button onClick={() => setShowNav()}>
@@ -51,7 +114,9 @@ function Header({ theme, showNav, setShowNav, isFrontPage, heroIsVisible }) {
       </button>
       {!isFrontPage ? (
         <Link to="/">
-          <Logo className="logo" />
+          <div className="logo" ref={logoRef}>
+            <Logo />
+          </div>
         </Link>
       ) : (
         <>
@@ -76,10 +141,37 @@ function Header({ theme, showNav, setShowNav, isFrontPage, heroIsVisible }) {
         </>
       )}
 
-      <div className="header__language-login">
+      <div className="header__language-login" ref={headerOptRef}>
         <LanguageToggle theme={theme} />
         <LoginLogout />
       </div>
+
+      {isArticlePage && (
+        <div ref={articleHeaderRef} className={`header__article ${theme}`}>
+          <div>{title}</div>
+          <div className="header__article__shares">
+            <div className="header__article__shares__title">
+              Share:
+            </div>
+            <a href="#">
+              <img src={Facebook} />
+            </a>
+            <a href="#">
+            <img src={Instagram} />
+            </a>
+            <a href="#">
+              <img src={WeChat} />
+            </a>
+            <a href="#">
+              <img src={Weibo} />
+            </a>
+          </div>
+        </div>
+      )}
+      {isArticlePage && (
+        <ScrollProgressBar {...{ articleHeaderRef, scrollBlockRef: pageScroll, logoRef, headerOptRef }} />
+      )}
+
     </header>
   );
 }

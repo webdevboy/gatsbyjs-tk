@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import countries from './countries.json';
 
 import { signup } from '../../utils/auth';
+import Checkbox from 'src/components/common/Checkbox/Checkbox';
 import './Signup.scss';
 
 function Signup({ setError }) {
@@ -51,14 +52,14 @@ function Signup({ setError }) {
             <input type="text" placeholder={t('city')} value={city} onChange={e => {setCity(e.target.value)}} />
           </div>
           <div className="signup__checkbox-container">
-            <input id="signup__checkbox__updates" type="checkbox" checked={receiveUpdates} onChange={e => {setReceiveUpdates(e.target.checked)}} />
-            <label htmlFor="signup__checkbox__updates">{t('updates-description')}</label>
+            <Checkbox checked={receiveUpdates} onClick={() => {setReceiveUpdates(!receiveUpdates)}} />
+            <label htmlFor="signup__checkbox__updates" onClick={() => {setReceiveUpdates(!receiveUpdates)}}>{t('updates-description')}</label>
           </div>
           <div className="signup__checkbox-container">
-            <input id="signup__checkbox__emails" type="checkbox" checked={receiveEmails} onChange={e => {setReceiveEmails(e.target.checked)}} />
-            <label htmlFor="signup__checkbox__emails">{t('email-description')}</label>
+            <Checkbox checked={receiveEmails} onClick={() => {setReceiveEmails(!receiveEmails)}} />
+            <label onClick={() => {setReceiveEmails(!receiveEmails)}} htmlFor="signup__checkbox__emails">{t('email-description')}</label>
           </div>
-          <div className="login__input">
+          <div className="privacy-notice-text">
             {t('privacy-policy-description')}
             <a href="#">{t('privacy-policy')}</a>.
           </div>

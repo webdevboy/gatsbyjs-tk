@@ -42,7 +42,7 @@ const Post = ({ pageContext }) => {
     let wheelListener1 = null;
     let wheelListener2 = null;
     const moveScroll = event => {
-      if(pageScroll && pageScroll.current) {
+      if(pageScroll && pageScroll.current && pageScroll.current.classList.contains('scrollable')) {
         event.preventDefault(); 
         const delta = event.wheelDelta / 120 || -event.detail / 3;
         const scrollTop = pageScroll.current.scrollTop;
@@ -74,7 +74,12 @@ const Post = ({ pageContext }) => {
 
   return (
     <div className="page-scroll" ref={pageScroll}>
-      <Layout theme={pageContext.themeSelect.themeSelect} title={title}>
+      <Layout
+        theme={pageContext.themeSelect.themeSelect}
+        title={title}
+        isArticlePage
+        pageScroll={pageScroll}
+      >
         <SEO title={title || "Untitled"} />
         <div className={cx({ blurred: pageLimitModal })}>
           {layouts.map((layout, index) => (

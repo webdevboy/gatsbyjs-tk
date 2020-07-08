@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import './Login.scss';
 import { login, loginWithFacebook } from '../../utils/auth';
+import Checkbox from 'src/components/common/Checkbox/Checkbox';
 import getLangLink from '../../utils/getLangLink';
 
 function Login({ setError }) {
@@ -30,8 +31,8 @@ function Login({ setError }) {
             {t('lost-password')}
           </Link>
           <div className="login__remember">
-            <input checked={remember} onChange={e => {setRemember(e.target.checked)}} id="login__remember__checkbox" type="checkbox" />
-            <label htmlFor="login__remember__checkbox">{t('remember-me')}</label>
+            <Checkbox checked={remember} onClick={() => {setRemember(!remember)}} />
+            <label htmlFor="login__remember__checkbox" onClick={() => {setRemember(!remember)}}>{t('remember-me')}</label>
           </div>
           <button type="button" className="login__facebook" onClick={() => {loginWithFacebook(setError)}}>
             {t('login-facebook')}

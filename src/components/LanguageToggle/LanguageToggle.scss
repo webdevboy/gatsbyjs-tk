@@ -2,6 +2,9 @@
 
 .language-container {
   position: relative;
+  @media #{$viewport-medium} {
+    margin-right: 25px;
+  }
   .language__selected {
     color: $color-gray;
     font-family: $font-sans-serif;
