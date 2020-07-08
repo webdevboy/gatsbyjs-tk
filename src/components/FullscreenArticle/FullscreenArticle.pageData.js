@@ -2,6 +2,9 @@ module.exports = () => {
   return `
   ... on WordPress_Page_Components_Contents_FullscreenArticle {
     fieldGroupName
+    fullScreenArticleImage {
+      sourceUrl
+    }
     articleInfoPosition
     article {
       ... on WordPress_Post {
@@ -28,5 +31,5 @@ module.exports = () => {
       }
     }
   }
-  `
-}
+  `;
+};
