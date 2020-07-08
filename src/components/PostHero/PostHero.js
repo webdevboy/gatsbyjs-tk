@@ -13,6 +13,7 @@ export default function Hero({
   heroImage,
   categories,
   theme,
+  pageScroll,
 }) {
   const categoryName = categories.length ? categories[0].name : null;
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +29,7 @@ export default function Hero({
     if(!isBrowser) return;
     setTimeout(() => {
       imgContainerRef.current.style.overflow = 'initial';
+      pageScroll.current.style.overflowY = 'auto';
       new ScrollMagic.Scene({
         duration: '200%',
         triggerElement: imgRef.current,
@@ -37,6 +39,11 @@ export default function Hero({
         .addTo(controller)
     }, scaleAnimationTime);
   }
+  useEffect(() => {
+    if(pageScroll) {
+      pageScroll.current.style.overflowY = 'hidden';
+    }
+  }, [])
   return (
     <section className={`post-hero ${theme}`}>
       <div className={cx("image-container", { loaded })} ref={imgContainerRef}>

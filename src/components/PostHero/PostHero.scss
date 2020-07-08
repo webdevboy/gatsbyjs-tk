@@ -38,7 +38,7 @@
       height: 690px;
       object-fit: cover;
       object-position: center;
-      transition: transform 70ms;
+      transition: transform 100ms;
 
       @media #{$viewport-medium} {
         height: 385px;

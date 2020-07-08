@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Cookies from 'js-cookie'
-
+import { TweenMax, Power2 } from 'gsap';
 
 import Layout from 'src/components/Layout';
 import SEO from 'src/components/seo';
@@ -23,6 +22,25 @@ const FrontPage = ({ pageContext, heroData }) => {
   const layouts = components.contents || [];
 
   useEffect(() => {
+    const scrollTime = 1.2;
+    const scrollDistance = 400;
+    let wheelListener1 = null;
+    let wheelListener2 = null;
+    const moveScroll = event => {
+      if(containerRef && containerRef.current && containerRef.current.classList && containerRef.current.classList.contains('overflow-scroll')) {
+        event.preventDefault(); 
+        const delta = event.wheelDelta / 120 || -event.detail / 3;
+        const scrollTop = containerRef.current.scrollTop;
+        const finalScroll = scrollTop - parseInt(delta * scrollDistance);
+        TweenMax.to(containerRef.current, scrollTime, { scrollTop : finalScroll, ease: Power2.easeOut, overwrite: 5 });
+      }
+    }
+
+    if(window) {
+      wheelListener1 = window.addEventListener("mousewheel", moveScroll, { passive: false });
+      wheelListener2 = window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
+    }
+
     document.querySelector('html').classList.add('no-scrolling');
     document.querySelector('#main-wrapper').classList.add('is-front-page');
 
@@ -34,6 +52,13 @@ const FrontPage = ({ pageContext, heroData }) => {
       document.querySelector('html').classList.remove('no-scrolling');
       document.querySelector('#main-wrapper').classList.remove('is-front-page');
       document.querySelector('#main-wrapper').style.transform = 'initial';
+
+      if(wheelListener1) {
+        window.removeEventListener(wheelListener1);
+      }
+      if(wheelListener2) {
+        window.removeEventListener(wheelListener2);
+      }
     };
   }, []);
 
