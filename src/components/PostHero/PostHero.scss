@@ -19,24 +19,26 @@
   }
 
   .image-container {
-    @media #{$viewport-medium} {
-      transform: translateY(-5%);
-      transition-property: transform;
-      transition-duration: 2s;
-      transition-timing-function: ease-out;
-    }
+    // @media #{$viewport-medium} {
+    //   transform: translateY(-5%);
+    //   transition-property: transform;
+    //   transition-duration: 2s;
+    //   transition-timing-function: ease-out;
+    // }
 
-    &.loaded {
-      @media #{$viewport-medium} {
-        transform: translateY(0);
-      }
-    }
+    // &.loaded {
+    //   @media #{$viewport-medium} {
+    //     transform: translateY(0);
+    //   }
+    // }
+    overflow: hidden;
 
     img {
       width: 100%;
       height: 690px;
       object-fit: cover;
       object-position: center;
+      transition: transform 100ms;
 
       @media #{$viewport-medium} {
         height: 385px;
@@ -49,12 +51,20 @@
     }
   }
 
+  .image-scale-contianer {
+    transform: scale(1.5);
+    transition: transform 1.5s;
+    &.loaded {
+      transform: scale(1);
+    }
+  }
+
   .block {
     padding: 0 20px;
 
     @media #{$viewport-medium} {
       transition-property: opacity, transform;
-      transition-duration: 1s;
+      transition-duration: 2s;
       transition-timing-function: ease-out;
       opacity: 0;
       transform: translateY(15%);
@@ -135,6 +145,7 @@
         font-weight: $serif-regular;
         line-height: 25px;
         font-size: 15px;
+        color: $color-gray;
 
         @media #{$viewport-medium} {
           font-size: 16px;
@@ -147,7 +158,7 @@
         max-width: 50px;
         border: none;
         margin-bottom: 18px;
-        background-color: #787276;
+        background-color: $color-gray;
 
         @media #{$viewport-large} {
           max-width: 146px;

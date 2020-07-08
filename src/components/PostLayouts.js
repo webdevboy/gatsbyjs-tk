@@ -11,7 +11,7 @@ import {
   Spacer,
 } from "src/components"
 
-const PostLayouts = ({ layoutData, categories, theme }) => {
+const PostLayouts = ({ layoutData, categories, theme, pageScroll }) => {
   const layoutType = layoutData.fieldGroupName || "No field group name found"
 
   /**
@@ -52,6 +52,7 @@ const PostLayouts = ({ layoutData, categories, theme }) => {
       categories={categories}
       theme={theme}
       type={"post"}
+      pageScroll={pageScroll}
     />
   )
 }

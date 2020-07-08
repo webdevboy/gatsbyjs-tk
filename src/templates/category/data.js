@@ -7,6 +7,9 @@ const postsGql = layouts => {
         slug
         title
         uri
+        featuredImage {
+          sourceUrl
+        }
         author {
             id
             name

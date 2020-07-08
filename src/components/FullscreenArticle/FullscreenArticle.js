@@ -1,12 +1,29 @@
-import React from "react"
-import { Link } from "gatsby"
-import { useTranslation } from "react-i18next"
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from "gatsby";
+import { useTranslation } from "react-i18next";
+import { Linear } from 'gsap';
+import { isBrowser } from 'src/utils/auth';
+import ScrollMagic from 'scrollmagic';
 
-import "./FullscreenArticle.scss"
+import "./FullscreenArticle.scss";
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 function FullscreenArticle({ article, articleInfoPosition }) {
   const [t, i18n] = useTranslation('article');
+  const imgRef = useRef(null);
+  const [scrollMagic, setScrollMagic] = useState({
+    controller: isBrowser ? new ScrollMagic.Controller() : null,
+  });
+  const { controller } = scrollMagic;
+  useEffect(() => {
+    if(!isBrowser) return;
+    new ScrollMagic.Scene({
+      duration: '200%',
+      triggerElement: imgRef.current,
+    })
+      .setTween(imgRef.current, { y: '40%', overwrite: 5, ease: Linear.easeNone })
+      .addTo(controller)
+  }, []);
   const getArticle = () => {
     let articleObj = null;
     if (!article) return null;
@@ -39,41 +56,46 @@ function FullscreenArticle({ article, articleInfoPosition }) {
   if (!articleObject) return null;
   return (
     <div
-      className={`fullscreen-article ${articleInfoPosition
-        .toLowerCase()
-        .replace(' ', '-')}`}
-      style={{
-        backgroundImage: articleObject.heroUrl
-          ? `url("${articleObject.heroUrl}")`
-          : '',
-      }}
+      className="fullscreen-article"
     >
-      <div className="fullscreen-article__info">
-        {articleObject.category && (
-          <div className="fullscreen-article__info__category">
-            {articleObject.category.name}
-          </div>
-        )}
-        {articleObject.title && (
-          <div className="fullscreen-article__info__title">
-            {articleObject.title}
-          </div>
-        )}
-        {articleObject.byline && (
-          <div className="fullscreen-article__info__description">
-            {articleObject.byline}
-          </div>
-        )}
-        {articleObject.uri && (
-          <div className="fullscreen-article__info__more">
-            <Link
-              className="fullscreen-article__info__more__link"
-              to={convertLinkLocale(articleObject.uri, i18n.language)}
-            >
-              {t('read-more')}
-            </Link>
-          </div>
-        )}
+      {articleObject.heroUrl && (
+        <img
+          src={articleObject.heroUrl}
+          alt=""
+          ref={imgRef}
+          className="fullscreen-article__img"
+        />
+      )}
+      <div className={`fullscreen-article__body ${articleInfoPosition
+        .toLowerCase()
+        .replace(' ', '-')}`}>
+        <div className="fullscreen-article__info">
+          {articleObject.category && (
+            <div className="fullscreen-article__info__category">
+              {articleObject.category.name}
+            </div>
+          )}
+          {articleObject.title && (
+            <div className="fullscreen-article__info__title">
+              {articleObject.title}
+            </div>
+          )}
+          {articleObject.byline && (
+            <div className="fullscreen-article__info__description">
+              {articleObject.byline}
+            </div>
+          )}
+          {articleObject.uri && (
+            <div className="fullscreen-article__info__more">
+              <Link
+                className="fullscreen-article__info__more__link"
+                to={convertLinkLocale(articleObject.uri, i18n.language)}
+              >
+                {t('read-more')}
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

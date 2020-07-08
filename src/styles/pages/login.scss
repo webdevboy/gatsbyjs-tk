@@ -2,6 +2,7 @@
 
 .login-signup-container {
   display: block;
+  margin: 0 auto;
   .signup-container {
     display: block;
   }
@@ -19,8 +20,8 @@
   @media #{$viewport-medium} {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 88px;
-    padding: 0 128px;
+    column-gap: 40px;
+    width: 750px;
     .signup-container {
       display: block;
     }
@@ -37,8 +38,10 @@
     }
   }
 
-  @media #{$viewport-xlarge} {
-    column-gap: 216px;
+  @media #{$viewport-large} {
+    column-gap: 112px;
+    grid-template-columns: 0.85fr 1fr;
+    width: 900px;
   }
 }
 

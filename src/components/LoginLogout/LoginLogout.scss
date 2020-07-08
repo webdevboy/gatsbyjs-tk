@@ -12,6 +12,12 @@
     color: $color-gray;
     margin-right: 10px;
     display: inline-block;
+    &:last-child {
+      margin-right: 0;
+    }
+    @media #{$viewport-medium} {
+      margin-right: 30px;
+    }
   }
 }
 

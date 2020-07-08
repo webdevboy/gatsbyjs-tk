@@ -26,8 +26,7 @@
     }
     .reset-password {
       display: none;
-    }
-    
+    } 
   }
 
   @media #{$viewport-medium} {
@@ -35,52 +34,101 @@
   }
 
   @media #{$viewport-large} {
-    width: 1023px;
+    width: 876px;
   }
-
-  @media #{$viewport-xlarge} {
-    width: 1399px;
-  }
-
 
   .account__input {
-    margin-bottom: 1.25rem;
+    margin-bottom: 20px;
     width: 100%;
     input, select {
-      border: 1px solid;
+      color: $color-black;
+      font-family: $font-sans-serif;
+      font-size: 14px;
+      line-height: 17px;
+      border: 1px solid $color-darkgray;
       border-radius: 3px;
       width: 100%;
-      padding: 1em;
+      padding: 16px 15px;
       box-sizing: border-box;
-      font-family: $font-sans-serif;
       outline: none;
       background: transparent;
+      @media #{$viewport-medium} {
+        border: 1px solid $color-account-gray;
+      }
+    }
+    @media #{$viewport-medium} {
+      width: 83%;
     }
   }
 
   .account__title {
+    color: $color-darkgray;
     font-family: $font-serif;
+    font-size: 25px;
+    line-height: 31px;
     text-align: center;
-    margin: 3em 0 2em 0;
+    margin: 58px 0 49px 0;
+    @media #{$viewport-medium} {
+      font-size: 32px;
+      line-height: 40px;
+      margin: 98px 0 36px 0;
+    }
+    @media #{$viewport-large} {
+      font-size: 48px;
+      line-height: 60px;
+    }
+  }
+
+  .account__description, .reset-password__description {
+    color: $color-darkgray;
+    font-family: $font-serif;
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 60px;
+    @media #{$viewport-medium} {
+      margin-bottom: 0;
+    }
   }
 
   .account__toggles {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
-    font-family: $font-sans-serif;
-    font-weight: $sans-serif-bold;
+    margin-bottom: 60px;
     .account__toggle {
-      color: $color-gray;
+      color: $color-account-gray;
+      font-family: $font-sans-serif;
+      font-size: 16px;
+      font-weight: $sans-serif-medium;
+      line-height: 20px;
       margin: 0 20px;
       @media #{$viewport-medium} {
         margin: 0 50px;
       }
       &.account__toggle--active {
-        color: $color-black;
+        color: $color-darkgray;
       }
+    }
+    @media #{$viewport-medium} {
+      margin-bottom: 42px;
     }
   }
 }
 
+.signup__checkbox-container {
+  color: $color-gray;
+  font-family: $font-sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.privacy-notice-text {
+  color:  $color-gray;
+  font-family: $font-sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  a {
+    color: $color-black;
+    margin-left: 5px;
+  }
+}

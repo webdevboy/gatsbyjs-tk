@@ -54,7 +54,6 @@
       padding: 15px;
       text-decoration: none;
       width: 100%;
-      max-width: 255px;
       background-color: black;
       color: $color-gold;
       border: none;
@@ -64,6 +63,8 @@
       font-size: 14px;
       margin: 0 auto;
       text-transform: uppercase;
+      display: block;
+
       @media #{$viewport-medium} {
         grid-column-start: 2;
         grid-column-end: 6;
@@ -219,12 +220,15 @@
 
     .about {
       color: $color-white;
-      font-size: 12px;
-      font-family: $font-sans-serif;
+      font-size: 11px;
+      font-family: $font-serif;
       margin-bottom: 40px;
-      line-height: 1.8;
+      line-height: 16px;
+      font-weight: 400;
 
       @media #{$viewport-medium} {
+        font-size: 12px;
+        line-height: 20px;
         grid-column-start: 2;
         grid-column-end: 6;
       }

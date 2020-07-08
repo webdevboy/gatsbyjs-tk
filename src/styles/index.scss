@@ -80,3 +80,9 @@ html {
 .blurred {
   filter: blur(20px) drop-shadow(0 0 0 black);
 }
+
+.page-scroll {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

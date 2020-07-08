@@ -4,6 +4,9 @@ const articleGql = `
     title
     slug
     uri
+    featuredImage {
+      sourceUrl
+    }
     categories {
       nodes {
         name

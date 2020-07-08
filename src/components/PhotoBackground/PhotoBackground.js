@@ -1,5 +1,9 @@
-import React, { useState } from "react"
-import * as cx from "classnames"
+import React, { useState, useEffect, useRef } from 'react';
+import * as cx from "classnames";
+import { Linear } from 'gsap';
+import { isBrowser } from 'src/utils/auth';
+import ScrollMagic from 'scrollmagic';
+
 
 // Components
 import Plus from "src/svgs/plus"
@@ -69,6 +73,21 @@ export default function PhotoBackground({
   popup,
   theme,
 }) {
+  const imgRef = useRef(null);
+  const [scrollMagic, setScrollMagic] = useState({
+    controller: isBrowser ? new ScrollMagic.Controller() : null,
+  });
+  const { controller } = scrollMagic;
+  useEffect(() => {
+    if(!isBrowser) return;
+    new ScrollMagic.Scene({
+      duration: '200%',
+      triggerElement: imgRef.current,
+      offset: imgRef.current.offsetHeight / 2,
+    })
+      .setTween(imgRef.current, { y: '20%', overwrite: 5, ease: Linear.easeNone })
+      .addTo(controller)
+  }, []);
   return (
     <div
       className={cx({
@@ -83,6 +102,7 @@ export default function PhotoBackground({
             className="bg"
             src={image.sourceUrl}
             alt={image.altText || "Image"}
+            ref={imgRef}
           />
         )}
         <MessageGrid
