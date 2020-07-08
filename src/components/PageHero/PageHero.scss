@@ -1,7 +1,8 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
 .page-hero {
   position: relative;
+  overflow: hidden;
 
   .featured-image-container {
     height: 100%;
