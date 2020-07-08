@@ -101,10 +101,9 @@
       .socially__columns__column__img {
         width: 100%;
         height: 240px;
-        background-image: url("http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/wp-content/uploads/2020/05/tkhp.png");
-        background-size: cover;
-        background-position: center;
-        transform: scale(1.3);
+        object-fit: cover;
+        object-position: center;
+        transform: scale(1.2);
         transition: transform 70ms;
 
         @media #{$viewport-medium} {

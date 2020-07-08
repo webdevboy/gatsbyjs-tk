@@ -71,9 +71,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
   }, [location.pathname])
   return (
     <div className="header-progress-bar-container">
-      <div className="header-progress-bar">
-        <div className="header-progress" ref={progressBarRef} />
-      </div>  
+      <div className="header-progress" ref={progressBarRef} /> 
     </div>
   )
 }

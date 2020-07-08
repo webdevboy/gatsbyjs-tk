@@ -3,11 +3,24 @@
 .login-header {
   text-align: center;
   width: 100%;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   h2 {
+    margin: 58px 0 49px 0;
     font-family: $font-serif;
+    font-size: 25px;
+    line-height: 31px;
     text-align: center;
-    margin: 3em 0 2em 0;
+    color: $color-darkgray;
+    @media #{$viewport-medium} {
+      margin: 98px 0 96px 0;
+      font-size: 32px;
+      line-height: 40px;
+    } 
+    @media #{$viewport-large} {
+      font-size: 48px;
+      line-height: 60px;
+    } 
+
   }
   .login__error {
     color: #721c24;
@@ -27,33 +40,42 @@
   .login-header__toggle {
     display: flex;
     justify-content: center;
+    margin: 0 auto;
     div {
-      margin: 0 15px;
       font-family: $font-sans-serif;
-      color: darkgray;
+      color: $color-account-gray;
       transition: color 0.3s;
-      font-weight: $sans-serif-bold;
-      font-size: 14px;
+      font-weight: $sans-serif-medium;
+      line-height: 20px;
+      font-size: 16px;
+      margin: 0 15px;
       &.login-header__toggle--active {
         color: $color-black;
       }
+      @media #{$viewport-medium} {
+        margin: 0;
+        color: $color-cutline;
+        &.login-header__toggle--active {
+          color: $color-cutline;
+        }
+      } 
     }
     @media #{$viewport-medium} {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: 88px;
-      padding: 0 128px;
+      column-gap: 40px;
+      width: 750px;
       text-align: left;
       div {
-        color: $color-black;
-        padding: 0 5px;
+        color: $color-gray;
       }
     }
   
-    @media #{$viewport-xlarge} {
-      column-gap: 216px;
-    }
-    
+    @media #{$viewport-large} {
+      column-gap: 112px;
+      grid-template-columns: 0.85fr 1fr;
+      width: 900px;
+    }    
   }
 }
 

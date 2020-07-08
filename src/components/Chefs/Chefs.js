@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import Swiper from "react-id-swiper";
 import { Link } from "gatsby";
 import { useTranslation } from "react-i18next";
+
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
 import ScrollMagic from 'scrollmagic';
@@ -26,18 +27,20 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
       duration: '200%',
       triggerElement: imgRef.current,
     })
-      .setTween(imgRef.current, { y: '40%', overwrite: 5, ease: Linear.easeNone })
+      .setTween(imgRef.current, { y: '40%', ease: Linear.easeNone, overwrite: 5 })
       .addTo(controller)
   }, []);
   return (
     <div className="chefs__columns__column">
       {imageUrl && (
         <div className="chefs__columns__column__img__wrapper">
-          <img
-            className="chefs__columns__column__img"
-            src={imageUrl}
-            ref={imgRef}
-          />
+          <div className="chefs__columns__column__img-wrapper">
+            <div
+              className="chefs__columns__column__img"
+              style={{ backgroundImage: `url("${imageUrl}")` }}
+              ref={imgRef}
+            />
+          </div>
         </div>
       )}
       <div className="chefs__columns__column__info">
