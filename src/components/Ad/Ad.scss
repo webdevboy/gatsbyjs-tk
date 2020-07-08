@@ -37,6 +37,7 @@
     }
     .ad__img {
       width: 100%;
+      min-height: 658px;
       object-fit: cover;
       object-position: center;
       font-family: $font-sans-serif;
