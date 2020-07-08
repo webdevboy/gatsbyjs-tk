@@ -28,6 +28,7 @@ function Hamburger({ isOpen }) {
 
 function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOptRef }) {
   const _document = useDocument();
+  const scrollBlock = null;
   if(_document) {
     scrollBlock = _document.querySelector('.page-scroll-wrapper');
   }
