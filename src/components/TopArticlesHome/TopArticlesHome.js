@@ -72,10 +72,6 @@ export default function TopArticles(props) {
   const getFormattedArticle = (article) => {
     if (!article) return null;
 
-    const imageObj =
-      article.components.contents &&
-      article.components.contents.find((content) => content.thumbnailImage);
-
     const imageHeroObj =
       article.components.contents &&
       article.components.contents.find(
@@ -92,13 +88,7 @@ export default function TopArticles(props) {
       article.components.contents.find((content) => content.byline);
 
     const formattedArticle = {
-      imageUrl:
-        (imageObj &&
-          imageObj.thumbnailImage &&
-          imageObj.thumbnailImage.sourceUrl) ||
-        (imageHeroObj &&
-          imageHeroObj.heroImage &&
-          imageHeroObj.heroImage.sourceUrl),
+      imageUrl: article.featuredImage && article.featuredImage.sourceUrl,
       category: category ? category.name : '',
       title: (imageHeroObj && imageHeroObj.title) || article.title,
       byline: bylineObj && bylineObj.byline,

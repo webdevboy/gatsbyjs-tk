@@ -85,13 +85,7 @@ export default function TopArticles({ category }) {
       article.components.contents.find((content) => content.byline);
 
     const formattedArticle = {
-      imageUrl:
-        (imageObj &&
-          imageObj.thumbnailImage &&
-          imageObj.thumbnailImage.sourceUrl) ||
-        (imageHeroObj &&
-          imageHeroObj.heroImage &&
-          imageHeroObj.heroImage.sourceUrl),
+      imageUrl: article.featuredImage && article.featuredImage.sourceUrl,
       category: category ? category.name : '',
       title: (imageHeroObj && imageHeroObj.title) || article.title,
       byline: bylineObj && bylineObj.byline,
