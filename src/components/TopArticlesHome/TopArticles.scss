@@ -179,9 +179,18 @@
         object-position: center;
         transform: scale(1.3);
         transition: transform 70ms;
+
         @media #{$viewport-medium} {
           min-height: 187px;
           max-height: 250px;
+        }
+
+        @media #{$viewport-large} {
+          transform: scale(1.1);
+          min-height: 0;
+          max-height: none;
+          object-fit: contain;
+          object-position: center top;
         }
       }
     }
