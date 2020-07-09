@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from "gatsby";
-import { useTranslation } from "react-i18next";
+import { Link } from 'gatsby';
+import { useTranslation } from 'react-i18next';
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
 import ScrollMagic from 'scrollmagic';
 
-import "./FullscreenArticle.scss";
+import './FullscreenArticle.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 
-function FullscreenArticle({ article, articleInfoPosition }) {
+function FullscreenArticle({
+  article,
+  articleInfoPosition,
+  fullScreenArticleImage,
+}) {
   const [t, i18n] = useTranslation('article');
   const imgRef = useRef(null);
   const [scrollMagic, setScrollMagic] = useState({
@@ -16,13 +20,17 @@ function FullscreenArticle({ article, articleInfoPosition }) {
   });
   const { controller } = scrollMagic;
   useEffect(() => {
-    if(!isBrowser) return;
+    if (!isBrowser) return;
     new ScrollMagic.Scene({
       duration: '200%',
       triggerElement: imgRef.current,
     })
-      .setTween(imgRef.current, { y: '40%', overwrite: 5, ease: Linear.easeNone })
-      .addTo(controller)
+      .setTween(imgRef.current, {
+        y: '40%',
+        overwrite: 5,
+        ease: Linear.easeNone,
+      })
+      .addTo(controller);
   }, []);
   const getArticle = () => {
     let articleObj = null;
@@ -55,20 +63,20 @@ function FullscreenArticle({ article, articleInfoPosition }) {
   const articleObject = getArticle();
   if (!articleObject) return null;
   return (
-    <div
-      className="fullscreen-article"
-    >
-      {articleObject.heroUrl && (
+    <div className="fullscreen-article">
+      {fullScreenArticleImage && fullScreenArticleImage.sourceUrl && (
         <img
-          src={articleObject.heroUrl}
+          className="fullscreen-article__img"
+          src={fullScreenArticleImage.sourceUrl}
           alt=""
           ref={imgRef}
-          className="fullscreen-article__img"
         />
       )}
-      <div className={`fullscreen-article__body ${articleInfoPosition
-        .toLowerCase()
-        .replace(' ', '-')}`}>
+      <div
+        className={`fullscreen-article__body ${articleInfoPosition
+          .toLowerCase()
+          .replace(' ', '-')}`}
+      >
         <div className="fullscreen-article__info">
           {articleObject.category && (
             <div className="fullscreen-article__info__category">

@@ -2,6 +2,9 @@ module.exports = () => {
   return `
   ... on WordPress_Page_Components_Contents_IndividualArticle {
     fieldGroupName
+    individualArticleImage {
+      sourceUrl
+    }
     article {
       ... on WordPress_Post {
         id
@@ -29,5 +32,5 @@ module.exports = () => {
       }
     }
   }
-  `
-}
+  `;
+};

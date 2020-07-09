@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic'
+import ScrollMagic from 'scrollmagic';
 
 import './TopArticles.scss';
 
@@ -17,18 +17,29 @@ function Article({
   t,
   controller,
 }) {
-  const imgRef = useRef(null)
+  const imgRef = useRef(null);
   useEffect(() => {
-    if(!isBrowser) return;
+    if (!isBrowser) return;
     new ScrollMagic.Scene({
       duration: '200%',
       triggerElement: imgRef.current,
     })
-      .setTween(imgRef.current, { y: '40%', ease: Linear.easeNone, overwrite: 5 })
-      .addTo(controller)
+      .setTween(imgRef.current, {
+        y: '40%',
+        ease: Linear.easeNone,
+        overwrite: 5,
+      })
+      .addTo(controller);
   }, []);
   return (
-    <div className="top_articles__columns__column__inner">
+    <div
+      className="top_articles__columns__column__inner"
+      onClick={() => {
+        if (articleUrl) {
+          navigate(articleUrl);
+        }
+      }}
+    >
       {imageUrl && (
         <div className="top_articles__columns__column__image-wrapper">
           <img
@@ -38,14 +49,17 @@ function Article({
           />
         </div>
       )}
-      {category && <div className="article__category">{category}</div>}
+      {category && (
+        <div
+          className="article__category"
+          dangerouslySetInnerHTML={{ __html: category }}
+        ></div>
+      )}
       {title && <div className="article__title">{title}</div>}
       {byline && <div className="article__description">{byline}</div>}
       {articleUrl && (
         <div className="article__more">
-          <Link to={articleUrl} className="article__more__link">
-            {t('read-more')}
-          </Link>
+          <span className="article__more__link">{t('read-more')}</span>
         </div>
       )}
     </div>
@@ -61,13 +75,13 @@ export default function TopArticles(props) {
   });
   const { controller } = scrollMagic;
   useEffect(() => {
-    if(!isBrowser) return;
+    if (!isBrowser) return;
     new ScrollMagic.Scene({
       duration: '200%',
       triggerElement: imgRef.current,
     })
       .setTween(imgRef.current, { y: '20%', overwrite: 5 })
-      .addTo(controller)
+      .addTo(controller);
   }, []);
   const getFormattedArticle = (article) => {
     if (!article) return null;
@@ -135,7 +149,17 @@ export default function TopArticles(props) {
             <div className="featured-article__inner">
               {featuredArticleFormatted.imageUrl && (
                 <div className="featured-article__image-container">
-                  <div className="featured-article__image-wrapper">
+                  <div
+                    className="featured-article__image-wrapper"
+                    onClick={() => {
+                      if (
+                        featuredArticleFormatted &&
+                        featuredArticleFormatted.articleUrl
+                      ) {
+                        navigate(featuredArticleFormatted.articleUrl);
+                      }
+                    }}
+                  >
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}

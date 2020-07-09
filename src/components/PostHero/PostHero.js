@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import * as cx from "classnames";
+import React, { useState, useEffect, useRef } from 'react';
+import * as cx from 'classnames';
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
 import ScrollMagic from 'scrollmagic';
 
-import "./PostHero.scss"
+import './PostHero.scss';
 
 export default function Hero({
   authors,
@@ -25,13 +25,13 @@ export default function Hero({
   const { controller } = scrollMagic;
   const scaleAnimationTime = 1500;
   const handleImageLoad = () => {
-    if(!isBrowser) return;
+    if (!isBrowser) return;
     setLoaded(true);
     setTimeout(() => {
-      if(imgContainerRef) {
+      if (imgContainerRef && imgContainerRef.current) {
         imgContainerRef.current.style.overflow = 'initial';
       }
-      if(pageScroll) {
+      if (pageScroll && pageScroll.current) {
         pageScroll.current.style.overflowY = 'auto';
         pageScroll.current.classList.add('scrollable');
       }
@@ -40,19 +40,23 @@ export default function Hero({
         triggerElement: imgRef.current,
         offset: imgRef.current.offsetHeight - 200,
       })
-        .setTween(imgRef.current, { y: '50%', overwrite: 5, ease: Linear.easeNone })
-        .addTo(controller)
+        .setTween(imgRef.current, {
+          y: '50%',
+          overwrite: 5,
+          ease: Linear.easeNone,
+        })
+        .addTo(controller);
     }, scaleAnimationTime);
-  }
+  };
   useEffect(() => {
-    if(pageScroll) {
+    if (pageScroll && pageScroll.current) {
       pageScroll.current.style.overflowY = 'hidden';
     }
-  }, [])
+  }, []);
   return (
     <section className={`post-hero ${theme}`}>
-      <div className={cx("image-container", { loaded })} ref={imgContainerRef}>
-        <div className={cx("image-scale-contianer", { loaded })}>
+      <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
+        <div className={cx('image-scale-contianer', { loaded })}>
           {heroImage && heroImage.sourceUrl && (
             <img
               src={heroImage.sourceUrl}
@@ -63,7 +67,7 @@ export default function Hero({
           )}
         </div>
       </div>
-      <div className={cx("block", { loaded })}>
+      <div className={cx('block', { loaded })}>
         <div className="block-wrapper">
           {categoryName && (
             <p
@@ -75,15 +79,15 @@ export default function Hero({
           {byline && <p className="byline">{byline}</p>}
           <hr />
           {authors.length &&
-            authors.split(",").map(author => {
+            authors.split(',').map((author) => {
               return (
                 <p className="attribution" key={author}>
                   {author}
                 </p>
-              )
+              );
             })}
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -56,6 +56,16 @@ html {
       }
     }
 
+    .is-front-page {
+      .tasting-notes__go-top {
+        display: none;
+      }
+
+      .tasting-notes {
+        border-top: none;
+      }
+    }
+
     button {
       border: none;
       outline: 0;

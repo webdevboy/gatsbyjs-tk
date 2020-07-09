@@ -1,4 +1,4 @@
-@import "src/styles/variables.scss";
+@import 'src/styles/variables.scss';
 
 .chefs {
   width: 100%;
@@ -6,7 +6,7 @@
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
-  padding: 55px 0;
+
   .container {
     margin: 0 auto;
     width: 100%;
@@ -99,29 +99,29 @@
 
       .chefs__columns__column__img-wrapper {
         overflow: hidden;
+
         .chefs__columns__column__img {
           width: 100%;
           height: 345px;
-          background-image: url("http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/wp-content/uploads/2020/05/tkhp.png");
+          // background-image: url('http://ec2-3-21-169-223.us-east-2.compute.amazonaws.com/wp-content/uploads/2020/05/tkhp.png');
           background-size: cover;
           background-position: center;
           transform: scale(1.3);
           transition: transform 70ms;
-  
+
           @media #{$viewport-medium} {
             height: 320px;
           }
-  
+
           @media #{$viewport-large} {
             height: 300px;
           }
-  
+
           @media #{$viewport-xlarge} {
             height: 450px;
           }
         }
       }
-      
 
       .chefs__columns__column__info {
         margin-top: 30px;
