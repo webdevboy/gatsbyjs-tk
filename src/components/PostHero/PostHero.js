@@ -35,17 +35,19 @@ export default function Hero({
         pageScroll.current.style.overflowY = 'auto';
         pageScroll.current.classList.add('scrollable');
       }
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: imgRef.current,
-        offset: imgRef.current.offsetHeight - 200,
-      })
-        .setTween(imgRef.current, {
-          y: '50%',
-          overwrite: 5,
-          ease: Linear.easeNone,
+      if (imgRef && imgRef.current) {
+        new ScrollMagic.Scene({
+          duration: '200%',
+          triggerElement: imgRef.current,
+          offset: imgRef.current.offsetHeight - 200,
         })
-        .addTo(controller);
+          .setTween(imgRef.current, {
+            y: '50%',
+            overwrite: 5,
+            ease: Linear.easeNone,
+          })
+          .addTo(controller);
+      }
     }, scaleAnimationTime);
   };
   useEffect(() => {
