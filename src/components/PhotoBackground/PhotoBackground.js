@@ -48,8 +48,11 @@ function PhotoPopup({ title, content }) {
           hide: !popupOpen,
         })}
       >
-        <h4>{title}</h4>
-        <p dangerouslySetInnerHTML={{ __html: content }}></p>
+        <div className="popup-wrapper">
+          <h4>{title}</h4>
+          <p dangerouslySetInnerHTML={{ __html: content }}></p>
+          <div className="notch"></div>
+        </div>
       </div>
       <button className="open-popup" onClick={() => popupOpenSet(!popupOpen)}>
         <Plus

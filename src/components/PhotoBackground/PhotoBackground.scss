@@ -36,28 +36,21 @@
 
 .popup {
   position: absolute;
-  bottom: 120px;
+  bottom: 135px;
   background: $color-black;
   color: $color-white;
-  padding: 30px;
   width: 60%;
   left: 50%;
   transition-property: opacity, transform;
   transition-timing-function: ease-in-out;
   transition-duration: 0.3s;
   border-radius: 8px;
-  max-width: 417px;
   display: none;
   box-sizing: border-box;
 
   @media #{$viewport-medium} {
     display: inline-block;
-    padding: 50px;
-    width: 360px;
-  }
-
-  @media #{$viewport-large} {
-    padding: 50px;
+    width: 417px;
   }
 
   &.show {
@@ -70,15 +63,39 @@
     transform: translate(-50%, 20px);
   }
 
-  h4 {
-    margin: 0;
-    margin-bottom: 30px;
-    font-size: 16px;
-  }
+  .popup-wrapper {
+    padding: 30px;
 
-  p {
-    line-height: 1.4;
-    font-size: 12px;
+    @media #{$viewport-medium} {
+      padding: 50px;
+    }
+
+    @media #{$viewport-large} {
+      padding: 50px;
+    }
+
+    h4 {
+      margin: 0;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    p {
+      line-height: 1.4;
+      font-size: 12px;
+    }
+
+    .notch {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid $color-black;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 100%);
+    }
   }
 }
 
@@ -123,6 +140,7 @@
   .bg-wrapper {
     position: relative;
     overflow: hidden;
+
     .bg {
       width: 100%;
       object-fit: cover;
