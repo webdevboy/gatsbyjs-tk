@@ -16,13 +16,13 @@
     justify-content: center;
     color: $color-white;
     padding: 53px;
-    box-sizing: border-box;
     text-align: center;
 
     @media #{$viewport-medium} {
       grid-template-columns: 0.65fr;
       padding: 80px 0;
     }
+
     @media #{$viewport-large} {
       grid-template-columns: 0.3fr;
       padding: 158px 55px;
@@ -30,6 +30,7 @@
 
     &.top-left {
       align-items: flex-start;
+
       @media #{$viewport-large} {
         justify-content: start;
         text-align: left;
@@ -46,6 +47,7 @@
 
     &.bottom-left {
       align-items: flex-end;
+
       @media #{$viewport-large} {
         justify-content: start;
         text-align: left;
@@ -54,6 +56,7 @@
 
     &.bottom-right {
       align-items: flex-end;
+
       @media #{$viewport-large} {
         justify-content: flex-end;
         text-align: left;
@@ -62,18 +65,8 @@
   }
   .fullscreen-article__img {
     width: 100%;
-    min-height: 692px;
     object-fit: cover;
     object-position: center;
-    transform: scale(1.3);
-    transition: transform 70ms;
-
-    @media #{$viewport-medium} {
-      min-height: 876px;
-    }
-    @media #{$viewport-large} {
-      min-height: 1230px;
-    }
   }
 
   .fullscreen-article__info {
@@ -88,6 +81,7 @@
       text-transform: uppercase;
       color: $color-white;
     }
+
     .fullscreen-article__info__title {
       margin-top: 10px;
       font-family: $font-sans-serif;
@@ -95,27 +89,32 @@
       line-height: 32px;
       font-weight: $sans-serif-semibold;
       color: $color-white;
+
       @media #{$viewport-medium} {
         font-size: 32px;
         line-height: 40px;
       }
     }
+
     .fullscreen-article__info__description {
       margin-top: 20px;
       font-family: $font-serif;
       font-size: 13px;
       font-weight: $serif-regular;
       color: $color-white;
+
       @media #{$viewport-medium} {
         font-size: 15px;
         line-height: 22px;
       }
     }
+
     .fullscreen-article__info__more {
       margin-top: 20px;
       font-family: $font-sans-serif;
       font-size: 12px;
       font-weight: $sans-serif-bold;
+
       .fullscreen-article__info__more__link {
         color: $color-white;
         text-decoration: none;

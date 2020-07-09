@@ -14,36 +14,46 @@ function FullscreenArticle({
   fullScreenArticleImage,
 }) {
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
+  const copyRef = useRef(null);
   const [scrollMagic, setScrollMagic] = useState({
     controller: isBrowser ? new ScrollMagic.Controller() : null,
   });
   const { controller } = scrollMagic;
+
   useEffect(() => {
     if (!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, {
-        y: '40%',
-        overwrite: 5,
-        ease: Linear.easeNone,
+
+    if (copyRef && copyRef.current) {
+      new ScrollMagic.Scene({
+        duration: '200%',
+        triggerElement: copyRef.current,
       })
-      .addTo(controller);
+        .setTween(copyRef.current, {
+          y: '40%',
+          overwrite: 5,
+          ease: Linear.easeNone,
+        })
+        .addTo(controller);
+    }
   }, []);
+
   const getArticle = () => {
     let articleObj = null;
+
     if (!article) return null;
+
     const { components, categories, uri } = article;
+
     if (components.contents && components.contents.length > 0) {
       const articleHeroObj = components.contents.find((post) => post.heroImage);
+
       const category =
         categories.nodes &&
         categories.nodes.length > 0 &&
         categories.nodes.find(
           (node) => node.name.toLowerCase() !== 'featured category'
         );
+
       articleObj = {
         title: (articleHeroObj && articleHeroObj.title) || '',
         byline: (articleHeroObj && articleHeroObj.byline) || '',
@@ -57,11 +67,14 @@ function FullscreenArticle({
         uri,
       };
     }
+
     return articleObj;
   };
 
   const articleObject = getArticle();
+
   if (!articleObject) return null;
+
   return (
     <div className="fullscreen-article">
       {fullScreenArticleImage && fullScreenArticleImage.sourceUrl && (
@@ -69,7 +82,6 @@ function FullscreenArticle({
           className="fullscreen-article__img"
           src={fullScreenArticleImage.sourceUrl}
           alt=""
-          ref={imgRef}
         />
       )}
       <div
@@ -77,7 +89,7 @@ function FullscreenArticle({
           .toLowerCase()
           .replace(' ', '-')}`}
       >
-        <div className="fullscreen-article__info">
+        <div className="fullscreen-article__info" ref={copyRef}>
           {articleObject.category && (
             <div className="fullscreen-article__info__category">
               {articleObject.category.name}
