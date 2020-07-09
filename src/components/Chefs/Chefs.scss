@@ -3,9 +3,9 @@
 .chefs {
   width: 100%;
   max-width: 100%;
-  box-sizing: border-box;
   overflow: hidden;
   position: relative;
+  padding-top: 10px;
 
   .container {
     margin: 0 auto;
@@ -30,34 +30,41 @@
     font-weight: $serif-regular;
     text-align: center;
     padding: 0 21px;
-    box-sizing: border-box;
+    color: $color-black;
 
     @media #{$viewport-medium} {
       font-size: 32px;
     }
   }
+
   .chefs__scrollbar {
-    background: transparent;
+    background: rgba(151, 151, 151, 0.2);
     width: 90%;
     position: absolute;
     z-index: 50;
-    height: 3px;
-    top: 115px;
-    left: 21px;
-    opacity: 1;
+    height: 1px;
+    top: -30px;
+    width: 295px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media #{$viewport-medium} {
+      width: 300px;
+    }
+
+    @media #{$viewport-large} {
+      width: 417px;
+    }
 
     .swiper-scrollbar-drag {
       position: relative;
-      top: 0px;
+      cursor: pointer;
+      top: -1px;
       left: 0px;
       width: 100%;
-      height: 100%;
+      height: 3px;
       background: #b3a97e;
       border-radius: 10px;
-    }
-
-    @media #{$viewport-medium} {
-      display: none;
     }
   }
 
@@ -65,35 +72,39 @@
     padding-left: 21px;
     padding-right: 21px;
     width: 100%;
-    margin-top: 58px;
-    box-sizing: border-box;
+    margin-top: 60px;
 
     @media #{$viewport-medium} {
       width: 100%;
-      padding: 0 42px;
+      padding: 0 40px;
       margin-top: 60px;
-    }
-
-    @media #{$viewport-medium} {
-      width: 100%;
-      padding: 0 42px;
-      margin-top: 90px;
     }
 
     .swiper-container {
       overflow: initial;
       position: initial;
+      position: relative;
     }
 
     .chefs__columns__column {
       width: 100%;
+      cursor: pointer;
+      color: $color-darkgray;
+
+      &:hover {
+        color: $color-darkgray;
+      }
+
+      @media #{$viewport-large} {
+        color: $color-gray;
+      }
 
       .chefs__columns__column__img__wrapper {
         padding: 0;
         background-color: $color-white;
 
         @media #{$viewport-xlarge} {
-          padding: 50px 50px 100px 50px;
+          padding: 50px 50px 100px;
         }
       }
 
@@ -102,34 +113,32 @@
 
         .chefs__columns__column__img {
           width: 100%;
+          max-width: 100%;
           height: 345px;
           background-size: cover;
-          background-position: center;
-          transform: scale(1.3);
+          background-position: center top;
+          background-repeat: no-repeat;
           transition: transform 70ms;
+          transform: scale(1.1);
 
           @media #{$viewport-medium} {
             height: 320px;
           }
 
           @media #{$viewport-large} {
-            height: 300px;
-          }
-
-          @media #{$viewport-xlarge} {
             height: 450px;
           }
         }
       }
 
       .chefs__columns__column__info {
-        margin-top: 30px;
+        margin-top: 20px;
         text-align: center;
-        color: $color-cutline;
+        transition: color 0.2s ease-in;
 
         @media #{$viewport-xlarge} {
-          width: 77%;
-          margin: 30px auto 0 auto;
+          padding: 0 50px;
+          margin: 35px auto 0;
         }
 
         .chefs__columns__column__info_cutline {
@@ -141,7 +150,7 @@
         }
 
         .chefs__columns__column__info_title {
-          margin-top: 20px;
+          margin-top: 10px;
           font-size: 24px;
           font-family: $font-sans-serif;
           font-weight: $sans-serif-semibold;
@@ -150,14 +159,18 @@
 
         .chefs__columns__column__info_description {
           margin-top: 20px;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 18px;
           font-family: $font-serif;
           font-weight: $serif-regular;
+
+          @media #{$viewport-medium} {
+            font-size: 12px;
+          }
         }
 
         .chefs__columns__column__info_more {
-          margin-top: 20px;
+          margin-top: 17px;
           font-size: 12px;
           font-family: $font-sans-serif;
           font-weight: $sans-serif-bold;
@@ -165,7 +178,7 @@
 
           .chefs__columns__column__info_more__link {
             text-decoration: none;
-            color: $color-cutline;
+            color: inherit;
           }
         }
       }

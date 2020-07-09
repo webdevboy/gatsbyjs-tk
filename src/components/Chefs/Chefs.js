@@ -1,18 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
-import Swiper from "react-id-swiper";
-import { Link } from "gatsby";
-import { useTranslation } from "react-i18next";
+import React, { useState, useEffect, useRef } from 'react';
+import Swiper from 'react-id-swiper';
+import { navigate } from 'gatsby';
+import { useTranslation } from 'react-i18next';
 
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
 import ScrollMagic from 'scrollmagic';
 
-import { MEDIUM_BREAKPOINT } from "src/utils/breakpoints";
-import { getFormattedArticle } from "src/utils/formatArticle";
-import convertLinkLocale from 'src/utils/convertLinkLocale';
+import { MEDIUM_BREAKPOINT } from 'src/utils/breakpoints';
+import { getFormattedArticle } from 'src/utils/formatArticle';
 
-
-import "./Chefs.scss"
+import './Chefs.scss';
 
 function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
   const [t, i18n] = useTranslation('article');
@@ -21,17 +19,30 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
     controller: isBrowser ? new ScrollMagic.Controller() : null,
   });
   const { controller } = scrollMagic;
+
   useEffect(() => {
-    if(!isBrowser) return;
+    if (!isBrowser) return;
     new ScrollMagic.Scene({
       duration: '200%',
       triggerElement: imgRef.current,
     })
-      .setTween(imgRef.current, { y: '40%', ease: Linear.easeNone, overwrite: 5 })
-      .addTo(controller)
+      .setTween(imgRef.current, {
+        y: '40%',
+        ease: Linear.easeNone,
+        overwrite: 5,
+      })
+      .addTo(controller);
   }, []);
+
   return (
-    <div className="chefs__columns__column">
+    <div
+      className="chefs__columns__column"
+      onClick={() => {
+        if (articleUrl) {
+          navigate(articleUrl);
+        }
+      }}
+    >
       {imageUrl && (
         <div className="chefs__columns__column__img__wrapper">
           <div className="chefs__columns__column__img-wrapper">
@@ -50,25 +61,21 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
         {title && (
           <div className="chefs__columns__column__info_title">{title}</div>
         )}
-
         {byline && (
           <div className="chefs__columns__column__info_description">
             {byline}
           </div>
         )}
-
         <div className="chefs__columns__column__info_more">
-          <Link
-            to={convertLinkLocale(articleUrl, i18n.language)}
-            className="chefs__columns__column__info_more__link"
-          >
+          <span className="chefs__columns__column__info_more__link">
             {t('read-more')}
-          </Link>
+          </span>
         </div>
       </div>
     </div>
-  )
+  );
 }
+
 function Chefs({ column1, column2, column3 }) {
   const [t, i18n] = useTranslation('common');
   const params = {
@@ -76,7 +83,7 @@ function Chefs({ column1, column2, column3 }) {
     slidesPerView: 1.5,
     noSwiping: false,
     scrollbar: {
-      el: ".chefs__scrollbar",
+      el: '.chefs__scrollbar',
       hide: false,
       draggable: true,
       dragSize: 187,
@@ -93,7 +100,7 @@ function Chefs({ column1, column2, column3 }) {
         },
       },
     },
-  }
+  };
 
   return (
     <div className="chefs">
@@ -120,7 +127,7 @@ function Chefs({ column1, column2, column3 }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Chefs
+export default Chefs;
