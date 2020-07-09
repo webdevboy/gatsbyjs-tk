@@ -18,7 +18,7 @@
 
   &.slide-in {
     bottom: 0;
-    top: 0;
+    top: 60px;
 
     @media #{$viewport-medium} {
       top: 0;

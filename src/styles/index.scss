@@ -108,10 +108,19 @@ html {
       background-color: $color-navbar-open-overlay-bg;
       opacity: 0.3;
       transition: opacity 0.4s;
+      display: none;
+      @media #{$viewport-medium} {
+        display: block;
+        &.hidden {
+          opacity: 1;
+          display: none;
+        }
+      }
       &.hidden {
         opacity: 1;
         display: none;
       }
+     
     }
   }
 }
