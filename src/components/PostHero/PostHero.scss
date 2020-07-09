@@ -12,25 +12,13 @@
         }
 
         hr {
-          background-color: $color-white;
+          background-color: rgba(255, 255, 255, 0.5);
         }
       }
     }
   }
 
   .image-container {
-    // @media #{$viewport-medium} {
-    //   transform: translateY(-5%);
-    //   transition-property: transform;
-    //   transition-duration: 2s;
-    //   transition-timing-function: ease-out;
-    // }
-
-    // &.loaded {
-    //   @media #{$viewport-medium} {
-    //     transform: translateY(0);
-    //   }
-    // }
     overflow: hidden;
 
     img {
@@ -157,7 +145,7 @@
         height: 1px;
         max-width: 50px;
         border: none;
-        margin-bottom: 18px;
+        margin-bottom: 10px;
         background-color: $color-gray;
 
         @media #{$viewport-large} {
