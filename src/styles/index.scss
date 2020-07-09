@@ -84,6 +84,35 @@ html {
         font-size: 10px;
       }
     }
+
+    .page-body {
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+      transform: translateX(0);
+      z-index: 105;
+      &.shifted {
+        
+        @media #{$viewport-medium} {
+          transform: translateX($navbar-width);
+        }
+      }
+    }
+    .sidebar-open-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 102;
+      background-color: $color-navbar-open-overlay-bg;
+      opacity: 0.3;
+      transition: opacity 0.4s;
+      &.hidden {
+        opacity: 1;
+        display: none;
+      }
+    }
   }
 }
 

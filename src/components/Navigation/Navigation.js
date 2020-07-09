@@ -55,7 +55,7 @@ export function ItemWithSubNav({ menu, getUrlPath }) {
   )
 }
 
-function Navigation({ theme, showNav }) {
+function Navigation({ theme, showNav, closeNav }) {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const path = convertLinkLocale(location.pathname,'');
@@ -63,13 +63,13 @@ function Navigation({ theme, showNav }) {
     if(!lang) return null;
     switch(lang.toLowerCase()) {
       case 'zh_tw': {
-        return <MenusZhTw {...{ theme, showNav, path }} />
+        return <MenusZhTw {...{ theme, showNav, path, closeNav }} />
       }
       case 'zh_cn': {
-        return <MenusZhCn {...{ theme, showNav, path }} />
+        return <MenusZhCn {...{ theme, showNav, path, closeNav }} />
       }
       default: {
-        return <MenusEn {...{ theme, showNav, path }} />
+        return <MenusEn {...{ theme, showNav, path, closeNav }} />
       }
     }
   }
