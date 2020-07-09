@@ -31,7 +31,7 @@ export default function Hero({
       if (imgContainerRef && imgContainerRef.current) {
         imgContainerRef.current.style.overflow = 'initial';
       }
-      if (pageScroll) {
+      if (pageScroll && pageScroll.current) {
         pageScroll.current.style.overflowY = 'auto';
         pageScroll.current.classList.add('scrollable');
       }
@@ -49,7 +49,7 @@ export default function Hero({
     }, scaleAnimationTime);
   };
   useEffect(() => {
-    if (pageScroll) {
+    if (pageScroll && pageScroll.current) {
       pageScroll.current.style.overflowY = 'hidden';
     }
   }, []);
