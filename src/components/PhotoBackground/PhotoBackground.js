@@ -1,26 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
-import * as cx from "classnames";
+import * as cx from 'classnames';
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
 import ScrollMagic from 'scrollmagic';
 
-
 // Components
-import Plus from "src/svgs/plus"
+import Plus from 'src/svgs/plus';
 
-import "./PhotoBackground.scss"
+import './PhotoBackground.scss';
 
 function MessageGrid({ gridCount, message, plot }) {
-  const grid = Array.from({ length: gridCount }, (x, i) => i)
+  const grid = Array.from({ length: gridCount }, (x, i) => i);
 
   const plotMap = {
-    "top left": 0,
-    "top right": 2,
-    "center left": 3,
-    "center right": 5,
-    "bottom left": 6,
-    "bottom right": 8,
-  }
+    'top left': 0,
+    'top right': 2,
+    'center left': 3,
+    'center right': 5,
+    'bottom left': 6,
+    'bottom right': 8,
+  };
 
   return (
     <div className="grid">
@@ -31,14 +30,14 @@ function MessageGrid({ gridCount, message, plot }) {
               <span dangerouslySetInnerHTML={{ __html: message }}></span>
             )}
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
 function PhotoPopup({ title, content }) {
-  const [popupOpen, popupOpenSet] = useState(false)
+  const [popupOpen, popupOpenSet] = useState(false);
 
   return (
     <>
@@ -61,7 +60,7 @@ function PhotoPopup({ title, content }) {
         />
       </button>
     </>
-  )
+  );
 }
 
 export default function PhotoBackground({
@@ -79,14 +78,20 @@ export default function PhotoBackground({
   });
   const { controller } = scrollMagic;
   useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-      offset: imgRef.current.offsetHeight / 2,
-    })
-      .setTween(imgRef.current, { y: '20%', overwrite: 5, ease: Linear.easeNone })
-      .addTo(controller)
+    if (!isBrowser) return;
+    if (imgRef && imgRef.current) {
+      new ScrollMagic.Scene({
+        duration: '200%',
+        triggerElement: imgRef.current,
+        offset: imgRef.current.offsetHeight / 2,
+      })
+        .setTween(imgRef.current, {
+          y: '20%',
+          overwrite: 5,
+          ease: Linear.easeNone,
+        })
+        .addTo(controller);
+    }
   }, []);
   return (
     <div
@@ -101,7 +106,7 @@ export default function PhotoBackground({
           <img
             className="bg"
             src={image.sourceUrl}
-            alt={image.altText || "Image"}
+            alt={image.altText || 'Image'}
             ref={imgRef}
           />
         )}
@@ -116,5 +121,5 @@ export default function PhotoBackground({
       </div>
       {cutline && <p className="cutline">{cutline}</p>}
     </div>
-  )
+  );
 }
