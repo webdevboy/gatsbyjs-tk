@@ -101,9 +101,9 @@
 
       .chefs__columns__column__img__wrapper {
         padding: 0;
-        background-color: $color-white;
 
         @media #{$viewport-xlarge} {
+          background-color: $color-white;
           padding: 50px 50px 100px;
         }
       }
