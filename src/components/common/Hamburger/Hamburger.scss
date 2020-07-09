@@ -1,0 +1,76 @@
+@import 'src/styles/variables.scss';
+
+.hamburger {
+  &.light {
+    .nav-icon {
+      span {
+        background: $color-cutline;
+      }
+    }
+  }
+
+  &.dark {
+    .nav-icon {
+      span {
+        background: $color-white;
+      }
+    }
+  }
+  .nav-icon {
+    width: 25px;
+    height: 16px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+
+    &.open {
+      span {
+        &:nth-child(1) {
+          top: 5px;
+          width: 0%;
+          left: 50%;
+        }
+
+        &:nth-child(2) {
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+
+        &:nth-child(4) {
+          top: 5px;
+          width: 0%;
+          left: 50%;
+        }
+      }
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: 0.25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 7px;
+      }
+
+      &:nth-child(4) {
+        top: 14px;
+      }
+    }
+  }
+}

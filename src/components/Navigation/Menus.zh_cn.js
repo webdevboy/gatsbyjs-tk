@@ -6,8 +6,10 @@ import * as cx from "classnames"
 
 import { ItemWithSubNav } from './Navigation';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
+import Hamburger from 'src/components/common/Hamburger/Hamburger';
 
-function MenusZhCn({ theme, showNav, path }) {
+
+function MenusZhCn({ theme, showNav, path, closeNav }) {
   const [t, i18n] = useTranslation();
   const { wordpress } = useStaticQuery(graphql`
     query {
@@ -65,6 +67,11 @@ function MenusZhCn({ theme, showNav, path }) {
         "home-slide": path === '/',
       })}
     >
+      <div className="navigation-head">
+        <button onClick={closeNav}>
+          <Hamburger isOpen={showNav} theme={theme} />
+        </button>
+      </div>
       <ul className="main-menu">
         {wordpress.menus &&
           wordpress.menus.nodes &&

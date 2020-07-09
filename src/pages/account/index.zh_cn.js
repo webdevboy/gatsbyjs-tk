@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from '@reach/router';
 import { useTranslation } from 'react-i18next';
 import cx from 'classnames';
+import { Helmet } from 'react-helmet';
 import { isAuthenticated, isBrowser } from '../../utils/auth';
 
 import Layout from '../../components/Layout';
@@ -29,6 +30,9 @@ function Account() {
       <div
         className={cx('account-wrapper', { 'account--active': isAccountView })}
       >
+        <Helmet>
+          <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        </Helmet>
         <h2 className="account__title">{t('auth:my-account')}</h2>
         <div className="account__toggles">
           <div

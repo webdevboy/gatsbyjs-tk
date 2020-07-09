@@ -10,21 +10,11 @@ import { heroAnimationDuration } from 'src/utils/styleVars';
 import { useLocation } from '@reach/router';
 
 import './header.scss';
+import Hamburger from 'src/components/common/Hamburger/Hamburger';
 import Facebook from 'src/images/Facebook_icon_gray.png';
 import Instagram from 'src/images/Instagram_icon_gray.png';
 import WeChat from 'src/images/WeChat_icon_gray.png';
 import Weibo from 'src/images/Weibo_icon_gray.png';
-
-function Hamburger({ isOpen }) {
-  return (
-    <div className={cx('nav-icon', { open: isOpen })}>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  );
-}
 
 function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOptRef }) {
   const _window = useWindow();
@@ -104,9 +94,11 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
     <header className={cx(`header ${theme}`, {
       'overflow-visible': isFrontPage,  
     })}>
-      <button onClick={() => setShowNav()}>
-        <Hamburger isOpen={showNav} />
-      </button>
+      <div>
+        <button className={cx('header-hamburger', { 'show': showNav })} onClick={() => setShowNav()}>
+          <Hamburger isOpen={showNav} theme={theme} />
+        </button>
+      </div>
       {!isFrontPage ? (
         <Link to="/">
           <div className="logo" ref={logoRef}>

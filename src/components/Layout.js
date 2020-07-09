@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react"
-import PropTypes from "prop-types"
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import cx from 'classnames';
 
-import Header from "src/components/Header/header"
-import Footer from "src/components/Footer/footer"
-import Navigation from "src/components/Navigation/Navigation"
+import Header from "src/components/Header/header";
+import Footer from "src/components/Footer/footer";
+import Navigation from "src/components/Navigation/Navigation";
 
-import "src/styles/index.scss"
+import "src/styles/index.scss";
 
 function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll }) {
-  const [showNav, setShowNav] = useState(false)
+  const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
     document.body.classList.add("wrapper")
@@ -22,23 +23,24 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
   }, [title])
 
   return (
-    <>
-      <Header
-        theme={theme || "light"}
-        title={title}
-        showNav={showNav}
-        setShowNav={() => setShowNav(!showNav)}
-        isFrontPage={isFrontPage}
-        isArticlePage={isArticlePage}
-        heroIsVisible={heroIsVisible}
-        pageScroll={pageScroll}
-      />
-      <Navigation theme={theme} showNav={showNav} />
-      <div>
+    <div>
+      <Navigation theme={theme || 'light'} showNav={showNav} closeNav={() => setShowNav(false)} />
+      <div className={cx('page-body', { shifted: showNav })}>
+        <Header
+          theme={theme || "light"}
+          title={title}
+          showNav={showNav}
+          setShowNav={() => setShowNav(!showNav)}
+          isFrontPage={isFrontPage}
+          isArticlePage={isArticlePage}
+          heroIsVisible={heroIsVisible}
+          pageScroll={pageScroll}
+        />
         <main>{children}</main>
         <Footer />
+        <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
       </div>
-    </>
+    </div>
   )
 }
 
