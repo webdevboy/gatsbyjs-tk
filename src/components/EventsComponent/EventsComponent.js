@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from "gatsby";
-import moment from "moment";
+import { Link } from 'gatsby';
+import moment from 'moment';
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
 import ScrollMagic from 'scrollmagic';
 
-
-import "./EventsComponent.scss"
+import './EventsComponent.scss';
 
 function EventsComponent({
   eventStartDate,
@@ -16,28 +15,36 @@ function EventsComponent({
   eventDescription2,
   eventName,
 }) {
-  const startDate = moment(new Date(eventStartDate))
-  const endDate = moment(new Date(eventEndDate))
+  const startDate = moment(new Date(eventStartDate));
+  const endDate = moment(new Date(eventEndDate));
   const imgRef = useRef(null);
   const [scrollMagic, setScrollMagic] = useState({
     controller: isBrowser ? new ScrollMagic.Controller() : null,
   });
   const { controller } = scrollMagic;
+
   useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '20%', overwrite: 5, ease: Linear.easeNone })
-      .addTo(controller)
+    if (!isBrowser) return;
+
+    if (imgRef && imgRef.current) {
+      new ScrollMagic.Scene({
+        duration: '200%',
+        triggerElement: imgRef.current,
+      })
+        .setTween(imgRef.current, {
+          y: '10%',
+          overwrite: 5,
+          ease: Linear.easeNone,
+        })
+        .addTo(controller);
+    }
   }, []);
+
   return (
-    <div
-      className="events-component"
-    >
+    <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
-        <img className="events-component__img"
+        <img
+          className="events-component__img"
           src={eventBackground.sourceUrl}
           alt=""
           ref={imgRef}
@@ -47,15 +54,15 @@ function EventsComponent({
         <div>
           {eventStartDate && (
             <div className="events-component__date">
-              {`${startDate.format("MMM DD")} - ${endDate.format("MMM DD")}`}
+              {`${startDate.format('MMM DD')} - ${endDate.format('MMM DD')}`}
             </div>
           )}
           {eventStartDate && (
-            <div className="events-component__day">{startDate.format("D")}</div>
+            <div className="events-component__day">{startDate.format('D')}</div>
           )}
         </div>
         <div className="event">
-          <div className="event__cutline">Event</div>
+          <div className="event__cutline">EVENT</div>
           {eventName && <div className="event__title">{eventName}</div>}
 
           {eventDescription1 && (
@@ -72,7 +79,7 @@ function EventsComponent({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default EventsComponent
+export default EventsComponent;
