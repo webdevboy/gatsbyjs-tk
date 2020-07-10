@@ -68,6 +68,7 @@
       @media #{$viewport-medium} {
         grid-column-start: 2;
         grid-column-end: 6;
+        max-width: 215px;
       }
 
       @media #{$viewport-large} {
