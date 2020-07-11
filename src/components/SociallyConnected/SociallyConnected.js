@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Swiper from "react-id-swiper";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import { useTranslation } from "react-i18next";
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
 import ScrollMagic from 'scrollmagic';
 
 
-import { MEDIUM_BREAKPOINT, LARGE_BREAKPOINT } from "src/utils/breakpoints"
+import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints"
 import { getFormattedArticle } from "src/utils/formatArticle"
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 
@@ -27,17 +27,29 @@ function SociallyConnectedItem({
     controller: isBrowser ? new ScrollMagic.Controller() : null,
   });
   const { controller } = scrollMagic;
+
   useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '40%', overwrite: 5, ease: Linear.easeNone })
-      .addTo(controller)
+    if (!isBrowser) return;
+
+    if (imgRef && imgRef.current) {
+      new ScrollMagic.Scene({
+        duration: '200%',
+        triggerElement: imgRef.current,
+      })
+        .setTween(imgRef.current, { y: '20%', overwrite: 5, ease: Linear.easeNone })
+        .addTo(controller)
+    }
   }, []);
+
   return (
-    <div className="socially__columns__column">
+    <div
+      className="socially__columns__column"
+      onClick={() => {
+        if (articleUrl) {
+          navigate(convertLinkLocale(articleUrl, i18n.language))
+        }
+      }}
+    >
       {imageUrl && (
         <div className="socially__columns__column__img__wrapper">
           <img
@@ -51,9 +63,10 @@ function SociallyConnectedItem({
 
       <div className="socially__columns__column__info">
         {cutline && (
-          <div className="socially__columns__column__info_cutline">
-            {cutline}
-          </div>
+          <div
+            className="socially__columns__column__info_cutline"
+            dangerouslySetInnerHTML={{ __html: cutline }}
+          />
         )}
         {title && (
           <div className="socially__columns__column__info_title">{title}</div>
@@ -65,22 +78,20 @@ function SociallyConnectedItem({
         )}
 
         <div className="socially__columns__column__info_more">
-          <Link
-            className="socially__columns__column__info_more__link"
-            to={convertLinkLocale(articleUrl, i18n.language)}
-          >
+          <span className="socially__columns__column__info_more__link">
             {t('read-more')}
-          </Link>
+          </span>
         </div>
       </div>
     </div>
   )
 }
+
 function SociallyConnected({ column1, column2, column3 }) {
   const [t, i18n] = useTranslation('common');
   const params = {
     spaceBetween: 20,
-    slidesPerView: 1.5,
+    slidesPerView: 'auto',
     noSwiping: false,
     scrollbar: {
       el: ".socially__scrollbar",
@@ -99,7 +110,7 @@ function SociallyConnected({ column1, column2, column3 }) {
           dragSize: 126,
         },
       },
-      [LARGE_BREAKPOINT]: {
+      [XLARGE_BREAKPOINT]: {
         slidesPerView: 3,
         spaceBetween: 41,
         noSwiping: true,
