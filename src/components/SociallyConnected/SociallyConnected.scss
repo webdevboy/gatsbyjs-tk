@@ -16,10 +16,11 @@
 
     @media #{$viewport-large} {
       width: 1023px;
+      padding-bottom: 70px;
     }
 
     @media #{$viewport-xlarge} {
-      width: 1399px;
+      width: 1440px;
     }
   }
 
@@ -98,6 +99,11 @@
 
         @media #{$viewport-medium} {
           max-width: none;
+        }
+
+        @media #{$viewport-xlarge} {
+          width: 100%;
+          max-width: 417px;
         }
       }
     }
