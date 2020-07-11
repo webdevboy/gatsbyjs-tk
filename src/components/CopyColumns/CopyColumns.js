@@ -1,20 +1,10 @@
-import React, { useState, useRef } from 'react';
-import * as ScrollMagic from 'scrollmagic';
+import React from 'react';
 import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from 'src/utils/breakpoints';
 import { isBrowser } from 'src/utils/auth';
 
 import './CopyColumns.scss';
 
 export default function CopyColumns({ columns, theme }) {
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser
-      ? new ScrollMagic.Controller({
-          globalSceneOptions: { triggerHook: 'onEnter', duration: '300%' },
-        })
-      : null,
-  });
-
-  const sectionToAnimateRef = useRef(null);
 
   const cols = 6;
 
@@ -33,15 +23,6 @@ export default function CopyColumns({ columns, theme }) {
       return `auto / span 2`;
     }
   };
-
-  // const { controller } = scrollMagic;
-  // useEffect(() => {
-  //   new ScrollMagic.Scene({
-  //     triggerElement: sectionToAnimateRef.current,
-  //   })
-  //     .setTween(sectionToAnimateRef.current, { y: '-150%' })
-  //     .addTo(controller);
-  // }, [])
 
   return (
     <section className={`copy-columns ${theme}`}>

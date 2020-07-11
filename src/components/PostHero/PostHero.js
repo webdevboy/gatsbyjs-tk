@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as cx from 'classnames';
-import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import { Parallax } from 'react-scroll-parallax';
 
 import './PostHero.scss';
+import useDocument from 'src/hooks/useDocument';
 
 export default function Hero({
   authors,
@@ -16,13 +16,9 @@ export default function Hero({
   pageScroll,
 }) {
   const categoryName = categories.length ? categories[0].name : null;
-  const [loaded, setLoaded] = useState(false);
-  const imgRef = useRef(null);
   const imgContainerRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
+  const _document = useDocument();
+  const [loaded, setLoaded] = useState(false);
   const scaleAnimationTime = 1500;
   const handleImageLoad = () => {
     if (!isBrowser) return;
@@ -35,19 +31,6 @@ export default function Hero({
         pageScroll.current.style.overflowY = 'auto';
         pageScroll.current.classList.add('scrollable');
       }
-      if (imgRef && imgRef.current) {
-        new ScrollMagic.Scene({
-          duration: '200%',
-          triggerElement: imgRef.current,
-          offset: imgRef.current.offsetHeight - 200,
-        })
-          .setTween(imgRef.current, {
-            y: '50%',
-            overwrite: 5,
-            ease: Linear.easeNone,
-          })
-          .addTo(controller);
-      }
     }, scaleAnimationTime);
   };
   useEffect(() => {
@@ -58,16 +41,15 @@ export default function Hero({
   return (
     <section className={`post-hero ${theme}`}>
       <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
-        <div className={cx('image-scale-contianer', { loaded })}>
+        <Parallax y={[-40, 20]} className={cx('image-scale-contianer', { loaded })}>
           {heroImage && heroImage.sourceUrl && (
             <img
               src={heroImage.sourceUrl}
               alt=""
               onLoad={handleImageLoad}
-              ref={imgRef}
             />
           )}
-        </div>
+        </Parallax>
       </div>
       <div className={cx('block', { loaded })}>
         <div className="block-wrapper">

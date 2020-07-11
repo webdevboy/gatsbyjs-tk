@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Swiper from "react-id-swiper";
 import { navigate } from "gatsby";
 import { useTranslation } from "react-i18next";
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
 
 
 import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints"

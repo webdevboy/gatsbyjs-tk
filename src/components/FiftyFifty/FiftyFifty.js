@@ -1,8 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import * as cx from "classnames";
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
 
 import './FiftyFifty.scss';
 
@@ -15,20 +12,6 @@ function FiftyFifty({
   copyColor,
   theme,
 }) {
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-  useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '20%', overwrite: 5, ease: Linear.easeNone })
-      .addTo(controller)
-  }, []);
   return (
     <section
       className={cx({
@@ -41,7 +24,7 @@ function FiftyFifty({
       <div className="image-block">
         {image && image.sourceUrl && (
           <div className="wrapper">
-            <img src={image.sourceUrl} alt={image.alt || 'Foodie image'} ref={imgRef} />
+            <img src={image.sourceUrl} alt={image.alt || 'Foodie image'} />
           </div>
         )}
       </div>

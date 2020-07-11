@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, navigate } from 'gatsby';
+import React, { useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 import Swiper from 'react-id-swiper';
 import cx from 'classnames';
 import { useTranslation } from 'react-i18next';
-import gsap, { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
+import gsap from 'gsap';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 import { getFormattedArticle } from 'src/utils/formatArticle';
 import {
@@ -27,13 +27,13 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
       }}
     >
       {imageUrl && (
-        <div className="tasting-notes__note__img-wrapper">
+        <Parallax y={[-10, 30]} className="tasting-notes__note__img-wrapper">
           <img
             src={imageUrl}
             className="tasting-notes__note__img"
             alt="article thumbnail"
           />
-        </div>
+        </Parallax>
       )}
       {cutline && (
         <div
@@ -57,6 +57,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
 function TastingNotes({ headline, notes, type, theme }) {
   const [moreThanMedium, setMoreThanMedium] = useState(false);
   const [moreThanLarge, setMoreThanLarge] = useState(false);
+  const { parallaxController } = useController();
   const scrollTop = () => {
     const scrollBlock = document.querySelector('.page-scroll');
     const swipeWrapper = document.querySelector('.swipe-wrapper');
@@ -87,6 +88,7 @@ function TastingNotes({ headline, notes, type, theme }) {
     });
 
     setLayout(window.innerWidth);
+    parallaxController.update();
   }, []);
 
   const params = {
@@ -134,7 +136,7 @@ function TastingNotes({ headline, notes, type, theme }) {
                 notes.length > 0 &&
                 notes.map((note, index) => (
                   <div key={index}>
-                    <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n} />
+                    <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n}/>
                   </div>
                 ))}
             </Swiper>

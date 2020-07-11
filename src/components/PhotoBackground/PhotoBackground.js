@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as cx from 'classnames';
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 // Components
 import Plus from 'src/svgs/plus';
 
 import './PhotoBackground.scss';
 
-function MessageGrid({ gridCount, message, plot }) {
+function MessageGrid({ gridCount, message, plot, fullScreen }) {
   const grid = Array.from({ length: gridCount }, (x, i) => i);
 
   const plotMap = {
@@ -22,17 +20,27 @@ function MessageGrid({ gridCount, message, plot }) {
   };
 
   return (
-    <div className="grid">
-      {grid.map((cell, i) => {
-        return (
-          <div className="cell" key={i}>
-            {i === plotMap[plot] && (
-              <span dangerouslySetInnerHTML={{ __html: message }}></span>
-            )}
-          </div>
-        );
-      })}
-    </div>
+    
+      <div className="grid">
+        {grid.map((cell, i) => {
+          if(fullScreen) {
+            return (
+              <Parallax y={[50, -30]} className="cell" key={i}>
+                {i === plotMap[plot] && (
+                  <span dangerouslySetInnerHTML={{ __html: message }}></span>
+                )}
+              </Parallax>
+            );
+          }
+          return (
+            <div className="cell" key={i}>
+              {i === plotMap[plot] && (
+                <span dangerouslySetInnerHTML={{ __html: message }}></span>
+              )}
+            </div>
+          )
+        })}
+      </div>
   );
 }
 
@@ -75,26 +83,9 @@ export default function PhotoBackground({
   popup,
   theme,
 }) {
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
+  const { parallaxController } = useController();
   useEffect(() => {
-    if (!isBrowser) return;
-    if (imgRef && imgRef.current) {
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: imgRef.current,
-        offset: imgRef.current.offsetHeight / 2,
-      })
-        .setTween(imgRef.current, {
-          y: '20%',
-          overwrite: 5,
-          ease: Linear.easeNone,
-        })
-        .addTo(controller);
-    }
+    parallaxController.update();
   }, []);
   return (
     <div
@@ -105,18 +96,27 @@ export default function PhotoBackground({
       })}
     >
       <div className="bg-wrapper">
-        {image && image.sourceUrl && (
+        {image && image.sourceUrl && !fullScreen && (
+          <Parallax y={[-20, 20]} className="image-container">
+            <img
+              className="bg"
+              src={image.sourceUrl}
+              alt={image.altText || 'Image'}
+            />
+          </Parallax>
+        )}
+        {image && image.sourceUrl && fullScreen && (
           <img
-            className="bg"
+            className="bg fullscreen"
             src={image.sourceUrl}
             alt={image.altText || 'Image'}
-            ref={imgRef}
           />
         )}
         <MessageGrid
           gridCount={9}
           message={floatingBodyText}
           plot={floatingTextPosition.toLowerCase()}
+          fullScreen={fullScreen}
         />
         {popup.popupCopy && popup.headline && (
           <PhotoPopup title={popup.headline} content={popup.popupCopy} />

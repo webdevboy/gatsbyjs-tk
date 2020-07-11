@@ -69,7 +69,7 @@
             min-height: 450px;
             object-fit: cover;
             object-position: center;
-            transform: scale(1.2);
+            transform: scale(1.1);
             transition: transform 70ms;
             cursor: pointer;
           }
@@ -178,13 +178,15 @@
 
     .top_articles__columns__column__image-wrapper {
       overflow: hidden;
-
+      .parallax-inner {
+        transform: translate3d(0%, 0%, 0px);
+      }
       .top_articles__columns__column__image {
         width: 100%;
         min-height: 444px;
         object-fit: cover;
         object-position: center;
-        transform: scale(1.2);
+        transform: scale(1);
         transition: transform 70ms;
 
         @media #{$viewport-medium} {

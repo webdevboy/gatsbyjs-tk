@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
+import { Parallax } from 'react-scroll-parallax';
 
 import './TopArticles.scss';
 
@@ -25,12 +24,12 @@ function Article({
       }}
     >
       {imageUrl && (
-        <div className="top_articles__columns__column__image-wrapper">
+        <Parallax y={[-25, 10]} className="top_articles__columns__column__image-wrapper">
           <img
             className="top_articles__columns__column__image"
             src={imageUrl}
           />
-        </div>
+        </Parallax>
       )}
       {category && (
         <div
@@ -118,8 +117,9 @@ export default function TopArticles(props) {
             <div className="featured-article__inner">
               {featuredArticleFormatted.imageUrl && (
                 <div className="featured-article__image-container">
-                  <div
+                  <Parallax
                     className="featured-article__image-wrapper"
+                    y={[-15, 15]}
                     onClick={() => {
                       if (
                         featuredArticleFormatted &&
@@ -133,7 +133,7 @@ export default function TopArticles(props) {
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
                     />
-                  </div>
+                  </Parallax>
                   {featuredArticleFormatted.authors && (
                     <div className="feature-article__authors">
                       {featuredArticleFormatted.authors}

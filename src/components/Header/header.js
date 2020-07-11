@@ -34,7 +34,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
         const totalScroll = scrollBlockRef.current.scrollHeight - scrollBlockRef.current.clientHeight;
         const scrollProgress = (currentScroll / totalScroll) * 100;
         progressBarRef.current.style.width = `${scrollProgress}%`;
-        if(currentScroll > 0 && articleHeaderRef) {
+        if(currentScroll > 50 && articleHeaderRef) {
           articleHeaderRef.current.classList.add('scrolled');
           headerOptRef.current.classList.add('scrolled');
           if(logoRef && logoRef.current) {

@@ -53,13 +53,13 @@ function FullscreenArticle({
   return (
     <div className="fullscreen-article">
       {fullScreenArticleImage && fullScreenArticleImage.sourceUrl && (
-        <Parallax y={[-20, 20]} tagOuter="figure" className="fullscreen-article__img-wrapper">
+        <div className="fullscreen-article__img-wrapper">
           <img
             className="fullscreen-article__img"
             src={fullScreenArticleImage.sourceUrl}
             alt=""
           />
-        </Parallax>
+        </div>
         
       )}
       <div
@@ -67,33 +67,35 @@ function FullscreenArticle({
           .toLowerCase()
           .replace(' ', '-')}`}
       >
-        <div className="fullscreen-article__info">
-          {articleObject.category && (
-            <div className="fullscreen-article__info__category">
-              {articleObject.category.name}
-            </div>
-          )}
-          {articleObject.title && (
-            <div className="fullscreen-article__info__title">
-              {articleObject.title}
-            </div>
-          )}
-          {articleObject.byline && (
-            <div className="fullscreen-article__info__description">
-              {articleObject.byline}
-            </div>
-          )}
-          {articleObject.uri && (
-            <div className="fullscreen-article__info__more">
-              <Link
-                className="fullscreen-article__info__more__link"
-                to={convertLinkLocale(articleObject.uri, i18n.language)}
-              >
-                {t('read-more')}
-              </Link>
-            </div>
-          )}
-        </div>
+        <Parallax y={['50%', '-50%']}>
+          <div className="fullscreen-article__info">
+            {articleObject.category && (
+              <div className="fullscreen-article__info__category">
+                {articleObject.category.name}
+              </div>
+            )}
+            {articleObject.title && (
+              <div className="fullscreen-article__info__title">
+                {articleObject.title}
+              </div>
+            )}
+            {articleObject.byline && (
+              <div className="fullscreen-article__info__description">
+                {articleObject.byline}
+              </div>
+            )}
+            {articleObject.uri && (
+              <div className="fullscreen-article__info__more">
+                <Link
+                  className="fullscreen-article__info__more__link"
+                  to={convertLinkLocale(articleObject.uri, i18n.language)}
+                >
+                  {t('read-more')}
+                </Link>
+              </div>
+            )}
+          </div>
+        </Parallax>
       </div>
     </div>
   );

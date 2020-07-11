@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import moment from 'moment';
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 import './EventsComponent.scss';
 
@@ -14,16 +13,22 @@ function EventsComponent({
   eventDescription2,
   eventName,
 }) {
+  const { parallaxController } = useController();
   const startDate = moment(new Date(eventStartDate))
   const endDate = moment(new Date(eventEndDate))
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
-        <img
-          className="events-component__img"
-          src={eventBackground.sourceUrl}
-          alt=""
-        />
+        <Parallax className="events-component__img-wrapper" y={[-10, 20]}>
+          <img
+            className="events-component__img"
+            src={eventBackground.sourceUrl}
+            alt=""
+            onLoad={() => {
+              parallaxController.update(); 
+            }}
+          />
+        </Parallax>
       )}
       <div className="events-component__body">
         <div>

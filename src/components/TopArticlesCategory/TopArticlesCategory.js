@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import { isBrowser } from 'src/utils/auth';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 import './TopArticlesCategory.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
@@ -17,9 +17,9 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
       }}
     >
       {imageUrl && (
-        <div className="article-img-wrapper">
+        <Parallax y={[-20, 20]} className="article-img-wrapper">
           <img src={imageUrl} className="article-img" alt="Chef" />
-        </div>
+        </Parallax>
       )}
       {category && <div className="article__category">{category}</div>}
       {title && <div className="article__title">{title}</div>}
@@ -35,7 +35,7 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
 
 export default function TopArticles({ category }) {
   const { name, posts } = category;
-
+  const { parallaxController } = useController();
   const [t, i18n] = useTranslation('article');
   const getFormattedArticle = (article) => {
     if (!article) return null;
@@ -115,7 +115,9 @@ export default function TopArticles({ category }) {
   });
 
   const formattedArticles = getArticles(formattedNodes).slice(0, 4);
-
+  useEffect(() => {
+    parallaxController.update();
+  }, []);
   return (
     <div className="top-articles-container section-landing">
       {name && (
@@ -142,12 +144,12 @@ export default function TopArticles({ category }) {
             >
               {featuredArticleFormatted.imageUrl && (
                 <div className="featured-article__image-container">
-                  <div className="featured-article__image-wrapper">
+                  <Parallax y={[-20, 20]} className="featured-article__image-wrapper">
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
                     />
-                  </div>
+                  </Parallax>
                   {featuredArticleFormatted.authors && (
                     <div className="feature-article__authors">
                       {featuredArticleFormatted.authors}

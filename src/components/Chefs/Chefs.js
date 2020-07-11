@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Swiper from 'react-id-swiper';
+import { Parallax } from 'react-scroll-parallax';
 import { navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 
@@ -21,12 +22,12 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
     >
       {imageUrl && (
         <div className="chefs__columns__column__img__wrapper">
-          <div className="chefs__columns__column__img-wrapper">
+          <Parallax className="chefs__columns__column__img-wrapper" y={[-25, 15]}>
             <div
               className="chefs__columns__column__img"
               style={{ backgroundImage: `url("${imageUrl}")` }}
             />
-          </div>
+          </Parallax>
         </div>
       )}
       <div className="chefs__columns__column__info">
