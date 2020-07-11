@@ -3,7 +3,6 @@ import { Link, navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
 
 import './TopArticles.scss';
 
@@ -15,22 +14,7 @@ function Article({
   articleUrl,
   authors,
   t,
-  controller,
 }) {
-  const imgRef = useRef(null);
-  useEffect(() => {
-    if (!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, {
-        y: '40%',
-        ease: Linear.easeNone,
-        overwrite: 5,
-      })
-      .addTo(controller);
-  }, []);
   return (
     <div
       className="top_articles__columns__column__inner"
@@ -45,7 +29,6 @@ function Article({
           <img
             className="top_articles__columns__column__image"
             src={imageUrl}
-            ref={imgRef}
           />
         </div>
       )}
@@ -69,20 +52,6 @@ function Article({
 export default function TopArticles(props) {
   const { featuredArticle, articles, theme } = props;
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-  useEffect(() => {
-    if (!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '20%', overwrite: 5 })
-      .addTo(controller);
-  }, []);
   const getFormattedArticle = (article) => {
     if (!article) return null;
 
@@ -163,7 +132,6 @@ export default function TopArticles(props) {
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
-                      ref={imgRef}
                     />
                   </div>
                   {featuredArticleFormatted.authors && (
@@ -208,7 +176,6 @@ export default function TopArticles(props) {
                 ...article,
                 key: index,
                 t,
-                controller,
               }}
             />
           ))}

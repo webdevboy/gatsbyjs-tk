@@ -1,24 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic'
 
 import './TopArticlesCategory.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 
-function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, controller }) {
-  const imgRef = useRef(null)
-  useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '40%', ease: Linear.easeNone, overwrite: 5 })
-      .addTo(controller)
-  }, []);
+function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
   return (
     <div
       className="top_articles__columns__column__inner"
@@ -30,7 +18,7 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, contr
     >
       {imageUrl && (
         <div className="article-img-wrapper">
-          <img src={imageUrl} className="article-img" alt="Chef" ref={imgRef} />
+          <img src={imageUrl} className="article-img" alt="Chef" />
         </div>
       )}
       {category && <div className="article__category">{category}</div>}
@@ -49,20 +37,6 @@ export default function TopArticles({ category }) {
   const { name, posts } = category;
 
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-  useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '20%', overwrite: 5 })
-      .addTo(controller)
-  }, []);
   const getFormattedArticle = (article) => {
     if (!article) return null;
     const imageObj =
@@ -172,7 +146,6 @@ export default function TopArticles({ category }) {
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
-                      ref={imgRef}
                     />
                   </div>
                   {featuredArticleFormatted.authors && (
@@ -206,7 +179,7 @@ export default function TopArticles({ category }) {
             {formattedArticles.map((article, index) => (
               <div className="top__articles__category__item" key={index}>
                 <Article
-                  {...{ ...article, category: name, controller }}
+                  {...{ ...article, category: name }}
                   t={t}
                   i18n={i18n}
                 />

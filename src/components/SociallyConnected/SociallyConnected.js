@@ -4,7 +4,6 @@ import { Link } from "gatsby";
 import { useTranslation } from "react-i18next";
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
 
 
 import { MEDIUM_BREAKPOINT, LARGE_BREAKPOINT } from "src/utils/breakpoints"
@@ -22,20 +21,6 @@ function SociallyConnectedItem({
   articleUrl,
 }) {
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-  useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '40%', overwrite: 5, ease: Linear.easeNone })
-      .addTo(controller)
-  }, []);
   return (
     <div className="socially__columns__column">
       {imageUrl && (
@@ -43,7 +28,6 @@ function SociallyConnectedItem({
           <img
             className="socially__columns__column__img"
             src={imageUrl}
-            ref={imgRef}
             alt=""
           />
         </div>

@@ -63,11 +63,16 @@
       }
     }
   }
-  .fullscreen-article__img {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+  .fullscreen-article__img-wrapper {
+    margin: 0;
+    overflow: hidden;
+    .fullscreen-article__img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
+  
 
   .fullscreen-article__info {
     z-index: 10;
