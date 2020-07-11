@@ -62,7 +62,7 @@ function EventsComponent({
           )}
         </div>
         <div className="event">
-          <div className="event__cutline">EVENT</div>
+          <div className="event__cutline">EVENTS</div>
           {eventName && <div className="event__title">{eventName}</div>}
 
           {eventDescription1 && (

@@ -137,10 +137,11 @@
       @media #{$viewport-medium} {
         font-size: 15px;
         margin-top: 0;
-        font-weight: 500;
+        font-weight: 400;
       }
 
       @media #{$viewport-large} {
+        margin-top: 10px;
         color: $color-gray;
       }
     }
@@ -150,6 +151,7 @@
       font-size: 13px;
       font-family: $font-serif;
       line-height: 20px;
+      -webkit-font-smoothing: antialiased;
 
       @media #{$viewport-medium} {
         font-size: 15px;
@@ -159,6 +161,7 @@
 
       @media #{$viewport-large} {
         color: $color-gray;
+        margin-top: 20px;
       }
     }
 
@@ -176,6 +179,7 @@
       }
 
       @media #{$viewport-large} {
+        margin-top: 20px;
         color: $color-gray;
       }
 
