@@ -18,19 +18,24 @@ function Article({
   controller,
 }) {
   const imgRef = useRef(null);
+
   useEffect(() => {
     if (!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, {
-        y: '40%',
-        ease: Linear.easeNone,
-        overwrite: 5,
+
+    if (imgRef && imgRef.current) {
+      new ScrollMagic.Scene({
+        duration: '200%',
+        triggerElement: imgRef.current,
       })
-      .addTo(controller);
+        .setTween(imgRef.current, {
+          y: '40%',
+          ease: Linear.easeNone,
+          overwrite: 5,
+        })
+        .addTo(controller);
+    }
   }, []);
+
   return (
     <div
       className="top_articles__columns__column__inner"
@@ -74,15 +79,20 @@ export default function TopArticles(props) {
     controller: isBrowser ? new ScrollMagic.Controller() : null,
   });
   const { controller } = scrollMagic;
+
   useEffect(() => {
     if (!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '20%', overwrite: 5 })
-      .addTo(controller);
+
+    if (imgRef && imgRef.current) {
+      new ScrollMagic.Scene({
+        duration: '200%',
+        triggerElement: imgRef.current,
+      })
+        .setTween(imgRef.current, { y: '20%', overwrite: 5 })
+        .addTo(controller);
+    }
   }, []);
+
   const getFormattedArticle = (article) => {
     if (!article) return null;
 
