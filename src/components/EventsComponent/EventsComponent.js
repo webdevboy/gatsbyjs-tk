@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import moment from 'moment';
 import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
 
 import './EventsComponent.scss';
 
@@ -15,31 +14,8 @@ function EventsComponent({
   eventDescription2,
   eventName,
 }) {
-  const startDate = moment(new Date(eventStartDate));
-  const endDate = moment(new Date(eventEndDate));
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-
-  useEffect(() => {
-    if (!isBrowser) return;
-
-    if (imgRef && imgRef.current) {
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: imgRef.current,
-      })
-        .setTween(imgRef.current, {
-          y: '10%',
-          overwrite: 5,
-          ease: Linear.easeNone,
-        })
-        .addTo(controller);
-    }
-  }, []);
-
+  const startDate = moment(new Date(eventStartDate))
+  const endDate = moment(new Date(eventEndDate))
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
@@ -47,7 +23,6 @@ function EventsComponent({
           className="events-component__img"
           src={eventBackground.sourceUrl}
           alt=""
-          ref={imgRef}
         />
       )}
       <div className="events-component__body">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import { TweenMax, Power2 } from 'gsap';
 
 import Layout from 'src/components/Layout';
@@ -14,6 +15,7 @@ import { heroAnimationDuration } from 'src/utils/styleVars';
 
 const FrontPage = ({ pageContext, heroData }) => {
   const { title, components } = pageContext;
+  const [scrollWrapper, setScrollWrapper] = useState(null);
   const _window = useWindow() || {};
   const containerRef = useRef(null);
   const [showHero, setShowHero] = useState(true);
@@ -40,6 +42,8 @@ const FrontPage = ({ pageContext, heroData }) => {
       wheelListener1 = _window.addEventListener("mousewheel", moveScroll, { passive: false });
       wheelListener2 = _window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
     }
+
+    setScrollWrapper(containerRef.current);
 
     document.querySelector('html').classList.add('no-scrolling');
     document.querySelector('#main-wrapper').classList.add('is-front-page');
@@ -103,18 +107,20 @@ const FrontPage = ({ pageContext, heroData }) => {
           onWheel={handleWheelEvent}
           style={{ height: _window.outerHeight }}
         >
-          <Layout
-            theme="light"
-            isFrontPage={true}
-            heroIsVisible={showHero}
-            isFrontPage={pageContext.isFrontPage}
-            pageScroll={containerRef}
-          >
-            <SEO title={title || 'Untitled'} />
-            {layouts.map((layout, index) => (
-              <PageLayouts key={index} layoutData={layout} />
-            ))}
-          </Layout>
+          <ParallaxProvider scrollContainer={scrollWrapper}>
+            <Layout
+              theme="light"
+              isFrontPage={true}
+              heroIsVisible={showHero}
+              isFrontPage={pageContext.isFrontPage}
+              pageScroll={containerRef}
+            >
+              <SEO title={title || 'Untitled'} />
+              {layouts.map((layout, index) => (
+                <PageLayouts key={index} layoutData={layout} />
+              ))}
+            </Layout>
+          </ParallaxProvider>
         </div>
       </Swipeable>
     </>

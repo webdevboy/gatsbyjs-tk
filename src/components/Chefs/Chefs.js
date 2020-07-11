@@ -3,10 +3,6 @@ import Swiper from 'react-id-swiper';
 import { navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
-
 import { MEDIUM_BREAKPOINT } from 'src/utils/breakpoints';
 import { getFormattedArticle } from 'src/utils/formatArticle';
 
@@ -14,26 +10,6 @@ import './Chefs.scss';
 
 function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-
-  useEffect(() => {
-    if (!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, {
-        y: '40%',
-        ease: Linear.easeNone,
-        overwrite: 5,
-      })
-      .addTo(controller);
-  }, []);
-
   return (
     <div
       className="chefs__columns__column"
@@ -49,7 +25,6 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
             <div
               className="chefs__columns__column__img"
               style={{ backgroundImage: `url("${imageUrl}")` }}
-              ref={imgRef}
             />
           </div>
         </div>
