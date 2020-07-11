@@ -7,5 +7,8 @@
   "login": "Login",
   "chefs-profile": "Chefs’ Profile",
   "socially-connected": "Socially Connected",
-  "tasting-notes": "Tasting Notes"
+  "tasting-notes": "Tasting Notes",
+  "nav-about": "About Tasting Kitchen",
+  "nav-login": "Login / Register",
+  "nav-subscribe": "Newsletter / Subscribe"
 }

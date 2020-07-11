@@ -63,31 +63,44 @@ function MenusEn({ theme, showNav, path, closeNav }) {
         {wordpress.menus &&
           wordpress.menus.nodes &&
           wordpress.menus.nodes.length &&
-          wordpress.menus.nodes[0] && 
+          wordpress.menus.nodes[0] &&
           wordpress.menus.nodes[0].menuItems &&
           wordpress.menus.nodes[0].menuItems.nodes.length &&
           wordpress.menus.nodes[0].menuItems.nodes.map(menu => {
-            // specific check for articles while more posts get added
-            return menu.childItems.nodes.length <= 1 &&
-              menu.slug !== "articles" ? (
+            return menu.childItems.nodes.length <= 1 ? (
               <li key={menu.id}>
                 <Link to={convertLinkLocale(getUrlPath(menu.url), i18n.language)}>
                   {menu.label}
                 </Link>
               </li>
             ) : (
-              <ItemWithSubNav
-                key={menu.id}
-                menu={menu}
-                getUrlPath={getUrlPath}
-              />
-            )
+                <ItemWithSubNav
+                  key={menu.id}
+                  menu={menu}
+                  getUrlPath={getUrlPath}
+                />
+              )
           })}
+        <li>
+          <Link to={convertLinkLocale('/about', i18n.language)}>
+            {t('nav-about')}
+          </Link>
+        </li>
+        <li>
+          <Link to={convertLinkLocale('/login', i18n.language)}>
+            {t('nav-login')}
+          </Link>
+        </li>
+        <li>
+          <Link to={convertLinkLocale('/login', i18n.language)}>
+            {t('nav-subscribe')}
+          </Link>
+        </li>
       </ul>
     </nav>
   ) : (
-    <div>Error retreiving navigation info</div>
-  )
+      <div>Error retreiving navigation info</div>
+    )
 }
 
 export default MenusEn
