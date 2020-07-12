@@ -59,17 +59,15 @@ const Post = ({ pageContext }) => {
             pageScroll={pageScroll}
           >
             <SEO title={title || "Untitled"} />
-            <div className={cx({ blurred: pageLimitModal })}>
-              {layouts.map((layout, index) => (
-                <PostLayouts
-                  key={index}
-                  layoutData={layout}
-                  categories={filterCategories(categories)}
-                  theme={pageContext.themeSelect.themeSelect}
-                  pageScroll={pageScroll}
-                />
-              ))}
-            </div>
+            {layouts.map((layout, index) => (
+              <PostLayouts
+                key={index}
+                layoutData={layout}
+                categories={filterCategories(categories)}
+                theme={pageContext.themeSelect.themeSelect}
+                pageScroll={pageScroll}
+              />
+            ))}
             {pageLimitModal && <PageLimitModal />}
           </Layout>
         </ParallaxProvider>

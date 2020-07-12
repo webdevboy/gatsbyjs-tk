@@ -129,7 +129,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       )}
 
       <div className="header__language-login" ref={headerOptRef}>
-        <LanguageToggle theme={theme} />
+        <LanguageToggle theme={theme} pageScroll={pageScroll} />
         <LoginLogout />
       </div>
 

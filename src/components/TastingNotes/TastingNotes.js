@@ -13,6 +13,7 @@ import {
   XLARGE_BREAKPOINT,
 } from 'src/utils/breakpoints';
 import ArrowUp from 'src/svgs/arrow_up';
+import BackToTopImg from 'src/images/back-to-top.png';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
 
@@ -122,8 +123,7 @@ function TastingNotes({ headline, notes, type, theme }) {
   return (
     <div className="tasting-notes-wrapper">
       <div className={`tasting-notes__go-top ${theme}`} onClick={scrollTop}>
-        <div className="tasting-notes__go-top__divider" />
-        <ArrowUp style={{ width: '16px', height: '16px' }} color="rgba(120, 114, 118, 0.7)" />
+        <img src={BackToTopImg} alt="" />
       </div>
       <div className={`tasting-notes ${theme}`}>
         <div className="tasting-notes__title">

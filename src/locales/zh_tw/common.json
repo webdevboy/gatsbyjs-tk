@@ -10,5 +10,10 @@
   "tasting-notes": "品嚐筆記",
   "nav-about": "关于品尝厨房",
   "nav-login": "登录/注册",
-  "nav-subscribe": "通讯/订阅"
+  "nav-subscribe": "通讯/订阅",
+  "nav-account": "帐户",
+  "subscribe-popup-text1": "这个故事出现在TK",
+  "subscribe-popup-text2": "欢迎您阅读",
+  "subscribe-popup-text3": "这个故事是免费的",
+  "subscribe-popup-text4": "或订阅即可享受无限访问权限。"
 }

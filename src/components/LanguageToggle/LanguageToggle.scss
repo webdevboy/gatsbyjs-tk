@@ -2,59 +2,84 @@
 
 .language-container {
   position: relative;
-  @media #{$viewport-medium} {
-    margin-right: 25px;
+  width: 100px;
+  height: 100%;
+  
+  .language__selected-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: none;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border-radius: 3px;
+
+    &.open {
+      background-color: $color-white;
+      width: 250px;
+      z-index: 100;
+      box-shadow: 0 10px 9px 0 rgba(0, 0, 0, 0.1);
+      &.dark {
+        background-color: $color-black;
+        box-shadow: 0 10px 9px 0 rgba(255, 255, 255, 0.1);
+      }
+    }
+  
   }
   .language__selected {
+    height: $header-height;
+    min-height: $header-height;
+    width: 100%;
     color: $color-gray;
     font-family: $font-sans-serif;
     font-size: 16px;
     font-weight: $sans-serif-semibold;
     cursor: pointer;
-    width: 75px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     padding-right: 5px;
     box-sizing: border-box;
-    @media #{$viewport-medium} {
-      width: 100px;
-    }
   }
   .language__dropdown {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
     padding: 0;
     margin: 0;
-    background-color: #fff;
-    width: 150%;
-    box-shadow: 0 5px 10px 1px $color-gray;
-    transform: translateX(-50%);
-    left: 50%;
+    background-color: $color-white;
+    width: 100%;
     color: $color-black;
-    z-index: 100;
-    @media #{$viewport-medium} {
-      width: 120%;
-    }
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
     &.dark {
       background-color: $color-black;
-      box-shadow: 0 5px 10px 1px $color-darkgray;
+    }
+    &.open {
+      height: 215px;
+      padding: 25px 0 40px 0;
     }
     li {
       list-style: none;
       text-align: center;
-      padding: 5px 10px;
+      padding: 15px;
       cursor: pointer;
       &:hover {
-        background-color: $color-lightgray;
+        opacity: 0.7;
       }
       span {
         text-decoration: none;
+        color: $color-cutline;
         font-family: $font-sans-serif;
         font-size: 16px;
         font-weight: $sans-serif-semibold;
-        color: $color-gray;
+        line-height: 20px;
       }
     }
   }

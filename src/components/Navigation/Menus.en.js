@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import * as cx from "classnames"
 
 import { ItemWithSubNav } from './Navigation';
+import { isAuthenticated, logout } from 'src/utils/auth';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
 
@@ -86,16 +87,30 @@ function MenusEn({ theme, showNav, path, closeNav }) {
             {t('nav-about')}
           </Link>
         </li>
-        <li>
-          <Link to={convertLinkLocale('/login', i18n.language)}>
-            {t('nav-login')}
-          </Link>
-        </li>
+        {!isAuthenticated() && (
+          <li>
+            <Link to={convertLinkLocale('/login', i18n.language)}>
+              {t('nav-login')}
+            </Link>
+          </li>
+        )}
+        {isAuthenticated() && (
+          <li>
+            <Link to={convertLinkLocale('/account', i18n.language)}>
+              {t('nav-account')}
+            </Link>
+          </li>
+        )}
         <li>
           <Link to={convertLinkLocale('/login', i18n.language)}>
             {t('nav-subscribe')}
           </Link>
         </li>
+        {isAuthenticated() && (
+          <li onClick={logout}>
+            {t('logout')}
+          </li>
+        )}
       </ul>
     </nav>
   ) : (

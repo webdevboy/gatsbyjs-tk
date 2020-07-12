@@ -178,9 +178,28 @@
 
     .top_articles__columns__column__image-wrapper {
       overflow: hidden;
+      &.article-circle {
+        border-radius: 50%;;
+        .parallax-inner {
+          width: 100%;
+          padding-top: 100%;
+          position: relative;
+        }
+        .top_articles__columns__column__image {
+          transform: scale(1.1);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        object-position: center;
+        }
+      }
       .parallax-inner {
         transform: translate3d(0%, 0%, 0px);
       }
+    
       .top_articles__columns__column__image {
         width: 100%;
         min-height: 444px;

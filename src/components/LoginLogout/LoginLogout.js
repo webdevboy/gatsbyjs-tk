@@ -4,7 +4,7 @@ import { logout, isAuthenticated, getProfile } from "../../utils/auth"
 import { useTranslation } from "react-i18next"
 
 import convertLinkLocale from '../../utils/convertLinkLocale';
-import { UserIcon } from '../../svgs';
+import AccountIcon from 'src/images/account-icon.png';
 import './LoginLogout.scss';
 
 const user = getProfile()
@@ -15,7 +15,7 @@ const LoginLogout = () => {
     return (
       <div className="header__user">
         <Link to={convertLinkLocale('/account', i18n.language)}>
-          <UserIcon />
+          <img src={AccountIcon} alt="Account" />
         </Link>
         <a
           href="#logout"

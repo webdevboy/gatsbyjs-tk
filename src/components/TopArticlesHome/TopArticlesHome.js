@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import cx from 'classnames';
 import { Link, navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import { Parallax } from 'react-scroll-parallax';
@@ -11,6 +12,7 @@ function Article({
   category,
   imageUrl,
   articleUrl,
+  articleCircleThumbnail,
   authors,
   t,
 }) {
@@ -24,7 +26,7 @@ function Article({
       }}
     >
       {imageUrl && (
-        <Parallax y={[-25, 10]} className="top_articles__columns__column__image-wrapper">
+        <Parallax y={[-25, 10]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': articleCircleThumbnail })}>
           <img
             className="top_articles__columns__column__image"
             src={imageUrl}
@@ -77,6 +79,7 @@ export default function TopArticles(props) {
       articleUrl: article.uri,
       authors:
         imageHeroObj && imageHeroObj.authors ? `${imageHeroObj.authors}` : null,
+      // articleCircleThumbnail: article.articleCircleThumbnail,
     };
 
     return formattedArticle;
@@ -100,9 +103,10 @@ export default function TopArticles(props) {
     const newArticles = [];
     articles &&
       articles.map((articleObj) => {
-        const { article } = articleObj;
+        console.log(articleObj);
+        const { article, articleCircleThumbnail } = articleObj;
         const newArticle = getFormattedArticle(article);
-        newArticles.push(newArticle);
+        newArticles.push({ ...newArticle, articleCircleThumbnail });
       });
     return newArticles;
   };
@@ -179,12 +183,6 @@ export default function TopArticles(props) {
               }}
             />
           ))}
-          {formattedARticles.length > 1 && (
-            <div className="top_articles__columns__column__divider first" />
-          )}
-          {formattedARticles.length > 2 && (
-            <div className="top_articles__columns__column__divider second" />
-          )}
         </div>
       </div>
     </div>
