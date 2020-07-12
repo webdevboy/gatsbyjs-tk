@@ -1,0 +1,39 @@
+@import 'src/styles/variables';
+
+
+.scroll-dawn-arrow-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  .scroll-dawn-arrow {
+    height: 30px;
+    width: 35px;
+    color: #fff;
+    fill: #fff;
+  }
+  .scroll-dawn-arrow1 {
+    animation: arrowAnimation 0.8s 0.4s alternate infinite;
+  }
+  .scroll-dawn-arrow2 {
+    position: relative;
+    top: -8px;
+    animation: arrowAnimation 0.8s 0.8s alternate infinite;
+  }
+  .scroll-dawn-arrow3 {
+    position: relative;
+    top: -16px;
+    animation: arrowAnimation 0.8s 1.2s alternate infinite;
+  }
+}
+
+
+@keyframes arrowAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

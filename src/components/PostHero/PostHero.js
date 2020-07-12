@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as cx from 'classnames';
 import { isBrowser } from 'src/utils/auth';
-import { Parallax } from 'react-scroll-parallax';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 import './PostHero.scss';
 import useDocument from 'src/hooks/useDocument';
@@ -15,6 +15,7 @@ export default function Hero({
   theme,
   pageScroll,
 }) {
+  const { parallaxController } = useController();
   const categoryName = categories.length ? categories[0].name : null;
   const imgContainerRef = useRef(null);
   const _document = useDocument();
@@ -24,6 +25,7 @@ export default function Hero({
     if (!isBrowser) return;
     setLoaded(true);
     setTimeout(() => {
+      parallaxController.update();
       if (imgContainerRef && imgContainerRef.current) {
         imgContainerRef.current.style.overflow = 'initial';
       }

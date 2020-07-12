@@ -43,7 +43,7 @@ const Post = ({ pageContext }) => {
   }, [pageContext]);
   
   useEffect(() => {
-    // new SmoothScroll(pageScroll.current, 120, 12);
+    new SmoothScroll(pageScroll.current, 120, 12);
     setPageScrollState(pageScroll.current);
   }, []);
 

@@ -47,7 +47,7 @@ const FrontPageProvider = ({ pageContext, heroData }) => {
 
   useEffect(() => {
 
-    // new SmoothScroll(containerRef.current, 120, 12);
+    new SmoothScroll(containerRef.current, 120, 12);
     setScrollWrapper(containerRef.current);
 
     document.querySelector('html').classList.add('no-scrolling');

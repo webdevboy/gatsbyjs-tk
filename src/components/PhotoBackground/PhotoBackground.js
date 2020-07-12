@@ -85,7 +85,7 @@ export default function PhotoBackground({
 }) {
   const { parallaxController } = useController();
   useEffect(() => {
-    parallaxController.update();
+    setTimeout(parallaxController.update, 0);
   }, []);
   return (
     <div
