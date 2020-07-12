@@ -50,6 +50,8 @@ const FrontPageProvider = ({ pageContext, heroData }) => {
     new SmoothScroll(containerRef.current, 120, 12);
     setScrollWrapper(containerRef.current);
 
+    setScrollWrapper(containerRef.current);
+
     document.querySelector('html').classList.add('no-scrolling');
     document.querySelector('#main-wrapper').classList.add('is-front-page');
 
