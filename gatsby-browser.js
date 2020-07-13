@@ -4,6 +4,7 @@ import { silentAuth } from "./src/utils/auth";
 import { globalHistory } from '@reach/router';
 import i18next from 'i18next';
 import SmoothScroll from 'smoothscroll-for-websites';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
@@ -56,5 +57,9 @@ class SessionCheck extends React.Component {
 }
 
 export const wrapRootElement = ({ element }) => {
-  return <SessionCheck>{element}</SessionCheck>
+  return (
+    <SessionCheck>
+      {element}
+    </SessionCheck>
+  )
 }

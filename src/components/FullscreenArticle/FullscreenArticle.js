@@ -10,6 +10,7 @@ function FullscreenArticle({
   article,
   articleInfoPosition,
   fullScreenArticleImage,
+  updateParallaxState = () => {},
 }) {
   const [t, i18n] = useTranslation('article');
   const getArticle = () => {
@@ -58,6 +59,7 @@ function FullscreenArticle({
             className="fullscreen-article__img"
             src={fullScreenArticleImage.sourceUrl}
             alt=""
+            onLoad={updateParallaxState}
           />
         </div>
         

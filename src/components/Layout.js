@@ -40,7 +40,6 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
       <div className={cx('page-body', { shifted: showNav })}>
         <main>{children}</main>
         <Footer />
-        
       </div>
     </div>
   )

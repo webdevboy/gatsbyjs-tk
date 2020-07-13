@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as cx from 'classnames';
 import { isBrowser } from 'src/utils/auth';
-import { Parallax, useController } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
 
 import './PostHero.scss';
 import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
@@ -14,20 +14,18 @@ export default function Hero({
   mobileHeroImage,
   categories,
   theme,
-  pageScroll,
+  updateParallaxState,
 }) {
-  const { parallaxController } = useController();
   const categoryName = categories.length ? categories[0].name : null;
   const imgContainerRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const scaleAnimationTime = 1500;
-  console.log(mobileHeroImage)
   const handleImageLoad = () => {
     if (!isBrowser) return;
     setLoaded(true);
     setTimeout(() => {
-      parallaxController.update();
       document.documentElement.classList.remove('no-scrolling');
+      updateParallaxState();
     }, scaleAnimationTime);
   };
   useEffect(() => {

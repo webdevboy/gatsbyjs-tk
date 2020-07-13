@@ -4,10 +4,10 @@ import { Parallax } from 'react-scroll-parallax';
 
 import './PhotoLayout.scss';
 
-function Photo({ url, altText, cutline }) {
+function Photo({ url, altText, cutline, updateParallaxState = () => {} }) {
   return (
     <Parallax y={[-20, 20]} className="photo-item">
-      <img src={url} alt={altText} />
+      <img src={url} alt={altText} onLoad={updateParallaxState} />
       {cutline && <p className="cutline">{cutline}</p>}
     </Parallax>
   );
@@ -20,6 +20,7 @@ function PhotoLayout({
   imageTwo,
   split,
   theme,
+  updateParallaxState,
 }) {
   const photos = [
     { ...imageOne, cutline: cutlineOne },
@@ -42,6 +43,7 @@ function PhotoLayout({
             url={photo.sourceUrl}
             alt={photo.altText}
             cutline={photo.cutline}
+            updateParallaxState={updateParallaxState}
           />
         );
       })}

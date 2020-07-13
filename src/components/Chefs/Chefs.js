@@ -9,8 +9,11 @@ import { getFormattedArticle } from 'src/utils/formatArticle';
 
 import './Chefs.scss';
 
-function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
+function Chef({ cutline, title, byline, imageUrl, articleUrl, updateParallaxState }) {
   const [t, i18n] = useTranslation('article');
+  useEffect(() => {
+    setTimeout(() => {updateParallaxState()}, 0);
+  }, [])
   return (
     <div
       className="chefs__columns__column"
@@ -52,7 +55,7 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl }) {
   );
 }
 
-function Chefs({ column1, column2, column3 }) {
+function Chefs({ column1, column2, column3, updateParallaxState = () => {} }) {
   const [t, i18n] = useTranslation('common');
   const params = {
     spaceBetween: 20,
@@ -86,17 +89,17 @@ function Chefs({ column1, column2, column3 }) {
           <Swiper {...params}>
             {column1 && (
               <div>
-                <Chef {...getFormattedArticle(column1)} />
+                <Chef {...getFormattedArticle(column1)} updateParallaxState={updateParallaxState} />
               </div>
             )}
             {column2 && (
               <div>
-                <Chef {...getFormattedArticle(column2)} />
+                <Chef {...getFormattedArticle(column2)} updateParallaxState={updateParallaxState} />
               </div>
             )}
             {column3 && (
               <div>
-                <Chef {...getFormattedArticle(column3)} />
+                <Chef {...getFormattedArticle(column3)} updateParallaxState={updateParallaxState} />
               </div>
             )}
           </Swiper>

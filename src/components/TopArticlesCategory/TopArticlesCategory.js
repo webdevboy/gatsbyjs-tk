@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import { Parallax, useController } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
 
 import './TopArticlesCategory.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
+import { isBrowser } from 'src/utils/auth';
 
 function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
   return (
@@ -33,9 +34,9 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
   );
 }
 
-export default function TopArticles({ category }) {
+export default function TopArticles({ category, updateParallaxState = () => {} }) {
   const { name, posts } = category;
-  const { parallaxController } = useController();
+  
   const [t, i18n] = useTranslation('article');
   const getFormattedArticle = (article) => {
     if (!article) return null;
@@ -115,9 +116,6 @@ export default function TopArticles({ category }) {
   });
 
   const formattedArticles = getArticles(formattedNodes).slice(0, 4);
-  useEffect(() => {
-    parallaxController.update();
-  }, []);
   return (
     <div className="top-articles-container section-landing">
       {name && (
@@ -148,6 +146,7 @@ export default function TopArticles({ category }) {
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
+                      onLoad={updateParallaxState}
                     />
                   </Parallax>
                   {featuredArticleFormatted.authors && (
