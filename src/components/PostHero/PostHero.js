@@ -18,7 +18,6 @@ export default function Hero({
   const { parallaxController } = useController();
   const categoryName = categories.length ? categories[0].name : null;
   const imgContainerRef = useRef(null);
-  const _document = useDocument();
   const [loaded, setLoaded] = useState(false);
   const scaleAnimationTime = 1500;
   const handleImageLoad = () => {
@@ -26,33 +25,27 @@ export default function Hero({
     setLoaded(true);
     setTimeout(() => {
       parallaxController.update();
-      if (imgContainerRef && imgContainerRef.current) {
-        imgContainerRef.current.style.overflow = 'initial';
-      }
-      if (pageScroll && pageScroll.current) {
-        pageScroll.current.style.overflowY = 'auto';
-        pageScroll.current.classList.add('scrollable');
-      }
+      document.documentElement.classList.remove('no-scrolling');
     }, scaleAnimationTime);
   };
   useEffect(() => {
-    if (pageScroll && pageScroll.current) {
-      pageScroll.current.style.overflowY = 'hidden';
-    }
+    document.documentElement.classList.add('no-scrolling');
   }, []);
   return (
     <section className={`post-hero ${theme}`}>
-      <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
-        <Parallax y={[-40, 20]} className={cx('image-scale-contianer', { loaded })}>
-          {heroImage && heroImage.sourceUrl && (
-            <img
-              src={heroImage.sourceUrl}
-              alt=""
-              onLoad={handleImageLoad}
-            />
-          )}
-        </Parallax>
-      </div>
+      <Parallax y={[-20, 20]}>
+        <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
+            <div className={cx('image-scale-contianer', { loaded })}>
+              {heroImage && heroImage.sourceUrl && (
+                <img
+                  src={heroImage.sourceUrl}
+                  alt=""
+                  onLoad={handleImageLoad}
+                />
+              )}
+            </div>
+        </div>
+      </Parallax>
       <div className={cx('block', { loaded })}>
         <div className="block-wrapper">
           {categoryName && (
