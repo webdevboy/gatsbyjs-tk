@@ -9,6 +9,10 @@ module.exports = () => {
         sourceUrl
         altText
       }
+      mobileHeroImage {
+        sourceUrl
+        altText
+      }
     }
   `
 }

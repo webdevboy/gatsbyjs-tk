@@ -38,7 +38,6 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
       />
       <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
       <div className={cx('page-body', { shifted: showNav })}>
-        
         <main>{children}</main>
         <Footer />
         

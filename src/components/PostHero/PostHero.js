@@ -4,13 +4,14 @@ import { isBrowser } from 'src/utils/auth';
 import { Parallax, useController } from 'react-scroll-parallax';
 
 import './PostHero.scss';
-import useDocument from 'src/hooks/useDocument';
+import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
 export default function Hero({
   authors,
   byline,
   title,
   heroImage,
+  mobileHeroImage,
   categories,
   theme,
   pageScroll,
@@ -20,6 +21,7 @@ export default function Hero({
   const imgContainerRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const scaleAnimationTime = 1500;
+  console.log(mobileHeroImage)
   const handleImageLoad = () => {
     if (!isBrowser) return;
     setLoaded(true);
@@ -37,10 +39,12 @@ export default function Hero({
         <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
             <div className={cx('image-scale-contianer', { loaded })}>
               {heroImage && heroImage.sourceUrl && (
-                <img
+                <AdaptiveImage
                   src={heroImage.sourceUrl}
-                  alt=""
-                  onLoad={handleImageLoad}
+                  smallSrc={mobileHeroImage && mobileHeroImage.sourceUrl}
+                  innerProps={{
+                    onLoad: handleImageLoad,
+                  }}
                 />
               )}
             </div>
