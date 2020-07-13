@@ -24,16 +24,16 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           },
         ],
       },
-      module: {
-        rules: stage === 'build-html'
-          ? [
-              {
-                test: /ScrollMagic/,
-                use: loaders.null(),
-              }
-            ]
-            : []
-        },
+      // module: {
+      //   rules: stage === 'build-html'
+      //     ? [
+      //         {
+      //           test: /react-scroll-parallax/,
+      //           use: loaders.null(),
+      //         }
+      //       ]
+      //       : []
+      //   },
     })
   }
 }

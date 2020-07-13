@@ -12,7 +12,7 @@ import {
   EventsComponent,
 } from "src/components"
 
-const PageLayouts = ({ layoutData, theme, containerIsScrollable }) => {
+const PageLayouts = ({ layoutData, theme, containerIsScrollable, updateParallaxState }) => {
   const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found"
   // Default component
   const Default = () => (
@@ -43,7 +43,7 @@ const PageLayouts = ({ layoutData, theme, containerIsScrollable }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={"light"} type={"page"} containerIsScrollable={containerIsScrollable} />
+  return <ComponentTag {...layoutData} theme={"light"} type={"page"} containerIsScrollable={containerIsScrollable} updateParallaxState={updateParallaxState} />
 }
 
 export default PageLayouts

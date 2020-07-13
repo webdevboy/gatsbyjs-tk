@@ -8,7 +8,7 @@ import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 import './IndividualArticle.scss';
 
-function IndividualArticle({ article, individualArticleImage }) {
+function IndividualArticle({ article, individualArticleImage, updateParallaxState = () => {} }) {
   const formattedArticle = getFormattedArticle(article, true);
   const [t, i18n] = useTranslation('article');
   return (
@@ -17,10 +17,11 @@ function IndividualArticle({ article, individualArticleImage }) {
         <div className="individual-article container">
           
           {formattedArticle.imageUrl && (
-            <Parallax className="individual-article__img-container" y={[-20, 20]} offsetYMin={-300} tagOuter="figure">
+            <Parallax className="individual-article__img-container" y={[-20, 20]} tagOuter="figure">
               <img
                 className="individual-article__img"
                 src={formattedArticle.imageUrl}
+                onLoad={updateParallaxState}
               />
             </Parallax>
           )}

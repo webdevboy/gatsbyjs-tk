@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as cx from 'classnames';
-import { Parallax, useController } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
 
 // Components
 import Plus from 'src/svgs/plus';
@@ -82,11 +82,8 @@ export default function PhotoBackground({
   image,
   popup,
   theme,
+  updateParallaxState,
 }) {
-  const { parallaxController } = useController();
-  useEffect(() => {
-    setTimeout(parallaxController.update, 0);
-  }, []);
   return (
     <div
       className={cx({
@@ -102,6 +99,7 @@ export default function PhotoBackground({
               className="bg"
               src={image.sourceUrl}
               alt={image.altText || 'Image'}
+              onLoad={updateParallaxState}
             />
           </Parallax>
         )}

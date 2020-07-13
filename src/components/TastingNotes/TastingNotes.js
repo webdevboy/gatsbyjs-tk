@@ -4,7 +4,7 @@ import Swiper from 'react-id-swiper';
 import cx from 'classnames';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
-import { Parallax, useController } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
 
 import { getFormattedArticle } from 'src/utils/formatArticle';
 import {
@@ -17,7 +17,7 @@ import BackToTopImg from 'src/images/back-to-top.png';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
 
-const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
+const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updateParallaxState }) => {
   return (
     <div
       className="tasting-notes__note"
@@ -33,6 +33,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
             src={imageUrl}
             className="tasting-notes__note__img"
             alt="article thumbnail"
+            onLoad={updateParallaxState}
           />
         </Parallax>
       )}
@@ -55,11 +56,10 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
   );
 }
 
-function TastingNotes({ headline, notes, type, theme }) {
+function TastingNotes({ headline, notes, type, theme, updateParallaxState = () => {} }) {
   const _window = useWindow();
   const [moreThanMedium, setMoreThanMedium] = useState(false);
   const [moreThanLarge, setMoreThanLarge] = useState(false);
-  const { parallaxController } = useController();
   const scrollTop = () => {
     const scrollBlock = document.querySelector('.page-scroll');
     const swipeWrapper = document.querySelector('.swipe-wrapper');
@@ -94,7 +94,6 @@ function TastingNotes({ headline, notes, type, theme }) {
     });
 
     setLayout(window.innerWidth);
-    parallaxController.update();
   }, []);
 
   const params = {
@@ -141,7 +140,7 @@ function TastingNotes({ headline, notes, type, theme }) {
                 notes.length > 0 &&
                 notes.map((note, index) => (
                   <div key={index}>
-                    <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n}/>
+                    <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n} updateParallaxState={updateParallaxState}/>
                   </div>
                 ))}
             </Swiper>
@@ -156,6 +155,7 @@ function TastingNotes({ headline, notes, type, theme }) {
                     t={t}
                     i18n={i18n}
                     key={index}
+                    updateParallaxState={updateParallaxState}
                   />
                 ))}
             </div>

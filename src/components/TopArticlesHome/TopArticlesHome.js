@@ -51,7 +51,7 @@ function Article({
 }
 
 export default function TopArticles(props) {
-  const { featuredArticle, articles, theme } = props;
+  const { featuredArticle, articles, theme, updateParallaxState = () => {} } = props;
   const [t, i18n] = useTranslation('article');
   const getFormattedArticle = (article) => {
     if (!article) return null;
@@ -135,6 +135,7 @@ export default function TopArticles(props) {
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
+                      onLoad={updateParallaxState}
                     />
                   </Parallax>
                   {featuredArticleFormatted.authors && (

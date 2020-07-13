@@ -32,16 +32,22 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
       if(progressBarRef && progressBarRef.current) {
         progressBarRef.current.style.width = `${scrollProgress}%`;
       }
-      if(currentScroll > 50 && articleHeaderRef) {
+      if(currentScroll > 50 && articleHeaderRef && articleHeaderRef.current) {
         articleHeaderRef.current.classList.add('scrolled');
-        headerOptRef.current.classList.add('scrolled');
+        if(headerOptRef && headerOptRef.current) {
+          headerOptRef.current.classList.add('scrolled');
+        }
         if(logoRef && logoRef.current) {
           logoRef.current.classList.add('scrolled');
         }
       }
       else {
-        articleHeaderRef.current.classList.remove('scrolled');
-        headerOptRef.current.classList.remove('scrolled');
+        if(articleHeaderRef && articleHeaderRef.current) {
+          articleHeaderRef.current.classList.remove('scrolled');
+        }
+        if(headerOptRef && headerOptRef.current) {
+          headerOptRef.current.classList.remove('scrolled');
+        }
         if(logoRef && logoRef.current) {
           logoRef.current.classList.remove('scrolled');
         }
