@@ -5,10 +5,10 @@ import { SiteLogo } from 'src/svgs';
 import { Link } from '@reach/router';
 
 import getLangLink from 'src/utils/getLangLink';
-import Facebook from 'src/images/Facebook_icon_gray.png';
-import Instagram from 'src/images/Instagram_icon_gray.png';
-import WeChat from 'src/images/WeChat_icon_gray.png';
-import Weibo from 'src/images/Weibo_icon_gray.png';
+import Facebook from 'src/images/Facebook_icon_white.png';
+import Instagram from 'src/images/Instagram_icon_white.png';
+import WeChat from 'src/images/WeChat_icon_white.png';
+import Weibo from 'src/images/Weibo_icon_white.png';
 import './footer.scss';
 
 function Footer() {

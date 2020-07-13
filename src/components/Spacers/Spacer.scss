@@ -1,0 +1,15 @@
+@import 'src/styles/variables.scss';
+
+.big-spacer {
+  padding: 25px;
+  @media #{$viewport-medium} {
+    padding: 50px;
+  }
+}
+
+.small-spacer {
+  padding: 15px;
+  @media #{$viewport-medium} {
+    padding: 30px;
+  }
+}
