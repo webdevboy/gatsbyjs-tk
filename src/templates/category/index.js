@@ -1,17 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import Layout from "src/components/Layout";
 import SEO from "src/components/seo";
 import CategoryLayouts from "src/components/CategoryLayouts";
-import SmoothScroll from 'src/utils/smoothScroll';
+
 
 const Category = ({ pageContext }) => {
   const { name } = pageContext;
-
-  useEffect(() => {
-    // new SmoothScroll(pageScroll.current, 120, 12);
-  }, []);
 
   return (
     <div className="category-page-wrapper">

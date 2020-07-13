@@ -12,7 +12,7 @@ import {
   LARGE_BREAKPOINT,
   XLARGE_BREAKPOINT,
 } from 'src/utils/breakpoints';
-import ArrowUp from 'src/svgs/arrow_up';
+import useWindow from 'src/hooks/useWindow';
 import BackToTopImg from 'src/images/back-to-top.png';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
@@ -56,17 +56,22 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
 }
 
 function TastingNotes({ headline, notes, type, theme }) {
+  const _window = useWindow();
   const [moreThanMedium, setMoreThanMedium] = useState(false);
   const [moreThanLarge, setMoreThanLarge] = useState(false);
   const { parallaxController } = useController();
   const scrollTop = () => {
     const scrollBlock = document.querySelector('.page-scroll');
     const swipeWrapper = document.querySelector('.swipe-wrapper');
+    if(!_window) return;
     if(swipeWrapper) {
-      gsap.to(swipeWrapper, { duration: 1, scrollTop: 0 });
+      window.scrollTo({ top: 0 });
     }
-    if(scrollBlock) {
-      gsap.to(scrollBlock, { duration: 1, scrollTop: 0 });
+    else if(scrollBlock) {
+      window.scrollTo({ top: 0 });
+    }
+    else {
+      window.scrollTo({ top: 0 });
     }
   }
   const [t, i18n] = useTranslation(['article', 'common']);

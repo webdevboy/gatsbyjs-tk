@@ -26,7 +26,7 @@ function Article({
       }}
     >
       {imageUrl && (
-        <Parallax y={[-25, 10]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': articleCircleThumbnail })}>
+        <Parallax y={[-15, 10]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': articleCircleThumbnail })}>
           <img
             className="top_articles__columns__column__image"
             src={imageUrl}

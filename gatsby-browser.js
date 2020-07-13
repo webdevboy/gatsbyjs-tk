@@ -3,6 +3,7 @@ import React from "react";
 import { silentAuth } from "./src/utils/auth";
 import { globalHistory } from '@reach/router';
 import i18next from 'i18next';
+import SmoothScroll from 'smoothscroll-for-websites';
 
 import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
@@ -29,7 +30,8 @@ class SessionCheck extends React.Component {
   }
 
   componentDidMount() {
-    silentAuth(this.handleCheckSession)
+    silentAuth(this.handleCheckSession);
+    SmoothScroll();
 
     i18next.on('languageChanged', function(lng) {
       window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);

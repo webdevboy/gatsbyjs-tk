@@ -2,16 +2,13 @@ import React, { useState, useEffect, useRef } from "react"
 import Cookies from 'js-cookie';
 import cx from 'classnames';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import { TweenMax, Power2 } from 'gsap';
 
 import { isAuthenticated, isBrowser } from "src/utils/auth";
-import SmoothScroll from 'src/utils/smoothScroll';
 import Layout from "src/components/Layout";
 import SEO from "src/components/seo";
 import PostLayouts from "src/components/PostLayouts";
 import PageLimitModal from 'src/components/PageLimitModal/PageLimitModal';
 import useWindow from 'src/hooks/useWindow';
-
 
 const filterCategories = categories => {
   const cats = categories.nodes.length ? categories.nodes : null
@@ -40,9 +37,6 @@ const Post = ({ pageContext }) => {
     }
   }, [pageContext]);
   
-  useEffect(() => {
-    // new SmoothScroll(pageScroll.current, 120, 12);
-  }, []);
 
   const layouts = components.contents || []
   return (

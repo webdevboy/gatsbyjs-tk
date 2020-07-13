@@ -63,11 +63,24 @@ $max_font: 22px;
     background-color: #979797;
     opacity: 0.2;
     bottom: 0;
+    z-index: 20;
   }
   &.shifted {
     @media #{$viewport-medium} {
       left: $navbar-width;
     }
+  }
+  .border-block {
+    height: 1px;
+    background-color: $color-cutline;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: calc(100% - 50px);
+    margin: 0 auto;
+    opacity: 0.2;
+    z-index: 15;
   }
   @media #{$viewport-medium} {
     padding: 0 20px;

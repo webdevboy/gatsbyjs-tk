@@ -33,7 +33,7 @@ export default function Hero({
   }, []);
   return (
     <section className={`post-hero ${theme}`}>
-      <Parallax y={[-20, 20]}>
+      <Parallax y={[-25, 20]}>
         <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
             <div className={cx('image-scale-contianer', { loaded })}>
               {heroImage && heroImage.sourceUrl && (

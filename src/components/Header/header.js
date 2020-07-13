@@ -24,31 +24,29 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
     if(progressBarRef) {
       progressBarRef.current.style.width = 0;
     }
-    if(scrollBlockRef) {
-     
-      scrollListener = scrollBlockRef.current.addEventListener('scroll', () => {
-        if(!progressBarRef || !progressBarRef.current) return;
+    scrollListener = window.addEventListener('scroll', () => {
         
-        const currentScroll = scrollBlockRef.current.scrollTop;
-        const totalScroll = scrollBlockRef.current.scrollHeight - scrollBlockRef.current.clientHeight;
-        const scrollProgress = (currentScroll / totalScroll) * 100;
+      const currentScroll = document.documentElement.scrollTop;
+      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollProgress = (currentScroll / totalScroll) * 100;
+      if(progressBarRef && progressBarRef.current) {
         progressBarRef.current.style.width = `${scrollProgress}%`;
-        if(currentScroll > 50 && articleHeaderRef) {
-          articleHeaderRef.current.classList.add('scrolled');
-          headerOptRef.current.classList.add('scrolled');
-          if(logoRef && logoRef.current) {
-            logoRef.current.classList.add('scrolled');
-          }
+      }
+      if(currentScroll > 50 && articleHeaderRef) {
+        articleHeaderRef.current.classList.add('scrolled');
+        headerOptRef.current.classList.add('scrolled');
+        if(logoRef && logoRef.current) {
+          logoRef.current.classList.add('scrolled');
         }
-        else {
-          articleHeaderRef.current.classList.remove('scrolled');
-          headerOptRef.current.classList.remove('scrolled');
-          if(logoRef && logoRef.current) {
-            logoRef.current.classList.remove('scrolled');
-          }
+      }
+      else {
+        articleHeaderRef.current.classList.remove('scrolled');
+        headerOptRef.current.classList.remove('scrolled');
+        if(logoRef && logoRef.current) {
+          logoRef.current.classList.remove('scrolled');
         }
-      });
-    }
+      }
+    });
     return function cleanup() {
       if(scrollListener) {
         _window.removeEventListener(scrollListener);
@@ -162,7 +160,6 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       {isArticlePage && (
         <ScrollProgressBar {...{ articleHeaderRef, scrollBlockRef: pageScroll, logoRef, headerOptRef }} />
       )}
-
     </header>
   );
 }

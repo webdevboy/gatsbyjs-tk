@@ -205,7 +205,7 @@
         min-height: 444px;
         object-fit: cover;
         object-position: center;
-        transform: scale(1);
+        transform: scale(1.1);
         transition: transform 70ms;
 
         @media #{$viewport-medium} {
