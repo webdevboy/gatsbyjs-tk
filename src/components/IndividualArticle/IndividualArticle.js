@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import { Parallax } from 'react-scroll-parallax';
 
 import { getFormattedArticle } from 'src/utils/formatArticle';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
@@ -13,36 +11,18 @@ import './IndividualArticle.scss';
 function IndividualArticle({ article, individualArticleImage }) {
   const formattedArticle = getFormattedArticle(article, true);
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-  useEffect(() => {
-    if (!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, {
-        y: '40%',
-        overwrite: 5,
-        ease: Linear.easeNone,
-      })
-      .addTo(controller);
-  }, []);
   return (
     formattedArticle && (
       <div className="individual-article-wrapper">
         <div className="individual-article container">
-          {individualArticleImage && individualArticleImage.sourceUrl && (
-            <div className="individual-article__img-container">
+          
+          {formattedArticle.imageUrl && (
+            <Parallax className="individual-article__img-container" y={[-20, 20]} offsetYMin={-300} tagOuter="figure">
               <img
                 className="individual-article__img"
-                src={individualArticleImage.sourceUrl}
-                ref={imgRef}
+                src={formattedArticle.imageUrl}
               />
-            </div>
+            </Parallax>
           )}
 
           <div className="individual-article__info">

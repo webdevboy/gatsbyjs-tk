@@ -12,7 +12,7 @@ import {
   EventsComponent,
 } from "src/components"
 
-const PageLayouts = ({ layoutData, theme }) => {
+const PageLayouts = ({ layoutData, theme, containerIsScrollable }) => {
   const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found"
   // Default component
   const Default = () => (
@@ -20,7 +20,6 @@ const PageLayouts = ({ layoutData, theme }) => {
       In PageLayouts the mapping of this component is missing: {layoutType}
     </div>
   )
-
   const Empty = () => <></>
 
   // Mapping the fieldGroupName(s) to our components
@@ -44,7 +43,7 @@ const PageLayouts = ({ layoutData, theme }) => {
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={"light"} type={"page"} />
+  return <ComponentTag {...layoutData} theme={"light"} type={"page"} containerIsScrollable={containerIsScrollable} />
 }
 
 export default PageLayouts

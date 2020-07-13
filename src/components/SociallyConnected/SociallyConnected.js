@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Swiper from "react-id-swiper";
 import { navigate } from "gatsby";
 import { useTranslation } from "react-i18next";
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
 
-
-import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints"
-import { getFormattedArticle } from "src/utils/formatArticle"
+import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints";
+import { getFormattedArticle } from "src/utils/formatArticle";
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 import "../Chefs/Chefs.scss"
@@ -22,25 +18,6 @@ function SociallyConnectedItem({
   articleUrl,
 }) {
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-
-  useEffect(() => {
-    if (!isBrowser) return;
-
-    if (imgRef && imgRef.current) {
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: imgRef.current,
-      })
-        .setTween(imgRef.current, { y: '20%', overwrite: 5, ease: Linear.easeNone })
-        .addTo(controller)
-    }
-  }, []);
-
   return (
     <div
       className="socially__columns__column"
@@ -55,7 +32,6 @@ function SociallyConnectedItem({
           <img
             className="socially__columns__column__img"
             src={imageUrl}
-            ref={imgRef}
             alt=""
           />
         </div>

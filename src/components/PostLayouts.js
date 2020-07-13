@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react";
+import { useController } from 'react-scroll-parallax';
 import {
   PostHero,
   Quote,
@@ -12,7 +13,8 @@ import {
 } from "src/components"
 
 const PostLayouts = ({ layoutData, categories, theme, pageScroll }) => {
-  const layoutType = layoutData.fieldGroupName || "No field group name found"
+  const layoutType = layoutData.fieldGroupName || "No field group name found";
+  const { parallaxController } = useController();
 
   /**
    * Default component
@@ -45,6 +47,10 @@ const PostLayouts = ({ layoutData, categories, theme, pageScroll }) => {
   const ComponentTag = layouts[layoutType]
     ? layouts[layoutType]
     : layouts["default"]
+
+  useEffect(() => {
+    setTimeout(parallaxController.update);
+  }, []);
 
   return (
     <ComponentTag

@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from "react"
 import Cookies from 'js-cookie';
 import cx from 'classnames';
-import { TweenMax, Power2 } from 'gsap';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
-import { isAuthenticated, isBrowser } from "src/utils/auth"
-import Layout from "src/components/Layout"
-import SEO from "src/components/seo"
-import PostLayouts from "src/components/PostLayouts"
+import { isAuthenticated, isBrowser } from "src/utils/auth";
+import Layout from "src/components/Layout";
+import SEO from "src/components/seo";
+import PostLayouts from "src/components/PostLayouts";
 import PageLimitModal from 'src/components/PageLimitModal/PageLimitModal';
 import useWindow from 'src/hooks/useWindow';
-
 
 const filterCategories = categories => {
   const cats = categories.nodes.length ? categories.nodes : null
@@ -25,7 +24,6 @@ const filterCategories = categories => {
 
 const Post = ({ pageContext }) => {
   const { title, components, categories } = pageContext;
-  const pageScroll = useRef(null);
   const _window = useWindow();
   const [pageLimitModal, setPageLimitModal] = useState(false);
   useEffect(() => {
@@ -39,64 +37,28 @@ const Post = ({ pageContext }) => {
     }
   }, [pageContext]);
   
-  useEffect(() => {
-    const scrollTime = 1.2;
-    const scrollDistance = 400;
-    let wheelListener1 = null;
-    let wheelListener2 = null;
-    const moveScroll = event => {
-      if(pageScroll && pageScroll.current && pageScroll.current.classList.contains('scrollable')) {
-        event.preventDefault(); 
-        const delta = event.wheelDelta / 120 || -event.detail / 3;
-        const scrollTop = pageScroll.current.scrollTop;
-        const finalScroll = scrollTop - parseInt(delta * scrollDistance);
-        TweenMax.to(pageScroll.current, scrollTime, { scrollTop : finalScroll, ease: Power2.easeOut, overwrite: 5 });
-      }
-    }
-
-    if(_window && _window.addEventListener) {
-      wheelListener1 = _window.addEventListener("mousewheel", moveScroll, { passive: false });
-      wheelListener2 = _window.addEventListener("DOMMouseScroll", moveScroll, { passive: false });
-    }
-
-    if(document) {
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = 'initial';
-      if(wheelListener1) {
-        _window.removeEventListener(wheelListener1);
-      }
-      if(wheelListener2) {
-        _window.removeEventListener(wheelListener2);
-      }
-    }
-  }, []);
 
   const layouts = components.contents || []
-
   return (
-    <div className="page-scroll" ref={pageScroll}>
-      <Layout
-        theme={pageContext.themeSelect.themeSelect}
-        title={title}
-        isArticlePage
-        pageScroll={pageScroll}
-      >
-        <SEO title={title || "Untitled"} />
-        <div className={cx({ blurred: pageLimitModal })}>
+    <div className="post-page-wrapper">
+      <ParallaxProvider>
+        <Layout
+          theme={pageContext.themeSelect.themeSelect}
+          title={title}
+          isArticlePage
+        >
+          <SEO title={title || "Untitled"} />
           {layouts.map((layout, index) => (
             <PostLayouts
               key={index}
               layoutData={layout}
               categories={filterCategories(categories)}
               theme={pageContext.themeSelect.themeSelect}
-              pageScroll={pageScroll}
             />
           ))}
-        </div>
-        {pageLimitModal && <PageLimitModal />}
-      </Layout>
+          {pageLimitModal && <PageLimitModal />}
+        </Layout>
+      </ParallaxProvider>
     </div>
   )
 }

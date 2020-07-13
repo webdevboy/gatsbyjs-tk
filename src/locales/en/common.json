@@ -10,5 +10,10 @@
   "tasting-notes": "Tasting Notes",
   "nav-about": "About Tasting Kitchen",
   "nav-login": "Login / Register",
-  "nav-subscribe": "Newsletter / Subscribe"
+  "nav-subscribe": "Newsletter / Subscribe",
+  "nav-account": "Account",
+  "subscribe-popup-text1": "This story appears in a print issue of TK",
+  "subscribe-popup-text2": "You’re welcome to read",
+  "subscribe-popup-text3": "this story for free",
+  "subscribe-popup-text4": "or subscribe to enjoy unlimited access."
 }

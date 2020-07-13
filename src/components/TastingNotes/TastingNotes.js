@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, navigate } from 'gatsby';
+import React, { useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 import Swiper from 'react-id-swiper';
 import cx from 'classnames';
 import { useTranslation } from 'react-i18next';
-import gsap, { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import gsap from 'gsap';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 import { getFormattedArticle } from 'src/utils/formatArticle';
 import {
@@ -13,25 +12,12 @@ import {
   LARGE_BREAKPOINT,
   XLARGE_BREAKPOINT,
 } from 'src/utils/breakpoints';
-import ArrowUp from 'src/svgs/arrow_up';
+import useWindow from 'src/hooks/useWindow';
+import BackToTopImg from 'src/images/back-to-top.png';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
 
 const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-  useEffect(() => {
-    if(!isBrowser) return;
-    new ScrollMagic.Scene({
-      duration: '200%',
-      triggerElement: imgRef.current,
-    })
-      .setTween(imgRef.current, { y: '40%', overwrite: 5, ease: Linear.easeNone })
-      .addTo(controller)
-  }, []);
   return (
     <div
       className="tasting-notes__note"
@@ -42,14 +28,13 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
       }}
     >
       {imageUrl && (
-        <div className="tasting-notes__note__img-wrapper">
+        <Parallax y={[-10, 30]} className="tasting-notes__note__img-wrapper">
           <img
             src={imageUrl}
             className="tasting-notes__note__img"
             alt="article thumbnail"
-            ref={imgRef}
           />
-        </div>
+        </Parallax>
       )}
       {cutline && (
         <div
@@ -71,16 +56,22 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n }) => {
 }
 
 function TastingNotes({ headline, notes, type, theme }) {
+  const _window = useWindow();
   const [moreThanMedium, setMoreThanMedium] = useState(false);
   const [moreThanLarge, setMoreThanLarge] = useState(false);
+  const { parallaxController } = useController();
   const scrollTop = () => {
     const scrollBlock = document.querySelector('.page-scroll');
     const swipeWrapper = document.querySelector('.swipe-wrapper');
+    if(!_window) return;
     if(swipeWrapper) {
-      gsap.to(swipeWrapper, { duration: 1, scrollTop: 0 });
+      window.scrollTo({ top: 0 });
     }
-    if(scrollBlock) {
-      gsap.to(scrollBlock, { duration: 1, scrollTop: 0 });
+    else if(scrollBlock) {
+      window.scrollTo({ top: 0 });
+    }
+    else {
+      window.scrollTo({ top: 0 });
     }
   }
   const [t, i18n] = useTranslation(['article', 'common']);
@@ -103,6 +94,7 @@ function TastingNotes({ headline, notes, type, theme }) {
     });
 
     setLayout(window.innerWidth);
+    parallaxController.update();
   }, []);
 
   const params = {
@@ -136,8 +128,7 @@ function TastingNotes({ headline, notes, type, theme }) {
   return (
     <div className="tasting-notes-wrapper">
       <div className={`tasting-notes__go-top ${theme}`} onClick={scrollTop}>
-        <div className="tasting-notes__go-top__divider" />
-        <ArrowUp style={{ width: '16px', height: '16px' }} color="rgba(120, 114, 118, 0.7)" />
+        <img src={BackToTopImg} alt="" />
       </div>
       <div className={`tasting-notes ${theme}`}>
         <div className="tasting-notes__title">
@@ -150,7 +141,7 @@ function TastingNotes({ headline, notes, type, theme }) {
                 notes.length > 0 &&
                 notes.map((note, index) => (
                   <div key={index}>
-                    <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n} />
+                    <Note {...getFormattedArticle(note.note)} t={t} i18n={i18n}/>
                   </div>
                 ))}
             </Swiper>

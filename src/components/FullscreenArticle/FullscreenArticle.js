@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import { Parallax } from 'react-scroll-parallax';
 
 import './FullscreenArticle.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
@@ -14,29 +12,6 @@ function FullscreenArticle({
   fullScreenArticleImage,
 }) {
   const [t, i18n] = useTranslation('article');
-  const copyRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-
-  useEffect(() => {
-    if (!isBrowser) return;
-
-    if (copyRef && copyRef.current) {
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: copyRef.current,
-      })
-        .setTween(copyRef.current, {
-          y: '40%',
-          overwrite: 5,
-          ease: Linear.easeNone,
-        })
-        .addTo(controller);
-    }
-  }, []);
-
   const getArticle = () => {
     let articleObj = null;
 
@@ -78,44 +53,49 @@ function FullscreenArticle({
   return (
     <div className="fullscreen-article">
       {fullScreenArticleImage && fullScreenArticleImage.sourceUrl && (
-        <img
-          className="fullscreen-article__img"
-          src={fullScreenArticleImage.sourceUrl}
-          alt=""
-        />
+        <div className="fullscreen-article__img-wrapper">
+          <img
+            className="fullscreen-article__img"
+            src={fullScreenArticleImage.sourceUrl}
+            alt=""
+          />
+        </div>
+        
       )}
       <div
         className={`fullscreen-article__body ${articleInfoPosition
           .toLowerCase()
           .replace(' ', '-')}`}
       >
-        <div className="fullscreen-article__info" ref={copyRef}>
-          {articleObject.category && (
-            <div className="fullscreen-article__info__category">
-              {articleObject.category.name}
-            </div>
-          )}
-          {articleObject.title && (
-            <div className="fullscreen-article__info__title">
-              {articleObject.title}
-            </div>
-          )}
-          {articleObject.byline && (
-            <div className="fullscreen-article__info__description">
-              {articleObject.byline}
-            </div>
-          )}
-          {articleObject.uri && (
-            <div className="fullscreen-article__info__more">
-              <Link
-                className="fullscreen-article__info__more__link"
-                to={convertLinkLocale(articleObject.uri, i18n.language)}
-              >
-                {t('read-more')}
-              </Link>
-            </div>
-          )}
-        </div>
+        <Parallax y={['50%', '-50%']}>
+          <div className="fullscreen-article__info">
+            {articleObject.category && (
+              <div className="fullscreen-article__info__category">
+                {articleObject.category.name}
+              </div>
+            )}
+            {articleObject.title && (
+              <div className="fullscreen-article__info__title">
+                {articleObject.title}
+              </div>
+            )}
+            {articleObject.byline && (
+              <div className="fullscreen-article__info__description">
+                {articleObject.byline}
+              </div>
+            )}
+            {articleObject.uri && (
+              <div className="fullscreen-article__info__more">
+                <Link
+                  className="fullscreen-article__info__more__link"
+                  to={convertLinkLocale(articleObject.uri, i18n.language)}
+                >
+                  {t('read-more')}
+                </Link>
+              </div>
+            )}
+          </div>
+        </Parallax>
       </div>
     </div>
   );

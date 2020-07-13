@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import cx from 'classnames';
 import { Link, navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import { Parallax } from 'react-scroll-parallax';
 
 import './TopArticles.scss';
 
@@ -13,29 +12,10 @@ function Article({
   category,
   imageUrl,
   articleUrl,
+  articleCircleThumbnail,
   authors,
   t,
-  controller,
 }) {
-  const imgRef = useRef(null);
-
-  useEffect(() => {
-    if (!isBrowser) return;
-
-    if (imgRef && imgRef.current) {
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: imgRef.current,
-      })
-        .setTween(imgRef.current, {
-          y: '40%',
-          ease: Linear.easeNone,
-          overwrite: 5,
-        })
-        .addTo(controller);
-    }
-  }, []);
-
   return (
     <div
       className="top_articles__columns__column__inner"
@@ -46,13 +26,12 @@ function Article({
       }}
     >
       {imageUrl && (
-        <div className="top_articles__columns__column__image-wrapper">
+        <Parallax y={[-15, 10]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': articleCircleThumbnail })}>
           <img
             className="top_articles__columns__column__image"
             src={imageUrl}
-            ref={imgRef}
           />
-        </div>
+        </Parallax>
       )}
       {category && (
         <div
@@ -74,25 +53,6 @@ function Article({
 export default function TopArticles(props) {
   const { featuredArticle, articles, theme } = props;
   const [t, i18n] = useTranslation('article');
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-
-  useEffect(() => {
-    if (!isBrowser) return;
-
-    if (imgRef && imgRef.current) {
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: imgRef.current,
-      })
-        .setTween(imgRef.current, { y: '20%', overwrite: 5 })
-        .addTo(controller);
-    }
-  }, []);
-
   const getFormattedArticle = (article) => {
     if (!article) return null;
 
@@ -119,6 +79,7 @@ export default function TopArticles(props) {
       articleUrl: article.uri,
       authors:
         imageHeroObj && imageHeroObj.authors ? `${imageHeroObj.authors}` : null,
+      // articleCircleThumbnail: article.articleCircleThumbnail,
     };
 
     return formattedArticle;
@@ -142,9 +103,9 @@ export default function TopArticles(props) {
     const newArticles = [];
     articles &&
       articles.map((articleObj) => {
-        const { article } = articleObj;
+        const { article, articleCircleThumbnail } = articleObj;
         const newArticle = getFormattedArticle(article);
-        newArticles.push(newArticle);
+        newArticles.push({ ...newArticle, articleCircleThumbnail });
       });
     return newArticles;
   };
@@ -159,8 +120,9 @@ export default function TopArticles(props) {
             <div className="featured-article__inner">
               {featuredArticleFormatted.imageUrl && (
                 <div className="featured-article__image-container">
-                  <div
+                  <Parallax
                     className="featured-article__image-wrapper"
+                    y={[-15, 15]}
                     onClick={() => {
                       if (
                         featuredArticleFormatted &&
@@ -173,9 +135,8 @@ export default function TopArticles(props) {
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
-                      ref={imgRef}
                     />
-                  </div>
+                  </Parallax>
                   {featuredArticleFormatted.authors && (
                     <div className="feature-article__authors">
                       {featuredArticleFormatted.authors}
@@ -218,16 +179,9 @@ export default function TopArticles(props) {
                 ...article,
                 key: index,
                 t,
-                controller,
               }}
             />
           ))}
-          {formattedARticles.length > 1 && (
-            <div className="top_articles__columns__column__divider first" />
-          )}
-          {formattedARticles.length > 2 && (
-            <div className="top_articles__columns__column__divider second" />
-          )}
         </div>
       </div>
     </div>

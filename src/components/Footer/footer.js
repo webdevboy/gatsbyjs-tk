@@ -1,10 +1,14 @@
 /* eslint jsx-a11y/anchor-is-valid: 0 */
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Facebook, Pinterest, Twitter, Instagram, SiteLogo } from 'src/svgs';
+import { SiteLogo } from 'src/svgs';
 import { Link } from '@reach/router';
 
 import getLangLink from 'src/utils/getLangLink';
+import Facebook from 'src/images/Facebook_icon_white.png';
+import Instagram from 'src/images/Instagram_icon_white.png';
+import WeChat from 'src/images/WeChat_icon_white.png';
+import Weibo from 'src/images/Weibo_icon_white.png';
 import './footer.scss';
 
 function Footer() {
@@ -45,21 +49,19 @@ function Footer() {
           <ul>
             <li>
               <a href="https://www.instagram.com/tastingkitchen">
-                <Instagram />
+                <img src={Instagram} alt="" />
               </a>
             </li>
             <li>
               {/* TODO: Get URL for Pinterest */}
-              <Pinterest />
+              <img src={WeChat} alt="" />
             </li>
             <li>
-              <a href="https://twitter.com/tastingkitchen8">
-                <Twitter />
-              </a>
+              <img src={Weibo} alt="" />
             </li>
             <li>
               <a href="https://www.facebook.com/tastingkitchen/">
-                <Facebook />
+                <img src={Facebook} alt="" />
               </a>
             </li>
           </ul>

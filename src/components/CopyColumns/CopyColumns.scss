@@ -12,6 +12,7 @@
 
   &.dark {
     color: $color-white;
+    opacity: 0.8;
   }
 
   @media #{$viewport-medium} {

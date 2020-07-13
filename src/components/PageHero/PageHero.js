@@ -3,7 +3,8 @@ import { useSwipeable } from "react-swipeable"
 import useWindow from "src/hooks/useWindow"
 import * as cx from "classnames"
 
-import "./PageHero.scss"
+import "./PageHero.scss";
+import { ScrollDownArrow } from 'src/components/common';
 
 export default function PageHero({ data, hideHero }) {
   const [loaded, setLoaded] = useState(false)
@@ -19,9 +20,6 @@ export default function PageHero({ data, hideHero }) {
   return (
     <section
       className="page-hero"
-      style={{
-        height: _window.outerHeight,
-      }}
       onWheel={event => {
         if (event.deltaY > 0) {
           hideHero()
@@ -36,6 +34,9 @@ export default function PageHero({ data, hideHero }) {
           alt={data.image.altText}
           onLoad={() => setLoaded(true)}
         />
+        <div className="page-hero__scroll-down">
+          <ScrollDownArrow />
+        </div>  
       </div>
       {data.overlay && <div className="overlay"></div>}
     </section>

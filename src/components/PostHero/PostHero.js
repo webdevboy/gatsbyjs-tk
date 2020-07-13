@@ -1,74 +1,55 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as cx from 'classnames';
-import { Linear } from 'gsap';
 import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 import './PostHero.scss';
+import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
 export default function Hero({
   authors,
   byline,
   title,
   heroImage,
+  mobileHeroImage,
   categories,
   theme,
   pageScroll,
 }) {
+  const { parallaxController } = useController();
   const categoryName = categories.length ? categories[0].name : null;
-  const [loaded, setLoaded] = useState(false);
-  const imgRef = useRef(null);
   const imgContainerRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
+  const [loaded, setLoaded] = useState(false);
   const scaleAnimationTime = 1500;
+  console.log(mobileHeroImage)
   const handleImageLoad = () => {
     if (!isBrowser) return;
     setLoaded(true);
     setTimeout(() => {
-      if (imgContainerRef && imgContainerRef.current) {
-        imgContainerRef.current.style.overflow = 'initial';
-      }
-      if (pageScroll && pageScroll.current) {
-        pageScroll.current.style.overflowY = 'auto';
-        pageScroll.current.classList.add('scrollable');
-      }
-      if (imgRef && imgRef.current) {
-        new ScrollMagic.Scene({
-          duration: '200%',
-          triggerElement: imgRef.current,
-          offset: imgRef.current.offsetHeight - 200,
-        })
-          .setTween(imgRef.current, {
-            y: '50%',
-            overwrite: 5,
-            ease: Linear.easeNone,
-          })
-          .addTo(controller);
-      }
+      parallaxController.update();
+      document.documentElement.classList.remove('no-scrolling');
     }, scaleAnimationTime);
   };
   useEffect(() => {
-    if (pageScroll && pageScroll.current) {
-      pageScroll.current.style.overflowY = 'hidden';
-    }
+    document.documentElement.classList.add('no-scrolling');
   }, []);
   return (
     <section className={`post-hero ${theme}`}>
-      <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
-        <div className={cx('image-scale-contianer', { loaded })}>
-          {heroImage && heroImage.sourceUrl && (
-            <img
-              src={heroImage.sourceUrl}
-              alt=""
-              onLoad={handleImageLoad}
-              ref={imgRef}
-            />
-          )}
+      <Parallax y={[-25, 20]}>
+        <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
+            <div className={cx('image-scale-contianer', { loaded })}>
+              {heroImage && heroImage.sourceUrl && (
+                <AdaptiveImage
+                  src={heroImage.sourceUrl}
+                  smallSrc={mobileHeroImage && mobileHeroImage.sourceUrl}
+                  innerProps={{
+                    onLoad: handleImageLoad,
+                  }}
+                />
+              )}
+            </div>
         </div>
-      </div>
+      </Parallax>
       <div className={cx('block', { loaded })}>
         <div className="block-wrapper">
           {categoryName && (

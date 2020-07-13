@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import moment from 'moment';
-import { Linear } from 'gsap';
-import { isBrowser } from 'src/utils/auth';
-import ScrollMagic from 'scrollmagic';
+import { Parallax, useController } from 'react-scroll-parallax';
 
 import './EventsComponent.scss';
 
@@ -15,40 +13,22 @@ function EventsComponent({
   eventDescription2,
   eventName,
 }) {
-  const startDate = moment(new Date(eventStartDate));
-  const endDate = moment(new Date(eventEndDate));
-  const imgRef = useRef(null);
-  const [scrollMagic, setScrollMagic] = useState({
-    controller: isBrowser ? new ScrollMagic.Controller() : null,
-  });
-  const { controller } = scrollMagic;
-
-  useEffect(() => {
-    if (!isBrowser) return;
-
-    if (imgRef && imgRef.current) {
-      new ScrollMagic.Scene({
-        duration: '200%',
-        triggerElement: imgRef.current,
-      })
-        .setTween(imgRef.current, {
-          y: '10%',
-          overwrite: 5,
-          ease: Linear.easeNone,
-        })
-        .addTo(controller);
-    }
-  }, []);
-
+  const { parallaxController } = useController();
+  const startDate = moment(new Date(eventStartDate))
+  const endDate = moment(new Date(eventEndDate))
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
-        <img
-          className="events-component__img"
-          src={eventBackground.sourceUrl}
-          alt=""
-          ref={imgRef}
-        />
+        <Parallax className="events-component__img-wrapper" y={[-10, 20]}>
+          <img
+            className="events-component__img"
+            src={eventBackground.sourceUrl}
+            alt=""
+            onLoad={() => {
+              parallaxController.update(); 
+            }}
+          />
+        </Parallax>
       )}
       <div className="events-component__body">
         <div>
