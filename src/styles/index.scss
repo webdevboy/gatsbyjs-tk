@@ -43,8 +43,12 @@ html {
         background-color: $color-lightgray;
 
         .swipe-container {
+          position: relative;
+          padding-top: $header-height;
           .swipe-wrapper {
-            overflow: visible;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 100vh;
 
             &.overflow-scroll {
               overflow: scroll;
@@ -89,7 +93,7 @@ html {
       transition-property: transform;
       transition-duration: 0.3s;
       transition-timing-function: ease;
-      transform: translateX(0);
+      transform: initial;
       z-index: 105;
       &.shifted {
         
@@ -125,8 +129,11 @@ html {
   }
 }
 
-.page-scroll {
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
+.post-page-wrapper {
+  padding-top: $header-height;
 }
+
+.category-page-wrapper {
+  padding-top: $header-height;
+}
+

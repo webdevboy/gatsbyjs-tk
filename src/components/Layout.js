@@ -25,20 +25,23 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
   return (
     <div>
       <Navigation theme={theme || 'light'} showNav={showNav} closeNav={() => setShowNav(false)} />
+      <Header
+        theme={theme || "light"}
+        title={title}
+        showNav={showNav}
+        setShowNav={() => setShowNav(!showNav)}
+        isFrontPage={isFrontPage}
+        isArticlePage={isArticlePage}
+        heroIsVisible={heroIsVisible}
+        pageScroll={pageScroll}
+        shifted={showNav}
+      />
+      <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
       <div className={cx('page-body', { shifted: showNav })}>
-        <Header
-          theme={theme || "light"}
-          title={title}
-          showNav={showNav}
-          setShowNav={() => setShowNav(!showNav)}
-          isFrontPage={isFrontPage}
-          isArticlePage={isArticlePage}
-          heroIsVisible={heroIsVisible}
-          pageScroll={pageScroll}
-        />
+        
         <main>{children}</main>
         <Footer />
-        <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
+        
       </div>
     </div>
   )

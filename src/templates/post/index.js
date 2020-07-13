@@ -27,8 +27,6 @@ const filterCategories = categories => {
 
 const Post = ({ pageContext }) => {
   const { title, components, categories } = pageContext;
-  const pageScroll = useRef(null);
-  const [pageScrollState, setPageScrollState] = useState(null);
   const _window = useWindow();
   const [pageLimitModal, setPageLimitModal] = useState(false);
   useEffect(() => {
@@ -43,35 +41,31 @@ const Post = ({ pageContext }) => {
   }, [pageContext]);
   
   useEffect(() => {
-    new SmoothScroll(pageScroll.current, 120, 12);
-    setPageScrollState(pageScroll.current);
+    // new SmoothScroll(pageScroll.current, 120, 12);
   }, []);
 
   const layouts = components.contents || []
   return (
-    
-      <div className="page-scroll" ref={pageScroll}>
-        <ParallaxProvider scrollContainer={pageScrollState}>
-          <Layout
-            theme={pageContext.themeSelect.themeSelect}
-            title={title}
-            isArticlePage
-            pageScroll={pageScroll}
-          >
-            <SEO title={title || "Untitled"} />
-            {layouts.map((layout, index) => (
-              <PostLayouts
-                key={index}
-                layoutData={layout}
-                categories={filterCategories(categories)}
-                theme={pageContext.themeSelect.themeSelect}
-                pageScroll={pageScroll}
-              />
-            ))}
-            {pageLimitModal && <PageLimitModal />}
-          </Layout>
-        </ParallaxProvider>
-      </div>
+    <div className="post-page-wrapper">
+      <ParallaxProvider>
+        <Layout
+          theme={pageContext.themeSelect.themeSelect}
+          title={title}
+          isArticlePage
+        >
+          <SEO title={title || "Untitled"} />
+          {layouts.map((layout, index) => (
+            <PostLayouts
+              key={index}
+              layoutData={layout}
+              categories={filterCategories(categories)}
+              theme={pageContext.themeSelect.themeSelect}
+            />
+          ))}
+          {pageLimitModal && <PageLimitModal />}
+        </Layout>
+      </ParallaxProvider>
+    </div>
   )
 }
 

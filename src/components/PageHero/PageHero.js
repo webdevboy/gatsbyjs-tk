@@ -20,9 +20,6 @@ export default function PageHero({ data, hideHero }) {
   return (
     <section
       className="page-hero"
-      style={{
-        height: _window.outerHeight,
-      }}
       onWheel={event => {
         if (event.deltaY > 0) {
           hideHero()

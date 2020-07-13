@@ -8,18 +8,15 @@ import SmoothScroll from 'src/utils/smoothScroll';
 
 const Category = ({ pageContext }) => {
   const { name } = pageContext;
-  const pageScroll = useRef(null);
-  const [pageScrollState, setPageScrollState] = useState(null);
 
   useEffect(() => {
-    new SmoothScroll(pageScroll.current, 120, 12);
-    setPageScrollState(pageScroll.current);
+    // new SmoothScroll(pageScroll.current, 120, 12);
   }, []);
 
   return (
-    <div className="page-scroll" ref={pageScroll}>
-      <ParallaxProvider scrollContainer={pageScrollState}>
-        <Layout pageScroll={pageScroll}>
+    <div className="category-page-wrapper">
+      <ParallaxProvider>
+        <Layout>
           <SEO title={name || "Untitled"} />
           <CategoryLayouts categoryData={pageContext} />
         </Layout>

@@ -38,26 +38,37 @@ const FrontPage = ({ showHero, pageContext, containerRef, title, containerIsScro
 const FrontPageProvider = ({ pageContext, heroData }) => {
   const { title, components } = pageContext;
   const [scrollWrapper, setScrollWrapper] = useState(null);
+  const [showHero, setShowHero] = useState(true);
+  const [isHeroAnimation, setIsHeroAnimation] = useState(false);
   const _window = useWindow() || {};
   const containerRef = useRef(null);
-  const [showHero, setShowHero] = useState(true);
+  
   const [containerIsScrollable, setContainerIsScrollable] = useState(false);
 
   const layouts = components.contents || [];
 
+  const getBool = () => showHero;
+
+  const handleWheelEvent = (event) => {
+    const isScrolled = containerRef && containerRef.current && containerRef.current.scrollTop > 0;
+    setIsHeroAnimation(true);
+    console.log(getBool())
+    if (event.deltaY < 0 && !isScrolled && !getBool()) {
+      setShowHero(true);
+    }
+  };
+
+
   useEffect(() => {
-
-    new SmoothScroll(containerRef.current, 120, 12);
-    setScrollWrapper(containerRef.current);
-
+    // new SmoothScroll(containerRef.current, 120, 12);
     setScrollWrapper(containerRef.current);
 
     document.querySelector('html').classList.add('no-scrolling');
     document.querySelector('#main-wrapper').classList.add('is-front-page');
 
-    document.querySelector('#main-wrapper').style.transform = showHero
-      ? `initial`
-      : `translateY(-${_window.outerHeight})`;
+    // document.querySelector('#main-wrapper').style.transform = showHero
+    //   ? `initial`
+    //   : `translateY(-${_window.outerHeight})`;
 
     return () => {
       document.querySelector('html').classList.remove('no-scrolling');
@@ -67,60 +78,59 @@ const FrontPageProvider = ({ pageContext, heroData }) => {
   }, []);
 
   useEffect(() => {
+    const htmlElement = document.querySelector('html');
     document.querySelector('#main-wrapper').style.transform = showHero
       ? `translateY(0px)`
-      : `translateY(-${_window.outerHeight}px)`;
+      : `translateY(-100vh)`;
 
     if (!showHero) {
-      setTimeout(() => setContainerIsScrollable(true), heroAnimationDuration);
+      setIsHeroAnimation(true);
+      setTimeout(() => {
+        setContainerIsScrollable(true);
+        setIsHeroAnimation(false);
+      }, heroAnimationDuration);
     } else {
+      setIsHeroAnimation(true);
+      setTimeout(() => {
+        setIsHeroAnimation(false);
+      }, heroAnimationDuration);
       setContainerIsScrollable(false);
     }
   }, [showHero]);
-
-  const handleWheelEvent = (event) => {
-    if (
-      event.deltaY < 0 &&
-      containerRef.current &&
-      containerRef.current.scrollTop <= 0
-    ) {
-      setShowHero(true);
-    }
-  };
-
   return (
     <>
-      <PageHero data={heroData[0]} hideHero={() => setShowHero(false)} />
-      <Swipeable
-        className="swipe-container"
-        onSwipedDown={() => {
-          if (containerRef.current && containerRef.current.scrollTop <= 0) {
-            setShowHero(true);
-          }
-        }}
-      >
-        <div
-          className={cx('swipe-wrapper', {
-            'overflow-scroll': containerIsScrollable,
-          })}
-          ref={containerRef}
-          onWheel={handleWheelEvent}
-          style={{ height: _window.outerHeight }}
+        <PageHero data={heroData[0]} hideHero={() => setShowHero(false)} />
+        <Swipeable
+          className="swipe-container"
+          onSwipedDown={() => {
+            if (containerRef.current && containerRef.current.scrollTop <= 0) {
+              setShowHero(true);
+            }
+          }}
         >
-          <ParallaxProvider scrollContainer={scrollWrapper}>
-            <FrontPage
-              {...{
-                showHero,
-                pageContext,
-                containerRef,
-                title,
-                containerIsScrollable, 
-                layouts
-              }}
-            />
-          </ParallaxProvider>
-        </div>
-      </Swipeable>
+          <div
+            // className={cx('swipe-wrapper', {
+            //   'overflow-scroll': containerIsScrollable,
+            // })}
+            className="swipe-wrapper"
+            ref={containerRef}
+            onWheel={handleWheelEvent}
+            // style={{ height: _window.outerHeight }}
+          >
+            <ParallaxProvider scrollContainer={scrollWrapper}>
+              <FrontPage
+                {...{
+                  showHero,
+                  pageContext,
+                  containerRef,
+                  title,
+                  containerIsScrollable, 
+                  layouts
+                }}
+              />
+            </ParallaxProvider>
+          </div>
+        </Swipeable>
     </>
   );
 };

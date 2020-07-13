@@ -3,8 +3,8 @@ import Swiper from "react-id-swiper";
 import { navigate } from "gatsby";
 import { useTranslation } from "react-i18next";
 
-import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints"
-import { getFormattedArticle } from "src/utils/formatArticle"
+import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints";
+import { getFormattedArticle } from "src/utils/formatArticle";
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 import "../Chefs/Chefs.scss"

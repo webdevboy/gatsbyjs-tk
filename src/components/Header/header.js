@@ -5,7 +5,6 @@ import LanguageToggle from 'src/components/LanguageToggle/LanguageToggle';
 import LoginLogout from 'src/components/LoginLogout/LoginLogout';
 import { Link } from 'gatsby';
 import useWindow from 'src/hooks/useWindow';
-import useDocument from 'src/hooks/useDocument';
 import { heroAnimationDuration } from 'src/utils/styleVars';
 import { useLocation } from '@reach/router';
 
@@ -63,7 +62,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
   )
 }
 
-function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title }) {
+function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted }) {
   const [siteNameTop, setSiteNameTop] = useState(true);
   const logoContainerRef = useRef(null);
   const articleHeaderRef = useRef(null);
@@ -92,7 +91,10 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
 
   return (
     <header className={cx(`header ${theme}`, {
-      'overflow-visible': isFrontPage,  
+      'overflow-visible': isFrontPage,
+      'header-absolute': isFrontPage,
+      'header-fixed': !isFrontPage,
+      'shifted': shifted,
     })}>
       <div>
         <button className={cx('header-hamburger', { 'show': showNav })} onClick={() => setShowNav()}>

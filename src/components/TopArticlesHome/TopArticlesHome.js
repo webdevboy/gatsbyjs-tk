@@ -103,7 +103,6 @@ export default function TopArticles(props) {
     const newArticles = [];
     articles &&
       articles.map((articleObj) => {
-        console.log(articleObj);
         const { article, articleCircleThumbnail } = articleObj;
         const newArticle = getFormattedArticle(article);
         newArticles.push({ ...newArticle, articleCircleThumbnail });
