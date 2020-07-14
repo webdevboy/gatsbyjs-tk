@@ -8,10 +8,8 @@ module.exports = () => `
         }
         fieldGroupName
     }
-    ... on WordPress_Post_Components_Contents_ArticlePostThumbnail {
+    ... on WordPress_Post_Components_Contents_CircleThumbnail {
         fieldGroupName
-        thumbnailImage {
-            sourceUrl
-        }
+        isFeaturedImageRounded
     }
 `

@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import { Parallax } from 'react-scroll-parallax';
@@ -7,7 +8,7 @@ import './TopArticlesCategory.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import { isBrowser } from 'src/utils/auth';
 
-function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
+function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, isCircle }) {
   return (
     <div
       className="top_articles__columns__column__inner"
@@ -18,7 +19,7 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n }) {
       }}
     >
       {imageUrl && (
-        <Parallax y={[-20, 20]} className="article-img-wrapper">
+        <Parallax y={[-20, 20]} className={cx('article-img-wrapper', { 'article-circle': isCircle })}>
           <img src={imageUrl} className="article-img" alt="Chef" />
         </Parallax>
       )}
@@ -51,6 +52,12 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
           content.fieldGroupName === 'post_Components_Contents_ArticleHero'
       );
 
+    const isCircle =
+      article.components.contents &&
+      article.components.contents.find(
+        content => content.fieldGroupName === 'post_Components_Contents_CircleThumbnail'
+      );
+
     const category = article.categories.nodes.find(
       (category) => category.name.toLowerCase() !== 'featured category'
     );
@@ -64,6 +71,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
       category: category ? category.name : '',
       title: (imageHeroObj && imageHeroObj.title) || article.title,
       byline: bylineObj && bylineObj.byline,
+      isCircle: isCircle && isCircle.isFeaturedImageRounded,
       articleUrl: article.uri,
       id: article.id,
       authors:

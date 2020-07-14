@@ -12,7 +12,7 @@ function Article({
   category,
   imageUrl,
   articleUrl,
-  articleCircleThumbnail,
+  isCircle,
   authors,
   t,
 }) {
@@ -26,7 +26,7 @@ function Article({
       }}
     >
       {imageUrl && (
-        <Parallax y={[-15, 10]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': articleCircleThumbnail })}>
+        <Parallax y={[-15, 10]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': isCircle })}>
           <img
             className="top_articles__columns__column__image"
             src={imageUrl}
@@ -62,6 +62,13 @@ export default function TopArticles(props) {
         (content) =>
           content.fieldGroupName === 'post_Components_Contents_ArticleHero'
       );
+    
+    const isCircle =
+      article.components.contents &&
+      article.components.contents.find(
+        content => content.fieldGroupName === 'post_Components_Contents_CircleThumbnail'
+      );
+        
 
     const category = article.categories.nodes.find(
       (category) => category.name.toLowerCase() !== 'featured category'
@@ -77,6 +84,7 @@ export default function TopArticles(props) {
       title: (imageHeroObj && imageHeroObj.title) || article.title,
       byline: bylineObj && bylineObj.byline,
       articleUrl: article.uri,
+      isCircle: isCircle && isCircle.isFeaturedImageRounded,
       authors:
         imageHeroObj && imageHeroObj.authors ? `${imageHeroObj.authors}` : null,
       // articleCircleThumbnail: article.articleCircleThumbnail,

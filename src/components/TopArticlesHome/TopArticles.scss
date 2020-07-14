@@ -29,6 +29,7 @@
     align-items: flex-start;
     grid-template-columns: 100%;
     background-color: $color-white;
+    padding: 21px 20px;
 
     @media #{$viewport-medium} {
       padding: 130px 124px;
