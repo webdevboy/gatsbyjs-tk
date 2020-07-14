@@ -56,35 +56,35 @@
     max-width: 370px;
   }
 
-  &.dark {
-    background-color: $color-black;
-    color: $color-white;
+  // &.dark {
+  //   background-color: $color-black;
+  //   color: $color-white;
 
-    ul {
-      background-color: $color-black;
-      > li.with-menu {
-        .sub-menu {
-          li {
-            &.go-back {
-              button {
-                color: $color-white;
-              }
-            }
-          }
-        }
-      }
-    }
-    a,
-    li,
-    button {
-      color: $color-white;
-    }
+  //   ul {
+  //     background-color: $color-black;
+  //     > li.with-menu {
+  //       .sub-menu {
+  //         li {
+  //           &.go-back {
+  //             button {
+  //               color: $color-white;
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   a,
+  //   li,
+  //   button {
+  //     color: $color-white;
+  //   }
 
-    .arrow {
-      border-top: 2px solid $color-white;
-      border-left: 2px solid $color-white;
-    }
-  }
+  //   .arrow {
+  //     border-top: 2px solid $color-white;
+  //     border-left: 2px solid $color-white;
+  //   }
+  // }
 
   .navigation-head {
     display: none;

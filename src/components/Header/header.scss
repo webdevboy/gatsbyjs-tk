@@ -291,7 +291,8 @@ $max_font: 22px;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-
+    margin: 0;
+    margin: 25px 0;
     &.show-site-name {
       opacity: 1;
       transition-delay: 1s;

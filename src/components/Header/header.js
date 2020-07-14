@@ -124,13 +124,13 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
             }}
           >
             <Logo className="fp-logo" />
+            <p
+              className={cx('sitename', { 'show-site-name': heroIsVisible })}
+            >
+              TASTING KITCHEN
+            </p>
           </div>
-          <p
-            className={cx('sitename', { 'show-site-name': heroIsVisible })}
-            style={{ top: `-${siteNameTop}px` }}
-          >
-            TASTING KITCHEN
-          </p>
+          
         </>
       )}
 
