@@ -3,7 +3,7 @@
 
 .scroll-dawn-arrow-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
   text-align: center;
@@ -15,16 +15,6 @@
   }
   .scroll-dawn-arrow1 {
     animation: arrowAnimation 0.8s 0.4s alternate infinite;
-  }
-  .scroll-dawn-arrow2 {
-    position: relative;
-    top: -8px;
-    animation: arrowAnimation 0.8s 0.8s alternate infinite;
-  }
-  .scroll-dawn-arrow3 {
-    position: relative;
-    top: -16px;
-    animation: arrowAnimation 0.8s 1.2s alternate infinite;
   }
 }
 

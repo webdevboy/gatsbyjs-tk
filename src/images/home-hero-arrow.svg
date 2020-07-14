@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="35px" viewBox="0 0 30 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Landing-Buda-Desktop-1440" transform="translate(-705.000000, -890.000000)" stroke="#FFFFFF" stroke-width="3">
+            <g id="Group" transform="translate(706.000000, 891.000000)">
+                <polyline id="Path" transform="translate(14.000000, 25.500000) rotate(-270.000000) translate(-14.000000, -25.500000) " points="7 12 11.6719318 16.5050771 21 25.5 7 39"></polyline>
+                <polyline id="Path" transform="translate(14.000000, 7.500000) rotate(-270.000000) translate(-14.000000, -7.500000) " points="7 -6 11.6719318 -1.49492291 21 7.5 7 21"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

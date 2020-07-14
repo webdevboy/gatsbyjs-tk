@@ -293,6 +293,8 @@ $max_font: 22px;
     white-space: nowrap;
     margin: 0;
     margin: 25px 0;
+    letter-spacing: 8px;
+    font-weight: $sans-serif-semibold;
     &.show-site-name {
       opacity: 1;
       transition-delay: 1s;

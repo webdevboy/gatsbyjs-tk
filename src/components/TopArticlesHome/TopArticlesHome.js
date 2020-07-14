@@ -147,7 +147,7 @@ export default function TopArticles(props) {
               )}
               {featuredArticleFormatted.category && (
                 <div className="article__category">
-                  {featuredArticleFormatted.category}
+                  {`${featuredArticleFormatted.category}`}
                 </div>
               )}
               {featuredArticleFormatted.title && (
