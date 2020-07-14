@@ -55,7 +55,6 @@ module.exports = () => `
         article {
             ${ArticleGql}
         }
-        articleCircleThumbnail
     }
     featuredArticle {
         ${ArticleGql}

@@ -192,7 +192,7 @@ export default function TopArticles(props) {
             />
           ))}
           {((formattedARticles.length % 3) - 1) === 0 &&
-            formattedARticles.length > 2 (
+            formattedARticles.length > 2 && (
               <div className="fake-border" />
             )}
         </div>
