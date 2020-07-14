@@ -123,7 +123,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
     return isNotFirst && !isFeatured;
   });
 
-  const formattedArticles = getArticles(formattedNodes).slice(0, 4);
+  const formattedArticles = getArticles(formattedNodes);
   return (
     <div className="top-articles-container section-landing">
       {name && (
@@ -194,6 +194,10 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                 />
               </div>
             ))}
+            {((formattedArticles.length % 3) - 1) === 0 &&
+            formattedArticles.length > 2 (
+              <div className="fake-border" />
+            )}
           </div>
         </div>
       </div>

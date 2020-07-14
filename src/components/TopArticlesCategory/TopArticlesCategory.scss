@@ -267,4 +267,12 @@
       }
     }
   }
+
+  .fake-border {
+    border-right: 1px solid rgba(151, 151, 151, 0.2);
+    display: none;
+    @media #{$viewport-medium} {
+      display: block;
+    }
+  }
 }
