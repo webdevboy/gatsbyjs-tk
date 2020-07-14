@@ -147,10 +147,10 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               <div className="header__article__shares__title">
                 Share:
               </div>
-              <a href="#">
+              <a href="https://www.facebook.com/tastingkitchen/" target="_blank">
                 <img src={Facebook} />
               </a>
-              <a href="#">
+              <a href="https://www.instagram.com/tastingkitchen" target="_blank">
               <img src={Instagram} />
               </a>
               <a href="#">
