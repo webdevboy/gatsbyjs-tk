@@ -7,11 +7,13 @@
   left: 0;
   right: 0;
   height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
   background-color: $color-white;
   font-family: $font-sans-serif;
   color: $color-black;
   z-index: 103;
-  top: -100%;
+  top: -100vh;
   transition-property: top bottom;
   transition-duration: 0.3s;
   transition-timing-function: ease;
@@ -34,7 +36,7 @@
 
     &.slide-in {
       bottom: 0;
-      top: calc(50% + 38px);
+      top: calc(50% + 60px);
       @media #{$viewport-medium} {
         left: 0;
         top: calc(50% - 39px);;
@@ -55,36 +57,6 @@
   @media #{$viewport-medium} {
     max-width: 370px;
   }
-
-  // &.dark {
-  //   background-color: $color-black;
-  //   color: $color-white;
-
-  //   ul {
-  //     background-color: $color-black;
-  //     > li.with-menu {
-  //       .sub-menu {
-  //         li {
-  //           &.go-back {
-  //             button {
-  //               color: $color-white;
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  //   a,
-  //   li,
-  //   button {
-  //     color: $color-white;
-  //   }
-
-  //   .arrow {
-  //     border-top: 2px solid $color-white;
-  //     border-left: 2px solid $color-white;
-  //   }
-  // }
 
   .navigation-head {
     display: none;

@@ -111,7 +111,10 @@ $max_font: 22px;
       display: flex;
     }
     &.scrolled {
-      transform: translateY(-80px);
+      @media #{$viewport-medium} {
+        transform: translateY(-80px);
+      }
+      
     }
   }
 
