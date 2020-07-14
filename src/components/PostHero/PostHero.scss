@@ -2,6 +2,7 @@
 
 .post-hero {
   overflow: hidden;
+  
   &.dark {
     .block {
       .block-wrapper {
@@ -20,7 +21,16 @@
       }
     }
   }
-
+  .parallax-outer {
+    position: relative;
+    top: -5px;
+    @media #{$viewport-medium} {
+      top: -20px;
+    }
+    @media #{$viewport-large} {
+      top: 0;
+    }
+  }
   .image-container {
     overflow: hidden;
     img {

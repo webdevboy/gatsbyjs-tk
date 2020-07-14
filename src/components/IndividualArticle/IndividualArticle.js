@@ -16,11 +16,11 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
       <div className="individual-article-wrapper">
         <div className="individual-article container">
           
-          {formattedArticle.imageUrl && (
+          {individualArticleImage.sourceUrl && (
             <Parallax className="individual-article__img-container" y={[-20, 20]} tagOuter="figure">
               <img
                 className="individual-article__img"
-                src={formattedArticle.imageUrl}
+                src={individualArticleImage.sourceUrl}
                 onLoad={updateParallaxState}
               />
             </Parallax>

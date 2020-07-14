@@ -2,7 +2,9 @@
 
 .photo-layout {
   padding: 0 20px;
-
+  .parallax-inner {
+    overflow: hidden;
+  }
   @media #{$viewport-medium} {
     padding: 0 40px;
     display: grid;
@@ -23,8 +25,13 @@
 
   .photo-item {
     overflow: hidden;
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
     @media #{$viewport-medium} {
       position: relative;
+      margin-top: 0;
     }
 
     img {

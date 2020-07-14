@@ -5,6 +5,9 @@ module.exports = () => {
     fullScreenArticleImage {
       sourceUrl
     }
+    fullScreenArticleMobileImage {
+      sourceUrl
+    }
     articleInfoPosition
     article {
       ... on WordPress_Post {

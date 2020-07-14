@@ -11,23 +11,37 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  
   .page-limit-modal {
-    margin-top: 10%;
-    height: 604px;
+    box-sizing: border-box;
+    margin-top: 30%;
+    height: auto;
+    width: calc(100% - 40px);
     background-color: $color-white;
     min-height: 250px;
-    padding: 60px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     border-radius: 4px;
     box-shadow: 0 10px 9px 0 rgba(0, 0, 0, 0.09);
     opacity: 0;
     animation: popupAnimation 2s forwards cubic-bezier(0,1.11,.5,1.01);
+    @media #{$viewport-medium} {
+      margin-top: 10%;
+      padding: 60px;
+    }
+    @media #{$viewport-large} {
+      width: auto;
+    }
     .page-limit-modal__body {
       flex: 1;
       background-color: $color-bg-light;
-      padding: 90px 0;
+      padding: 20px 0;
+      box-sizing: border-box;
       
+      @media #{$viewport-medium} {
+        padding: 90px 0;
+      }
       .page-limit-modal__body__logo {
         text-align: center;
       }
@@ -38,8 +52,12 @@
         font-size: 16px;
         line-height: 27px;
         text-align: center;
-        width: 46%;
-        margin: 50px auto 84px auto;
+        width: 90%;
+        margin: 20px auto 44px auto;
+        @media #{$viewport-medium} {
+          width: 46%;
+          margin: 50px auto 84px auto;
+        }
         a {
           color: $color-black;
           text-decoration: underline;
@@ -49,12 +67,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        @media #{$viewport-medium} {
+          flex-direction: row;
+        }
         .page-limit-modal__body__buttons__button {
+          display: block;
           border: none;
           outline: none;
           cursor: pointer;
           height: 50px;
-          width: 209px;
+          width: 80%;
+          
           color: $color-black;
           font-family: $font-sans-serif;
           font-size: 14px;
@@ -64,8 +88,12 @@
           border: 1px solid #282828;
           border-radius: 3px;
           box-sizing: border-box;
-          margin: 0 15px;
+          margin: 10px 0;
           text-transform: uppercase;
+          @media #{$viewport-medium} {
+            margin: 0 15px;
+            max-width: 209px;
+          }
         }
       }
     }

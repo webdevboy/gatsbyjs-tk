@@ -45,6 +45,16 @@
       margin-right: 0;
     }
 
+    .cutline {
+      font-size: 13px;
+      line-height: 16px;
+      @media #{$viewport-medium} {
+        font-size: 10px;
+        letter-spacing: 0.1px;
+        line-height: 12px;
+      }
+    }
+
     .img-wrap {
       overflow: hidden;
       img {
