@@ -5,11 +5,13 @@ import { Parallax } from 'react-scroll-parallax';
 
 import './FullscreenArticle.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
+import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
 function FullscreenArticle({
   article,
   articleInfoPosition,
   fullScreenArticleImage,
+  fullScreenArticleMobileImage,
   updateParallaxState = () => {},
 }) {
   const [t, i18n] = useTranslation('article');
@@ -55,11 +57,13 @@ function FullscreenArticle({
     <div className="fullscreen-article">
       {fullScreenArticleImage && fullScreenArticleImage.sourceUrl && (
         <div className="fullscreen-article__img-wrapper">
-          <img
-            className="fullscreen-article__img"
+          <AdaptiveImage
             src={fullScreenArticleImage.sourceUrl}
-            alt=""
-            onLoad={updateParallaxState}
+            smallSrc={fullScreenArticleMobileImage && fullScreenArticleMobileImage.sourceUrl}
+            innerProps={{
+              onLoad: updateParallaxState,
+              className: "fullscreen-article__img"
+            }}
           />
         </div>
         

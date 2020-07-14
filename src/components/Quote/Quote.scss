@@ -32,15 +32,18 @@
       font-size: 21px;
       display: inline;
       font-family: $font-serif;
+      line-height: 28px;
 
       @media #{$viewport-medium} {
         font-size: 25px;
+        letter-spacing: 0;
+        line-height: 40px;
       }
 
       @media #{$viewport-large} {
         font-size: 32px;
-        line-height: 40px;
-        text-align: center;
+        letter-spacing: -0.1px;
+        line-height: 42px;
       }
     }
   }

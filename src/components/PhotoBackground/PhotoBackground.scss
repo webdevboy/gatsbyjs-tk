@@ -1,19 +1,21 @@
 @import 'src/styles/variables';
 
 .grid {
-  display: none;
-  position: absolute;
+  display:  block;
+  position: relative;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  padding: 60px 40px;
+  padding: 10px 20px;
 
   @media #{$viewport-medium} {
+    position: absolute;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 40px;
+    padding: 60px 40px; 
   }
 
   @media #{$viewport-large} {
@@ -25,11 +27,19 @@
 
     span {
       margin: auto 0;
-      color: $color-white;
+      color: $color-cutline;
       font-family: $font-serif;
-      font-size: 16px;
-      letter-spacing: 0;
-      line-height: 25px;
+      font-size: 13px;
+      line-height: 18px;
+      letter-spacing: -0.1px;
+      text-align: center;
+      @media #{$viewport-medium} {
+        color: $color-white;
+        text-align: left;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0;
+      }
     }
   }
 }
