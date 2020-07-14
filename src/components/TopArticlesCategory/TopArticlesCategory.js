@@ -195,7 +195,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
               </div>
             ))}
             {((formattedArticles.length % 3) - 1) === 0 &&
-            formattedArticles.length > 2 (
+            formattedArticles.length > 2 && (
               <div className="fake-border" />
             )}
           </div>
