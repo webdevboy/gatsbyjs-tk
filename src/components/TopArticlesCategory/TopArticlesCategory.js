@@ -23,7 +23,7 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, isCir
           <img src={imageUrl} className="article-img" alt="Chef" />
         </Parallax>
       )}
-      {category && <div className="article__category">{category}</div>}
+      {category && <div className="article__category" dangerouslySetInnerHTML={{ __html: category }} />}
       {title && <div className="article__title">{title}</div>}
       {byline && <div className="article__description">{byline}</div>}
       {articleUrl && (

@@ -37,7 +37,7 @@ function Article({
         <div
           className="article__category"
           dangerouslySetInnerHTML={{ __html: category }}
-        ></div>
+        />
       )}
       {title && <div className="article__title">{title}</div>}
       {byline && <div className="article__description">{byline}</div>}
@@ -154,9 +154,7 @@ export default function TopArticles(props) {
                 </div>
               )}
               {featuredArticleFormatted.category && (
-                <div className="article__category">
-                  {`${featuredArticleFormatted.category}`}
-                </div>
+                <div className="article__category" dangerouslySetInnerHTML={{ __html: featuredArticleFormatted.category }} />
               )}
               {featuredArticleFormatted.title && (
                 <div className="article__title">
