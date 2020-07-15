@@ -66,6 +66,8 @@
     color: $color-darkgray;
     font-family: $font-serif;
     font-size: 25px;
+    font-weight: $sans-serif-regular;
+
     line-height: 31px;
     text-align: center;
     margin: 58px 0 49px 0;
@@ -100,9 +102,10 @@
       color: $color-account-gray;
       font-family: $font-sans-serif;
       font-size: 16px;
-      font-weight: $sans-serif-medium;
+      font-weight: $sans-serif-semibold;
       line-height: 20px;
       margin: 0 20px;
+      cursor: pointer;
       @media #{$viewport-medium} {
         margin: 0 50px;
       }

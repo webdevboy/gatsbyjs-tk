@@ -3,11 +3,13 @@
 .login-header {
   text-align: center;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 41px;
   padding-top: $header-height;
   h2 {
     margin: 58px 0 49px 0;
     font-family: $font-serif;
+    font-weight: $sans-serif-regular;
+
     font-size: 25px;
     line-height: 31px;
     text-align: center;
@@ -44,9 +46,9 @@
     margin: 0 auto;
     div {
       font-family: $font-sans-serif;
+      font-weight: $sans-serif-semibold;
       color: $color-account-gray;
       transition: color 0.3s;
-      font-weight: $sans-serif-medium;
       line-height: 20px;
       font-size: 16px;
       margin: 0 15px;
