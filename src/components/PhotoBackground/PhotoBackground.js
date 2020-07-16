@@ -25,7 +25,7 @@ function MessageGrid({ gridCount, message, plot, fullScreen }) {
         {grid.map((cell, i) => {
           if(fullScreen) {
             return (
-              <Parallax y={[50, -30]} className="cell" key={i}>
+              <Parallax y={[10, -5]} className="cell" key={i}>
                 {i === plotMap[plot] && (
                   <span dangerouslySetInnerHTML={{ __html: message }}></span>
                 )}
@@ -94,7 +94,7 @@ export default function PhotoBackground({
     >
       <div className="bg-wrapper">
         {image && image.sourceUrl && !fullScreen && (
-          <Parallax y={[-20, 20]} className="image-container">
+          <Parallax y={[-2, 10]} className="image-container">
             <img
               className="bg"
               src={image.sourceUrl}

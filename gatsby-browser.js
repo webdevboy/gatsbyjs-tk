@@ -8,6 +8,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 
 import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
+// import SmoothScroll from 'src/utils/smoothScroll';
 
 const LanguageWrapper = ({ children }) => (
   <div id="main-wrapper">
@@ -32,7 +33,18 @@ class SessionCheck extends React.Component {
 
   componentDidMount() {
     silentAuth(this.handleCheckSession);
-    SmoothScroll();
+    SmoothScroll({
+      animationTime: 1600,
+      stepSize: 200,
+
+      accelerationDelta: 20,
+      accelerationMax: 1,
+
+      pulseAlgorithm   : true,
+      pulseScale       : 3,
+      pulseNormalize   : 1,
+    });
+    // SmoothScroll(document.documentElement, 200, 40);
 
     i18next.on('languageChanged', function(lng) {
       window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);

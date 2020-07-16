@@ -17,7 +17,7 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
         <div className="individual-article container">
           
           {individualArticleImage.sourceUrl && (
-            <Parallax className="individual-article__img-container" y={[-20, 20]} tagOuter="figure">
+            <Parallax className="individual-article__img-container" y={[-5, 10]} tagOuter="figure">
               <img
                 className="individual-article__img"
                 src={individualArticleImage.sourceUrl}

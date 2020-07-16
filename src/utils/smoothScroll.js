@@ -12,13 +12,16 @@ export default function SmoothScroll(target, speed, smooth) {
               ? document.documentElement 
               : target // safari is the new IE
   
-	target.addEventListener('mousewheel', scrolled, { passive: false })
-	target.addEventListener('DOMMouseScroll', scrolled, { passive: false })
+	target.addEventListener('mousewheel', scrolled, { passive: false });
+	target.addEventListener('DOMMouseScroll', scrolled, { passive: false });
+	window.addEventListener('scroll', e => {
+		console.log(e);
+	});
 
 	function scrolled(e) {
 		e.preventDefault(); // disable default scrolling
 
-		var delta = normalizeWheelDelta(e)
+		var delta = normalizeWheelDelta(e);
 
 		pos += -delta * speed
 		pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
@@ -27,26 +30,27 @@ export default function SmoothScroll(target, speed, smooth) {
 	}
 
 	function normalizeWheelDelta(e){
-		if(e.detail){
+		if(e.detail) {
 			if(e.wheelDelta)
-				return e.wheelDelta/e.detail/40 * (e.detail>0 ? 1 : -1) // Opera
+				return e.wheelDelta / e.detail / 40 * (e.detail > 0 ? 1 : -1) // Opera
 			else
-				return -e.detail/3 // Firefox
-		}else
-			return e.wheelDelta/120 // IE,Safari,Chrome
+				return -e.detail / 3 // Firefox
+		}
+		else
+			return e.wheelDelta / 120 // IE,Safari,Chrome
 	}
 
 	function update() {
-		moving = true
+		moving = true;
     
-		var delta = (pos - target.scrollTop) / smooth
+		var delta = (pos - target.scrollTop) / smooth;
     
-		target.scrollTop += delta
+		target.scrollTop += delta;
     
 		if (Math.abs(delta) > 0.5)
-			requestFrame(update)
+			requestFrame(update);
 		else
-			moving = false
+			moving = false;
 	}
 
 	var requestFrame = function() { // requestAnimationFrame cross browser

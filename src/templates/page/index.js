@@ -16,29 +16,25 @@ import SmoothScroll from 'src/utils/smoothScroll';
 const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   const { title, components } = pageContext;
   const [scrollWrapper, setScrollWrapper] = useState(null);
+  const [smoothScrollInited, setSmoothScrollInited] = useState(false);
   const [showHero, setShowHero] = useState(true);
-  const [isHeroAnimation, setIsHeroAnimation] = useState(false);
   const containerRef = useRef(null);
   
   const [containerIsScrollable, setContainerIsScrollable] = useState(false);
 
   const layouts = components.contents || [];
 
-  const getBool = () => showHero;
-
   const handleWheelEvent = (event) => {
     const isScrolled = containerRef && containerRef.current && containerRef.current.scrollTop > 0;
-    setIsHeroAnimation(true);
-    if (event.deltaY < 0 && !isScrolled && !getBool()) {
+    if(event.deltaY < 0 && !isScrolled) {
       setShowHero(true);
     }
   };
 
 
   useEffect(() => {
-    new SmoothScroll(containerRef.current, 120, 12);
+    
     setScrollWrapper(containerRef.current);
-
     document.querySelector('html').classList.add('no-scrolling');
     document.querySelector('#main-wrapper').classList.add('is-front-page');
 
@@ -56,32 +52,33 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
       : `translateY(-100vh)`;
 
     if (!showHero) {
-      setIsHeroAnimation(true);
       setTimeout(() => {
         setContainerIsScrollable(true);
-        setIsHeroAnimation(false);
       }, heroAnimationDuration);
     } else {
-      setIsHeroAnimation(true);
-      setTimeout(() => {
-        setIsHeroAnimation(false);
-      }, heroAnimationDuration);
       setContainerIsScrollable(false);
     }
   }, [showHero]);
   return (
     <>
-        <PageHero data={heroData[0]} hideHero={() => setShowHero(false)} />
+        <PageHero data={heroData[0]} hideHero={() => {
+          setShowHero(false);
+        }} />
         <Swipeable
           className="swipe-container"
           onSwipedDown={() => {
             if (containerRef.current && containerRef.current.scrollTop <= 0) {
               setShowHero(true);
+              if(smoothScrollInited) {
+                new SmoothScroll(containerRef.current, 200, 45);
+                setSmoothScrollInited(true);
+              }
             }
           }}
         >
           <div
             className="swipe-wrapper"
+            style={{ overflowY: containerIsScrollable ? 'auto' : 'hidden' }}
             ref={containerRef}
             onWheel={handleWheelEvent}
           >

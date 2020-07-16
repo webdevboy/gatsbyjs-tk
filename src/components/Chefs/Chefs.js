@@ -25,7 +25,7 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl, updateParallaxStat
     >
       {imageUrl && (
         <div className="chefs__columns__column__img__wrapper">
-          <Parallax className="chefs__columns__column__img-wrapper" y={[-25, 15]}>
+          <Parallax className="chefs__columns__column__img-wrapper" y={[-10, 5]}>
             <div
               className="chefs__columns__column__img"
               style={{ backgroundImage: `url("${imageUrl}")` }}

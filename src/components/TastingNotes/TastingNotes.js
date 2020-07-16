@@ -28,7 +28,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updatePar
       }}
     >
       {imageUrl && (
-        <Parallax y={[-10, 30]} className="tasting-notes__note__img-wrapper">
+        <Parallax y={[-10, 5]} className="tasting-notes__note__img-wrapper">
           <img
             src={imageUrl}
             className="tasting-notes__note__img"
@@ -65,13 +65,13 @@ function TastingNotes({ headline, notes, type, theme, updateParallaxState = () =
     const swipeWrapper = document.querySelector('.swipe-wrapper');
     if(!_window) return;
     if(swipeWrapper) {
-      window.scrollTo({ top: 0 });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     else if(scrollBlock) {
-      window.scrollTo({ top: 0 });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     else {
-      window.scrollTo({ top: 0 });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
   const [t, i18n] = useTranslation(['article', 'common']);

@@ -21,7 +21,7 @@ function EventsComponent({
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
-        <Parallax className="events-component__img-wrapper" y={[-10, 20]}>
+        <Parallax className="events-component__img-wrapper" y={[-10, 5]}>
           <img
             className="events-component__img"
             src={eventBackground.sourceUrl}

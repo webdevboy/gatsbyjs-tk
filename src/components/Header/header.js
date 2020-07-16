@@ -9,6 +9,9 @@ import { useLocation } from '@reach/router';
 
 import './header.scss';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
+import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
+
+import Logo from 'src/svgs/tk_logo';
 import LogoDesktop from 'src/images/TK_logo_desktop_1.svg';
 import LogoDesktopTitle from 'src/images/TK_logo_desktop_2.svg';
 import LogoMobile from 'src/images/TK_logo_mobile_1.svg';
@@ -111,7 +114,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       {!isFrontPage ? (
         <Link to="/">
           <div className="logo" ref={logoRef}>
-            <img src={LogoDesktop} alt="" />
+            <Logo />
           </div>
         </Link>
       ) : (
@@ -126,10 +129,20 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               top: isFrontPage && heroIsVisible ? `-${getLogoPosY()}px` : '50%',
             }}
           >
-            <img src={LogoDesktop} className="fp-logo" alt="" />
-            <img
+            <AdaptiveImage
+              src={LogoDesktop}
+              smallSrc={LogoMobile}
+              innerProps={{
+                className: 'fp-logo'
+              }}
+            />
+            <AdaptiveImage
               src={LogoDesktopTitle}
-              className={cx('sitename', 'first-init', { 'show-site-name': heroIsVisible, 'hide-site-name': !heroIsVisible })}
+              smallSrc={LogoMobileTitle}
+              innerProps={{
+                className: cx('sitename', 'first-init', { 'show-site-name': heroIsVisible, 'hide-site-name': !heroIsVisible }),
+              }}
+              
             />
           </div>
           
