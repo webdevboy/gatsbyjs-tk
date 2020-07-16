@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as cx from 'classnames';
-import Logo from 'src/svgs/tk_logo';
 import LanguageToggle from 'src/components/LanguageToggle/LanguageToggle';
 import LoginLogout from 'src/components/LoginLogout/LoginLogout';
 import { Link } from 'gatsby';
@@ -10,6 +9,10 @@ import { useLocation } from '@reach/router';
 
 import './header.scss';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
+import LogoDesktop from 'src/images/TK_logo_desktop_1.svg';
+import LogoDesktopTitle from 'src/images/TK_logo_desktop_2.svg';
+import LogoMobile from 'src/images/TK_logo_mobile_1.svg';
+import LogoMobileTitle from 'src/images/TK_logo_mobile_2.svg';
 import Facebook from 'src/images/Facebook_icon_gray.png';
 import Instagram from 'src/images/Instagram_icon_gray.png';
 import WeChat from 'src/images/WeChat_icon_gray.png';
@@ -108,7 +111,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       {!isFrontPage ? (
         <Link to="/">
           <div className="logo" ref={logoRef}>
-            <Logo />
+            <img src={LogoDesktop} alt="" />
           </div>
         </Link>
       ) : (
@@ -123,12 +126,11 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               top: isFrontPage && heroIsVisible ? `-${getLogoPosY()}px` : '50%',
             }}
           >
-            <Logo className="fp-logo" />
-            <p
-              className={cx('sitename', { 'show-site-name': heroIsVisible })}
-            >
-              TASTING KITCHEN
-            </p>
+            <img src={LogoDesktop} className="fp-logo" alt="" />
+            <img
+              src={LogoDesktopTitle}
+              className={cx('sitename', 'first-init', { 'show-site-name': heroIsVisible, 'hide-site-name': !heroIsVisible })}
+            />
           </div>
           
         </>
