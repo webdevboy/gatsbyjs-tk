@@ -14,27 +14,29 @@ const About = () => {
       <div className="about-page">
         <h1 className="about-headline">{t('about-title')}</h1>
 
-        <div className="content-block">
-          <div className="img-wrapper">
-            <img
-              src="http://w0y.dd0.myftpupload.com/wp-content/uploads/2020/07/about-picture.jpg"
-              alt="About"
-            />
-            <p className="cutline">{`${t('about-photography')} David Hartung`}</p>
-          </div>
-          <div className="copyblock">
-            <p>
-              {t('about-copyblock1')}
-            </p>
-            <p>
-              {t('about-copyblock2')}
-            </p>
-            <p>
-              {t('about-copyblock3')}
-            </p>
-            <p>
-              {t('about-copyblock4')}
-            </p>
+        <div className="content-block-wrapper">
+          <div className="content-block">
+            <div className="img-wrapper">
+              <img
+                src="http://w0y.dd0.myftpupload.com/wp-content/uploads/2020/07/about-picture.jpg"
+                alt="About"
+              />
+              <p className="cutline">{`${t('about-photography')} David Hartung`}</p>
+            </div>
+            <div className="copyblock">
+              <p>
+                {t('about-copyblock1')}
+              </p>
+              <p>
+                {t('about-copyblock2')}
+              </p>
+              <p>
+                {t('about-copyblock3')}
+              </p>
+              <p>
+                {t('about-copyblock4')}
+              </p>
+            </div>
           </div>
         </div>
         <div className="info-blocks">

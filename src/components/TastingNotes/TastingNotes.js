@@ -17,7 +17,7 @@ import BackToTopImg from 'src/images/back-to-top.png';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
 
-const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updateParallaxState }) => {
+const Note = ({ cutline, title, byline, imageUrl, articleUrl, isCircle, t, i18n, updateParallaxState }) => {
   return (
     <div
       className="tasting-notes__note"
@@ -28,7 +28,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updatePar
       }}
     >
       {imageUrl && (
-        <Parallax y={[-10, 5]} className="tasting-notes__note__img-wrapper">
+        <Parallax y={[-10, 5]} className={cx('tasting-notes__note__img-wrapper', { circle: isCircle })}>
           <img
             src={imageUrl}
             className="tasting-notes__note__img"

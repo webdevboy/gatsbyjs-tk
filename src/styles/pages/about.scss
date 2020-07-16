@@ -1,19 +1,7 @@
 @import "src/styles/variables";
 
 .about-page {
-  
-  padding: 0 20px;
   padding-top: $header-height;
-
-  @media #{$viewport-medium} {
-    padding: 0 43px;
-    padding-top: $header-height;
-  }
-
-  @media #{$viewport-large} {
-    padding: 0 55px;
-    padding-top: $header-height;
-  }
 
   h1 {
     padding: 58px 0 50px 0;
@@ -43,6 +31,16 @@
     line-height: 1.6;
   }
 
+  .content-block-wrapper {
+    padding: 0 20px;
+    @media #{$viewport-medium} {
+      padding: 0 43px;
+    }
+    @media #{$viewport-large} {
+      padding: 55px;
+      background-color: $color-white;
+    }
+  }
   .content-block {
     @media #{$viewport-medium} {
       display: grid;
@@ -94,10 +92,15 @@
 
   .info-blocks {
     padding-bottom: 100px;
+    padding: 0 20px;
+    @media #{$viewport-medium} {
+      padding: 0 43px;
+    }
     @media #{$viewport-large} {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
       column-gap: 41px;
+      padding: 55px;
     }
   }
   .info-block {
