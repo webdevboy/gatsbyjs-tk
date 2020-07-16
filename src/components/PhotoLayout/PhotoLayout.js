@@ -6,10 +6,12 @@ import './PhotoLayout.scss';
 
 function Photo({ url, altText, cutline, updateParallaxState = () => {} }) {
   return (
-    <Parallax y={[-2, 10]} className="photo-item">
-      <img src={url} alt={altText} onLoad={updateParallaxState} />
+    <div className="photo-item">
+      <Parallax y={[-2, 10]}>
+        <img src={url} alt={altText} onLoad={updateParallaxState} />
+      </Parallax>
       {cutline && <p className="cutline">{cutline}</p>}
-    </Parallax>
+    </div>
   );
 }
 

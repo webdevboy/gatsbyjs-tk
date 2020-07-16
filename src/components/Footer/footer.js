@@ -48,19 +48,22 @@ function Footer() {
         <div className="social-container">
           <ul>
             <li>
-              <a href="https://www.instagram.com/tastingkitchen">
+              <a href="https://www.instagram.com/tastingkitchen/" target="_blank">
                 <img src={Instagram} alt="" />
               </a>
             </li>
             <li>
-              {/* TODO: Get URL for Pinterest */}
-              <img src={WeChat} alt="" />
+              <a href={`https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NzczOTE0NA==&scene=124#wechat_redirect`} target="_blank">
+                <img src={WeChat} alt="" />
+              </a>
             </li>
             <li>
-              <img src={Weibo} alt="" />
+              <a href="https://weibo.com/u/7399881035?is_all=1" target="_blank">
+                <img src={Weibo} alt="" />
+              </a>
             </li>
             <li>
-              <a href="https://www.facebook.com/tastingkitchen/">
+              <a href="https://www.facebook.com/tastingkitchen/" target="_blank">
                 <img src={Facebook} alt="" />
               </a>
             </li>

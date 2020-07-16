@@ -26,6 +26,9 @@
   .photo-item {
     overflow: hidden;
     margin-top: 20px;
+    .parallax-outer {
+      overflow: hidden;
+    }
     &:first-child {
       margin-top: 0;
     }

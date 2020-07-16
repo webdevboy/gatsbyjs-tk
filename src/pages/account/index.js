@@ -46,7 +46,7 @@ function Account() {
             {t('account-overview')}
           </div>
           <div
-            className={cx('account__toggle', {
+            className={cx('account__toggle', {  
               'account__toggle--active': !isAccountView,
             })}
             onClick={() => {

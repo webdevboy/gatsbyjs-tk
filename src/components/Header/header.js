@@ -91,6 +91,27 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
     return _window.outerHeight / 2 + mediumOffset;
   };
 
+  const openWeChatShareQR = e => {
+    e.preventDefault();
+    if(_window) {
+      _window.open(`https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=${document.location.href}`, 'WeChat Share QR Code', 'height:700, width:700');
+    }
+  }
+
+  const openWeiboShare = e => {
+    e.preventDefault();
+    if(_window) {
+      _window.open(`http://service.weibo.com/share/share.php?title=${title}&url=${document.location.href}`, 'Weibo', 'height:700, width:700');
+    }
+  }
+
+  const openFacebookShare = e => {
+    e.preventDefault();
+    if(_window) {
+      _window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.location.href}`, 'Facebook',  'height:700, width:700');
+    }
+  }
+
   useEffect(() => {
     if (heroIsVisible && logoContainerRef && logoContainerRef.current) {
       setTimeout(() => {
@@ -98,6 +119,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       }, heroAnimationDuration);
     }
   }, [heroIsVisible]);
+
 
   return (
     <header className={cx(`header ${theme}`, {
@@ -162,16 +184,16 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               <div className="header__article__shares__title">
                 Share:
               </div>
-              <a href="https://www.facebook.com/tastingkitchen/" target="_blank">
+              <a href="#" onClick={openFacebookShare}>
                 <img src={Facebook} />
               </a>
-              <a href="https://www.instagram.com/tastingkitchen" target="_blank">
-              <img src={Instagram} />
+              <a href="https://www.instagram.com/tastingkitchen/" target="_blank">
+                <img src={Instagram} />
               </a>
-              <a href="#">
+              <a href="#" onClick={openWeChatShareQR}>
                 <img src={WeChat} />
               </a>
-              <a href="#">
+              <a href="#" onClick={openWeiboShare}>
                 <img src={Weibo} />
               </a>
             </div>

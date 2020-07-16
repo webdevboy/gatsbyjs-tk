@@ -62,14 +62,16 @@ class PostWrapper extends Component {
     const { pageContext } = this.props;
     const { pageLimitModal } = this.state;
     const { title, components, categories } = pageContext;
+    const postHeroObj = pageContext.components.contents.find(c => c.fieldGroupName === "post_Components_Contents_ArticleHero");
     const layouts = components.contents || [];
     return (
       <Layout
         theme={pageContext.themeSelect.themeSelect}
         title={title}
+        
         isArticlePage
       >
-        <SEO title={title || "Untitled"} />
+        <SEO title={title || "Untitled"} description={postHeroObj && postHeroObj.byline} />
         {layouts.map((layout, index) => (
           <PostLayouts
             key={index}
