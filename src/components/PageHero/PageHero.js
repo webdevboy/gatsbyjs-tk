@@ -6,7 +6,7 @@ import * as cx from "classnames"
 import "./PageHero.scss";
 import { ScrollDownArrow } from 'src/components/common';
 
-export default function PageHero({ data, hideHero }) {
+export default function PageHero({ data, hideHero, scrollContainer }) {
   const [loaded, setLoaded] = useState(false)
   const _window = useWindow() || {}
 
@@ -22,7 +22,7 @@ export default function PageHero({ data, hideHero }) {
       className="page-hero"
       onWheel={event => {
         if (event.deltaY > 0) {
-          hideHero()
+          hideHero();
         }
       }}
       {...swipeHandlers}

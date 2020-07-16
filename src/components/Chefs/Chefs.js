@@ -35,7 +35,10 @@ function Chef({ cutline, title, byline, imageUrl, articleUrl, updateParallaxStat
       )}
       <div className="chefs__columns__column__info">
         {cutline && (
-          <div className="chefs__columns__column__info_cutline">{cutline}</div>
+          <div
+            className="chefs__columns__column__info_cutline"
+            dangerouslySetInnerHTML={{ __html: cutline }}
+          />
         )}
         {title && (
           <div className="chefs__columns__column__info_title">{title}</div>

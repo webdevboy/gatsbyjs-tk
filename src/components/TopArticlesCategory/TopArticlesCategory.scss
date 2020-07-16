@@ -74,10 +74,11 @@
           box-sizing: border-box;
           background-size: cover;
           background-position: center;
-          padding: 21px 20px;
+          
           position: relative;
 
           @media #{$viewport-medium} {
+            padding: 21px 20px;
             height: 730px;
           }
 

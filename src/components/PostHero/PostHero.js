@@ -54,7 +54,7 @@ export default function Hero({
             <p
               className="category-name"
               dangerouslySetInnerHTML={{ __html: categoryName }}
-            ></p>
+            />
           )}
           {title && <h1 className="headline">{title}</h1>}
           {byline && <p className="byline">{byline}</p>}

@@ -28,9 +28,10 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
 
           <div className="individual-article__info">
             {formattedArticle.cutline && (
-              <div className="individual-article__info__cutline">
-                {formattedArticle.cutline}
-              </div>
+              <div
+                className="individual-article__info__cutline"
+                dangerouslySetInnerHTML={{ __html: formattedArticle.cutline }}
+              />
             )}
             {formattedArticle.title && (
               <div className="individual-article__info__title">

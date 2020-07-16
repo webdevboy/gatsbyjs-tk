@@ -3,8 +3,7 @@ import React from "react";
 import { silentAuth } from "./src/utils/auth";
 import { globalHistory } from '@reach/router';
 import i18next from 'i18next';
-import SmoothScroll from 'smoothscroll-for-websites';
-import { ParallaxProvider } from 'react-scroll-parallax';
+import SmoothScroll from 'src/utils/SmoothScroll';
 
 import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
@@ -33,18 +32,19 @@ class SessionCheck extends React.Component {
 
   componentDidMount() {
     silentAuth(this.handleCheckSession);
-    SmoothScroll({
-      animationTime: 1600,
-      stepSize: 200,
+    if(typeof window !== "undefined") {
+      SmoothScroll({
+        animationTime: 1600,
+        stepSize: 200,
 
-      accelerationDelta: 20,
-      accelerationMax: 1,
+        accelerationDelta: 20,
+        accelerationMax: 1,
 
-      pulseAlgorithm   : true,
-      pulseScale       : 3,
-      pulseNormalize   : 1,
-    });
-    // SmoothScroll(document.documentElement, 200, 40);
+        pulseAlgorithm   : true,
+        pulseScale       : 3,
+        pulseNormalize   : 1,
+      });
+    }
 
     i18next.on('languageChanged', function(lng) {
       window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);

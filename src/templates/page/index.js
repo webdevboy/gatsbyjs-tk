@@ -11,12 +11,12 @@ import { PageHero } from 'src/components';
 import FrontPage from './FrontPage';
 
 import { heroAnimationDuration } from 'src/utils/styleVars';
-import SmoothScroll from 'src/utils/smoothScroll';
 
 const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   const { title, components } = pageContext;
   const [scrollWrapper, setScrollWrapper] = useState(null);
   const [smoothScrollInited, setSmoothScrollInited] = useState(false);
+  const [isHeroAnimationInProgress, setIsHeroAnimationInProgress] = useState(false);
   const [showHero, setShowHero] = useState(true);
   const containerRef = useRef(null);
   
@@ -33,7 +33,6 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 
 
   useEffect(() => {
-    
     setScrollWrapper(containerRef.current);
     document.querySelector('html').classList.add('no-scrolling');
     document.querySelector('#main-wrapper').classList.add('is-front-page');
@@ -61,16 +60,15 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   }, [showHero]);
   return (
     <>
-        <PageHero data={heroData[0]} hideHero={() => {
-          setShowHero(false);
-        }} />
+        <PageHero data={heroData[0]} hideHero={() => {setShowHero(false);}} scrollContainer={containerRef.current} />
         <Swipeable
           className="swipe-container"
           onSwipedDown={() => {
             if (containerRef.current && containerRef.current.scrollTop <= 0) {
-              setShowHero(true);
+              if(!isHeroAnimationInProgress) {
+                setShowHero(true);
+              }
               if(smoothScrollInited) {
-                new SmoothScroll(containerRef.current, 200, 45);
                 setSmoothScrollInited(true);
               }
             }

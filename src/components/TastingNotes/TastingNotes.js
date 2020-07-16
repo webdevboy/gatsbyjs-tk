@@ -41,7 +41,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updatePar
         <div
           className="tasting-notes__note__cutline"
           dangerouslySetInnerHTML={{ __html: cutline }}
-        ></div>
+        />
       )}
       {title && <div className="tasting-notes__note__title">{title}</div>}
       {byline && <div className="tasting-notes__note__byline">{byline}</div>}

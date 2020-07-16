@@ -43,10 +43,6 @@
     "react-id-swiper": "^3.0.0",
     "react-scroll-parallax": "^2.3.3",
     "react-swipeable": "^5.5.1",
-    "scrollmagic": "^2.0.7",
-    "scrollmagic-plugin-gsap": "^1.0.4",
-    "smoothscroll-for-websites": "^1.4.10",
-    "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^5.4.2"
   },
   "devDependencies": {
