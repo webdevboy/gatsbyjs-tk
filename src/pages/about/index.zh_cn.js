@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from 'src/components/Layout';
 
-import 'src/styles/about.scss';
+import 'src/styles/pages/about.scss';
 
 const About = () => {
   const title = 'About Tasting Kitchen';
