@@ -87,12 +87,17 @@
     h4 {
       margin: 0;
       margin-bottom: 30px;
+      font-family: $font-sans-serif;
       font-size: 16px;
+      font-weight: $sans-serif-medium;
+      line-height: 20px;
     }
 
     p {
-      line-height: 1.4;
+      font-family: $font-serif;
       font-size: 12px;
+      letter-spacing: 0.1px;
+      line-height: 20px;
     }
 
     .notch {

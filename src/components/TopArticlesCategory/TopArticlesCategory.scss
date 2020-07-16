@@ -169,7 +169,7 @@
           }
 
           &:nth-child(1),
-          &:nth-child(4n) {
+          &:nth-child(3n + 1) {
             @media #{$viewport-medium} {
               padding-left: 0;
             }

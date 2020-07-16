@@ -7,6 +7,7 @@ import SmoothScroll from 'src/utils/SmoothScroll';
 
 import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
+import { MEDIUM_BREAKPOINT } from 'src/utils/breakpoints';
 // import SmoothScroll from 'src/utils/smoothScroll';
 
 const LanguageWrapper = ({ children }) => (
@@ -32,7 +33,7 @@ class SessionCheck extends React.Component {
 
   componentDidMount() {
     silentAuth(this.handleCheckSession);
-    if(typeof window !== "undefined") {
+    if(typeof window !== "undefined" && window.innerWidth > MEDIUM_BREAKPOINT) {
       SmoothScroll({
         animationTime: 1600,
         stepSize: 200,

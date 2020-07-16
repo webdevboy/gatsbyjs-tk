@@ -28,6 +28,12 @@
     margin-top: 20px;
     .parallax-outer {
       overflow: hidden;
+      width: 100%;
+      height: 100%;
+      .parallax-inner {
+        width: 100%;
+        height: 100%;
+      }
     }
     &:first-child {
       margin-top: 0;
