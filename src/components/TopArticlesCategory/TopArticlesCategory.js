@@ -19,7 +19,7 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, isCir
       }}
     >
       {imageUrl && (
-        <Parallax y={[-20, 20]} className={cx('article-img-wrapper', { 'article-circle': isCircle })}>
+        <Parallax y={[-5, 5]} className={cx('article-img-wrapper', { 'article-circle': isCircle })}>
           <img src={imageUrl} className="article-img" alt="Chef" />
         </Parallax>
       )}
@@ -150,7 +150,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
             >
               {featuredArticleFormatted.imageUrl && (
                 <div className="featured-article__image-container">
-                  <Parallax y={[-20, 20]} className="featured-article__image-wrapper">
+                  <Parallax y={[-10, 10]} className="featured-article__image-wrapper">
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
