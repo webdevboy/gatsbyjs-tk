@@ -17,7 +17,7 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
         <div className="individual-article container">
           
           {individualArticleImage.sourceUrl && (
-            <Parallax className="individual-article__img-container" y={[-20, 20]} tagOuter="figure">
+            <Parallax className="individual-article__img-container" y={[-5, 10]} tagOuter="figure">
               <img
                 className="individual-article__img"
                 src={individualArticleImage.sourceUrl}
@@ -28,9 +28,10 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
 
           <div className="individual-article__info">
             {formattedArticle.cutline && (
-              <div className="individual-article__info__cutline">
-                {formattedArticle.cutline}
-              </div>
+              <div
+                className="individual-article__info__cutline"
+                dangerouslySetInnerHTML={{ __html: formattedArticle.cutline }}
+              />
             )}
             {formattedArticle.title && (
               <div className="individual-article__info__title">

@@ -19,13 +19,14 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, isCir
       }}
     >
       {imageUrl && (
-        <Parallax y={[-20, 20]} className={cx('article-img-wrapper', { 'article-circle': isCircle })}>
+        <Parallax y={[-5, 5]} className={cx('article-img-wrapper', { 'article-circle': isCircle })}>
           <img src={imageUrl} className="article-img" alt="Chef" />
         </Parallax>
       )}
       {category && <div className="article__category" dangerouslySetInnerHTML={{ __html: category }} />}
       {title && <div className="article__title">{title}</div>}
       {byline && <div className="article__description">{byline}</div>}
+      <div className="more-divider" />
       {articleUrl && (
         <div className="article__more">
           <span className="article__more__link">{t('read-more')}</span>
@@ -37,7 +38,6 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, isCir
 
 export default function TopArticles({ category, updateParallaxState = () => {} }) {
   const { name, posts } = category;
-  
   const [t, i18n] = useTranslation('article');
   const getFormattedArticle = (article) => {
     if (!article) return null;
@@ -150,7 +150,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
             >
               {featuredArticleFormatted.imageUrl && (
                 <div className="featured-article__image-container">
-                  <Parallax y={[-20, 20]} className="featured-article__image-wrapper">
+                  <Parallax y={[-5, 10]} className="featured-article__image-wrapper">
                     <img
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
@@ -164,11 +164,12 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                   )}
                 </div>
               )}
-              {name && <div className="article__category">{name}</div>}
+              {name && <div className="article__category" dangerouslySetInnerHTML={{ __html: name }} />}
               {featuredArticleFormatted.title && (
-                <div className="article__title">
-                  {featuredArticleFormatted.title}
-                </div>
+                <div
+                  className="article__title"
+                  dangerouslySetInnerHTML={{ __html: featuredArticleFormatted.title }}
+                />
               )}
               {featuredArticleFormatted.byline && (
                 <div className="article__description">
@@ -185,7 +186,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
         </div>
         <div className="top_articles__columns category">
           <div className="top__articles__category">
-            {formattedArticles.map((article, index) => (
+            {formattedArticles.slice(0, 6).map((article, index) => (
               <div className="top__articles__category__item" key={index}>
                 <Article
                   {...{ ...article, category: name }}
@@ -201,6 +202,19 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
           </div>
         </div>
       </div>
+    {formattedArticles.slice(6).length > 0 && (
+      <div className="top-articles__more container">
+        {formattedArticles.slice(6).map((article, index) => (
+          <div className="top__articles__category__item" key={index}>
+            <Article
+              {...{ ...article, category: name }}
+              t={t}
+              i18n={i18n}
+            />
+          </div>
+        ))}
+      </div>
+    )}
     </div>
   );
 }

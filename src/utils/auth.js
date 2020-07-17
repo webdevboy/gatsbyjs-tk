@@ -42,6 +42,7 @@ export const login = (username, password, setError) => {
   if (!isBrowser) {
     return
   }
+  // auth.crossOriginVerification();
   auth.login({
     realm: databaseConnection,
     username,

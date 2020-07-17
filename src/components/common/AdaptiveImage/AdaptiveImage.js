@@ -7,8 +7,9 @@ import {
 import useWindow from 'src/hooks/useWindow';
 
 function AdaptiveImage({ src, smallSrc, mediumSrc, innerProps }) {
-  const [width, setWidth] = useState(null);
   const _window = useWindow();
+  const [width, setWidth] = useState(_window ? _window.innerWidth : LARGE_BREAKPOINT);
+  
   useEffect(() => {
     let windowResizeListener = null;
     if(_window) {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import * as cx from 'classnames';
 import { Parallax } from 'react-scroll-parallax';
+import useWindow from 'src/hooks/useWindow';
+import { MEDIUM_BREAKPOINT } from 'src/utils/breakpoints';
 
 // Components
 import Plus from 'src/svgs/plus';
@@ -9,6 +11,19 @@ import './PhotoBackground.scss';
 
 function MessageGrid({ gridCount, message, plot, fullScreen }) {
   const grid = Array.from({ length: gridCount }, (x, i) => i);
+  const [parallaxDisabled, setParallaxDisabled] = useState(false);
+  const _window = useWindow();
+
+  if(_window) {
+    _window.addEventListener('resize', () => {
+      if (_window.innerWidth < MEDIUM_BREAKPOINT) {
+        setParallaxDisabled(true);
+      }
+      else {
+        setParallaxDisabled(false);
+      }
+    });
+  }
 
   const plotMap = {
     'top left': 0,
@@ -20,12 +35,11 @@ function MessageGrid({ gridCount, message, plot, fullScreen }) {
   };
 
   return (
-    
       <div className="grid">
         {grid.map((cell, i) => {
           if(fullScreen) {
             return (
-              <Parallax y={[50, -30]} className="cell" key={i}>
+              <Parallax y={[10, -5]} className="cell" key={i} disabled={parallaxDisabled}>
                 {i === plotMap[plot] && (
                   <span dangerouslySetInnerHTML={{ __html: message }}></span>
                 )}
@@ -94,7 +108,7 @@ export default function PhotoBackground({
     >
       <div className="bg-wrapper">
         {image && image.sourceUrl && !fullScreen && (
-          <Parallax y={[-20, 20]} className="image-container">
+          <Parallax y={[-2, 10]} className="image-container">
             <img
               className="bg"
               src={image.sourceUrl}

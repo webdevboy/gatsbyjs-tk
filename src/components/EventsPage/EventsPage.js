@@ -50,11 +50,11 @@ function EventsPage() {
         </div>
       </div>
       <div className="events-page__controls-wrapper">
-        <div className="events-page__controls">
+        {/* <div className="events-page__controls">
           <div>Previous</div>
           <div>All Events</div>
           <div>Next</div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

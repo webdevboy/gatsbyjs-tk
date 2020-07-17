@@ -22,14 +22,16 @@
     }
   }
   .parallax-outer {
-    position: relative;
-    top: -5px;
-    @media #{$viewport-medium} {
-      top: -20px;
+    .parallax-inner {
+      position: relative;
+      @media #{$viewport-medium} {
+        top: -30px;
+      }
+      @media #{$viewport-large} {
+        top: 0;
+      }
     }
-    @media #{$viewport-large} {
-      top: 0;
-    }
+    
   }
   .image-container {
     overflow: hidden;

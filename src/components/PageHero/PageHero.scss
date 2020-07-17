@@ -21,7 +21,7 @@
       transition: transform 3s ease-out;
       position: absolute;
       left: 50%;
-      transform: translateX(-50%) scale(1.2);
+      transform: translateX(-50%) scale(1.1);
 
       &.loaded {
         transform: translateX(-50%) scale(1);

@@ -8,7 +8,7 @@ import Navigation from "src/components/Navigation/Navigation";
 
 import "src/styles/index.scss";
 
-function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll }) {
+function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded }) {
   const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
@@ -35,6 +35,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
         heroIsVisible={heroIsVisible}
         pageScroll={pageScroll}
         shifted={showNav}
+        homeHeroLoaded={homeHeroLoaded}
       />
       <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
       <div className={cx('page-body', { shifted: showNav })}>

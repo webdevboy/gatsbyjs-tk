@@ -17,7 +17,7 @@ class FrontPage extends Component {
     }
   };
   render() {
-    const { showHero, pageContext, containerRef, title, containerIsScrollable, layouts } = this.props;
+    const { showHero, pageContext, containerRef, title, containerIsScrollable, layouts, homeHeroLoaded } = this.props;
     return (
       <Layout
         theme="light"
@@ -25,6 +25,7 @@ class FrontPage extends Component {
         heroIsVisible={showHero}
         isFrontPage={pageContext.isFrontPage}
         pageScroll={containerRef}
+        homeHeroLoaded={homeHeroLoaded}
       >
         <SEO title={title || 'Untitled'} />
         {layouts.map((layout, index) => (

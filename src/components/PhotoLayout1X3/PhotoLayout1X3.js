@@ -6,7 +6,7 @@ import "./PhotoLayout1X3.scss";
 function PhotoLayout1X3Slide({ photo, updateParallaxState }) {
   return (
     <div className="slide">
-      <Parallax y={[-20, 20]} className="img-wrap">
+      <Parallax y={[-10, 5]} className="img-wrap">
         <img
           src={photo.image.sourceUrl}
           alt={photo.image.altText || "Photo"}

@@ -17,7 +17,7 @@ import BackToTopImg from 'src/images/back-to-top.png';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import './TastingNotes.scss';
 
-const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updateParallaxState }) => {
+const Note = ({ cutline, title, byline, imageUrl, articleUrl, isCircle, t, i18n, updateParallaxState }) => {
   return (
     <div
       className="tasting-notes__note"
@@ -28,7 +28,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updatePar
       }}
     >
       {imageUrl && (
-        <Parallax y={[-10, 30]} className="tasting-notes__note__img-wrapper">
+        <Parallax y={[-10, 5]} className={cx('tasting-notes__note__img-wrapper', { circle: isCircle })}>
           <img
             src={imageUrl}
             className="tasting-notes__note__img"
@@ -41,7 +41,7 @@ const Note = ({ cutline, title, byline, imageUrl, articleUrl, t, i18n, updatePar
         <div
           className="tasting-notes__note__cutline"
           dangerouslySetInnerHTML={{ __html: cutline }}
-        ></div>
+        />
       )}
       {title && <div className="tasting-notes__note__title">{title}</div>}
       {byline && <div className="tasting-notes__note__byline">{byline}</div>}
@@ -65,13 +65,13 @@ function TastingNotes({ headline, notes, type, theme, updateParallaxState = () =
     const swipeWrapper = document.querySelector('.swipe-wrapper');
     if(!_window) return;
     if(swipeWrapper) {
-      window.scrollTo({ top: 0 });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     else if(scrollBlock) {
-      window.scrollTo({ top: 0 });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     else {
-      window.scrollTo({ top: 0 });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
   const [t, i18n] = useTranslation(['article', 'common']);

@@ -26,7 +26,7 @@ function Article({
       }}
     >
       {imageUrl && (
-        <Parallax y={[-15, 10]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': isCircle })}>
+        <Parallax y={[-5, 5]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': isCircle })}>
           <img
             className="top_articles__columns__column__image"
             src={imageUrl}
@@ -130,7 +130,7 @@ export default function TopArticles(props) {
                 <div className="featured-article__image-container">
                   <Parallax
                     className="featured-article__image-wrapper"
-                    y={[-15, 15]}
+                    y={[-10, 10]}
                     onClick={() => {
                       if (
                         featuredArticleFormatted &&

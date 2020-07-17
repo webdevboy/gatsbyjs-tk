@@ -73,12 +73,13 @@ function FullscreenArticle({
           .toLowerCase()
           .replace(' ', '-')}`}
       >
-        <Parallax y={['50%', '-50%']}>
+        <Parallax y={['20%', '-20%']}>
           <div className="fullscreen-article__info">
             {articleObject.category && (
-              <div className="fullscreen-article__info__category">
-                {articleObject.category.name}
-              </div>
+              <div
+                className="fullscreen-article__info__category"
+                dangerouslySetInnerHTML={{ __html: articleObject.category.name }}
+              />
             )}
             {articleObject.title && (
               <div className="fullscreen-article__info__title">

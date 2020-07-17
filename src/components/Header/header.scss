@@ -258,14 +258,20 @@ $max_font: 22px;
   .fp-logo-container {
     position: absolute;
     left: 50%;
-    transition-duration: $hero-animation-duration;
-    transition-timing-function: ease-out;
-    transition-property: top, width;
+    top: 0;
+    transition: all $hero-animation-duration ease-out;
     transform: translate(-50%, -50%);
     z-index: 1001;
+    display: none;
+
+    &.loaded {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     &.on-hero {
-      width: 150px;
+      width: 178px;
 
       @media #{$viewport-medium} {
         width: 290px;
@@ -278,29 +284,38 @@ $max_font: 22px;
 
     .fp-logo {
       width: 100%;
+      animation: logo-animation-show $hero-animation-duration cubic-bezier(.46,.09,.37,.91) forwards;
     }
   }
 
   .sitename {
-    @include fluid-type($min_width, $max_width, $min_font, $max_font);
-    color: $color-white;
-    font-family: $font-sans-serif;
-    letter-spacing: 10px;
-    opacity: 0;
-    transition-property: opacity;
+    // @include fluid-type($min_width, $max_width, $min_font, $max_font);
+    transition-property: all;
     transition-duration: 0.4s;
-    transition-timing-function: ease-out;
+    transition-timing-function: cubic-bezier(0,.43,0,1.13);
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    margin: 0;
+    bottom: -50px;
+    transform: translate(-50%, 0);
+    // white-space: nowrap;
     margin: 25px 0;
-    letter-spacing: 8px;
-    font-weight: $sans-serif-semibold;
+    // letter-spacing: 8px;
+    // font-weight: $sans-serif-semibold;
+    
     &.show-site-name {
+      opacity: 0;
+      animation: logo-title-animation-show 1s 1s ease-out forwards;
+    }
+    &.first-init {
+      opacity: 0;
+      animation: logo-title-animation-init 0.5s 3s ease-out forwards;
+    }
+    &.hide-site-name {
       opacity: 1;
-      transition-delay: 1s;
+      animation: logo-title-animation-hide 1s ease-out forwards;
+    }
+    @media #{$viewport-medium} {
+      bottom: -60px;
     }
   }
 
@@ -330,5 +345,48 @@ $max_font: 22px;
         font-size: 14px;
       }
     }
+  }
+}
+
+
+@keyframes logo-title-animation-hide {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+}
+
+@keyframes logo-title-animation-show {
+  0% {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes logo-title-animation-init {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes logo-animation-show {
+  0% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
