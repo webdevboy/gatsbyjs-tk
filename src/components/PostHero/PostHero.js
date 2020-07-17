@@ -59,7 +59,7 @@ export default function Hero({
           {title && <h1 className="headline">{title}</h1>}
           {byline && <p className="byline">{byline}</p>}
           <hr />
-          {authors.length &&
+          {authors && authors.length &&
             authors.split(',').map((author) => {
               return (
                 <p className="attribution" key={author}>
