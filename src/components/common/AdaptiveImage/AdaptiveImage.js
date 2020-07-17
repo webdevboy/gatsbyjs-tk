@@ -28,7 +28,6 @@ function AdaptiveImage({ src, smallSrc, mediumSrc, innerProps }) {
     return <img src={mediumSrc} alt="" {...innerProps} />
   }
   else if(width < MEDIUM_BREAKPOINT && smallSrc) {
-    console.log("MOBILE IMG")
     return <img src={smallSrc} alt="" {...innerProps} />
   }
   return  <img src={src} alt="" {...innerProps} />;

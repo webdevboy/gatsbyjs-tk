@@ -72,7 +72,7 @@ class PostWrapper extends Component {
         isArticlePage
       >
         <SEO title={title || "Untitled"} description={postHeroObj && postHeroObj.byline} />
-        {layouts.map((layout, index) => (
+        {layouts.filter(l => l.fieldGroupName && l.fieldGroupName !== "post_Components_Contents_CircleThumbnail").map((layout, index) => (
           <PostLayouts
             key={index}
             layoutData={layout}

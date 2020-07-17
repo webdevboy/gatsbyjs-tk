@@ -6,8 +6,8 @@
   width: 100%;
   left: 0;
   right: 0;
-  height: 100vh;
-  max-height: 100vh;
+  height: calc(100vh - 77px);
+  height: calc(100vh - 77px);
   overflow-y: auto;
   overflow-x: hidden;
   background-color: $color-white;
@@ -49,6 +49,7 @@
   @media #{$viewport-medium} {
     max-width: 350px;
     height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
     top: 0;
     left: 0;

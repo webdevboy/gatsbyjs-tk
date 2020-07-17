@@ -304,8 +304,6 @@ function scrollArray(elem, left, top) {
  */
 function wheel(event) {
 
-    console.log('WHEEL WORKING!');
-
     if (!initDone) {
         init();
     }
@@ -760,7 +758,6 @@ try {
 var wheelOpt = supportsPassive ? { passive: false } : false;
 var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel'; 
 
-console.log(isEnabledForBrowser);
 if (wheelEvent && isEnabledForBrowser) {
     
     addEvent(wheelEvent, wheel, wheelOpt);
