@@ -316,7 +316,19 @@
       padding: 0;
       padding-bottom: 39px;
       border-right: none;
+      color: $color-darkgray;
       cursor: pointer;
+      transition: color .2s ease-in;
+
+      @media #{$viewport-large} {
+        color: $color-gray;
+      }
+
+      &:hover {
+        @media #{$viewport-large} {
+          color: $color-darkgray;
+        }
+      }
 
       &:nth-child(3n) {
         border-right: none;
