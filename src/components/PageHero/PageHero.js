@@ -6,7 +6,7 @@ import * as cx from "classnames"
 import "./PageHero.scss";
 import { ScrollDownArrow } from 'src/components/common';
 
-export default function PageHero({ data, hideHero, scrollContainer }) {
+export default function PageHero({ data, hideHero, setHomeHeroLoaded }) {
   const [loaded, setLoaded] = useState(false)
   const _window = useWindow() || {}
 
@@ -16,6 +16,11 @@ export default function PageHero({ data, hideHero, scrollContainer }) {
     },
     trackMouse: true,
   })
+
+  const handleHeroLoad = () => {
+    setHomeHeroLoaded(true);
+    setLoaded(true);
+  }
 
   return (
     <section
@@ -32,7 +37,7 @@ export default function PageHero({ data, hideHero, scrollContainer }) {
           className={cx("featured-image", { loaded })}
           src={data.image.sourceUrl || ""}
           alt={data.image.altText}
-          onLoad={() => setLoaded(true)}
+          onLoad={handleHeroLoad}
         />
         <div className="page-hero__scroll-down">
           <ScrollDownArrow />

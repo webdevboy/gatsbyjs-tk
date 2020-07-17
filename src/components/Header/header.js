@@ -72,7 +72,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
   )
 }
 
-function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted }) {
+function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted, homeHeroLoaded }) {
   const [siteNameTop, setSiteNameTop] = useState(true);
   const logoContainerRef = useRef(null);
   const articleHeaderRef = useRef(null);
@@ -81,14 +81,14 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const _window = useWindow() || {};
 
   const getLogoPosY = () => {
-    const smallOffset = 52; // based on logo width 150px
-    const mediumOffset = 103; // based on a logo width 290px
+    const smallOffset = 100; // based on logo width 150px
+    const mediumOffset = 180; // based on a logo width 290px
 
     if (_window.innerWidth < 834) {
-      return _window.outerHeight / 2 + smallOffset;
+      return _window.innerHeight / 2 + smallOffset;
     }
 
-    return _window.outerHeight / 2 + mediumOffset;
+    return _window.innerHeight / 2 + mediumOffset;
   };
 
   const openWeChatShareQR = e => {
@@ -146,9 +146,12 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
             className={cx('fp-logo-container', {
               'on-hero': heroIsVisible,
               'on-header': !heroIsVisible,
+              'loaded': homeHeroLoaded,
             })}
             style={{
+              // transform: isFrontPage && heroIsVisible ? `translate(-50%, )` : 'translate(-50%, -50%)',
               top: isFrontPage && heroIsVisible ? `-${getLogoPosY()}px` : '50%',
+
             }}
           >
             <AdaptiveImage
@@ -164,7 +167,6 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               innerProps={{
                 className: cx('sitename', 'first-init', { 'show-site-name': heroIsVisible, 'hide-site-name': !heroIsVisible }),
               }}
-              
             />
           </div>
           

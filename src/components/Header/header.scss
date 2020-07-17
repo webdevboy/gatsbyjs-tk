@@ -258,11 +258,17 @@ $max_font: 22px;
   .fp-logo-container {
     position: absolute;
     left: 50%;
-    transition-duration: $hero-animation-duration;
-    transition-timing-function: ease-out;
-    transition-property: top, width;
+    top: 0;
+    transition: all $hero-animation-duration ease-out;
     transform: translate(-50%, -50%);
     z-index: 1001;
+    display: none;
+
+    &.loaded {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     &.on-hero {
       width: 178px;
@@ -278,7 +284,7 @@ $max_font: 22px;
 
     .fp-logo {
       width: 100%;
-      animation: logo-animation-show $hero-animation-duration ease-out forwards;
+      animation: logo-animation-show $hero-animation-duration cubic-bezier(.46,.09,.37,.91) forwards;
     }
   }
 
@@ -376,7 +382,7 @@ $max_font: 22px;
 
 @keyframes logo-animation-show {
   0% {
-    transform: scale(1.4);
+    transform: scale(1.5);
     opacity: 0;
   }
   100% {

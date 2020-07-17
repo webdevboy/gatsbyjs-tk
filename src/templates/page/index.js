@@ -17,6 +17,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   const [scrollWrapper, setScrollWrapper] = useState(null);
   const [smoothScrollInited, setSmoothScrollInited] = useState(false);
   const [isHeroAnimationInProgress, setIsHeroAnimationInProgress] = useState(false);
+  const [homeHeroLoaded, setHomeHeroLoaded] = useState(false);
   const [showHero, setShowHero] = useState(true);
   const containerRef = useRef(null);
   
@@ -60,7 +61,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   }, [showHero]);
   return (
     <>
-        <PageHero data={heroData[0]} hideHero={() => {setShowHero(false);}} scrollContainer={containerRef.current} />
+        <PageHero data={heroData[0]} hideHero={() => {setShowHero(false);}} scrollContainer={containerRef.current} setHomeHeroLoaded={setHomeHeroLoaded} />
         <Swipeable
           className="swipe-container"
           onSwipedDown={() => {
@@ -90,6 +91,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
                   containerIsScrollable, 
                   layouts,
                   updateParallaxState,
+                  homeHeroLoaded,
                 }}
               />
             </ParallaxProvider>
