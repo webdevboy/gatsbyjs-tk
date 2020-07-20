@@ -25,14 +25,16 @@ function Article({
         }
       }}
     >
-      {imageUrl && (
-        <Parallax y={[-5, 5]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': isCircle })}>
-          <img
-            className="top_articles__columns__column__image"
-            src={imageUrl}
-          />
-        </Parallax>
-      )}
+      <div className={cx({ 'article-circle-wrapper': isCircle })}>
+        {imageUrl && (
+          <Parallax y={[-5, 5]} className={cx('top_articles__columns__column__image-wrapper', { 'article-circle': isCircle })}>
+            <img
+              className="top_articles__columns__column__image"
+              src={imageUrl}
+            />
+          </Parallax>
+        )}
+      </div>
       {category && (
         <div
           className="article__category"
@@ -189,10 +191,12 @@ export default function TopArticles(props) {
               }}
             />
           ))}
-          {((formattedARticles.length % 3) - 1) === 0 &&
-            formattedARticles.length > 2 && (
-              <div className="fake-border" />
-            )}
+          {formattedARticles.length === 4 &&
+            <div className="fake-border" />
+          }
+          {formattedARticles.length === 5 &&
+            <div className="fake-border" />
+          }
         </div>
       </div>
     </div>

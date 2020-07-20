@@ -23,7 +23,7 @@ function FiftyFifty({
     >
       <div className="image-block">
         {image && image.sourceUrl && (
-          <div className="wrapper">
+          <div className="img-wrapper">
             <img src={image.sourceUrl} alt={image.alt || 'Foodie image'} />
           </div>
         )}

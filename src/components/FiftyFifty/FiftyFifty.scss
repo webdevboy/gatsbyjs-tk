@@ -32,25 +32,30 @@
     align-content: center;
     direction: ltr;
     column-gap: 40px;
-
+    
+    .img-wrapper {
+      grid-column-start: 1;
+      grid-column-end: 7;
+      width: 100%;
+      overflow: hidden;
+      align-items: flex-end;
+      justify-content: flex-end;
+      display: flex;
+    }
     .wrapper {
       grid-column-start: 1;
       grid-column-end: 7;
-      align-self: center;
       overflow: hidden;
+      width: 100%;
+      align-items: center;
     }
   }
 
   .image-block {
     text-align: center;
-    @media #{$viewport-medium} {
-      position: relative;
-      top: 2px;
-    }
     img {
       max-width: 100%;
-      transform: scale(1);
-      transition: transform 100ms;
+      width: 100%;
     }
   }
 

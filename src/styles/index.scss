@@ -63,6 +63,9 @@ html {
               overflow: scroll;
               overflow: auto;
               overflow: overlay;
+              @media #{$viewport-large} {
+                overflow: auto;
+              }
             }
           }
         }

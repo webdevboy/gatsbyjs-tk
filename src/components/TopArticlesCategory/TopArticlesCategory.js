@@ -186,7 +186,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
         </div>
         <div className="top_articles__columns category">
           <div className="top__articles__category">
-            {formattedArticles.slice(0, 6).map((article, index) => (
+            {formattedArticles.map((article, index) => (
               <div className="top__articles__category__item" key={index}>
                 <Article
                   {...{ ...article, category: name }}
@@ -195,10 +195,12 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                 />
               </div>
             ))}
-            {((formattedArticles.length % 3) - 1) === 0 &&
-            formattedArticles.length > 2 && (
+            {formattedArticles.length === 4 &&
               <div className="fake-border" />
-            )}
+            }
+            {formattedArticles.length === 5 &&
+              <div className="fake-border" />
+            }
           </div>
         </div>
       </div>
