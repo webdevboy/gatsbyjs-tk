@@ -22,7 +22,7 @@ export default function PhotoLayout1X3({ content, theme, updateParallaxState }) 
   
   return (
     <div className={`photo-layout-1x3 ${theme}`}>
-      {content.map((photo, key) => {
+      {content && content.map((photo, key) => {
         return (
           <PhotoLayout1X3Slide {...{ photo, key, updateParallaxState }} />
         )

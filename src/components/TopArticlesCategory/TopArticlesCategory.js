@@ -124,6 +124,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
   });
 
   const formattedArticles = getArticles(formattedNodes);
+  const moreArticles = formattedArticles.slice(6);
   return (
     <div className="top-articles-container section-landing">
       {name && (
@@ -186,7 +187,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
         </div>
         <div className="top_articles__columns category">
           <div className="top__articles__category">
-            {formattedArticles.map((article, index) => (
+            {formattedArticles.slice(0, 6).map((article, index) => (
               <div className="top__articles__category__item" key={index}>
                 <Article
                   {...{ ...article, category: name }}
@@ -204,9 +205,9 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
           </div>
         </div>
       </div>
-    {formattedArticles.slice(6).length > 0 && (
+    {moreArticles.length > 0 && (
       <div className="top-articles__more container">
-        {formattedArticles.slice(6).map((article, index) => (
+        {moreArticles.map((article, index) => (
           <div className="top__articles__category__item" key={index}>
             <Article
               {...{ ...article, category: name }}
@@ -215,6 +216,26 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
             />
           </div>
         ))}
+        {/* {(moreArticles.length % 6) - 2 === 0 && (
+          <div className="top__articles__category__item">
+            <div className="more-divider" />
+          </div>
+        )}
+        {(moreArticles.length % 6) - 3 === 0 && (
+          <div className="top__articles__category__item">
+            <div className="more-divider" />
+          </div>
+        )}
+        {(moreArticles.length % 6) - 4 === 0 && (
+          <div className="top__articles__category__item">
+            <div className="more-divider" />
+          </div>
+        )}
+        {(moreArticles.length % 6) - 5 === 0 && (
+        <div className="top__articles__category__item">
+          <div className="more-divider" />
+        </div>
+        )} */}
       </div>
     )}
     </div>
