@@ -26,7 +26,7 @@ export default function CopyColumns({ columns, theme }) {
 
   return (
     <section className={`copy-columns ${theme}`}>
-      {columns.map((col, i) => (
+      {columns && columns.map((col, i) => (
         <div
           key={i}
           className="group"

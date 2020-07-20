@@ -124,6 +124,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
   });
 
   const formattedArticles = getArticles(formattedNodes);
+  const moreArticles = formattedArticles.slice(6);
   return (
     <div className="top-articles-container section-landing">
       {name && (
@@ -195,16 +196,18 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                 />
               </div>
             ))}
-            {((formattedArticles.length % 3) - 1) === 0 &&
-            formattedArticles.length > 2 && (
+            {formattedArticles.length === 4 &&
               <div className="fake-border" />
-            )}
+            }
+            {formattedArticles.length === 5 &&
+              <div className="fake-border" />
+            }
           </div>
         </div>
       </div>
-    {formattedArticles.slice(6).length > 0 && (
+    {moreArticles.length > 0 && (
       <div className="top-articles__more container">
-        {formattedArticles.slice(6).map((article, index) => (
+        {moreArticles.map((article, index) => (
           <div className="top__articles__category__item" key={index}>
             <Article
               {...{ ...article, category: name }}
@@ -213,6 +216,26 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
             />
           </div>
         ))}
+        {/* {(moreArticles.length % 6) - 2 === 0 && (
+          <div className="top__articles__category__item">
+            <div className="more-divider" />
+          </div>
+        )}
+        {(moreArticles.length % 6) - 3 === 0 && (
+          <div className="top__articles__category__item">
+            <div className="more-divider" />
+          </div>
+        )}
+        {(moreArticles.length % 6) - 4 === 0 && (
+          <div className="top__articles__category__item">
+            <div className="more-divider" />
+          </div>
+        )}
+        {(moreArticles.length % 6) - 5 === 0 && (
+        <div className="top__articles__category__item">
+          <div className="more-divider" />
+        </div>
+        )} */}
       </div>
     )}
     </div>

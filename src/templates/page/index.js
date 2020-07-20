@@ -76,8 +76,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
           }}
         >
           <div
-            className="swipe-wrapper"
-            style={{ overflowY: containerIsScrollable ? 'auto' : 'hidden' }}
+            className={cx('swipe-wrapper', { 'overflow-scroll': containerIsScrollable })}
             ref={containerRef}
             onWheel={handleWheelEvent}
           >
