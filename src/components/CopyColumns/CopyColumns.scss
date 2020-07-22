@@ -68,6 +68,10 @@
       font-family: $font-serif;
       font-size: 12px;
       line-height: 18px;
+      tab {
+        display: inline-block;
+        text-indent: 15px;
+      }
     }
   }
 }
