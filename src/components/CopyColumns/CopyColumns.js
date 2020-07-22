@@ -52,7 +52,6 @@ export default function CopyColumns({ columns, theme }) {
           )}
           {col.headline && <h4 className="headline">{col.headline}</h4>}
           {col.subheader && <p className="subhead">{col.subheader}</p>}
-          {console.log(col.columnCopy)}
           <p
             className="copy"
             dangerouslySetInnerHTML={{ __html: col.columnCopy.replace('<tab>', '<tab />') }} 

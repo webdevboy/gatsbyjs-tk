@@ -53,18 +53,24 @@ function LanguageToggle({ theme, pageScroll }) {
     <div className="language-container">
       <div className={cx('language__selected-wrapper', theme, { open: dropdown })}>
         <div onClick={() => {setDropdown(!dropdown)}} className="language__selected">
-          {i18n.language && <span>{i18n.language}</span>}
-          <ArrowDown style={{ width: '25px', height: '13px', marginTop: '3px' }} />
+          <div className={cx('language__selected__border', {
+            'border-transparent': i18n.language === 'en',
+            'border-orange': i18n.language === 'zh_tc'
+            })}>
+            {i18n.language && <span>{i18n.language}</span>}
+            <ArrowDown style={{ width: '25px', height: '13px', marginTop: '3px' }} />
+          </div>
         </div>
         <ul className={cx('language__dropdown', theme, { open: dropdown })}>
           {wordpress.languages &&
             wordpress.languages.map((lang, index) => {
 
               return (
-                <li key={index} onClick={() => {chnageLanguage(lang)}}>
-                  <span className="language__dropdown__text">
+                <li key={index} onClick={() => {chnageLanguage(lang)}} className={cx({ 'en-lang': lang.slug === 'en' })}>
+                  {console.log(lang)}
+                  <div className={cx('language__dropdown__text', { 'border-red': lang.slug === 'zh', 'border-orange': lang.slug === 'zh_tc' })}>
                     {lang.name}
-                  </span>
+                  </div>
                 </li>
               )
             })} 
