@@ -6,8 +6,8 @@ import { Link } from "gatsby"
 import * as cx from "classnames"
 
 import convertLinkLocale from 'src/utils/convertLinkLocale';
-import MenusZhTw from './Menus.zh_tw';
-import MenusZhCn from './Menus.zh_cn';
+import MenusZhTc from './Menus.zh_tc';
+import MenusZhCn from './Menus.zh';
 import MenusEn from './Menus.en';
 import "./Navigation.scss"
 
@@ -62,10 +62,10 @@ function Navigation({ theme, showNav, closeNav }) {
   const getMenus = lang => {
     if(!lang) return null;
     switch(lang.toLowerCase()) {
-      case 'zh_tw': {
-        return <MenusZhTw {...{ theme, showNav, path, closeNav }} />
+      case 'zh': {
+        return <MenusZhTc {...{ theme, showNav, path, closeNav }} />
       }
-      case 'zh_cn': {
+      case 'zh_tc': {
         return <MenusZhCn {...{ theme, showNav, path, closeNav }} />
       }
       default: {

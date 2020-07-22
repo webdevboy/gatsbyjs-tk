@@ -5,8 +5,8 @@ import { initReactI18next } from "react-i18next"
 
 import supportedLngs from './locales/supportedLngs.json';
 import * as en from './locales/en';
-import * as zh_cn from './locales/zh_cn';
-import * as zh_tw from './locales/zh_tw';
+import * as zh from './locales/zh';
+import * as zh_tc from './locales/zh_tc';
 
 
 i18n
@@ -27,8 +27,8 @@ i18n
     },
     resources: {
       en: en.default,
-      zh_cn: zh_cn.default,
-      zh_tw: zh_tw.default,
+      zh: zh.default,
+      zh_tc: zh_tc.default,
     }
   })
 

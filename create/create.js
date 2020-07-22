@@ -200,14 +200,14 @@ module.exports = async ({ actions, graphql, reporter }) => {
     categories &&
       categories.map(category => {
         createPage({
-          path: `${`${category.language.slug === 'en' ? '' : `/${category.language.slug}`}`}/category/${category.slug}`,
+          path: decodeURI(`${`${category.language.slug === 'en' ? '' : `/${category.language.slug}`}`}/category/${category.slug}`),
           component: categoryTemplate,
           context: category,
         });
         if(category.translations && category.translations.length > 0) {
           category.translations.map(categoryTranslation => {
             createPage({
-              path: `${categoryTranslation.language.slug}/category/${category.slug}`,
+              path: decodeURI(`${categoryTranslation.language.slug}/category/${category.slug}`),
               component: categoryTemplate,
               context: categoryTranslation,
             });

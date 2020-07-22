@@ -18,7 +18,7 @@ function MenusZhTw({ theme, showNav, path, closeNav }) {
         generalSettings {
           url
         }
-        menus(where: {location: EXPANDED___ZH_TW}) {
+        menus(where: {location: EXPANDED___ZH_TC}) {
           nodes {
             id
             name
