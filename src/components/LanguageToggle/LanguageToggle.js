@@ -37,6 +37,7 @@ function LanguageToggle({ theme, pageScroll }) {
   const chnageLanguage = lang => {
     setDropdown(false);
     setLanguage(lang);
+    console.log(lang);
     i18n.changeLanguage(lang.slug);
   }
 
