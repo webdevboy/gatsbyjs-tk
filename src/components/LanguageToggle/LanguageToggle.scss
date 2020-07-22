@@ -2,10 +2,9 @@
 
 .language-container {
   position: relative;
-  width: 120px;
+  width: 100px;
   height: 100%;
-  margin-right: 22px;
-
+  
   .language__selected-wrapper {
     position: absolute;
     top: 0;
@@ -22,21 +21,6 @@
     transition: all 0.4s ease;
     border-radius: 3px;
     
-    .language__selected__border{
-      border: 3px solid red;
-      min-width: 115px;
-      padding: 6px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &.border-transparent {
-        border: 3px solid transparent;
-      }
-      &.border-orange {
-        border: 3px solid orange;
-      }
-    }
-
     &.open {
       background-color: $color-white;
       width: 250px;
@@ -83,39 +67,23 @@
       background-color: $color-black;
     }
     &.open {
-      height: 165px;
-      padding: 20px 0 30px 0;
+      height: 215px;
+      padding: 25px 0 40px 0;
     }
     li {
       list-style: none;
       text-align: center;
-      padding: 2px;
+      padding: 15px;
       cursor: pointer;
-      &.en-lang {
-        margin-bottom: 7px;
-      }
       &:hover {
         opacity: 0.7;
       }
-      div {
+      span {
         text-decoration: none;
         color: $color-cutline;
         font-family: $font-sans-serif;
         font-size: 16px;
         font-weight: $sans-serif-semibold;
-        padding: 4px 0;
-        &.border-red {
-          border: 3px solid red;
-          padding: 4px 0;
-          width: 115px;
-          margin: 0 auto;
-        }
-        &.border-orange {
-          border: 3px solid orange;
-          padding: 4px 0;
-          width: 115px;
-          margin: 0 auto;
-        }
       }
     }
   }

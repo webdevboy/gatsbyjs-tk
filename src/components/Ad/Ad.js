@@ -8,7 +8,6 @@ function Ad({ mobileAd, tabletAd, desktopAd, adUrl }) {
   const largeAd = (desktopAd && desktopAd.sourceUrl) || '';
 
   if (!smallAd || !mediumAd || !largeAd) return null;
-  console.log(adUrl)
   return (
     <div className="ad">
       <div className="container">
