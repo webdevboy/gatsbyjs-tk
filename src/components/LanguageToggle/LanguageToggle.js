@@ -37,7 +37,6 @@ function LanguageToggle({ theme, pageScroll }) {
   const chnageLanguage = lang => {
     setDropdown(false);
     setLanguage(lang);
-    console.log(lang);
     i18n.changeLanguage(lang.slug);
   }
 
@@ -49,11 +48,12 @@ function LanguageToggle({ theme, pageScroll }) {
     }
   }, []);
   if(wordpress && wordpress.languages && wordpress.languages.length <= 0) return null;
+  const activeLang = wordpress.languages.find(lang => lang.slug === i18n.language);
   return (
     <div className="language-container">
       <div className={cx('language__selected-wrapper', theme, { open: dropdown })}>
         <div onClick={() => {setDropdown(!dropdown)}} className="language__selected">
-          {i18n.language && <span>{i18n.language}</span>}
+          {i18n.language && <span>{activeLang.slug === 'en' ? 'En' : activeLang.name}</span>}
           <ArrowDown style={{ width: '25px', height: '13px', marginTop: '3px' }} />
         </div>
         <ul className={cx('language__dropdown', theme, { open: dropdown })}>

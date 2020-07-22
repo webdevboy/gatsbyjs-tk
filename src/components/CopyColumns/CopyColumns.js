@@ -54,8 +54,8 @@ export default function CopyColumns({ columns, theme }) {
           {col.subheader && <p className="subhead">{col.subheader}</p>}
           <p
             className="copy"
-            dangerouslySetInnerHTML={{ __html: col.columnCopy }}
-          ></p>
+            dangerouslySetInnerHTML={{ __html: col.columnCopy && col.columnCopy.replace && col.columnCopy.replace('<tab>', '<tab />') }} 
+          />
         </div>
       ))}
     </section>
