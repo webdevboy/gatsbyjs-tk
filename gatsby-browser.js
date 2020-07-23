@@ -3,6 +3,7 @@ import React from "react";
 import { silentAuth } from "./src/utils/auth";
 import { globalHistory } from '@reach/router';
 import i18next from 'i18next';
+
 import SmoothScroll from './src/utils/smoothScroll';
 
 import i18n from "./src/i18n";
@@ -31,8 +32,10 @@ class SessionCheck extends React.Component {
     this.setState({ loading: false })
   }
 
-  componentDidMount() {
+  componentDidMount() {  
     silentAuth(this.handleCheckSession);
+    
+    console.log(globalHistory);
     if(typeof window !== "undefined" && window.innerWidth > MEDIUM_BREAKPOINT) {
       SmoothScroll({
         animationTime: 1600,
