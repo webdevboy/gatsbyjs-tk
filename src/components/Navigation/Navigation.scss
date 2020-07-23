@@ -33,7 +33,7 @@
 
   &.home-slide {
     @media #{$viewport-medium} {
-      top: calc(50% - 38px);
+      top: calc(50% - 40px);
     }
 
     &.slide-in {
@@ -42,7 +42,7 @@
       top: calc(50% + 38px);
       @media #{$viewport-medium} {
         left: 0;
-        top: calc(50% - 38px);;
+        top: calc(50% - 40px);;
         transform: translateX(0);
       }
     }
@@ -172,10 +172,6 @@
           top: 0;
           z-index: 1;
 
-          &.show {
-            left: 0;
-          }
-
           .go-back {
             button {
               position: relative;
@@ -193,8 +189,13 @@
         width: 100%;
         text-decoration: none;
         color: $color-light-black;
+        transition: all .2s ease-in-out;
         @media #{$viewport-large} {
           color: $color-cutline;
+        }
+
+        &:hover {
+          color: $color-black;
         }
       }
     }
@@ -202,6 +203,12 @@
 
   .main-menu {
     background: transparent;
+    left: 0%;
+    transition: left .4s ease-in-out;
+
+    &.subnav-open {
+      left: -100%;
+    }
   }
 
 }
