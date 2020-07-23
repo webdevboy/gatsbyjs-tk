@@ -74,12 +74,12 @@
   .arrow {
     display: inline-block;
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     background: transparent;
     text-indent: -9999px;
-    border-top: 2px solid $color-black;
-    border-left: 2px solid $color-black;
+    border-top: 1px solid $color-black;
+    border-left: 1px solid $color-black;
     transition: all 250ms ease-in-out;
     text-decoration: none;
     color: transparent;

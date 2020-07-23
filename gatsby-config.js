@@ -4,8 +4,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Tasting Kitchen (TK)`,
+    description: `Tasting Kitchen (TK) is Asia’s foremost epicurean lifestyle and travel magazine. Published every two months in English and Chinese,TK is a celebration of the world’s finest restaurants, greatest chefs, and most delicious food.`,
     author: `@gatsbyjs`,
   },
   plugins: [
