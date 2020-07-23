@@ -22,6 +22,13 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
     document.body.classList.add(theme)
   }, [title])
 
+  // prevent scrolling of content when navigation is open
+  if (showNav) {
+    document.body.classList.add('no-scroll')
+  } else {
+    document.body.classList.remove('no-scroll')
+  }
+
   return (
     <div>
       <Navigation theme={theme || 'light'} showNav={showNav} closeNav={() => setShowNav(false)} />

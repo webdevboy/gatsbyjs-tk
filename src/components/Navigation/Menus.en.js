@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useTranslation } from "react-i18next"
 import { Link } from "gatsby"
@@ -10,6 +10,7 @@ import convertLinkLocale from 'src/utils/convertLinkLocale';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
 
 function MenusEn({ theme, showNav, path, closeNav }) {
+  const [showSubMenu, setShowSubMenu] = useState(false);
   const [t, i18n] = useTranslation();
   const { wordpress } = useStaticQuery(graphql`
     query {
@@ -60,7 +61,11 @@ function MenusEn({ theme, showNav, path, closeNav }) {
           <Hamburger isOpen={showNav} theme={theme} />
         </button>
       </div>
-      <ul className="main-menu">
+      <ul className={cx({
+        "main-menu": true,
+        "subnav-open": showSubMenu
+        })}
+      >
         {wordpress.menus &&
           wordpress.menus.nodes &&
           wordpress.menus.nodes.length &&
@@ -79,6 +84,8 @@ function MenusEn({ theme, showNav, path, closeNav }) {
                   key={menu.id}
                   menu={menu}
                   getUrlPath={getUrlPath}
+                  setShowSubMenu={setShowSubMenu}
+                  showSubMenu={showSubMenu}
                 />
               )
           })}
