@@ -105,7 +105,9 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 class Page extends Component {
   componentWillMount() {
     if(!getDevPasswordAccepted()) {
-      navigate('/developing');
+      if (typeof window !== 'undefined') {
+        navigate('/developing');
+      }
     }
   }
   render() {

@@ -1,4 +1,4 @@
-pagesimport React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import { navigate } from 'gatsby';
 
@@ -20,10 +20,13 @@ const Callback = () => {
   }
 
   useEffect(() => {
-    window.cookies = Cookies;
-    if(getDevPasswordAccepted()) {
-      navigate('/');
+    if (typeof window !== 'undefined') {
+      window.cookies = Cookies;
+      if(getDevPasswordAccepted()) {
+        navigate('/');
+      };
     }
+    
   }, [])
   
   return (
