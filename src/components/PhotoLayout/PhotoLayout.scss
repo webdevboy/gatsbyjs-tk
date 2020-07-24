@@ -26,10 +26,12 @@
   .photo-item {
     overflow: hidden;
     margin-top: 20px;
+    height: 100%;
+
     .parallax-outer {
       overflow: hidden;
       width: 100%;
-      height: 100%;
+      height: 92%;
       .parallax-inner {
         width: 100%;
         height: 100%;
