@@ -115,7 +115,9 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   useEffect(() => {
     if (heroIsVisible && logoContainerRef && logoContainerRef.current) {
       setTimeout(() => {
-        setSiteNameTop(logoContainerRef.current.getBoundingClientRect().bottom);
+        if(logoContainerRef.current) {
+          setSiteNameTop(logoContainerRef.current.getBoundingClientRect().bottom);
+        }
       }, heroAnimationDuration);
     }
   }, [heroIsVisible]);

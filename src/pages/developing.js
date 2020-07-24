@@ -20,13 +20,9 @@ const Callback = () => {
   }
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.cookies = Cookies;
-      if(getDevPasswordAccepted()) {
-        navigate('/');
-      };
-    }
-    
+    if(getDevPasswordAccepted()) {
+      navigate('/');
+    };
   }, [])
   
   return (
