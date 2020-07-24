@@ -56,7 +56,7 @@
       width: 100%;
       background-color: black;
       color: $color-gold;
-      border: none;
+      border: 1px solid black;
       margin-top: 10px;
       font-family: $font-sans-serif;
       border-radius: 4px;
@@ -64,6 +64,7 @@
       margin: 0 auto;
       text-transform: uppercase;
       display: block;
+      transition: all .2s ease-in;
 
       @media #{$viewport-medium} {
         grid-column-start: 2;
@@ -74,6 +75,12 @@
       @media #{$viewport-large} {
         grid-column-start: 3;
         grid-column-end: 5;
+      }
+
+      &:hover {
+        background: transparent;
+        border: 1px solid black;
+        color: black;
       }
     }
   }

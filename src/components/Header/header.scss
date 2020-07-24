@@ -46,7 +46,7 @@ $max_font: 22px;
   right: 0;
   min-height: $header-height;
   height: $header-height;
-  z-index: 101;
+  z-index: 104;
   transition: left 0.3s ease;
   &.header-absolute {
     position: absolute;
@@ -85,6 +85,7 @@ $max_font: 22px;
   @media #{$viewport-medium} {
     padding: 0 20px;
     flex-direction: row;
+    z-index: 101;
   }
 
   .header-hamburger {

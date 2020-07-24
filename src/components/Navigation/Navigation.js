@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useTranslation } from "react-i18next"
 import { useLocation } from '@reach/router';
@@ -11,8 +11,7 @@ import MenusZhCn from './Menus.zh';
 import MenusEn from './Menus.en';
 import "./Navigation.scss"
 
-export function ItemWithSubNav({ menu, getUrlPath }) {
-  const [showSubMenu, setShowSubMenu] = useState(false)
+export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu }) {
   const [t, i18n] = useTranslation('article');
 
   return (
