@@ -103,13 +103,13 @@ module.exports = async ({ actions, graphql, reporter }) => {
       // Extract the data from the GraphQL query results
       const {
         wordpress: {
-          posts: { nodes },
+          posts,
           defaultLanguage,
         },
       } = data
 
       // Map over the post for later creation
-      nodes && nodes.map(post => allPosts.push({ post, defaultLanguage }))
+      posts && posts.nodes && posts.nodes.map(post => allPosts.push({ post, defaultLanguage }))
 
       /**
        * Once we're done, return all the pages
@@ -200,14 +200,14 @@ module.exports = async ({ actions, graphql, reporter }) => {
     categories &&
       categories.map(category => {
         createPage({
-          path: decodeURI(`${`${category.language.slug === 'en' ? '' : `/${category.language.slug}`}`}/category/${category.slug}`),
+          path: `${`${category.language.slug === 'en' ? '' : `/${category.language.slug}`}`}/category/${category.slug}`,
           component: categoryTemplate,
           context: category,
         });
         if(category.translations && category.translations.length > 0) {
           category.translations.map(categoryTranslation => {
             createPage({
-              path: decodeURI(`${categoryTranslation.language.slug}/category/${category.slug}`),
+              path: `${categoryTranslation.language.slug}/category/${category.slug}`,
               component: categoryTemplate,
               context: categoryTranslation,
             });
