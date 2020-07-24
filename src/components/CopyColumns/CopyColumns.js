@@ -6,7 +6,7 @@ import './CopyColumns.scss';
 
 export default function CopyColumns({ columns, theme }) {
   return (
-    <section className={`copy-columns columns-${columns.length} ${theme}`}>
+    <section className={`copy-columns columns-${columns ? columns.length : 0} ${theme}`}>
       {columns && columns.map((col, i) => (
         <div
           key={i}

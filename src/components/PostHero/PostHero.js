@@ -16,7 +16,7 @@ export default function Hero({
   theme,
   updateParallaxState,
 }) {
-  const categoryName = categories.length ? categories[0].name : null;
+  const categoryName = categories && categories.length ? categories[0].name : null;
   const imgContainerRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const scaleAnimationTime = 1500;
