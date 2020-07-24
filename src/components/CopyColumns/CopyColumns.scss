@@ -7,7 +7,7 @@
   font-family: $font-serif;
   line-height: 20px;
   font-size: 13px;
-  display: grid;
+  display: block;
   color: #282828;
 
   &.dark {
@@ -34,7 +34,28 @@
     }
   }
 
-  .group {
+  &.columns-2 {
+    .group:first-child {
+
+      @media #{$viewport-medium} {
+        grid-column-start: 1;
+      }
+      
+      @media #{$viewport-xlarge} {
+        grid-column-start: 2;
+      }
+    }
+  }
+
+  .group {    
+    @media #{$viewport-medium} {
+      grid-column: auto / span 3;
+    }
+
+    @media #{$viewport-xlarge} {
+      grid-column: auto / span 2;
+    }
+
     .icon-container {
       display: block;
       text-align: center;

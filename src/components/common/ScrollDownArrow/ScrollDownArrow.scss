@@ -1,27 +1,100 @@
 @import 'src/styles/variables';
 
-
 .scroll-dawn-arrow-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  .scroll-dawn-arrow {
-    height: 30px;
-    width: 35px;
-    color: #fff;
-    fill: #fff;
-  }
-  .scroll-dawn-arrow1 {
-    animation: arrowAnimation 0.8s 0.4s alternate infinite;
+
+  .scroll-arrows {
+    display: block;
+    width: 5px;
+    height: 5px;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    border-radius: 2px;
+    margin: 0 0 3px 4px;
+
+    width: 22px;
+    height: 22px;
+
+    &.unu {
+      margin-top: 1px;
+    }
+
+    &.unu,
+    &.doi {
+      -webkit-animation: arrowAnimation 1s infinite;
+      -moz-animation: arrowAnimation 1s infinite;
+      animation: arrowAnimation 1s infinite;
+    }
+
+    &.unu {
+      -webkit-animation-delay: 0.1s;
+      -moz-animation-delay: 0.1s;
+      -webkit-animation-direction: alternate;
+
+      animation-direction: alternate;
+      animation-delay: alternate;
+    }
+
+    &.doi {
+      -webkit-animation-delay: 0.3s;
+      -moz-animation-delay: 0.3s;
+      -webkit-animation-direction: alternate;
+
+      animation-delay: 0.3s;
+      animation-direction: alternate;
+
+      margin-top: -6px;
+    }
   }
 }
 
-
+@-webkit-keyframes arrowAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes arrowAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes arrowAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes arrowAnimation {
   0% {
     opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
   }
   100% {
     opacity: 1;
