@@ -64,10 +64,10 @@ function Navigation({ theme, showNav, closeNav }) {
     if(!lang) return null;
     switch(lang.toLowerCase()) {
       case 'zh': {
-        return <MenusZhTc {...{ theme, showNav, path, closeNav }} />
+        return <MenusZhCn {...{ theme, showNav, path, closeNav }} />
       }
       case 'zh_tc': {
-        return <MenusZhCn {...{ theme, showNav, path, closeNav }} />
+        return <MenusZhTc {...{ theme, showNav, path, closeNav }} />
       }
       default: {
         return <MenusEn {...{ theme, showNav, path, closeNav }} />
