@@ -35,7 +35,6 @@ class SessionCheck extends React.Component {
   componentDidMount() {  
     silentAuth(this.handleCheckSession);
     
-    console.log(globalHistory);
     if(typeof window !== "undefined" && window.innerWidth > MEDIUM_BREAKPOINT) {
       SmoothScroll({
         animationTime: 1600,
@@ -49,9 +48,10 @@ class SessionCheck extends React.Component {
         pulseNormalize   : 1,
       });
     }
-
     i18next.on('languageChanged', function(lng) {
-      window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
+      
+      // window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
+      window.location.pathname = `/${lng === 'en' ? '' : lng}`;
     });
 
     // Set user pref language
