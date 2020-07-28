@@ -155,7 +155,6 @@ export const setUserData = (cb = () => {}) => {
   }, (err, authResult) => {
     
     if(err) {
-      console.error(err);
       cb();
       return;
     };
