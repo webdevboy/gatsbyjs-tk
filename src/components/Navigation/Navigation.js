@@ -33,7 +33,7 @@ export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu }
           </button>
         </li>
         {menu.childItems.nodes.map(node => {
-          if(node.connectedObject && node.connectedObject.language && node.connectedObject.language.slug) {
+          if(node.connectedObject && node.connectedObject.language && node.connectedObject.language.slug && node.connectedObject.translation && node.connectedObject.translation.slug) {
             return (
               <li key={node.id}>
                 <Link to={convertLinkLocale(`/${node.connectedObject.language.slug}/category/${node.connectedObject.translation.slug}`, i18n.language)}>{node.label}</Link>
@@ -58,7 +58,9 @@ function Navigation({ theme, showNav, closeNav }) {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const path = convertLinkLocale(location.pathname,'');
+
   const getMenus = lang => {
+
     if(!lang) return null;
     switch(lang.toLowerCase()) {
       case 'zh': {
