@@ -33,7 +33,7 @@ export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu }
           </button>
         </li>
         {menu.childItems.nodes.map(node => {
-          if(node.connectedObject) {
+          if(node.connectedObject && node.connectedObject.language && node.connectedObject.language.slug) {
             return (
               <li key={node.id}>
                 <Link to={convertLinkLocale(`/${node.connectedObject.language.slug}/category/${node.connectedObject.translation.slug}`, i18n.language)}>{node.label}</Link>
