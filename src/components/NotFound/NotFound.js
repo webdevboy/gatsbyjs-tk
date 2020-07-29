@@ -10,15 +10,15 @@ const NotFound = () => {
     <div className="not-found" style={{ backgroundImage: `url('${NotFoundBackground}')` }}>
       <div className="not-found__modal">
         <div className="not-found__modal-body">
-          <div className="not-found__modal-body__aplogize">
+          <p className="not-found__modal-body__aplogize">
             {t('not-found-aplogize')}
-          </div>
-          <div className="not-found__modal-body__title">
+          </p>
+          <h1 className="not-found__modal-body__title">
             {t('not-found-title')}
-          </div>
-          <div className="not-found__modal-body__description">
+          </h1>
+          <p className="not-found__modal-body__description">
             {t('not-found-description')}
-          </div>
+          </p>
         </div>
       </div>
     </div>

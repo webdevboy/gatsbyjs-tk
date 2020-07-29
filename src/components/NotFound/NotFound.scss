@@ -29,26 +29,38 @@
         color: $color-white;
         font-family: $font-sans-serif;
         font-size: 9px;
-        letter-spacing: 0.5px;
-        line-height: 11px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
       }
       .not-found__modal-body__title {
         color: $color-white;
-        font-family: $font-sans-serif;
-        font-size: 35px;
-        font-weight: $sans-serif-medium;
-        letter-spacing: 0.78px;
-        line-height: 42px;
         margin-top: 20px;
+
+        font-size: 25px;
+        margin-bottom: 20px;
+        font-weight: 500;
+
+        @media #{$viewport-large} {
+          font-size: 35px;
+        }
       }
       .not-found__modal-body__description {
         color: $color-white;
-        font-family: $font-serif;
-        font-size: 16px;
-        letter-spacing: 0;
-        line-height: 25px;
         margin-top: 41px;
         min-height: 100px;
+        font-size: 15px;
+        margin-bottom: 20px;
+        font-family: $font-serif;
+        font-weight: $serif-regular;
+        line-height: 25px;
+        font-size: 15px;
+        color: $color-gray;
+
+        @media #{$viewport-medium} {
+          font-size: 16px;
+          margin-bottom: 30px;
+        }
       }
     }
   }
