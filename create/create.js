@@ -1,3 +1,4 @@
+const path = require(`path`);
 const { getAllLayoutsData, getCategoryLayoutData } = require("./utils")
 
 const pageTemplate = require.resolve("../src/templates/page/")
@@ -215,5 +216,10 @@ module.exports = async ({ actions, graphql, reporter }) => {
         // }
         reporter.info(`created: /category/${category.slug}`)
       })
+  })
+
+  createPage({
+    path: `/404.html`,
+    component: path.join(process.cwd(), "src/templates/404.js"),
   })
 }
