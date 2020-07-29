@@ -6,8 +6,10 @@ import { Link } from 'gatsby';
 import useWindow from 'src/hooks/useWindow';
 import { heroAnimationDuration } from 'src/utils/styleVars';
 import { useLocation } from '@reach/router';
+import { useTranslation } from 'react-i18next';
 
 import './header.scss';
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
 import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
@@ -79,6 +81,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const logoRef = useRef(null);
   const headerOptRef = useRef(null);
   const _window = useWindow() || {};
+  const [t, i18n] = useTranslation();
 
   const getLogoPosY = () => {
     const smallOffset = 100; // based on logo width 150px
@@ -136,7 +139,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
         </button>
       </div>
       {!isFrontPage ? (
-        <Link to="/">
+        <Link to={convertLinkLocale('/', i18n.language)}>
           <div className="logo" ref={logoRef}>
             <Logo />
           </div>
