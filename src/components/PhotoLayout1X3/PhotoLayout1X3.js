@@ -4,6 +4,7 @@ import { Parallax } from 'react-scroll-parallax';
 import "./PhotoLayout1X3.scss";
 
 function PhotoLayout1X3Slide({ photo, updateParallaxState }) {
+  if (!photo || !photo.image ) return null;
   return (
     <div className="slide">
       <Parallax y={[-10, 5]} className="img-wrap">
