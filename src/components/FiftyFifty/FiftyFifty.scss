@@ -84,14 +84,10 @@
       }
 
       p {
-        font-size: 13px;
+        font-size: 14px;
         font-family: $font-serif;
         font-weight: $serif-regular;
-        line-height: 18px;
-
-        @media #{$viewport-medium} {
-          font-size: 12px;
-        }
+        line-height: 22px;
       }
     }
 

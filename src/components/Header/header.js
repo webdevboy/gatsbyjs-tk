@@ -19,7 +19,6 @@ import LogoDesktopTitle from 'src/images/TK_logo_desktop_2.svg';
 import LogoMobile from 'src/images/TK_logo_mobile_1.svg';
 import LogoMobileTitle from 'src/images/TK_logo_mobile_2.svg';
 import Facebook from 'src/images/Facebook_icon_gray.png';
-import Instagram from 'src/images/Instagram_icon_gray.png';
 import WeChat from 'src/images/WeChat_icon_gray.png';
 import Weibo from 'src/images/Weibo_icon_gray.png';
 
@@ -193,9 +192,6 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               </div>
               <a href="#" onClick={openFacebookShare}>
                 <img src={Facebook} />
-              </a>
-              <a href="https://www.instagram.com/tastingkitchen/" target="_blank">
-                <img src={Instagram} />
               </a>
               <a href="#" onClick={openWeChatShareQR}>
                 <img src={WeChat} />
