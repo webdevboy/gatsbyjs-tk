@@ -106,16 +106,14 @@
   }
 
   ul {
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0 40px;
     position: relative;
     background-color: $color-white;
-    @media #{$viewport-medium} {
-      padding: 0 54px;
-    }
 
     @media #{$viewport-medium} {
       padding: 5px 54px;
+      margin-top: 0px;
     }
 
     li {

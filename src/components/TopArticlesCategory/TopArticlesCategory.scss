@@ -87,7 +87,7 @@
 
           .feature-article__authors {
             position: absolute;
-            left: -16px;
+            left: -22px;
             top: 0;
             writing-mode: vertical-lr;
             text-orientation: mixed;
@@ -154,6 +154,10 @@
           @media #{$viewport-medium} {
             border-right: 1px solid rgba(151, 151, 151, 0.2);
             padding: 0 20px 40px;
+
+            &:nth-child(3n) {
+              border-right: 0px;
+            }
           }
 
           @media #{$viewport-large} {
@@ -260,6 +264,10 @@
     @media #{$viewport-medium} {
       border-right: 1px solid rgba(151, 151, 151, 0.2);
       padding: 0 20px 40px;
+
+      &:last-child {
+        border-right: 0px;
+      }
     }
 
     @media #{$viewport-large} {
