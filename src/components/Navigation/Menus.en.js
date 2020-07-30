@@ -9,7 +9,7 @@ import { isAuthenticated, logout } from 'src/utils/auth';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
 
-function MenusEn({ theme, showNav, path, closeNav }) {
+function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [t, i18n] = useTranslation();
   const { wordpress } = useStaticQuery(graphql`
@@ -72,7 +72,7 @@ function MenusEn({ theme, showNav, path, closeNav }) {
           wordpress.menus.nodes[0] &&
           wordpress.menus.nodes[0].menuItems &&
           wordpress.menus.nodes[0].menuItems.nodes.length &&
-          wordpress.menus.nodes[0].menuItems.nodes.map(menu => {
+          wordpress.menus.nodes[0].menuItems.nodes.filter(filterMenuItems).map(menu => {
             return menu.childItems.nodes.length <= 1 ? (
               <li key={menu.id}>
                 <Link to={convertLinkLocale(getUrlPath(menu.url), i18n.language)}>

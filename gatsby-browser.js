@@ -32,10 +32,21 @@ class SessionCheck extends React.Component {
     this.setState({ loading: false })
   }
 
+  componentWillMount() {
+    i18next.on('languageChanged', function(lng) {
+      // window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
+      window.location.pathname = `/${lng === 'en' ? '' : lng}`;
+    });
+
+    // Set user pref language
+    if(window && globalHistory.location.pathname.indexOf(i18next.language) == -1 && globalHistory.location.pathname.indexOf('callback') == -1 && i18next.language !== 'en') {
+      window.location.pathname = converLinkLocale(globalHistory.location.pathname, i18next.language);
+    }
+  }
+
   componentDidMount() {  
     silentAuth(this.handleCheckSession);
     
-    console.log(globalHistory);
     if(typeof window !== "undefined" && window.innerWidth > MEDIUM_BREAKPOINT) {
       SmoothScroll({
         animationTime: 1600,
@@ -48,15 +59,6 @@ class SessionCheck extends React.Component {
         pulseScale       : 3,
         pulseNormalize   : 1,
       });
-    }
-
-    i18next.on('languageChanged', function(lng) {
-      window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
-    });
-
-    // Set user pref language
-    if(window && globalHistory.location.pathname.indexOf(i18next.language) == -1 && globalHistory.location.pathname.indexOf('callback') == -1 && i18next.language !== 'en') {
-      window.location.pathname = converLinkLocale(globalHistory.location.pathname, i18next.language);
     }
   }
   render() {

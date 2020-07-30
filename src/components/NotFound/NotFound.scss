@@ -1,0 +1,65 @@
+@import 'src/styles/variables';
+
+.not-found {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: $header-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .not-found__modal {
+    background-color: $color-light-black;
+    width: calc(100% - 40px);
+    max-width: 875px;
+    padding: 51px 0;
+    @media #{$viewport-medium} {
+      padding: 81px 0;
+    }
+    .not-found__modal-body {
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+      padding: 0 20px;
+      @media #{$viewport-medium} {
+        width: 55%;
+        padding: 0;
+      }
+      .not-found__modal-body__aplogize {
+        color: $color-white;
+        font-family: $font-sans-serif;
+        font-size: 9px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      .not-found__modal-body__title {
+        color: $color-white;
+        font-family: $font-sans-serif;
+        margin-top: 20px;
+
+        font-size: 25px;
+        margin-bottom: 20px;
+        font-weight: 500;
+
+        @media #{$viewport-large} {
+          font-size: 35px;
+        }
+      }
+      .not-found__modal-body__description {
+        color: $color-white;
+        font-size: 15px;
+        margin-bottom: 20px;
+        font-family: $font-serif;
+        font-weight: $serif-regular;
+        line-height: 25px;
+        opacity: 0.8;
+
+        @media #{$viewport-medium} {
+          font-size: 16px;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+const path = require(`path`);
 const { getAllLayoutsData, getCategoryLayoutData } = require("./utils")
 
 const pageTemplate = require.resolve("../src/templates/page/")
@@ -47,7 +48,7 @@ const GET_CATEGORIES = () => `
 
   query GET_PAGES($first:Int $after:String) {
     wordpress {
-      categories(first: $first after: $after where: { language: EN }) {
+      categories(first: $first after: $after) {
         nodes {                
           ...CategoryTemplateFragment
         }
@@ -200,20 +201,25 @@ module.exports = async ({ actions, graphql, reporter }) => {
     categories &&
       categories.map(category => {
         createPage({
-          path: `${`${category.language.slug === 'en' ? '' : `/${category.language.slug}`}`}/category/${category.slug}`,
+          path: decodeURIComponent(`${`${category.language.slug === 'en' ? '' : `/${category.language.slug}`}`}/category/${category.slug}`),
           component: categoryTemplate,
           context: category,
         });
-        if(category.translations && category.translations.length > 0) {
-          category.translations.map(categoryTranslation => {
-            createPage({
-              path: `${categoryTranslation.language.slug}/category/${category.slug}`,
-              component: categoryTemplate,
-              context: categoryTranslation,
-            });
-          });
-        }
+        // if(category.translations && category.translations.length > 0) {
+        //   category.translations.map(categoryTranslation => {
+        //     createPage({
+        //       path: `${categoryTranslation.language.slug}/category/${category.slug}`,
+        //       component: categoryTemplate,
+        //       context: categoryTranslation,
+        //     });
+        //   });
+        // }
         reporter.info(`created: /category/${category.slug}`)
       })
+  })
+
+  createPage({
+    path: `/404.html`,
+    component: path.join(process.cwd(), "src/templates/404.js"),
   })
 }
