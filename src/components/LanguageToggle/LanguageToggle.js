@@ -5,6 +5,7 @@ import { ArrowDown } from "src/svgs"
 import { useTranslation } from "react-i18next"
 import { useNavigate, useLocation } from '@reach/router';
 import cx from 'classnames';
+import useWindow from 'src/hooks/useWindow';
 
 import "./LanguageToggle.scss"
 
@@ -13,6 +14,7 @@ function LanguageToggle({ theme, pageScroll }) {
   const location = useLocation();
   const [language, setLanguage] = useState(null);
   const [dropdown, setDropdown] = useState(false);
+  const _window = useWindow();
   const { t, i18n } = useTranslation();
 
   const { wordpress } = useStaticQuery(
@@ -38,6 +40,9 @@ function LanguageToggle({ theme, pageScroll }) {
     setDropdown(false);
     setLanguage(lang);
     i18n.changeLanguage(lang.slug);
+    if(_window) {
+      _window.location.pathname = `/${lang.slug === 'en' ? '' : lang.slug}`;
+    }
   }
 
   useEffect(() => {

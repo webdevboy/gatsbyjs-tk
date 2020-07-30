@@ -8,6 +8,7 @@ import SmoothScroll from './src/utils/smoothScroll';
 
 import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
+import supportedLngs from 'src/locales/supportedLngs';
 import { MEDIUM_BREAKPOINT } from './src/utils/breakpoints';
 // import SmoothScroll from 'src/utils/smoothScroll';
 
@@ -33,13 +34,27 @@ class SessionCheck extends React.Component {
   }
 
   componentWillMount() {
-    i18next.on('languageChanged', function(lng) {
-      // window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
-      window.location.pathname = `/${lng === 'en' ? '' : lng}`;
-    });
+    // i18next.on('languageChanged', function(lng) {
+    //   // window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
+    //   // window.location.pathname = `/${lng === 'en' ? '' : lng}`;
+    // });
+
+
+    if(typeof window !== undefined) {
+      globalHistory.listen(({ action }) => {
+        if(action === 'PUSH') {
+          console.log(window.location.pathname);
+          const { pathname } = window.location;
+          const pageLngCode = pathname.split('/')[1] === '' ? 'en' : pathname.split('/')[1];
+          const lngCode = supportedLngs.find(lng => lng === pageLngCode) || 'en';
+          console.log(lngCode);
+          i18next.changeLanguage(lngCode);
+        }
+      });
+    }
 
     // Set user pref language
-    if(window && globalHistory.location.pathname.indexOf(i18next.language) == -1 && globalHistory.location.pathname.indexOf('callback') == -1 && i18next.language !== 'en') {
+    if(typeof window !== undefined && globalHistory.location.pathname.indexOf(i18next.language) == -1 && globalHistory.location.pathname.indexOf('callback') == -1 && i18next.language !== 'en') {
       window.location.pathname = converLinkLocale(globalHistory.location.pathname, i18next.language);
     }
   }
