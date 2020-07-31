@@ -86,6 +86,11 @@
           letter-spacing: 0;
           font-family: $font-sans-serif;
           font-weight: $sans-serif-light;
+          &.feature-article__authors--chinese {
+            text-orientation: upright;
+            letter-spacing: -2px;
+            transform: rotate(0);
+          }
 
           @media #{$viewport-medium} {
             display: block;

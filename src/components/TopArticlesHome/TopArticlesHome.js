@@ -149,7 +149,7 @@ export default function TopArticles(props) {
                     />
                   </Parallax>
                   {featuredArticleFormatted.authors && (
-                    <div className="feature-article__authors">
+                    <div className={cx('feature-article__authors', { 'feature-article__authors--chinese': i18n.language !== 'en' })}>
                       {featuredArticleFormatted.authors}
                     </div>
                   )}
