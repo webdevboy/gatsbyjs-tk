@@ -11,8 +11,16 @@ import MenusZh from './Menus.zh';
 import MenusEn from './Menus.en';
 import "./Navigation.scss"
 
-export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu }) {
+export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu, closeMainNav }) {
   const [t, i18n] = useTranslation('article');
+  
+  const handleNavClick = (e, url) => {
+    e.preventDefault();
+    closeMainNav();
+    window.setTimeout(() => {
+       window.location.href = url;
+    }, 300)
+  }
 
   return (
     <li className="with-menu" key={menu.id}>
@@ -35,7 +43,7 @@ export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu }
         {menu.childItems.nodes.map(node => {
           return (
             <li key={node.id}>
-              <Link to={convertLinkLocale(getUrlPath(node.url), i18n.language)}>{node.label}</Link>
+              <Link to={convertLinkLocale(getUrlPath(node.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(node.url), i18n.language)))}>{node.label}</Link>
             </li>
           )
         })}

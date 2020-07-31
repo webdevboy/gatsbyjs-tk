@@ -47,6 +47,15 @@ function MenusZhCn({ theme, showNav, path, closeNav, filterMenuItems }) {
     return url.replace(wordpress.generalSettings.url, "");
   }
 
+  const handleNavClick = (e, url) => {
+    e.preventDefault();
+    closeNav();
+    
+    window.setTimeout(() => {
+       window.location.href = url;
+    }, 300)
+  }
+
   return wordpress ? (
     <nav
       className={cx({
@@ -75,7 +84,7 @@ function MenusZhCn({ theme, showNav, path, closeNav, filterMenuItems }) {
           wordpress.menus.nodes[0].menuItems.nodes.filter(filterMenuItems).map(menu => {
             return menu.childItems.nodes.length <= 1 ? (
               <li key={menu.id}>
-                <Link to={convertLinkLocale(getUrlPath(menu.url), i18n.language)}>
+                <Link to={convertLinkLocale(getUrlPath(menu.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(menu.url), i18n.language)))}>
                   {menu.label}
                 </Link>
               </li>
@@ -86,29 +95,30 @@ function MenusZhCn({ theme, showNav, path, closeNav, filterMenuItems }) {
                   getUrlPath={getUrlPath}
                   setShowSubMenu={setShowSubMenu}
                   showSubMenu={showSubMenu}
+                  closeMainNav={closeNav}
                 />
               )
           })}
         <li>
-          <Link to={convertLinkLocale('/about', i18n.language)}>
+          <Link to={convertLinkLocale('/about', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/about'), i18n.language)))}>
             {t('nav-about')}
           </Link>
         </li>
         {!isAuthenticated() && (<li>
-          <Link to={convertLinkLocale('/login', i18n.language)}>
+          <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
             {t('nav-login')}
           </Link>
         </li>
         )}
         {isAuthenticated() && (
           <li>
-            <Link to={convertLinkLocale('/account', i18n.language)}>
+            <Link to={convertLinkLocale('/account', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/account'), i18n.language)))}>
               {t('nav-account')}
             </Link>
           </li>
         )}
         <li>
-          <Link to={convertLinkLocale('/login', i18n.language)}>
+          <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
             {t('nav-subscribe')}
           </Link>
         </li>
