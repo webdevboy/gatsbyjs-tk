@@ -18,7 +18,7 @@ class Category extends Component {
     return (
       <div className="category-page-wrapper">
         <Layout>
-          <SEO title={name || "Untitled"} />
+          <SEO title={name ? name.replace('&amp;', '&')  : "Untitled"} />
           <CategoryLayouts categoryData={pageContext} updateParallaxState={this.updateParallaxState} />
         </Layout>
       </div>

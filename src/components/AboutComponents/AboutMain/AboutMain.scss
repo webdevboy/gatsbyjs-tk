@@ -1,36 +1,6 @@
-@import "src/styles/variables";
+@import 'src/styles/variables';
 
-.about-page {
-  padding-top: $header-height;
-
-  h1 {
-    padding: 58px 0 50px 0;
-    color: $color-darkgray;
-    font-family: $font-serif;
-    font-size: 25px;
-    letter-spacing: 0;
-    line-height: 31px;
-    text-align: center;
-    font-weight: $serif-regular;
-    margin: 0;
-
-    @media #{$viewport-medium} {
-      padding: 60px 0;
-      font-size: 32px;
-      line-height: 40px;
-    }
-
-    @media #{$viewport-large} {
-      padding: 100px 0;
-      font-size: 48px;
-      line-height: 60px;
-    }
-  }
-
-  p {
-    line-height: 1.6;
-  }
-
+.about-main {
   .content-block-wrapper {
     padding: 0 20px;
     @media #{$viewport-medium} {
@@ -51,20 +21,20 @@
       width: 84%;
       grid-template-columns: 1.5fr 1fr;
     }
-
+  
     .img-wrapper {
       margin-bottom: 20px;
-
+  
       @media #{$viewport-medium} {
         margin-bottom: 0;
       }
-
+  
       img {
         width: 100%;
         object-fit: cover;
         object-position: center center;
       }
-
+  
       .cutline {
         font-size: 9px;
         font-family: $font-sans-serif;
@@ -72,7 +42,7 @@
         text-align: center;
       }
     }
-
+  
     .copyblock {
       p {
         color: $color-darkgray;

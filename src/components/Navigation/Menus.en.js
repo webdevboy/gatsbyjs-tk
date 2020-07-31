@@ -23,7 +23,7 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
             id
             name
             slug
-            menuItems {
+            menuItems(first: 30) {
               nodes {
                 url
                 id
@@ -99,11 +99,6 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
                 />
               )
           })}
-        <li>
-          <Link to={convertLinkLocale('/about', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale('/about', i18n.language)))}>
-            {t('nav-about')}
-          </Link>
-        </li>
         {!isAuthenticated() && (
           <li>
             <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale('/login', i18n.language)))}>
