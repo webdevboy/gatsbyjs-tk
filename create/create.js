@@ -14,7 +14,7 @@ const GET_PAGES = () => `
   
   query GET_PAGES($first:Int $after:String) {
     wordpress {
-      pages(first: $first after: $after where: { language: EN }) {
+      pages(first: $first after: $after) {
         nodes {                
           ...PageTemplateFragment
         }
@@ -186,9 +186,11 @@ module.exports = async ({ actions, graphql, reporter }) => {
       pages.map(context => {
         const { page, defaultLanguage } = context;
 
+        if(!page || !page.slug) return;
+
         createPage({ path: getPath(page), component: pageTemplate, context: page })
 
-        if(page.translations && page.translations.length > 0) {
+        if(page.translations && page.translations.length > 0 && page.isFrontPage && page.language.slug === 'en') {
           page.translations.map(pageTranslation => {
             const pageContext = { ...pageTranslation, isFrontPage: page.isFrontPage };
             createPage({ path: getPath(pageContext), component: pageTemplate, context: pageContext });
