@@ -101,6 +101,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
    */
   const fetchPosts = async () =>
     await graphql(postsQuery, { first: 1000 }).then(({ data }) => {
+      if (!data || !data.wordpress) return allPosts;
       // Extract the data from the GraphQL query results
       const {
         wordpress: {
@@ -127,6 +128,8 @@ module.exports = async ({ actions, graphql, reporter }) => {
    */
   const fetchPages = async () =>
     await graphql(pagesQuery, { first: 1000 }).then(({ data }) => {
+      if (!data || !data.wordpress) return allPages;
+
       // Extract the data from the GraphQL query results
       const {
         wordpress: {
@@ -152,6 +155,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
 
   const fetchCategories = async () =>
     await graphql(categoriesQuery, { first: 1000 }).then(({ data }) => {
+      if (!data || !data.wordpress) return allCategories;
       const {
         wordpress: {
           categories: { nodes },
