@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import { withController } from 'react-scroll-parallax';
 
 import { isAuthenticated } from "src/utils/auth";
+import replaceAmpersand from 'src/utils/replaceAmpersand';
 import Layout from "src/components/Layout";
 import SEO from "src/components/seo";
 import PostLayouts from "src/components/PostLayouts";
@@ -66,14 +67,15 @@ class PostWrapper extends Component {
     const { title, components, categories } = pageContext;
     const postHeroObj = pageContext.components.contents.find(c => c.fieldGroupName === "post_Components_Contents_ArticleHero");
     const layouts = components.contents || [];
+    console.log(title)
     return (
       <Layout
         theme={pageContext.themeSelect.themeSelect}
-        title={title}
+        title={replaceAmpersand(title) || "Untitled"}
         
         isArticlePage
       >
-        <SEO title={title ? title.replace('&amp;', '&')  : "Untitled"} description={postHeroObj && postHeroObj.byline} />
+        <SEO title={replaceAmpersand(title) || "Untitled"} description={postHeroObj && postHeroObj.byline} />
         {layouts.filter(l => l.fieldGroupName && l.fieldGroupName !== "post_Components_Contents_CircleThumbnail").map((layout, index) => (
           <PostLayouts
             key={index}
