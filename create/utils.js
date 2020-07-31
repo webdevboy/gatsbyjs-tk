@@ -18,6 +18,21 @@ module.exports.getAllLayoutsData = type => {
   return allLayoutsString
 }
 
+module.exports.getAllAboutLayoutsData = () => {
+  const glob = require("glob")
+
+  let allLayoutsString = ""
+
+  const fileArray = glob.sync("./src/components/**/*.aboutPageData.js")
+
+  fileArray.forEach(function (file) {
+    let queryStringFunction = require(path.resolve(file))
+    allLayoutsString = allLayoutsString + " \n " + queryStringFunction()
+  })
+
+  return allLayoutsString
+}
+
 module.exports.getCategoryLayoutData = () => {
   const glob = require("glob")
 

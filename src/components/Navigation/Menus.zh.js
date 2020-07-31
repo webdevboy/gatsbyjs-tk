@@ -99,11 +99,6 @@ function MenusZhCn({ theme, showNav, path, closeNav, filterMenuItems }) {
                 />
               )
           })}
-        <li>
-          <Link to={convertLinkLocale('/about', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/about'), i18n.language)))}>
-            {t('nav-about')}
-          </Link>
-        </li>
         {!isAuthenticated() && (<li>
           <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
             {t('nav-login')}

@@ -33,7 +33,7 @@ class SessionCheck extends React.Component {
     this.setState({ loading: false })
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     // i18next.on('languageChanged', function(lng) {
     //   // window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
     //   // window.location.pathname = `/${lng === 'en' ? '' : lng}`;
@@ -43,11 +43,9 @@ class SessionCheck extends React.Component {
     if(typeof window !== undefined) {
       globalHistory.listen(({ action }) => {
         if(action === 'PUSH') {
-          console.log(window.location.pathname);
           const { pathname } = window.location;
           const pageLngCode = pathname.split('/')[1] === '' ? 'en' : pathname.split('/')[1];
           const lngCode = supportedLngs.find(lng => lng === pageLngCode) || 'en';
-          console.log(lngCode);
           i18next.changeLanguage(lngCode);
         }
       });

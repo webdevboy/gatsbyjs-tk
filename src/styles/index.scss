@@ -120,6 +120,10 @@ html {
       transition-timing-function: ease;
       transform: initial;
       z-index: 105;
+      padding-top: $header-height;
+      &.page-body--home {
+        padding-top: 0;
+      }
       &.shifted {
         
         @media #{$viewport-medium} {

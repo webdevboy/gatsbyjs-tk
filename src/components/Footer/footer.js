@@ -3,7 +3,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { SiteLogo } from 'src/svgs';
 import { Link } from '@reach/router';
+import { useStaticQuery, graphql } from "gatsby";
 
+import MenusEn from './menus.en';
+import MenusZh from './menus.zh';
+import MenusZhTc from './menus.zh_tc';
 import getLangLink from 'src/utils/getLangLink';
 import Facebook from 'src/images/Facebook_icon_white.png';
 import Instagram from 'src/images/Instagram_icon_white.png';
@@ -15,6 +19,21 @@ function Footer() {
   const date = new Date();
 
   const { t, i18n } = useTranslation('footer');
+  const getMenus = () => {
+    if(!i18n.language) return null;
+    switch(i18n.language.toLowerCase()) {
+      case 'zh': {
+        return <MenusZh />
+      }
+      case 'zh_tc': {
+        return <MenusZhTc />
+      }
+      default: {
+        return <MenusEn />
+      }
+    }
+  }
+  
   return (
     <footer className="footer">
       <div className="opt-in">
@@ -30,8 +49,7 @@ function Footer() {
               {t('website')}
             </label>
             <div className="tab-content">
-              <a href="#">{t('terms')}</a>
-              <a href="#">{t('faqs')}</a>
+              {getMenus()}
             </div>
           </div>
           <div className="tab">

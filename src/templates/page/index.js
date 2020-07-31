@@ -117,6 +117,7 @@ class Page extends Component {
       (o) => o.fieldGroupName === 'page_Components_Contents_HomepageHero'
     );
     const layouts = components.contents || [];
+    const aboutLayouts = components.aboutContents || [];
     return (
       <>
         {pageContext.isFrontPage && heroData.length ? (
@@ -124,7 +125,7 @@ class Page extends Component {
         ) : (
           <Layout theme="light" isFrontPage={false}>
             <SEO title={title || 'Untitled'} />
-            {layouts.map((layout, index) => (
+            {[...layouts, ...aboutLayouts].map((layout, index) => (
               <PageLayouts key={index} layoutData={layout} updateParallaxState={() => {}} />
             ))}
           </Layout>

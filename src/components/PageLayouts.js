@@ -11,6 +11,11 @@ import {
   Spacer,
   EventsComponent,
 } from "src/components"
+import {
+  AboutTitle,
+  AboutMain,
+  AboutColumns,
+} from 'src/components/AboutComponents';
 
 const PageLayouts = ({ layoutData, theme, containerIsScrollable, updateParallaxState }) => {
   const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found"
@@ -35,6 +40,9 @@ const PageLayouts = ({ layoutData, theme, containerIsScrollable, updateParallaxS
     page_Components_Contents_TastingNotes: TastingNotes,
     page_Components_Contents_Spacer: Spacer,
     page_Components_Contents_Event: EventsComponent,
+    page_Components_AboutContents_AboutTitle: AboutTitle,
+    page_Components_AboutContents_AboutMain: AboutMain,
+    page_Components_AboutContents_AboutColumns: AboutColumns,
     default: Default,
   }
 

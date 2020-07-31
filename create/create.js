@@ -1,5 +1,5 @@
 const path = require(`path`);
-const { getAllLayoutsData, getCategoryLayoutData } = require("./utils")
+const { getAllLayoutsData, getCategoryLayoutData, getAllAboutLayoutsData } = require("./utils")
 
 const pageTemplate = require.resolve("../src/templates/page/")
 const postTemplate = require.resolve("../src/templates/post/")
@@ -10,7 +10,7 @@ const { PostTemplateFragment } = require("../src/templates/post/data")
 const { CategoryTemplateFragment } = require("../src/templates/category/data")
 
 const GET_PAGES = () => `
-  ${PageTemplateFragment(getAllLayoutsData("page"))}
+  ${PageTemplateFragment(getAllLayoutsData("page"), getAllAboutLayoutsData())}
   
   query GET_PAGES($first:Int $after:String) {
     wordpress {
@@ -70,7 +70,7 @@ const getPath = page => {
   if(page.isFrontPage) {
     return `/${page.language.slug === 'en' ? '' : page.language.slug}`;
   }
-  return `/${page.language.slug}/${page.slug}`;
+  return `${page.language.slug === 'en' ? '' : `/${page.language.slug}`}/${page.slug}`;
 }
 
 /**
@@ -193,11 +193,13 @@ module.exports = async ({ actions, graphql, reporter }) => {
         if(page.translations && page.translations.length > 0 && page.isFrontPage && page.language.slug === 'en') {
           page.translations.map(pageTranslation => {
             const pageContext = { ...pageTranslation, isFrontPage: page.isFrontPage };
-            createPage({ path: getPath(pageContext), component: pageTemplate, context: pageContext });
+            if(pageContext.slug) {
+              createPage({ path: getPath(pageContext), component: pageTemplate, context: pageContext });
+            }
           })
         }
 
-        reporter.info(`created: ${page.slug}`)
+        
       })
 
     reporter.info(`# -----> TOTAL: ${pages.length}`)
