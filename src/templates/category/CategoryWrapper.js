@@ -15,10 +15,11 @@ class Category extends Component {
   render() {
     const { pageContext } = this.props;
     const { name } = pageContext;
+    console.log(name);
     return (
       <div className="category-page-wrapper">
         <Layout>
-          <SEO title={name || "Untitled"} />
+          <SEO title={name ? name.replace('&amp;', '&')  : "Untitled"} />
           <CategoryLayouts categoryData={pageContext} updateParallaxState={this.updateParallaxState} />
         </Layout>
       </div>
