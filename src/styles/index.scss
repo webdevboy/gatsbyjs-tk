@@ -121,7 +121,7 @@ html {
       transform: initial;
       z-index: 105;
       padding-top: $header-height;
-      &.page-body--home {
+      &.page-body--no-padding {
         padding-top: 0;
       }
       &.shifted {
