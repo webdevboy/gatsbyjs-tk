@@ -225,9 +225,4 @@ module.exports = async ({ actions, graphql, reporter }) => {
         reporter.info(`created: /category/${category.slug}`)
       })
   })
-
-  createPage({
-    path: `/404.html`,
-    component: path.join(process.cwd(), "src/templates/404.js"),
-  })
 }
