@@ -34,21 +34,19 @@ class PostWrapper extends Component {
     parallaxController: PropTypes.object,
   }
   componentDidMount() {
-    // we need to remove this for testing until launch
-    // this.incAriclesViewedCount();
+    this.incAriclesViewedCount();
   }
   componentDidUpdate(prevProps) {
-    // we need to remove this for testing until launch
-    // if(this.props.pageContext.title !== prevProps.pageContext.title) {
-    //   this.incAriclesViewedCount();
-    // }
+    if(this.props.pageContext.title !== prevProps.pageContext.title) {
+      this.incAriclesViewedCount();
+    }
   }
   setPageLimitModal = value => this.setState({ pageLimitModal: value });
   incAriclesViewedCount = () => {
     // Increase articles viewed count 
     this.props.parallaxController.update();
     const articlesViewCount = +Cookies.get('articles_view_count') || 1;
-    if(articlesViewCount >= 3 && !isAuthenticated()) {
+    if(articlesViewCount >= 5 && !isAuthenticated()) {
       this.setPageLimitModal(true);
     }
     else {
@@ -83,6 +81,7 @@ class PostWrapper extends Component {
             categories={filterCategories(categories)}
             theme={pageContext.themeSelect.themeSelect}
             updateParallaxState={this.updateParallaxState}
+
           />
         ))}
         {pageLimitModal && <PageLimitModal />}
