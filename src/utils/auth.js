@@ -3,7 +3,7 @@ import auth0 from "auth0-js"
 import { navigate } from "gatsby"
 import i18next from 'i18next'
 
-export const isBrowser = typeof window !== "undefined"
+export const isBrowser = typeof window !== "undefined" && window;
 
 const databaseConnection = 'Username-Password-Authentication';
 
