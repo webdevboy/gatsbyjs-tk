@@ -71,7 +71,7 @@ class PostWrapper extends Component {
         title={replaceAmpersand(title) || "Untitled"}
         isArticlePage
       >
-        <SEO title={replaceAmpersand(title) || "Untitled"} description={postHeroObj && postHeroObj.byline} imageUrl={postHeroObj.heroImage.sourceUrl} />
+        <SEO title={replaceAmpersand(title) || "Untitled"} description={postHeroObj && postHeroObj.byline} imageUrl={postHeroObj && postHeroObj.heroImage && postHeroObj.heroImage.sourceUrl} />
         {layouts.filter(l => l.fieldGroupName && l.fieldGroupName !== "post_Components_Contents_CircleThumbnail").map((layout, index) => (
           <PostLayouts
             key={index}
