@@ -34,12 +34,6 @@ class SessionCheck extends React.Component {
   }
 
   UNSAFE_componentWillMount() {
-    // i18next.on('languageChanged', function(lng) {
-    //   // window.location.pathname = converLinkLocale(globalHistory.location.pathname, lng);
-    //   // window.location.pathname = `/${lng === 'en' ? '' : lng}`;
-    // });
-
-
     if(typeof window !== undefined) {
       globalHistory.listen(({ action }) => {
         if(action === 'PUSH') {

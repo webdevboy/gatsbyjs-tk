@@ -26,7 +26,7 @@ function Account() {
   }
 
   return (
-    <Layout>
+    <Layout removeTopPadding>
       <div
         className={cx('account-wrapper', { 'account--active': isAccountView })}
       >

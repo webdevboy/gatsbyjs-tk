@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import cx from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import Header from "src/components/Header/header";
 import Footer from "src/components/Footer/footer";
@@ -8,8 +9,9 @@ import Navigation from "src/components/Navigation/Navigation";
 
 import "src/styles/index.scss";
 
-function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded }) {
+function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded, removeTopPadding }) {
   const [showNav, setShowNav] = useState(false);
+  const [t, i18n] = useTranslation();
 
   useEffect(() => {
     if (typeof document !== `undefined`) {
@@ -34,7 +36,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
   }
 
   return (
-    <div>
+    <div className={cx({ 'chinese-language': i18n.language !== 'en' })}>
       <Navigation theme={theme || 'light'} showNav={showNav} closeNav={() => setShowNav(false)} />
       <Header
         theme={theme || "light"}
@@ -49,7 +51,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
         homeHeroLoaded={homeHeroLoaded}
       />
       <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
-      <div className={cx('page-body', { shifted: showNav, 'page-body--no-padding': isFrontPage || isArticlePage })}>
+      <div className={cx('page-body', { shifted: showNav, 'page-body--no-padding': isFrontPage || isArticlePage || removeTopPadding })}>
         <main>{children}</main>
         <Footer />
       </div>
