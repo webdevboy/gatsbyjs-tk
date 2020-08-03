@@ -9,7 +9,7 @@ import Navigation from "src/components/Navigation/Navigation";
 
 import "src/styles/index.scss";
 
-function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded }) {
+function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded, removeTopPadding }) {
   const [showNav, setShowNav] = useState(false);
   const [t, i18n] = useTranslation();
 
@@ -51,7 +51,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
         homeHeroLoaded={homeHeroLoaded}
       />
       <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
-      <div className={cx('page-body', { shifted: showNav, 'page-body--no-padding': isFrontPage || isArticlePage })}>
+      <div className={cx('page-body', { shifted: showNav, 'page-body--no-padding': isFrontPage || isArticlePage || removeTopPadding })}>
         <main>{children}</main>
         <Footer />
       </div>

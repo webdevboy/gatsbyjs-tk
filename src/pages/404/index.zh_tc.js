@@ -7,7 +7,7 @@ import NotFound from 'src/components/NotFound/NotFound';
 
 const NotFoundPage = () => {
   return isBrowser ? (
-    <Layout theme="dark">
+    <Layout theme="dark" removeTopPadding>
       <SEO title="404: Not found" />
       <NotFound />
     </Layout>
