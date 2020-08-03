@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import cx from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import Header from "src/components/Header/header";
 import Footer from "src/components/Footer/footer";
@@ -10,6 +11,7 @@ import "src/styles/index.scss";
 
 function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded }) {
   const [showNav, setShowNav] = useState(false);
+  const [t, i18n] = useTranslation();
 
   useEffect(() => {
     if (typeof document !== `undefined`) {
@@ -34,7 +36,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
   }
 
   return (
-    <div>
+    <div className={cx({ 'chinese-language': i18n.language !== 'en' })}>
       <Navigation theme={theme || 'light'} showNav={showNav} closeNav={() => setShowNav(false)} />
       <Header
         theme={theme || "light"}
