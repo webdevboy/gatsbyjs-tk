@@ -41,7 +41,7 @@
   .account__input {
     margin-bottom: 20px;
     width: 100%;
-    input, select {
+    input {
       color: $color-black;
       font-family: $font-sans-serif;
       font-size: 14px;
@@ -55,6 +55,25 @@
       background: transparent;
       @media #{$viewport-medium} {
         border: 1px solid $color-account-gray;
+      }
+    }
+    
+    .account__input__select {
+      border: 1px solid $color-darkgray;
+      border-radius: 3px;
+      padding-right: 10px;
+      width: 100%;
+      select {
+        color: $color-black;
+        font-family: $font-sans-serif;
+        font-size: 14px;
+        line-height: 17px;
+        width: 100%;
+        padding: 16px 15px;
+        box-sizing: border-box;
+        outline: none;
+        background: transparent;
+        border: none;
       }
     }
     @media #{$viewport-medium} {

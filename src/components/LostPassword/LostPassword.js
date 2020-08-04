@@ -26,7 +26,7 @@ function LostPassword() {
             {t('lost-password-success-text')}
           </div>
         )}
-        <AuthInput placeholder={t('email-address')} value={email} onChange={e => {setEmail(e.target.value)}} />
+        <AuthInput placeholder={t('email-address')} value={email} onChange={e => {setEmail(e.target.value)}} resetPassword />
         <button type="submit" className="lost-password__submit">
           {t('send-reset-code')}
         </button>

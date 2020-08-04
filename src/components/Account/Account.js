@@ -70,12 +70,14 @@ function Account() {
           <input type="text" placeholder={(t('auth:last-name'))} value={lastname} onChange={e => {setLastname(e.target.value)}} />
         </div>
         <div className="account__input">
-          <select value={country} onChange={e => {setCountry(e.target.value)}}>
-            <option>{t('auth:select-country')}</option>
-            {countries.map(country => (
-              <option value={country.code} key={country.code}>{country.name}</option>
-            ))}
-          </select>
+          <div className="account__input__select">
+            <select value={country} onChange={e => {setCountry(e.target.value)}}>
+              <option>{t('auth:select-country')}</option>
+              {countries.map(country => (
+                <option value={country.code} key={country.code}>{country.name}</option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="account__input">
           <input type="text" placeholder={t('auth:city')} value={city} onChange={e => {setCity(e.target.value)}} />
