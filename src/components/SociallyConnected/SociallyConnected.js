@@ -89,7 +89,6 @@ function SociallyConnected({ column1, column2, column3 }) {
       }
     }
   `);
-  console.log(allInstaNode);
   const params = {
     spaceBetween: 20,
     slidesPerView: 'auto',

@@ -1,7 +1,6 @@
 const ampersandCodes = ['&amp;', '&#x26;', '&#38;', '&#038;'];
 
 const replaceAmpersand = string => {
-  console.log(string)
   if(!string) return null;
   let newString = string;
   ampersandCodes.forEach(code => {
