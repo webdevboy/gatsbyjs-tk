@@ -44,7 +44,8 @@ function SociallyConnectedItem({
           <div className="socially__columns__column__info_title">{title}</div>
         )}
         <div className="socially__columns__column__info__social-date">
-          {`POSTED BY TASTING KITCHEN • ${moment(new Date(+`${timestamp}000`)).format('MMMM DD, YYYY')}`}
+          {/* {`POSTED BY TASTING KITCHEN • ${moment(new Date(+`${timestamp}000`)).format('MMMM DD, YYYY')}`} */}
+          {`${moment(new Date(+`${timestamp}000`)).format('MMMM DD, YYYY')}`}
         </div>
         {byline && (
           <div className="socially__columns__column__info_description">
@@ -135,7 +136,7 @@ function SociallyConnected({ column1, column2, column3 }) {
     }
     return 0;
   });
-
+  
   return (
     <div className="socially-connected">
       <div className="container">
@@ -143,13 +144,14 @@ function SociallyConnected({ column1, column2, column3 }) {
         <div className="socially__columns">
           <Swiper {...params}>
             {posts.slice(0, 3).map(node => {
+              let byline = node.node.caption.split(/\r?\n/);
               return (
                 <div key={node.node.id}>
                   <SociallyConnectedItem
                     {...{
                       type: 'instagram',
-                      title: 'From Tasting kitchen Instagram',
-                      byline: node.node.caption,
+                      title: 'From: tastingkitchen',
+                      byline: byline.length > 0 ? byline[0] : '',
                       imageUrl: node.node.original,
                       articleUrl: `https://www.instagram.com/p/${node.node.id}/`,
                       timestamp: node.node.timestamp,
