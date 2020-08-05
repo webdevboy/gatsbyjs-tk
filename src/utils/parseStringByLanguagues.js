@@ -1,8 +1,8 @@
-// import {guessLanguage} from 'guessLanguage';
-const guessLanguage = require('guessLanguage');
-
 const parseStringByLanguagues = (string, callback) => {
   const stringArraybBySpace = string.split(' ');
+
+  // Chinese characters range
+  const chineseRegexp = new RegExp("^[\u4E00-\uFA29]*$");
   let stringArray = [];
   stringArraybBySpace.forEach(element => {
     const splittedElements = element.split('：');
@@ -18,9 +18,7 @@ const parseStringByLanguagues = (string, callback) => {
     }
   });
   stringArray.forEach(item => {
-    guessLanguage.guessLanguage.detect(item, language => {
-      callback(`<span class="${language === 'zh' ? 'chinese' : 'english'}">${item}</span>`);
-    });
+    callback(`<span class="${chineseRegexp.test(item) ? 'chinese' : 'english'}">${item}</span>`);
   });
 }
 

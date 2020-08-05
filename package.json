@@ -28,7 +28,6 @@
     "gatsby-transformer-sharp": "^2.5.0",
     "glob": "^7.1.6",
     "gsap": "^3.3.4",
-    "guesslanguage": "^0.2.0",
     "i18next": "^19.5.1",
     "i18next-browser-languagedetector": "^5.0.0",
     "i18next-xhr-backend": "^3.2.2",
