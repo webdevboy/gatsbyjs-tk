@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +6,7 @@ import { Parallax } from 'react-scroll-parallax';
 
 import './TopArticlesCategory.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
-import { isBrowser } from 'src/utils/auth';
+import parseStringByLanguagues from 'src/utils/parseStringByLanguagues';
 
 function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, isCircle }) {
   return (
@@ -39,6 +39,8 @@ function Article({ title, byline, category, imageUrl, articleUrl, t, i18n, isCir
 export default function TopArticles({ category, updateParallaxState = () => {} }) {
   const { name, posts } = category;
   const [t, i18n] = useTranslation('article');
+  const [authors, setAuthors] = useState('');
+  let authorsString = '';
   const getFormattedArticle = (article) => {
     if (!article) return null;
     const imageObj =
@@ -125,6 +127,24 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
 
   const formattedArticles = getArticles(formattedNodes);
   const moreArticles = formattedArticles.slice(6);
+  
+  const addAuthorsItem = item => {
+    if(i18n.language !== 'en') {
+      authorsString = item + authorsString;
+    }
+    else {
+      authorsString += item;
+    }
+    setAuthors(authorsString);
+  }
+
+  useEffect(() => {
+    if(featuredArticleFormatted && featuredArticleFormatted.authors) {
+      parseStringByLanguagues(featuredArticleFormatted.authors, parsedString => {
+        addAuthorsItem(parsedString);
+      });
+    }
+  }, []);
   return (
     <div className="top-articles-container section-landing">
       {name && (
@@ -159,9 +179,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                     />
                   </Parallax>
                   {featuredArticleFormatted.authors && (
-                    <div className={cx('feature-article__authors', { 'feature-article__authors--chinese': i18n.language !== 'en' })}>
-                      {featuredArticleFormatted.authors}
-                    </div>
+                    <div className={cx('feature-article__authors')} dangerouslySetInnerHTML={{ __html: authors }} />
                   )}
                 </div>
               )}

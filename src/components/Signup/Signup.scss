@@ -26,26 +26,32 @@
       width: 83%;
     }
   }
-  select {
-    color: $color-black;
-    font-family: $font-sans-serif;
-    font-size: 14px;
-    line-height: 17px;
+  .login__input-select {
     border: 1px solid $color-darkgray;
-    border-radius: 3px;
     width: 100%;
-    padding: 16px 15px;
-    box-sizing: border-box;
-    outline: none;
-    background: transparent;
     margin-bottom: 20px;
+    border-radius: 3px;
+    padding-right: 10px;
     @media #{$viewport-medium} {
       border: 1px solid $color-account-gray;
     }
     @media #{$viewport-large} {
       width: 83%;
     }
+    select {
+      color: $color-black;
+      font-family: $font-sans-serif;
+      font-size: 14px;
+      line-height: 17px;
+      border: none;
+      width: 100%;
+      padding: 16px 15px;
+      box-sizing: border-box;
+      outline: none;
+      background: transparent;
+    }
   }
+  
   .login__submit {
     box-sizing: border-box;
     background-color: $color-black;

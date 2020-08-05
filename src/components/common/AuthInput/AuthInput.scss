@@ -3,6 +3,9 @@
 .auth-input {
   margin-bottom: 1.25rem;
   width: 100%;
+  &.auth-input--reset-password {
+    max-width: 400px;
+  }
   input {
     border: 1px solid;
     border-radius: 3px;

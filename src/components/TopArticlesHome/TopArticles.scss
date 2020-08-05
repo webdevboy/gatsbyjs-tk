@@ -86,12 +86,22 @@
           letter-spacing: 0;
           font-family: $font-sans-serif;
           font-weight: $sans-serif-light;
-          &.feature-article__authors--chinese {
-            text-orientation: upright;
-            letter-spacing: -2px;
-            transform: rotate(0);
+          span {
+            display: inline-block;
+            
+            &.chinese {
+              text-orientation: upright;
+              letter-spacing: 2px;
+              margin-top: 4px;
+              transform: rotate(180deg);
+            }
+            &.english {
+              margin-bottom: 4px;
+              font-family: $font-sans-serif!important;
+              font-weight: 500;
+            }
           }
-
+        
           @media #{$viewport-medium} {
             display: block;
             font-size: 9px;

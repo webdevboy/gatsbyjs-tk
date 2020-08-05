@@ -71,5 +71,20 @@ module.exports = {
         useLangKeyLayout: false,
       },
     },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `301730536`,
+      },
+    },
+    // {
+    //   resolve: `gatsby-source-facebook`,
+    //   options: {
+    //     places: [`tastingkitchen`], // Can be either a numeric ID or the URL ID
+    //     params: {
+    //       fields: 'hours, posts { message, created_time }', // See Facebooks API to see what you can query for
+    //     },
+    //   },
+    // }
   ],
 };

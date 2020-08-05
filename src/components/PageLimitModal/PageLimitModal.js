@@ -26,8 +26,8 @@ function PageLimitModal() {
           </div>
           <div className="page-limit-modal__body__description">
             {`${t('subscribe-popup-text1')} ${t('subscribe-popup-text2')} `}
-            <a href="#">{`${t('subscribe-popup-text3')} `}</a>
-            {t('subscribe-popup-text4')}
+            <a href="#">{`${t('subscribe-popup-text3')}`}</a>
+            {` ${t('subscribe-popup-text4')}`}
           </div>
           <div className="page-limit-modal__body__buttons">
             <button

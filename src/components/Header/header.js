@@ -21,6 +21,8 @@ import LogoMobileTitle from 'src/images/TK_logo_mobile_2.svg';
 import Facebook from 'src/images/Facebook_icon_gray.png';
 import WeChat from 'src/images/WeChat_icon_gray.png';
 import Weibo from 'src/images/Weibo_icon_gray.png';
+import Twitter from 'src/images/twitter.png';
+import Whatsapp from 'src/images/whatsapp.png';
 
 function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOptRef }) {
   const _window = useWindow();
@@ -114,6 +116,20 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
     }
   }
 
+  const openTwitterShare = e => {
+    e.preventDefault();
+    if(_window) {
+      _window.open(`https://twitter.com/intent/tweet?text=${document.location.href}`, 'Twitter',  'height:700, width:700');
+    }
+  }
+
+  const openWhatsappShare = e => {
+    e.preventDefault();
+    if(_window) {
+      _window.open(`https://web.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
+    }
+  }
+  
   useEffect(() => {
     if (heroIsVisible && logoContainerRef && logoContainerRef.current) {
       setTimeout(() => {
@@ -198,6 +214,12 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               </a>
               <a href="#" onClick={openWeiboShare}>
                 <img src={Weibo} />
+              </a>
+              <a href="#" onClick={openTwitterShare}>
+                <img src={Twitter} />
+              </a>
+              <a href="#" onClick={openWhatsappShare}>
+                <img src={Whatsapp} />
               </a>
             </div>
           </div>

@@ -42,12 +42,14 @@ function Signup({ setError }) {
           <div className="login__input">
               <input type="text" placeholder={t('last-name')}  value={lastname} onChange={e => {setLastname(e.target.value)}} />
           </div>
-          <select value={country} onChange={e => {setCountry(e.target.value)}}>
-            <option>{t('select-country')}</option>
-            {countries.map(country => (
-              <option value={country.code} key={country.code}>{country.name}</option>
-            ))}
-          </select>
+          <div className="login__input-select">
+            <select value={country} onChange={e => {setCountry(e.target.value)}}>
+              <option>{t('select-country')}</option>
+              {countries.map(country => (
+                <option value={country.code} key={country.code}>{country.name}</option>
+              ))}
+            </select>
+          </div>
           <div className="login__input">
             <input type="text" placeholder={t('city')} value={city} onChange={e => {setCity(e.target.value)}} />
           </div>
