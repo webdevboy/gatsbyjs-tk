@@ -1,4 +1,5 @@
-import guessLanguage from 'guessLanguage';
+// import {guessLanguage} from 'guessLanguage';
+const guessLanguage = require('guessLanguage');
 
 const parseStringByLanguagues = (string, callback) => {
   const stringArraybBySpace = string.split(' ');
