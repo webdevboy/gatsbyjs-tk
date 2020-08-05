@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { Link, navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import { Parallax } from 'react-scroll-parallax';
+
+import parseStringByLanguagues from 'src/utils/parseStringByLanguagues';
 
 import './TopArticles.scss';
 
@@ -55,6 +57,8 @@ function Article({
 export default function TopArticles(props) {
   const { featuredArticle, articles, theme, updateParallaxState = () => {} } = props;
   const [t, i18n] = useTranslation('article');
+  const [authors, setAuthors] = useState('');
+  let authorsString = '';
   const getFormattedArticle = (article) => {
     if (!article) return null;
 
@@ -122,6 +126,25 @@ export default function TopArticles(props) {
 
   const featuredArticleFormatted = getFeaturedArticle();
   const formattedARticles = getArticles(articles);
+  
+  const addAuthorsItem = item => {
+    if(i18n.language !== 'en') {
+      authorsString = item + authorsString;
+    }
+    else {
+      authorsString += item;
+    }
+    setAuthors(authorsString);
+  }
+
+  useEffect(() => {
+    if(featuredArticleFormatted && featuredArticleFormatted.authors) {
+      parseStringByLanguagues(featuredArticleFormatted.authors, parsedString => {
+        addAuthorsItem(parsedString);
+      });
+    }
+  }, []);
+
   return (
     <div className="top-articles-container">
       <div className={`top-articles container ${theme}`}>
@@ -149,9 +172,7 @@ export default function TopArticles(props) {
                     />
                   </Parallax>
                   {featuredArticleFormatted.authors && (
-                    <div className={cx('feature-article__authors', { 'feature-article__authors--chinese': i18n.language !== 'en' })}>
-                      {featuredArticleFormatted.authors}
-                    </div>
+                    <div className={cx('feature-article__authors')} dangerouslySetInnerHTML={{ __html: authors }} />
                   )}
                 </div>
               )}

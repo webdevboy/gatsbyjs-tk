@@ -101,15 +101,14 @@
             top: 0;
             writing-mode: vertical-lr;
             text-orientation: mixed;
-            transform: rotate(180deg);
+            transform: rotate(0);
             display: none;
             letter-spacing: 1px;
             font-family: $font-sans-serif;
             font-weight: $sans-serif-light;
-            &.feature-article__authors--chinese {
+            .chinese {
               text-orientation: upright;
               letter-spacing: -2px;
-              transform: rotate(0);
             }
 
             @media #{$viewport-medium} {
