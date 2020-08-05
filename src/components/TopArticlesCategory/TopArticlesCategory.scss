@@ -108,7 +108,7 @@
             font-weight: $sans-serif-light;
             .chinese {
               text-orientation: upright;
-              letter-spacing: -2px;
+              letter-spacing: 2px;
             }
 
             @media #{$viewport-medium} {
