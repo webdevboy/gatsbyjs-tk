@@ -9,7 +9,7 @@ import Plus from 'src/svgs/plus';
 
 import './PhotoBackground.scss';
 
-function MessageGrid({ gridCount, message, plot, fullScreen }) {
+function MessageGrid({ gridCount, message, color, plot, fullScreen }) {
   const grid = Array.from({ length: gridCount }, (x, i) => i);
   const [parallaxDisabled, setParallaxDisabled] = useState(false);
   const _window = useWindow();
@@ -41,7 +41,7 @@ function MessageGrid({ gridCount, message, plot, fullScreen }) {
             return (
               <Parallax y={[10, -5]} className="cell" key={i} disabled={parallaxDisabled}>
                 {i === plotMap[plot] && (
-                  <span dangerouslySetInnerHTML={{ __html: message }}></span>
+                  <span dangerouslySetInnerHTML={{ __html: message }} style={{ color }} />
                 )}
               </Parallax>
             );
@@ -49,7 +49,7 @@ function MessageGrid({ gridCount, message, plot, fullScreen }) {
           return (
             <div className="cell" key={i}>
               {i === plotMap[plot] && (
-                <span dangerouslySetInnerHTML={{ __html: message }}></span>
+                <span dangerouslySetInnerHTML={{ __html: message }} style={{ color }} />
               )}
             </div>
           )
@@ -92,6 +92,7 @@ export default function PhotoBackground({
   cutline,
   floatingBodyText,
   floatingTextPosition,
+  floatingTextColor,
   fullScreen,
   image,
   popup,
@@ -127,6 +128,7 @@ export default function PhotoBackground({
         <MessageGrid
           gridCount={9}
           message={floatingBodyText}
+          color={floatingTextColor}
           plot={floatingTextPosition.toLowerCase()}
           fullScreen={fullScreen}
         />
