@@ -9,7 +9,6 @@ const AboutColumns = ({ columns }) => {
   return (
     <div className="about-columns">
       <div className="info-blocks">
-        
         {columns && columns.map(column => (
           <div className="info-block">
             {column.columnTitle && <h4 className="info-block__title">{column.columnTitle}</h4>}
@@ -18,9 +17,7 @@ const AboutColumns = ({ columns }) => {
                 <div className="info-block__section">
                   {block.columnBlockTitle && <div className="info-block__title__subtitle">{block.columnBlockTitle}</div>}
                   {block.columnBlockDescription && (
-                    <div className="info-block__description">
-                      {block.columnBlockDescription}
-                    </div>
+                    <div className="info-block__description" dangerouslySetInnerHTML={{ __html: block.columnBlockDescription }} />
                   )}
                 </div>
               ))}

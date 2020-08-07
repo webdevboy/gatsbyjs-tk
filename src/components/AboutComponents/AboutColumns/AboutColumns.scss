@@ -74,6 +74,11 @@
       font-size: 12px;
       letter-spacing: 0;
       line-height: 18px;
+      a {
+        text-decoration: underline;
+        font-weight: $sans-serif-bold;
+        color: $color-darkgray;
+      }
       @media #{$viewport-large} {
         font-family: $font-serif;
         color: $color-cutline;

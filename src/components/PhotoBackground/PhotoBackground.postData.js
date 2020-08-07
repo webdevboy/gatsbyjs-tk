@@ -5,6 +5,7 @@ module.exports = () => {
       fieldGroupName
       floatingBodyText
       floatingTextPosition
+      floatingTextColor
       fullScreen
       image {
         altText
