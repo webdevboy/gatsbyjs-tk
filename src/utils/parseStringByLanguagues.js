@@ -9,18 +9,18 @@ const parseStringByLanguagues = (string, callback) => {
   stringArraybBySpace.forEach(element => {
     const splittedElements = element.split('：');
     if(splittedElements.length > 1) {
-      stringArray.push(`${splittedElements[0]}：`);
-      stringArray.push(splittedElements[1]);
+      stringArray.push(chineseRegexp.test(splittedElements[0]) ? `<span class="chinese">${splittedElements[0]}：</span>` : `<span class="english">${splittedElements[0]}：</span>`);
+      stringArray.push(chineseRegexp.test(splittedElements[1]) ? `<span class="chinese">${splittedElements[1]}</span>` : `<span class="chinese">${splittedElements[1]}</span>`);
     }
     else if(splittedElements.length > 0) {
-      stringArray.push(splittedElements[0]);
+      stringArray.push(chineseRegexp.test(splittedElements[0]) ? `<span class="chinese">${splittedElements[0]}</span>` : `<span class="chinese">${splittedElements[0]}</span>`);
     }
     else {
-      stringArray.push(element);
+      stringArray.push(chineseRegexp.test(element) ? `<span class="chinese">${element}</span>` : `<span class="chinese">${element}</span>`);
     }
   });
   stringArray.forEach(item => {
-    callback(`<span class="${chineseRegexp.test(item) ? 'chinese' : 'english'}">${item}</span>`);
+    callback(item);
   });
 }
 
