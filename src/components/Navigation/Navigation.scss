@@ -6,8 +6,7 @@
   width: 100%;
   left: 0;
   right: 0;
-  height: calc(100vh - 77px);
-  height: calc(100vh - 77px);
+  height: auto;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: $color-white;
@@ -18,6 +17,8 @@
   transition-property: top bottom;
   transition-duration: 0.3s;
   transition-timing-function: ease;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 
   &.slide-in {
     padding-bottom: 25px;
@@ -28,6 +29,10 @@
       top: 0;
       left: 0;
       transform: translateX(0);
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 
@@ -157,8 +162,9 @@
 
           &.show {
             visibility: visible;
+            left: 0;
           }
-          
+
           li {
             &.go-back {
               width: 100%;
@@ -172,12 +178,11 @@
         }
 
         .sub-menu {
-          position: absolute;
+          position: fixed;
           left: 100%;
           width: 100%;
           transition: left 0.5s ease-in-out;
-          height: 100%;
-          top: 0;
+          top: 77px;
           z-index: 1;
 
           .go-back {
