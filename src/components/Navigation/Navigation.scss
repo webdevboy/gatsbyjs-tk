@@ -147,8 +147,18 @@
         border-bottom: none;
       }
 
+      &.language-li {
+        padding: 0px;
+      }
+
       &.with-menu {
         .sub-menu {
+          visibility: hidden;
+
+          &.show {
+            visibility: visible;
+          }
+          
           li {
             &.go-back {
               width: 100%;
@@ -177,6 +187,12 @@
               padding-left: 20px;
             }
           }
+        }
+      }
+
+      &.mobile-language {
+        @media #{$viewport-medium} {
+          display: none;
         }
       }
 

@@ -8,9 +8,12 @@ import { ItemWithSubNav } from './Navigation';
 import { isAuthenticated, logout } from 'src/utils/auth';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
+import LanguageToggle from 'src/components/LanguageToggle/LanguageToggle';
 
 function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
   const [showSubMenu, setShowSubMenu] = useState(false);
+  const [showLanguages, setShowLanguages] = useState(false);
+  const subNavOpen = showLanguages || showSubMenu ? true : false;
   const [t, i18n] = useTranslation();
   const { wordpress } = useStaticQuery(graphql`
     query {
@@ -50,12 +53,12 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
   const handleNavClick = (e, url) => {
     e.preventDefault();
     closeNav();
-    
+
     window.setTimeout(() => {
-       window.location.href = url;
+      window.location.href = url;
     }, 300)
   }
-  
+
   return wordpress ? (
     <nav
       className={cx({
@@ -72,8 +75,8 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
       </div>
       <ul className={cx({
         "main-menu": true,
-        "subnav-open": showSubMenu
-        })}
+        "subnav-open": subNavOpen
+      })}
       >
         {wordpress.menus &&
           wordpress.menus.nodes &&
@@ -117,6 +120,31 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
           <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale('/login', i18n.language)))}>
             {t('nav-subscribe')}
           </Link>
+        </li>
+        <li className={cx({
+          "with-menu": true,
+          "mobile-language": true
+        })}>
+          <button className="open-menu" onClick={() => setShowLanguages(true)}>
+            {t('nav-language')}
+            <span className="arrow next"></span>
+          </button>
+          <ul
+            className={cx({
+              "sub-menu": true,
+              show: showLanguages
+            })}
+          >
+            <li className="go-back">
+              <button onClick={() => setShowLanguages(false)}>
+                <span className="arrow prev"></span>
+                {t('nav-language')}
+              </button>
+            </li>
+            <li className="language-li">
+              <LanguageToggle />
+            </li>
+          </ul>
         </li>
         {isAuthenticated() && (
           <li onClick={logout}>
