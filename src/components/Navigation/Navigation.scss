@@ -232,5 +232,15 @@
 
 }
 
+.is-front-page {
+  .navigation ul>li.with-menu .sub-menu {
+    transform: translateY(100vh);
+
+    @media #{$viewport-medium} {
+        transform: none;
+    }
+  }
+}
+
 
 
