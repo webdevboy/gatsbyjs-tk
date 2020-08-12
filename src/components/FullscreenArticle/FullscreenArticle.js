@@ -74,7 +74,7 @@ function FullscreenArticle({
           .replace(' ', '-')}`}
       >
         <Parallax y={['20%', '-20%']}>
-          <div className="fullscreen-article__info">
+          <Link to={convertLinkLocale(articleObject.uri, i18n.language)} className="fullscreen-article__info">
             {articleObject.category && (
               <div
                 className="fullscreen-article__info__category"
@@ -93,15 +93,14 @@ function FullscreenArticle({
             )}
             {articleObject.uri && (
               <div className="fullscreen-article__info__more">
-                <Link
+                <div
                   className="fullscreen-article__info__more__link"
-                  to={convertLinkLocale(articleObject.uri, i18n.language)}
                 >
                   {t('read-more')}
-                </Link>
+                </div>
               </div>
             )}
-          </div>
+          </Link>
         </Parallax>
       </div>
     </div>

@@ -61,7 +61,7 @@ function Account() {
       </div>
       <div className="account__info">
         <div className="account__input">
-          <input type="text" placeholder={t('auth:email-address')} value={email} onChange={e => {setEmail(e.target.value)}} readOnly={!!email} />
+          <input type="text" placeholder={t('auth:email-address')} value={email} onChange={e => {setEmail(e.target.value)}} readOnly={user.email || (user.user_metadata && user.user_metadata.email)} />
         </div>
         <div className="account__input">
           <input type="text" placeholder={(t('auth:first-name'))} value={firstname} onChange={e => {setFirstname(e.target.value)}} />

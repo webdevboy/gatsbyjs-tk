@@ -69,9 +69,9 @@ function SociallyConnectedItem({
           {type === 'instagram' && <img src={Instagram} alt="instagram" />}
           {type === 'facebook' && <img src={Facebook} alt="facebook" />}
         </div>
-        {title && (
+        {/* {title && (
           <div className="socially__columns__column__info_title">{title}</div>
-        )}
+        )} */}
         <div className="socially__columns__column__info__social-date">
           {date}
         </div>

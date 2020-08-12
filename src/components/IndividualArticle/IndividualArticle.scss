@@ -30,6 +30,7 @@
       width: 100%;
       min-height: 400px;
       transform: scale(1.2);
+      cursor: pointer;
       // transition: transform 70ms;
     }
   }
@@ -37,6 +38,7 @@
   .individual-article__info {
     color: $color-darkgray;
     transition: color 0.2s ease-in;
+    text-decoration: none;
 
     @media #{$viewport-medium} {
       text-align: center;
