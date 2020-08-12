@@ -171,6 +171,7 @@
           height: 1em;
           text-align: center;
           transition: all 0.3s ease-in-out;
+          transform: rotate(90deg);
 
           @media #{$viewport-large} {
             display: none;

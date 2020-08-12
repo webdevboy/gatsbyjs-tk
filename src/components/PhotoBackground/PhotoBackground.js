@@ -14,7 +14,7 @@ function MessageGrid({ gridCount, message, color, plot, fullScreen }) {
   const [parallaxDisabled, setParallaxDisabled] = useState(false);
   const _window = useWindow();
 
-  if(_window) {
+  if (_window) {
     _window.addEventListener('resize', () => {
       if (_window.innerWidth < MEDIUM_BREAKPOINT) {
         setParallaxDisabled(true);
@@ -35,26 +35,26 @@ function MessageGrid({ gridCount, message, color, plot, fullScreen }) {
   };
 
   return (
-      <div className="grid">
-        {grid.map((cell, i) => {
-          if(fullScreen) {
-            return (
-              <Parallax y={[10, -5]} className="cell" key={i} disabled={parallaxDisabled}>
-                {i === plotMap[plot] && (
-                  <span dangerouslySetInnerHTML={{ __html: message }} style={{ color }} />
-                )}
-              </Parallax>
-            );
-          }
+    <div className="grid">
+      {grid.map((cell, i) => {
+        if (fullScreen) {
           return (
-            <div className="cell" key={i}>
+            <Parallax y={[10, -5]} className="cell" key={i} disabled={parallaxDisabled}>
               {i === plotMap[plot] && (
                 <span dangerouslySetInnerHTML={{ __html: message }} style={{ color }} />
               )}
-            </div>
-          )
-        })}
-      </div>
+            </Parallax>
+          );
+        }
+        return (
+          <div className="cell" key={i}>
+            {i === plotMap[plot] && (
+              <span dangerouslySetInnerHTML={{ __html: message }} style={{ color }} />
+            )}
+          </div>
+        )
+      })}
+    </div>
   );
 }
 
@@ -71,6 +71,17 @@ function PhotoPopup({ title, content }) {
         })}
       >
         <div className="popup-wrapper">
+          <button  className={cx({
+                'open-popup': true,
+                "mobile-close": true
+              })} onClick={() => popupOpenSet(!popupOpen)}>
+            <Plus
+              className={cx({
+                plus: !popupOpen,
+                close: popupOpen
+              })}
+            />
+          </button>
           <h4>{title}</h4>
           <p dangerouslySetInnerHTML={{ __html: content }}></p>
           <div className="notch"></div>
