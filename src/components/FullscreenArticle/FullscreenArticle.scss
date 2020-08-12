@@ -80,6 +80,7 @@
   .fullscreen-article__info {
     z-index: 10;
     position: relative;
+    text-decoration: none;
 
     .fullscreen-article__info__category {
       font-family: $font-sans-serif;

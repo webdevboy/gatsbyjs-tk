@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import { Parallax } from 'react-scroll-parallax';
 
@@ -11,6 +11,14 @@ import './IndividualArticle.scss';
 function IndividualArticle({ article, individualArticleImage, updateParallaxState = () => {} }) {
   const formattedArticle = getFormattedArticle(article, true);
   const [t, i18n] = useTranslation('article');
+  const goToArticle = () => {
+    navigate(
+      convertLinkLocale(
+        formattedArticle.articleUrl,
+        i18n.language
+      )
+    );
+  }
   return (
     formattedArticle && (
       <div className="individual-article-wrapper">
@@ -22,11 +30,17 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
                 className="individual-article__img"
                 src={individualArticleImage.sourceUrl}
                 onLoad={updateParallaxState}
+                onClick={goToArticle}
               />
             </Parallax>
           )}
 
-          <div className="individual-article__info">
+          <Link
+            to={convertLinkLocale(
+              formattedArticle.articleUrl,
+              i18n.language
+            )}
+            className="individual-article__info">
             {formattedArticle.cutline && (
               <div
                 className="individual-article__info__cutline"
@@ -56,7 +70,7 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
                 </Link>
               </div>
             )}
-          </div>
+          </Link>
         </div>
       </div>
     )
