@@ -2,8 +2,12 @@
 
 .fifty-fifty {
   font-family: $font-sans-serif;
-  display: grid;
+  display: block;
   grid-auto-rows: 1fr;
+
+  @media #{$viewport-large} {
+    display: grid;
+  }
 
   @media #{$viewport-large} {
     grid-template-columns: 1fr 1fr;
@@ -67,7 +71,11 @@
 
   .copy-block {
     position: relative;
-    padding: 60px 0px;
+    padding: 80px 20px 67px;
+
+    @media #{$viewport-medium} {
+      padding: 60px 0px;
+    }
 
     .wrapper {
       @media #{$viewport-medium} {
