@@ -205,7 +205,9 @@ $max_font: 22px;
       height: 3px;
       background-color: #b3a97e;
       width: 0%;
-      transition: width 0.1s ease;
+      @media #{$viewport-medium} {
+        transition: width 0.1s ease;
+      }
     }
   }
   &.light {
