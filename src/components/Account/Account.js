@@ -21,7 +21,7 @@ function Account() {
 
   useEffect(() => {
     if(!user || !user.user_metadata) return;
-    setEmail(user.email);
+    setEmail(user.email || user.user_metadata.email);
     setFirstname(user.user_metadata.firstname);
     setLastname(user.user_metadata.lastname);
     setCountry(user.user_metadata.country);
@@ -61,7 +61,7 @@ function Account() {
       </div>
       <div className="account__info">
         <div className="account__input">
-          <input type="text" placeholder={t('auth:email-address')} value={email} onChange={e => {setEmail(e.target.value)}} readOnly />
+          <input type="text" placeholder={t('auth:email-address')} value={email} onChange={e => {setEmail(e.target.value)}} readOnly={!!email} />
         </div>
         <div className="account__input">
           <input type="text" placeholder={(t('auth:first-name'))} value={firstname} onChange={e => {setFirstname(e.target.value)}} />

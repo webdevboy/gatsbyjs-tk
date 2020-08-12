@@ -112,7 +112,7 @@ class Page extends Component {
   }
   render() {
     const { pageContext } = this.props;
-    const { title, components } = pageContext;
+    const { title, components, fbPost } = pageContext;
     const heroData = pageContext.components.contents.filter(
       (o) => o.fieldGroupName === 'page_Components_Contents_HomepageHero'
     );
@@ -126,7 +126,7 @@ class Page extends Component {
           <Layout theme="light" isFrontPage={false}>
             <SEO title={title || 'Untitled'} />
             {[...layouts, ...aboutLayouts].map((layout, index) => (
-              <PageLayouts key={index} layoutData={layout} updateParallaxState={() => {}} />
+              <PageLayouts key={index} layoutData={layout} fbPost={fbPost} updateParallaxState={() => {}} />
             ))}
           </Layout>
         )}

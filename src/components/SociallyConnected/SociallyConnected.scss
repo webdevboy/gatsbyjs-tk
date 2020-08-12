@@ -198,15 +198,23 @@
           font-family: $font-serif;
           font-weight: $serif-regular;
           line-height: 20px;
-          word-break: break-word;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          text-transform: none;
+          span {
+            text-overflow: ellipsis;
+            text-transform: none;
+            height: 120px;
+            overflow: hidden;
+            word-break: break-word;
+            
+          }
 
           @media #{$viewport-medium} {
             font-size: 12px;
             margin-top: 15px;
             line-height: 18px;
+            height: auto;
+            span {
+              height: auto;
+            }
           }
         }
 

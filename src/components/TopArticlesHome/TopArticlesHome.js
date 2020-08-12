@@ -18,14 +18,13 @@ function Article({
   authors,
   t,
 }) {
+  const goToArticle = () => {
+    navigate(articleUrl);
+  }
   return (
     <div
       className="top_articles__columns__column__inner"
-      onClick={() => {
-        if (articleUrl) {
-          navigate(articleUrl);
-        }
-      }}
+      onClick={goToArticle}
     >
       <div className={cx({ 'article-circle-wrapper': isCircle })}>
         {imageUrl && (
@@ -150,7 +149,7 @@ export default function TopArticles(props) {
       <div className={`top-articles container ${theme}`}>
         <div className="featured-article">
           {featuredArticleFormatted && (
-            <div className="featured-article__inner">
+            <div className="featured-article__inner" onClick={() => {navigate(featuredArticleFormatted && featuredArticleFormatted.articleUrl)}}>
               {featuredArticleFormatted.imageUrl && (
                 <div className="featured-article__image-container">
                   <Parallax
@@ -171,9 +170,9 @@ export default function TopArticles(props) {
                       onLoad={updateParallaxState}
                     />
                   </Parallax>
-                  {featuredArticleFormatted.authors && (
+                  {/* {featuredArticleFormatted.authors && (
                     <div className={cx('feature-article__authors')} dangerouslySetInnerHTML={{ __html: authors }} />
-                  )}
+                  )} */}
                 </div>
               )}
               {featuredArticleFormatted.category && (

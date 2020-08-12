@@ -178,9 +178,9 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                       onLoad={updateParallaxState}
                     />
                   </Parallax>
-                  {featuredArticleFormatted.authors && (
+                  {/* {featuredArticleFormatted.authors && (
                     <div className={cx('feature-article__authors')} dangerouslySetInnerHTML={{ __html: authors }} />
-                  )}
+                  )} */}
                 </div>
               )}
               {name && <div className="article__category" dangerouslySetInnerHTML={{ __html: name }} />}

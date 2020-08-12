@@ -79,7 +79,6 @@ class PostWrapper extends Component {
             categories={filterCategories(categories)}
             theme={pageContext.themeSelect.themeSelect}
             updateParallaxState={this.updateParallaxState}
-
           />
         ))}
         {pageLimitModal && <PageLimitModal />}

@@ -168,9 +168,20 @@ export const setUserData = (cb = () => {}) => {
     }
     auth0Manage.getUser(authResult.idTokenPayload.sub, (err, result) => {
       if(result) {
-        localStorage.setItem("user", JSON.stringify(result))
+        localStorage.setItem("user", JSON.stringify(result));
+        if(result && !result.user_metadata) {
+          const userMetadata = {
+            city: '',
+            country: '',
+            firstname: result.given_name || '',
+            lastname: result.family_name || '',
+            receiveEmails: 'false',
+            receiveUpdates: 'false',
+          };
+          updateUserData(userMetadata, cb);
+        }
       }
-      cb();
+      if(cb) cb();
     });
   });
 }
