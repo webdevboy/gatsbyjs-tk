@@ -169,14 +169,14 @@ export const setUserData = (cb = () => {}) => {
     auth0Manage.getUser(authResult.idTokenPayload.sub, (err, result) => {
       if(result) {
         localStorage.setItem("user", JSON.stringify(result));
-        if(result && !result.user_metadata) {
+        if(result && (!result.user_metadata || !result.user_metadata.firstname)) {
           const userMetadata = {
             city: '',
             country: '',
             firstname: result.given_name || '',
             lastname: result.family_name || '',
-            receiveEmails: 'false',
-            receiveUpdates: 'false',
+            receiveEmails: 'true',
+            receiveUpdates: 'true',
           };
           updateUserData(userMetadata, cb);
         }
