@@ -37,7 +37,6 @@ function SociallyConnectedItem({
           setDescriptionMaxLength(215);
         }
         else if(_window.innerWidth > MEDIUM_BREAKPOINT) {
-          console.log(_window.innerWidth);
           setDescriptionMaxLength(1000);
         }
       });
