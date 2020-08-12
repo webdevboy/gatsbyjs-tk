@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Swiper from "react-id-swiper";
 import moment from 'moment';
 import { navigate, useStaticQuery, graphql } from "gatsby";
 import { useTranslation } from "react-i18next";
 
 import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints";
+import useWindow from 'src/hooks/useWindow';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import Instagram from 'src/images/Instagram_icon_gray.png';
+import Facebook from 'src/images/Facebook_icon_gray.png';
 
 import "../Chefs/Chefs.scss"
 import "./SociallyConnected.scss"
@@ -17,9 +19,36 @@ function SociallyConnectedItem({
   byline,
   imageUrl,
   articleUrl,
-  timestamp,
+  date,
 }) {
   const [t, i18n] = useTranslation('article');
+  const _window = useWindow();
+  const [descriptionMaxLength, setDescriptionMaxLength] = useState(215);
+  
+
+  useEffect(() => {
+    let windowResizeListener = null;
+    if(_window) {
+      if(_window.innerWidth > MEDIUM_BREAKPOINT) {
+        setDescriptionMaxLength(1000);
+      }
+      windowResizeListener = _window.addEventListener('resize', () => {
+        if(_window.innerWidth < MEDIUM_BREAKPOINT) {
+          setDescriptionMaxLength(215);
+        }
+        else if(_window.innerWidth > MEDIUM_BREAKPOINT) {
+          console.log(_window.innerWidth);
+          setDescriptionMaxLength(1000);
+        }
+      });
+    }
+    return () => {
+      if(_window && windowResizeListener) {
+        _window.removeEventListener(windowResizeListener);
+      }
+    }
+  }, []);
+  
   return (
     <a
       className="socially__columns__column"
@@ -39,17 +68,17 @@ function SociallyConnectedItem({
       <div className="socially__columns__column__info">
         <div className="socially__columns__column__info__social-type">
           {type === 'instagram' && <img src={Instagram} alt="instagram" />}
+          {type === 'facebook' && <img src={Facebook} alt="facebook" />}
         </div>
         {title && (
           <div className="socially__columns__column__info_title">{title}</div>
         )}
         <div className="socially__columns__column__info__social-date">
-          {/* {`POSTED BY TASTING KITCHEN • ${moment(new Date(+`${timestamp}000`)).format('MMMM DD, YYYY')}`} */}
-          {`${moment(new Date(+`${timestamp}000`)).format('MMMM DD, YYYY')}`}
+          {date}
         </div>
         {byline && (
           <div className="socially__columns__column__info_description">
-            {byline}
+            <span>{byline.length > descriptionMaxLength ? `${byline.slice(0, descriptionMaxLength)}...` : byline}</span>
           </div>
         )}
 
@@ -63,7 +92,7 @@ function SociallyConnectedItem({
   )
 }
 
-function SociallyConnected({ column1, column2, column3 }) {
+function SociallyConnected({ fbPost }) {
   const [t, i18n] = useTranslation('common');
   const { allInstaNode } = useStaticQuery(graphql`
     query {
@@ -124,6 +153,10 @@ function SociallyConnected({ column1, column2, column3 }) {
     },
   }
 
+  const convertByline = byline => {
+    const newByline = byline.split(/\r?\n/);
+    return newByline.length > 0 ? newByline[0] : ''; 
+  }
   const posts = allInstaNode && allInstaNode.edges && allInstaNode.edges;
   posts.sort((firstPost, secondPost) => {
     const firstPostDate = moment(new Date(+`${firstPost.node.timestamp}000`));
@@ -136,45 +169,57 @@ function SociallyConnected({ column1, column2, column3 }) {
     }
     return 0;
   });
-  
+  const firstPost = posts.length > 0 && posts[0];
+  const secondPost = fbPost;
+  const thirdPost = posts.length > 0 && posts[1];
   return (
     <div className="socially-connected">
       <div className="container">
         <div className="socially__title">{t('socially-connected')}</div>
-        <div className="socially__columns">
+        <div className="socially__columns">    
           <Swiper {...params}>
-            {posts.slice(0, 3).map(node => {
-              let byline = node.node.caption.split(/\r?\n/);
-              return (
-                <div key={node.node.id}>
-                  <SociallyConnectedItem
-                    {...{
-                      type: 'instagram',
-                      title: 'From: tastingkitchen',
-                      byline: byline.length > 0 ? byline[0] : '',
-                      imageUrl: node.node.original,
-                      articleUrl: `https://www.instagram.com/p/${node.node.id}/`,
-                      timestamp: node.node.timestamp,
-                    }}
-                  />
-                </div>
-              )
-            })}
-            {/* {column1 && (
+            {firstPost && (
               <div>
-                <SociallyConnectedItem {...getFormattedArticle(column1)} />
+                <SociallyConnectedItem
+                  {...{
+                    type: 'instagram',
+                    title: 'From: tastingkitchen',
+                    byline: convertByline(firstPost.node.caption),
+                    imageUrl: firstPost.node.original,
+                    articleUrl: `https://www.instagram.com/p/${firstPost.node.id}/`,
+                    date: `${moment(new Date(+`${firstPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
+                  }}
+                />
               </div>
             )}
-            {column2 && (
+            {secondPost && (
               <div>
-                <SociallyConnectedItem {...getFormattedArticle(column2)} />
+                <SociallyConnectedItem
+                  {...{
+                    type: 'facebook',
+                    title: 'From: tastingkitchen',
+                    byline: secondPost.message,
+                    imageUrl: secondPost.full_picture,
+                    articleUrl: `https://www.instagram.com/tastingkitchen/`,
+                    date: `${moment(new Date(secondPost.created_time)).format('MMMM DD, YYYY')}`,
+                  }}
+                />
               </div>
             )}
-            {column3 && (
+            {thirdPost && (
               <div>
-                <SociallyConnectedItem {...getFormattedArticle(column3)} />
+                <SociallyConnectedItem
+                  {...{
+                    type: 'instagram',
+                    title: 'From: tastingkitchen',
+                    byline: convertByline(thirdPost.node.caption),
+                    imageUrl: thirdPost.node.original,
+                    articleUrl: `https://www.instagram.com/p/${thirdPost.node.id}/`,
+                    date: `${moment(new Date(+`${thirdPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
+                  }}
+                />
               </div>
-            )} */}
+            )}
           </Swiper>
         </div>
       </div>
