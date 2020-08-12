@@ -51,7 +51,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
         homeHeroLoaded={homeHeroLoaded}
       />
       <div className={cx('sidebar-open-overlay', { hidden: !showNav })} />
-      <div className={cx('page-body', { shifted: showNav, 'page-body--no-padding': isFrontPage || isArticlePage || removeTopPadding })}>
+      <div className={cx('page-body', { shifted: showNav, 'page-body--no-padding': isFrontPage || removeTopPadding })}>
         <main>{children}</main>
         <Footer />
       </div>

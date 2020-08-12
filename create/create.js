@@ -92,7 +92,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
 
 
   // GET ONE FB POST
-  FB.setAccessToken('EAAIlIPz8askBADHB2OVqfFTqmZCrorhRiyoHijv4DvPOHVzQk5vm4y1PB1PsLjESH5UUGfNUm7Rlf3pBevAmsULNtt5C6bF6isxc7v9mHZCNIBJnvlzoetDIfPKVNj1ggdudAlnd0awTZCkR7hTB7bJUpJckrgmwuuKCCE1Vii8X2HakjjhesMnD0XjrZCwZA7PIqVadqxiZCESWno7lcd');
+  FB.setAccessToken('EAAS8LGISx9wBAAsd9D0mZAyplYf2wujkABPQE7JDfeN6FvCbuQPGunyWTqXTOSyMnPGx0EFcZBX5uEYP8bSGoQoAtg6OTIYZBv4VUVnJSZBNa1kZB3CLZBPBXFTZAPOPmOOeHZBMwqaGvKKbNzVSFdQsJWDvAwjfAylVK8XfPOVxCOZBwijcyilCE6UHy0ZA3Um6gZD');
   FB.api('428883340546131/feed', { limit: 1, fields: ['id', 'message', 'created_time', 'full_picture'] }, function (res) {
     if(res && !res.err) {
       fbPost = res.data.length > 0 && res.data[0];

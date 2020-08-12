@@ -77,14 +77,5 @@ module.exports = {
         username: `301730536`,
       },
     },
-    {
-      resolve: `gatsby-source-facebook`,
-      options: {
-        places: [`tastingkitchen`], // Can be either a numeric ID or the URL ID
-        params: {
-        },
-        key: "EAAIlIPz8askBAHBMzXdYWQZCa5fDMDTVCPLisbNJuZC8U9dLZAnKZCsrvjJtfawjLWeOR43BgbBYzaEvHaWWXldAuqN8a0voNWVafwfXS5lci8FZA0H0EYFJoATQiXyo1MDCymqbVg2dWdiDZBOCjk6Tqg81cccANXX6ELZAZCePa9zVx98TzZAhEBXaGnGUD6zvC3BQd56ZARe1FyZBRWWFDDYEEjjmZAu9aNIZD"
-      },
-    }
   ],
 };
