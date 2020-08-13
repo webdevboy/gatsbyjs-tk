@@ -117,7 +117,7 @@
     margin-top: 40px;
     position: relative;
 
-    @media #{$viewport-medium} {
+    @media #{$viewport-small} {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       column-gap: 0;
@@ -218,7 +218,6 @@
     
       .top_articles__columns__column__image {
         width: 100%;
-        min-height: 444px;
         object-fit: cover;
         object-position: center;
         transform: scale(1.1);
