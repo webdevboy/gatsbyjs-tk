@@ -24,12 +24,19 @@
   .parallax-outer {
     .parallax-inner {
       position: relative;
+
       @media #{$viewport-medium} {
         top: -30px;
       }
+
       @media #{$viewport-large} {
         top: 0;
       }
+
+      @media #{$viewport-medium-height} {
+        top: -30px;
+      }
+      
     }
     
   }
