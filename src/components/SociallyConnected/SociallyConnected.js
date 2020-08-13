@@ -171,7 +171,7 @@ function SociallyConnected({ fbPost }) {
   const firstPost = posts.length > 0 && posts[0];
   const secondPost = fbPost;
   const thirdPost = posts.length > 0 && posts[1];
-  console.log(secondPost);
+  
   return (
     <div className="socially-connected">
       <div className="container">
