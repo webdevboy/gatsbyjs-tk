@@ -171,6 +171,7 @@ function SociallyConnected({ fbPost }) {
   const firstPost = posts.length > 0 && posts[0];
   const secondPost = fbPost;
   const thirdPost = posts.length > 0 && posts[1];
+  console.log(secondPost);
   return (
     <div className="socially-connected">
       <div className="container">
@@ -199,7 +200,7 @@ function SociallyConnected({ fbPost }) {
                     title: 'From: tastingkitchen',
                     byline: secondPost.message,
                     imageUrl: secondPost.full_picture,
-                    articleUrl: `https://www.instagram.com/tastingkitchen/`,
+                    articleUrl: `https://www.facebook.com/tastingkitchen/`,
                     date: `${moment(new Date(secondPost.created_time)).format('MMMM DD, YYYY')}`,
                   }}
                 />
