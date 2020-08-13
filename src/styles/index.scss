@@ -9,7 +9,6 @@ html {
   width: 100%;
   min-height: 100%;
   min-width: 100%;
-
   *,
   *:before,
   *:after {
@@ -166,14 +165,4 @@ html {
   // padding-top: $header-height;
 }
 
-.chinese-language {
-  font-family: $font-serif-chinese;
-  font-weight: $sans-serif-thin; 
-  .thin {
-    font-weight: $sans-serif-thin!important;  
-  }
-  *, div, span, ul, li, a, p, h1, h2, h3, h4, h5, h6 {
-    font-family: $font-serif-chinese!important;
-    font-weight: $sans-serif-thin!important;  
-  }
-}
+@import './chinese_fonts.scss';

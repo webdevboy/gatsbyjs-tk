@@ -92,11 +92,10 @@ module.exports = async ({ actions, graphql, reporter }) => {
 
 
   // GET ONE FB POST
-  FB.setAccessToken('EAAS8LGISx9wBAAsd9D0mZAyplYf2wujkABPQE7JDfeN6FvCbuQPGunyWTqXTOSyMnPGx0EFcZBX5uEYP8bSGoQoAtg6OTIYZBv4VUVnJSZBNa1kZB3CLZBPBXFTZAPOPmOOeHZBMwqaGvKKbNzVSFdQsJWDvAwjfAylVK8XfPOVxCOZBwijcyilCE6UHy0ZA3Um6gZD');
-  FB.api('428883340546131/feed', { limit: 1, fields: ['id', 'message', 'created_time', 'full_picture'] }, function (res) {
+  FB.setAccessToken(process.env.GATSBY_FACEBOOK_GRAPH_TOKEN);
+  FB.api(`${process.env.GATSBY_FACEBOOK_PAGE_ID}/feed`, { limit: 1, fields: ['id', 'message', 'created_time', 'full_picture'] }, function (res) {
     if(res && !res.err) {
       fbPost = res.data.length > 0 && res.data[0];
-      console.log(fbPost);
     }
   });
 

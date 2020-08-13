@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { SiteLogo } from 'src/svgs';
 import { Link } from '@reach/router';
-import { useStaticQuery, graphql } from "gatsby";
+import { isAuthenticated } from 'src/utils/auth';
 
 import MenusEn from './menus.en';
 import MenusZh from './menus.zh';
@@ -39,7 +39,7 @@ function Footer() {
       <div className="opt-in">
         <h2>{t('footer-optin-headline')}</h2>
         <p>{t('footer-optin-copy')}</p>
-        <Link to={getLangLink('/login', i18n.language)}>{t('signup')}</Link>
+        <Link to={getLangLink(isAuthenticated() ? '/account' : '/login', i18n.language)}>{t('signup')}</Link>
       </div>
       <div className="site-links">
         <div className="tabs">
