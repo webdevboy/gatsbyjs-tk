@@ -146,15 +146,16 @@
       }
 
       .top__articles__category {
-        display: grid;
         position: relative;
-        
-        grid-template-columns: 1fr 1fr;
-        column-gap: 20px;
-
-        @media #{$viewport-medium} {
+        display: block;
+                
+        @media #{$viewport-small} {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
+          column-gap: 20px;
+        }
+
+        @media #{$viewport-medium} {
           column-gap: 0;
           margin-top: 50px;
         }
@@ -241,8 +242,6 @@
           .article-img {
             width: 100%;
             height: auto;
-            min-height: 187px;
-            max-height: 250px;
             object-fit: cover;
             object-position: center;
             transform: scale(1.1);
@@ -381,14 +380,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-          object-position: center;
+            object-position: center;
           }
         }
         .article-img {
           width: 100%;
           height: auto;
-          min-height: 187px;
-          max-height: 250px;
           object-fit: cover;
           object-position: center;
           transform: scale(1.1);
