@@ -1,0 +1,637 @@
+
+// OVERRIDE STYLES FOR CHINESE LANGUAGE
+
+.chinese-language {
+  @import 'variables_chinese';
+  .about-columns {
+    .info-block {
+      .info-block__title {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-bold!important;
+      }
+      .info-block__title__subtitle {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-medium!important;
+      }
+      .info-block__description {
+        font-family: $font-sans-serif!important;
+        a {
+          font-weight: $sans-serif-bold!important;
+        }
+        @media #{$viewport-large} {
+          font-family: $font-serif!important;
+        }
+      }
+  
+      .info-block__editorial__block {
+        font-family: $font-sans-serif!important;
+        .info-block__editorial__block__name {
+          font-family: $font-serif!important;
+        }
+      }
+  
+      .info-block__newsletter {
+        font-family: $font-serif!important;
+      }
+    }
+  }
+  .about-main {
+    .content-block {
+      .img-wrapper {
+        .cutline {
+          font-family: $font-sans-serif!important;
+        }
+      }
+      .copyblock {
+        p {
+          font-family: $font-serif!important;
+        }
+      }
+    }
+  }
+  .about-title {
+    h1 {
+      font-family: $font-serif!important;
+      font-weight: $serif-regular!important;
+    }
+  }
+  .account-container {
+    font-family: $font-sans-serif!important;
+    .account__update__button {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-semibold!important;
+    }
+  }
+  .reset-password {
+    font-family: $font-sans-serif!important;
+    .reset-password__update__button {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-semibold!important;
+    }
+  }
+  .article__description {
+    font-family: $font-serif!important;
+    font-weight: $serif-regular!important;
+  }
+  .article__category {
+    font-family: $font-sans-serif!important;
+    font-weight: $serif-regular!important;
+  }
+  .article__title {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-semibold!important;
+    @media #{$viewport-medium} {
+      font-weight: $sans-serif-semibold!important;
+    }
+  }
+  .article__more {
+    font-family: $font-sans-serif!important;
+    font-weight: $serif-bold!important;
+  }
+  .ad__img {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-semibold!important;
+  }
+  .chefs__title {
+    font-family: $font-serif!important;
+    font-weight: $serif-regular!important;
+  }
+  .chefs__columns__column__info_cutline {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-regular!important;
+  }
+
+  .chefs__columns__column__info_title {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-semibold!important;
+  }
+
+  .chefs__columns__column__info_description {
+    font-family: $font-serif!important;
+    font-weight: $serif-regular!important;
+  }
+
+  .chefs__columns__column__info_more {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-bold!important;
+  }
+  .copy-columns {
+    font-family: $font-serif!important;
+  }
+  .headline {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-semibold!important;
+  }
+
+  .subhead {
+    font-family: $font-sans-serif!important;
+  }
+
+  .copy {
+    font-family: $font-serif!important;
+  }
+  .events-component__date {
+    font-family: $font-sans-serif!important;
+  }
+  .events-component__day {
+    font-family: $font-serif!important;
+  }
+  .event {
+    font-family: $font-sans-serif!important;
+  }
+  .event__title {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-semibold!important;
+  }
+  .event__desc1 {
+    font-family: $font-sans-serif!important;
+  }
+
+  .event__desc2 {
+    font-family: $font-serif!important;
+  }
+
+  .event__link {
+    font-weight: $sans-serif-bold!important;
+  }
+  .events-page {
+    font-family: $font-sans-serif!important;
+  }
+  .events-page__body__cutline {
+    font-family: $font-sans-serif!important;
+  }
+  .events-page__body__title {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-bold!important;
+  }
+  .events-page__body__block__text {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-medium!important;
+  }
+  .events-page__body__description {
+    font-family: $font-serif!important;
+  }
+  .events-page__controls {
+    font-family: $font-sans-serif!important;
+    font-weight: $sans-serif-medium!important;
+  }
+  .fifty-fifty {
+    font-family: $font-sans-serif!important;
+    .copy-block {
+      .wrapper {
+        h4 {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-bold!important;
+        }
+  
+        p {
+          font-family: $font-serif!important;
+          font-weight: $serif-regular!important;
+        }
+      }
+    }
+  }
+  .footer {
+    .opt-in {
+      h2 {
+        font-family: $font-serif!important;
+      }
+
+      p {
+        font-family: $font-serif!important;
+      }
+
+      a {
+        font-family: $font-sans-serif!important;
+      }
+    }
+
+    .site-links {
+      .tabs {
+        font-family: $font-sans-serif!important;
+      }
+
+      .about {
+        font-family: $font-serif!important;
+        font-weight: $serif-regular!important;
+      }
+
+      .logo {
+        span {
+          font-family: $font-sans-serif!important;
+        }
+      }
+
+      .copyright {
+        font-family: $font-sans-serif!important;
+      }
+    }
+  }
+  .fullscreen-article {
+    .fullscreen-article__info {
+      .fullscreen-article__info__category {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-regular!important;
+      }
+  
+      .fullscreen-article__info__title {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-semibold!important;
+      }
+  
+      .fullscreen-article__info__description {
+        font-family: $font-serif!important;
+        font-weight: $serif-regular!important;
+      }
+  
+      .fullscreen-article__info__more {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-bold!important;
+      }
+    }
+  }
+  .header {
+    .header__article {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-medium!important;
+      .header__article__shares {
+        .header__article__shares__title {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-medium!important;
+        }
+      }
+    }
+    button {
+      .title {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-regular!important;
+      }
+    }
+  }
+  .individual-article {
+    .individual-article__info {
+      .individual-article__info__cutline {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-regular!important;
+      }
+      .individual-article__info__title {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-semibold!important;
+      }
+  
+      .individual-article__info__description {
+        font-family: $font-serif!important;
+        font-weight: $serif-regular!important;
+      }
+  
+      .individual-article__info__more {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-bold!important;
+      }
+    }
+  }
+  .language-container {
+    .language__selected {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-semibold!important;
+    }
+    .language__dropdown {
+      li {
+        span {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-semibold!important;
+        }
+      }
+    }
+  }
+  .login-container {
+    .login__input {
+      input, select {
+        font-family: $font-sans-serif!important;
+      }
+    }
+    .login__submit {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-semibold!important;
+    }
+    .login__lost-password {
+      font-family: $font-sans-serif!important;
+    }
+    .login__remember {
+      label {
+        font-family: $font-sans-serif!important;
+      }
+    }
+    .login__facebook {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-semibold!important;
+    }
+  }
+  .login-header {
+    h2 {
+      font-family: $font-serif!important;
+      font-weight: $sans-serif-regular!important;
+    }
+    .login__error {
+      font-family: $font-sans-serif!important;
+    }
+    .login-header__toggle {
+      div {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-semibold!important;
+      }
+    }
+  }
+  .header__user {
+    a {
+      font-family: $font-sans-serif!important;
+    }
+  }
+  .header__login-link {
+    font-family: $font-sans-serif!important;
+  }
+    
+  .lost-password {
+    .lost-password__title {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-regular!important;
+    }
+    .lost-password__email-sent {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-regular!important;
+    }
+    .lost-password__submit {
+      font-family: $font-sans-serif!important;
+    }
+  }
+  .navigation {
+    font-family: $font-sans-serif!important;
+    ul {
+      li {
+        > button {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-semibold!important;
+        }
+      }
+      > li {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-semibold!important;
+      }
+    }
+  }
+  .not-found {
+    .not-found__modal {
+      .not-found__modal-body {
+        .not-found__modal-body__aplogize {
+          font-family: $font-sans-serif!important;
+        }
+        .not-found__modal-body__title {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-thin!important;
+        }
+        .not-found__modal-body__description {
+          font-family: $font-serif!important;
+          font-weight: $serif-regular!important;
+        }
+      }
+    }
+  } 
+  .page-limit-modal-container {
+    .page-limit-modal {
+      .page-limit-modal__body {
+        .page-limit-modal__body__description {
+          font-family: $font-sans-serif!important;
+        }
+        .page-limit-modal__body__buttons {
+          .page-limit-modal__body__buttons__button {
+            font-family: $font-sans-serif!important;
+            font-weight: $sans-serif-semibold!important;
+          }
+        }
+      }
+    }
+  }
+  .grid {
+    .cell {
+      span {
+        font-family: $font-serif!important;
+      }
+    }
+  }
+  .popup {
+    .popup-wrapper {
+      h4 {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-semibold!important;
+      }
+      p {
+        font-family: $font-serif!important;
+      }
+    }
+  } 
+  .photo {
+    font-family: $font-sans-serif!important;
+  }
+  .post-hero {
+    .block {
+      .block-wrapper {
+        .category-name {
+          font-family: $font-sans-serif!important;
+        }
+  
+        .headline,
+        .byline {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-bold!important;
+        }
+        .byline {
+          font-family: $font-serif!important;
+          font-weight: $serif-regular!important;
+        }
+        .attribution {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-regular!important;
+        }
+      }
+    }
+  }
+  .quote {
+    blockquote {
+      p {
+        font-family: $font-serif!important;
+      }
+    }
+  }
+  .signup-container {
+    .login__input {
+      input, select {
+        font-family: $font-sans-serif!important;
+      }
+    }
+    .login__input-select {
+      select {
+        font-family: $font-sans-serif!important;
+      }
+    }
+    .login__submit {
+      font-family: $font-sans-serif!important;
+      font-weight: $sans-serif-semibold!important;
+    }
+  }
+  .socially-connected {
+    .socially__title {
+      font-family: $font-serif!important;
+      font-weight: $serif-regular!important;
+    }
+  
+    .socially__columns {
+      .socially__columns__column {
+        .socially__columns__column__info {
+          .socially__columns__column__info__social-date {
+            font-family: $font-sans-serif!important;
+          }
+  
+          .socially__columns__column__info_title {
+            font-family: $font-sans-serif!important;
+            font-weight: $sans-serif-semibold!important;
+          }
+  
+          .socially__columns__column__info_description {
+            font-family: $font-serif!important;
+            font-weight: $serif-regular!important;
+          }
+  
+          .socially__columns__column__info_more {
+            font-family: $font-sans-serif!important;
+            font-weight: $sans-serif-bold!important;
+          }
+        }
+      }
+    }
+  }
+  .tasting-notes {
+    .tasting-notes__title {
+      font-family: $font-serif!important;
+      font-weight: $serif-regular!important;
+    }
+    .tasting-notes__slider-container {
+      .tasting-notes__note {
+        .tasting-notes__note__cutline {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-regular!important;
+        }
+        .tasting-notes__note__title {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-semibold!important;
+        }
+        .tasting-notes__note__byline {
+          font-family: $font-serif!important;
+          font-weight: $serif-regular!important;
+        }
+        .tasting-notes__note__more {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-bold!important;
+        }
+      }
+    }
+  }
+  .section-landing {
+    .top-articles {
+      .article__title {
+        font-weight: $sans-serif-bold!important;
+      }
+      .featured-article {
+        .featured-article__inner {
+          .featured-article__image {
+            .feature-article__authors {
+              font-family: $font-sans-serif!important;
+              font-weight: $sans-serif-light!important;
+            }
+          }
+        }
+      }
+    }
+    .top-articles__more {
+      .article__category {
+        font-family: $font-sans-serif!important;
+      }
+    
+      .article__title {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-semibold!important;
+        @media #{$viewport-medium} {
+          font-weight: $serif-bold!important;
+        }
+      }
+      .article__description {
+        font-family: $font-serif!important;
+        font-weight: $serif-regular!important;
+      }
+      .article__more {
+        font-family: $font-sans-serif!important;
+        font-weight: $serif-bold!important;
+      }
+    }
+  }
+  .about-page {
+    h1 {
+      font-family: $font-serif!important;
+      font-weight: $serif-regular!important;
+    }
+    .content-block {
+      .img-wrapper {
+        .cutline {
+          font-family: $font-sans-serif!important;
+        }
+      }
+      .copyblock {
+        p {
+          font-family: $font-serif!important;
+        }
+      }
+    }
+  }
+  .account-wrapper {
+    .account__input {
+      input {
+        font-family: $font-sans-serif!important;
+      }
+      
+      .account__input__select {
+        select {
+          font-family: $font-sans-serif!important;
+        }
+      }
+    }
+    .account__title {
+      font-family: $font-serif!important;
+      font-weight: $sans-serif-regular!important;
+    }
+    .account__description, .reset-password__description {
+      font-family: $font-serif!important;
+    }
+    .account__toggles {
+      .account__toggle {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-semibold!important;
+      }
+    }
+  }
+  .signup__checkbox-container {
+    font-family: $font-sans-serif!important;
+  }
+  .privacy-notice-text {
+    font-family: $font-sans-serif!important;
+  }
+  .developing {
+    input {
+      font-family: $font-serif!important;
+    }
+    button {
+      font-family: $font-serif!important;
+    }
+    div {
+      font-family: $font-serif!important;
+    }
+  }
+}
