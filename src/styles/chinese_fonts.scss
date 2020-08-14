@@ -187,6 +187,9 @@
         p {
           font-family: $font-serif!important;
           font-weight: $serif-regular!important;
+          b {
+            font-weight: $chinese-font-bold!important;
+          }
         }
       }
     }
@@ -522,7 +525,7 @@
         }
         .tasting-notes__note__title {
           font-family: $font-sans-serif!important;
-          font-weight: $sans-serif-semibold!important;
+          font-weight: $chinese-font-bold!important;
         }
         .tasting-notes__note__byline {
           font-family: $font-serif!important;
