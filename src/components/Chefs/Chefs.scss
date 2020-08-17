@@ -91,10 +91,6 @@
       cursor: pointer;
       color: $color-darkgray;
 
-      &:hover {
-        color: $color-darkgray;
-      }
-
       @media #{$viewport-large} {
         color: $color-gray;
       }
@@ -118,7 +114,8 @@
           background-size: cover;
           background-position: center top;
           background-repeat: no-repeat;
-          transition: transform 70ms;
+          transition: transform $hover-animation-duration;
+          -webkit-backface-visibility: hidden; 
           transform: scale(1.1);
 
           @media #{$viewport-medium} {
@@ -180,6 +177,14 @@
             text-decoration: none;
             color: inherit;
           }
+        }
+      }
+
+      &:hover {
+        color: $color-darkgray;
+
+        .chefs__columns__column__img-wrapper .chefs__columns__column__img {
+          transform: scale(1.2);
         }
       }
     }
