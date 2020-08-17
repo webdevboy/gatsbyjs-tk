@@ -201,7 +201,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       {isArticlePage && (
         <div className="header__article-wrapper">
           <div ref={articleHeaderRef} className={`header__article ${theme}`}>
-            <div>{title}</div>
+            <div dangerouslySetInnerHTML={{ __html: title }} />
             <div className="header__article__shares">
               <div className="header__article__shares__title">
                 Share:
