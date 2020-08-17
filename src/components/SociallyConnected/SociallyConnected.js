@@ -69,9 +69,9 @@ function SociallyConnectedItem({
           {type === 'instagram' && <img src={Instagram} alt="instagram" />}
           {type === 'facebook' && <img src={Facebook} alt="facebook" />}
         </div>
-        {/* {title && (
+        {title && (
           <div className="socially__columns__column__info_title">{title}</div>
-        )} */}
+        )}
         <div className="socially__columns__column__info__social-date">
           {date}
         </div>
@@ -183,7 +183,7 @@ function SociallyConnected({ fbPost }) {
                 <SociallyConnectedItem
                   {...{
                     type: 'instagram',
-                    title: 'From: tastingkitchen',
+                    title: 'tastingkitchen',
                     byline: convertByline(firstPost.node.caption),
                     imageUrl: firstPost.node.original,
                     articleUrl: `https://www.instagram.com/p/${firstPost.node.id}/`,
@@ -197,7 +197,7 @@ function SociallyConnected({ fbPost }) {
                 <SociallyConnectedItem
                   {...{
                     type: 'facebook',
-                    title: 'From: tastingkitchen',
+                    title: 'tastingkitchen',
                     byline: secondPost.message,
                     imageUrl: secondPost.full_picture,
                     articleUrl: `https://www.facebook.com/tastingkitchen/`,
@@ -211,7 +211,7 @@ function SociallyConnected({ fbPost }) {
                 <SociallyConnectedItem
                   {...{
                     type: 'instagram',
-                    title: 'From: tastingkitchen',
+                    title: 'tastingkitchen',
                     byline: convertByline(thirdPost.node.caption),
                     imageUrl: thirdPost.node.original,
                     articleUrl: `https://www.instagram.com/p/${thirdPost.node.id}/`,
