@@ -6,6 +6,7 @@ import * as cx from "classnames"
 
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import getIsPageAvailable from 'src/utils/getIsPageAvailable';
+import replaceAmpersand from 'src/utils/replaceAmpersand';
 import MenusZhTc from './Menus.zh_tc';
 import MenusZh from './Menus.zh';
 import MenusEn from './Menus.en';
@@ -25,7 +26,7 @@ export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu, 
   return (
     <li className="with-menu" key={menu.id}>
       <button className="open-menu" onClick={() => setShowSubMenu(true)}>
-        {menu.label}
+        {replaceAmpersand(menu.label)}
         <span className="arrow next"></span>
       </button>
       <ul
@@ -37,13 +38,13 @@ export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu, 
         <li className="go-back">
           <button onClick={() => setShowSubMenu(false)}>
             <span className="arrow prev"></span>
-            {menu.label}
+            {replaceAmpersand(menu.label)}
           </button>
         </li>
         {menu.childItems.nodes.map(node => {
           return (
             <li key={node.id}>
-              <Link to={convertLinkLocale(getUrlPath(node.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(node.url), i18n.language)))}>{node.label}</Link>
+              <Link to={convertLinkLocale(getUrlPath(node.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(node.url), i18n.language)))}>{replaceAmpersand(node.label)}</Link>
             </li>
           )
         })}

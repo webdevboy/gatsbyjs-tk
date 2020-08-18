@@ -6,6 +6,7 @@ import * as cx from "classnames"
 
 import { ItemWithSubNav } from './Navigation';
 import { isAuthenticated, logout } from 'src/utils/auth';
+import replaceAmpersand from 'src/utils/replaceAmpersand';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import Hamburger from 'src/components/common/Hamburger/Hamburger';
 import LanguageToggle from 'src/components/LanguageToggle/LanguageToggle';
@@ -88,7 +89,7 @@ function MenusZhTw({ theme, showNav, path, closeNav, filterMenuItems }) {
             return menu.childItems.nodes.length <= 1 ? (
               <li key={menu.id}>
                 <Link to={convertLinkLocale(getUrlPath(menu.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(menu.url), i18n.language)))}>
-                  {menu.label}
+                  {replaceAmpersand(menu.label)}
                 </Link>
               </li>
             ) : (
