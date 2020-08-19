@@ -1,5 +1,5 @@
 {
-  "subscribe-btn": "订阅",
+  "register-btn": "寄存器",
   "go-to-events": "活动概覧",
   "go-to-articles": "文章阅览",
   "email-placeholder": "电子邮件",
@@ -13,9 +13,6 @@
   "nav-subscribe": "订阅电子报",
   "nav-account": "帐户",
   "nav-language": "语言",
-  "subscribe-popup-text1": "这个故事收录在TK杂志中，",
-  "subscribe-popup-text2": "欢迎您仔细品尝。",
-  "subscribe-popup-text3": "请在本网站注册帐号，",
-  "subscribe-popup-text4": "以浏覧更多文章内容。",
+  "subscribe-popup-text": "感谢您的阅读！您已经使用了首五篇的文章阅读限额，请登入或注册帐号，继续欣赏TK为您带来的一系列精彩故事。",
   "photography-by": "摄影"
 }

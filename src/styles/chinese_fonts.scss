@@ -541,7 +541,7 @@
   .section-landing {
     .top-articles {
       .article__title {
-        font-weight: $sans-serif-bold!important;
+        font-weight: $chinese-font-bold!important;
       }
       .featured-article {
         .featured-article__inner {
@@ -563,7 +563,7 @@
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
         @media #{$viewport-medium} {
-          font-weight: $serif-bold!important;
+          font-weight: $chinese-font-bold!important;
         }
       }
       .article__description {

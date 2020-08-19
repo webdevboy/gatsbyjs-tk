@@ -46,7 +46,7 @@ class PostWrapper extends Component {
     // Increase articles viewed count 
     this.props.parallaxController.update();
     const articlesViewCount = +Cookies.get('articles_view_count') || 1;
-    if(articlesViewCount >= 5 && !isAuthenticated()) {
+    if(articlesViewCount >= 6 && !isAuthenticated()) {
       this.setPageLimitModal(true);
     }
     else {

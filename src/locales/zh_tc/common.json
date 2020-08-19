@@ -1,5 +1,5 @@
 {
-  "subscribe-btn": "訂閱",
+  "register-btn": "寄存器",
   "go-to-events": "活動概覧",
   "go-to-articles": "文章閱覽",
   "email-placeholder": "電子郵件",
@@ -13,9 +13,6 @@
   "nav-subscribe": "訂閱電子報",
   "nav-account": "帳戶",
   "nav-language": "語言",
-  "subscribe-popup-text1": "這個故事收錄在TK雜誌中，",
-  "subscribe-popup-text2": "歡迎您仔細品嚐。",
-  "subscribe-popup-text3": "請在本網站註冊帳號，",
-  "subscribe-popup-text4": "以瀏覧更多文章內容。",
+  "subscribe-popup-text": "感謝您的閱讀！您已經使用了首五篇的文章閱讀限額，請登入或註冊帳號，繼續欣賞TK為您帶來的一系列精彩故事。",
   "photography-by": "攝影"
 }
