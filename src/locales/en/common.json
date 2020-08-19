@@ -1,5 +1,5 @@
 {
-  "subscribe-btn": "SUBSCRIBE",
+  "register-btn": "REGISTER",
   "go-to-events": "Go to Events collection",
   "go-to-articles": "Go to Articles collection",
   "email-placeholder": "Email",
@@ -13,9 +13,6 @@
   "nav-subscribe": "Newsletter / Subscribe",
   "nav-account": "Account",
   "nav-language": "Language",
-  "subscribe-popup-text1": "This story appears in a print issue of TK",
-  "subscribe-popup-text2": "You’re welcome to read",
-  "subscribe-popup-text3": "this story for free",
-  "subscribe-popup-text4": "or register to enjoy unlimited access.",
+  "subscribe-popup-text": "Thanks for exploring TK! Your first five articles have been on the house. Continue enjoying our award-winning content by logging in or registering below.",
   "photography-by": "Photography by"
 }

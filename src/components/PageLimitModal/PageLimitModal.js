@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from '@reach/router';
 
 import { isBrowser } from 'src/utils/auth';
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 import getLangLink from 'src/utils/getLangLink';
 import Logo from 'src/svgs/tk_logo';
 
@@ -25,9 +26,7 @@ function PageLimitModal() {
             <Logo style={{ width: '50px', height: '36px' }} />
           </div>
           <div className="page-limit-modal__body__description">
-            {`${t('subscribe-popup-text1')} ${t('subscribe-popup-text2')} `}
-            <a href="#">{`${t('subscribe-popup-text3')}`}</a>
-            {` ${t('subscribe-popup-text4')}`}
+            {t('subscribe-popup-text')}
           </div>
           <div className="page-limit-modal__body__buttons">
             <button
@@ -41,7 +40,7 @@ function PageLimitModal() {
               type="button"
               className="page-limit-modal__body__buttons__button"
             >
-              {t('subscribe-btn')}
+              {t('register-btn')}
             </button>
           </div>
         </div>
