@@ -1,7 +1,7 @@
 
 const postsGql = layouts => {
   return `
-  posts {
+  posts(first: 500) {
     nodes {
         id
         slug
