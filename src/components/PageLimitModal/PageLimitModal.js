@@ -39,6 +39,7 @@ function PageLimitModal() {
             <button
               type="button"
               className="page-limit-modal__body__buttons__button"
+              onClick={goToLogin}
             >
               {t('register-btn')}
             </button>
