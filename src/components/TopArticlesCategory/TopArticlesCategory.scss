@@ -314,15 +314,21 @@
   }
 
   .top-articles__more {
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    padding: 0 20px;
+
     @media #{$viewport-large} {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       padding: 0 40px 0 60px;
+      column-gap: normal;
     }
     @media #{$viewport-xlarge} {
       padding: 40px 40px 0 20px;
       grid-template-columns: 1fr 1fr 1fr 220px 220px 220px;
+      column-gap: normal;
     }
     
     &.container {
