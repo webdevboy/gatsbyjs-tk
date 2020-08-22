@@ -52,7 +52,7 @@ function Footer() {
               {getMenus()}
             </div>
           </div>
-          <div className="tab">
+          {/* <div className="tab">
             <input type="checkbox" id="chck2" />
             <label className="tab-label" htmlFor="chck2">
               {t('info')}
@@ -61,7 +61,7 @@ function Footer() {
               <a href="#">{t('subscribe')}</a>
               <a href="#">{t('advertise-contact')}</a>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="social-container">
           <ul>
