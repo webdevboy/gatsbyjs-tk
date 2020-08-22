@@ -30,14 +30,14 @@ function SociallyConnectedItem({
     let windowResizeListener = null;
     if(_window) {
       if(_window.innerWidth > MEDIUM_BREAKPOINT) {
-        setDescriptionMaxLength(1000);
+        setDescriptionMaxLength(320);
       }
       windowResizeListener = _window.addEventListener('resize', () => {
         if(_window.innerWidth < MEDIUM_BREAKPOINT) {
           setDescriptionMaxLength(215);
         }
         else if(_window.innerWidth > MEDIUM_BREAKPOINT) {
-          setDescriptionMaxLength(1000);
+          setDescriptionMaxLength(320);
         }
       });
     }
