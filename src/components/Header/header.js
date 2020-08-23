@@ -23,6 +23,7 @@ import WeChat from 'src/images/WeChat_icon_gray.png';
 import Weibo from 'src/images/Weibo_icon_gray.png';
 import Twitter from 'src/images/twitter.png';
 import Whatsapp from 'src/images/whatsapp.png';
+import Share from 'src/images/share.svg';
 
 function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOptRef }) {
   const _window = useWindow();
@@ -42,6 +43,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
         progressBarRef.current.style.width = `${scrollProgress}%`;
       }
       if(currentScroll > 50 && articleHeaderRef && articleHeaderRef.current) {
+        document.querySelector('.header__article').classList.remove('hide-share');
         articleHeaderRef.current.classList.add('scrolled');
         if(headerOptRef && headerOptRef.current) {
           headerOptRef.current.classList.add('scrolled');
@@ -49,8 +51,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
         if(logoRef && logoRef.current) {
           logoRef.current.classList.add('scrolled');
         }
-      }
-      else {
+      } else {
         if(articleHeaderRef && articleHeaderRef.current) {
           articleHeaderRef.current.classList.remove('scrolled');
         }
@@ -77,6 +78,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
 
 function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted, homeHeroLoaded }) {
   const [siteNameTop, setSiteNameTop] = useState(true);
+  const [showShare, setShowShare] = useState(false);
   const logoContainerRef = useRef(null);
   const articleHeaderRef = useRef(null);
   const logoRef = useRef(null);
@@ -200,11 +202,16 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
 
       {isArticlePage && (
         <div className="header__article-wrapper">
-          <div ref={articleHeaderRef} className={`header__article ${theme}`}>
-            <div dangerouslySetInnerHTML={{ __html: title }} />
+          <div ref={articleHeaderRef} className={cx(`header__article ${theme} ${showShare ? 'show-share' : 'hide-share'}`, {
+            'scrolled': showShare
+          })}>
+            <div className="header__article__title" dangerouslySetInnerHTML={{ __html: title }} />
             <div className="header__article__shares">
               <div className="header__article__shares__title">
                 Share:
+              </div>
+              <div className="header__article__mobile-share" onClick={() => setShowShare(!showShare)}>
+                <img src={Share} />
               </div>
               <a href="#" onClick={openFacebookShare}>
                 <img src={Facebook} />
