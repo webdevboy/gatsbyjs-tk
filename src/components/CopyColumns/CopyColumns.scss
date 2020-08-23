@@ -15,7 +15,7 @@
     opacity: 0.8;
   }
 
-  @media #{$viewport-medium} {
+  @media #{$viewport-small} {
     padding: 0;
     font-size: 12px;
     letter-spacing: 0.1px;
@@ -24,6 +24,7 @@
     grid-gap: 40px;
     padding: 0 40px;
     grid-template-columns: repeat(6, 1fr);
+
     &.dark {
       color: $color-bg-light;
     }
@@ -37,7 +38,7 @@
   &.columns-2 {
     .group:first-child {
 
-      @media #{$viewport-medium} {
+      @media #{$viewport-small} {
         grid-column-start: 1;
       }
       
@@ -48,7 +49,7 @@
   }
 
   .group {    
-    @media #{$viewport-medium} {
+    @media #{$viewport-small} {
       grid-column: auto / span 3;
     }
 
@@ -61,7 +62,7 @@
       text-align: center;
       margin: 40px auto 0;
 
-      @media #{$viewport-medium} {
+      @media #{$viewport-small} {
         margin: 0 auto;
       }
     }
@@ -89,10 +90,28 @@
       font-family: $font-serif;
       font-size: 13px;
       line-height: 22px;
+      
+      &.uncolumn {
+        display: none;
+        
+        @media #{$viewport-small} {
+          display: block;
+        }
+      }
+
       tab {
         display: inline-block;
         text-indent: 15px;
       }
+    }
+
+    .mobile-copy {
+      display: block;
+
+      @media #{$viewport-small} {
+        display: none;
+      }
+      
     }
   }
 }
