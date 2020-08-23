@@ -4,6 +4,7 @@ module.exports = () => {
       fieldGroupName
       columns {
         columnCopy
+        mobileCopy
         fieldGroupName
         headline
         subheader
