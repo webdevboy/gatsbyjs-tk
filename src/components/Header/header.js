@@ -86,7 +86,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const [t, i18n] = useTranslation();
 
   if(_window) {
-    _window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {
       setShowShare(false);
     });
   }
