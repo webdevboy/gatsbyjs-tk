@@ -35,7 +35,6 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
       progressBarRef.current.style.width = 0;
     }
     scrollListener = window.addEventListener('scroll', () => {
-        
       const currentScroll = document.documentElement.scrollTop;
       const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrollProgress = (currentScroll / totalScroll) * 100;
@@ -85,6 +84,10 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const headerOptRef = useRef(null);
   const _window = useWindow() || {};
   const [t, i18n] = useTranslation();
+
+  window.addEventListener('scroll', () => {
+    setShowShare(false);
+  });
 
   const getLogoPosY = () => {
     const smallOffset = 100; // based on logo width 150px
