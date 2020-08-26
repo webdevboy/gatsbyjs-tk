@@ -65,13 +65,13 @@ function TastingNotes({ headline, notes, type, theme, updateParallaxState = () =
     const swipeWrapper = document.querySelector('.swipe-wrapper');
     if(!_window) return;
     if(swipeWrapper) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      _window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     else if(scrollBlock) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      _window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      _window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
   const [t, i18n] = useTranslation(['article', 'common']);
@@ -89,11 +89,12 @@ function TastingNotes({ headline, notes, type, theme, updateParallaxState = () =
     }
   };
   useEffect(() => {
-    window.addEventListener('resize', (e) => {
-      setLayout(window.innerWidth);
+    if(!_window) return;
+    _window.addEventListener('resize', (e) => {
+      setLayout(_window.innerWidth);
     });
 
-    setLayout(window.innerWidth);
+    setLayout(_window.innerWidth);
   }, []);
 
   const params = {
