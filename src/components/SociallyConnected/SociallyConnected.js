@@ -7,6 +7,10 @@ import { useTranslation } from "react-i18next";
 import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints";
 import useWindow from 'src/hooks/useWindow';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
+import {
+  TASTING_KITCHEN_INSTAGRAM_ID,
+  MARK_HAMMONS_INSTAGRAM_ID,
+} from 'src/utils/constants';
 import Instagram from 'src/images/Instagram_icon_gray.png';
 import Facebook from 'src/images/Facebook_icon_gray.png';
 
@@ -168,9 +172,20 @@ function SociallyConnected({ fbPost }) {
     }
     return 0;
   });
-  const firstPost = posts.length > 0 && posts[0];
+  const tkPost = posts.find(post => {
+    if(post.node.username.toString() === TASTING_KITCHEN_INSTAGRAM_ID) {
+      return post;
+    }
+    return false;
+  });
   const secondPost = fbPost;
-  const thirdPost = posts.length > 0 && posts[1];
+  const markPost = posts.find(post => {
+    if(post.node.username.toString() === MARK_HAMMONS_INSTAGRAM_ID) {
+      return post;
+    }
+    return false;
+  });
+  
   
   return (
     <div className="socially-connected">
@@ -178,16 +193,16 @@ function SociallyConnected({ fbPost }) {
         <div className="socially__title">{t('socially-connected')}</div>
         <div className="socially__columns">    
           <Swiper {...params}>
-            {firstPost && (
+            {tkPost && (
               <div>
                 <SociallyConnectedItem
                   {...{
                     type: 'instagram',
                     title: 'tastingkitchen',
-                    byline: convertByline(firstPost.node.caption),
-                    imageUrl: firstPost.node.original,
-                    articleUrl: `https://www.instagram.com/p/${firstPost.node.id}/`,
-                    date: `${moment(new Date(+`${firstPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
+                    byline: convertByline(tkPost.node.caption),
+                    imageUrl: tkPost.node.original,
+                    articleUrl: `https://www.instagram.com/p/${tkPost.node.id}/`,
+                    date: `${moment(new Date(+`${tkPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
                   }}
                 />
               </div>
@@ -206,16 +221,16 @@ function SociallyConnected({ fbPost }) {
                 />
               </div>
             )}
-            {thirdPost && (
+            {markPost && (
               <div>
                 <SociallyConnectedItem
                   {...{
                     type: 'instagram',
-                    title: 'tastingkitchen',
-                    byline: convertByline(thirdPost.node.caption),
-                    imageUrl: thirdPost.node.original,
-                    articleUrl: `https://www.instagram.com/p/${thirdPost.node.id}/`,
-                    date: `${moment(new Date(+`${thirdPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
+                    title: 'mark_hammons',
+                    byline: convertByline(markPost.node.caption),
+                    imageUrl: markPost.node.original,
+                    articleUrl: `https://www.instagram.com/p/${markPost.node.id}/`,
+                    date: `${moment(new Date(+`${markPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
                   }}
                 />
               </div>
