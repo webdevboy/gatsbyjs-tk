@@ -22,7 +22,10 @@ const Post = ({ pageContext }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
-  _window._scrollTop = scrollTop;
+  if(_window) {
+    _window._scrollTop = scrollTop;
+  }
+  
   useEffect(() => {
     if(!getDevPasswordAccepted()) {
       navigate('/developing');
