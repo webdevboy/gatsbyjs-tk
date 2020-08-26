@@ -27,12 +27,12 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
             id
             name
             slug
-            menuItems(first: 30) {
+            menuItems(first: 50) {
               nodes {
                 url
                 id
                 label
-                childItems {
+                childItems(first: 50) {
                   nodes {
                     url
                     id
