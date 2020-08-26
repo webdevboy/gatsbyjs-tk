@@ -1,0 +1,11 @@
+@import 'src/styles/variables.scss';
+
+
+.input-error {
+  color: $color-error;
+  font-family: $font-sans-serif;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15px;
+  margin-top: 14px;
+}
