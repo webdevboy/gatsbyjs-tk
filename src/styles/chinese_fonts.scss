@@ -18,6 +18,9 @@
         a {
           font-weight: $sans-serif-bold!important;
         }
+        strong {
+          font-weight: 700;
+        }
         @media #{$viewport-large} {
           font-family: $font-serif!important;
         }
