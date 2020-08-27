@@ -67,22 +67,22 @@ function Footer() {
           <ul>
             <li>
               <a href="https://www.instagram.com/tastingkitchen/" target="_blank">
-                <img src={Instagram} alt="" />
+                <img className="footer-social-icon" src={Instagram} alt="" />
               </a>
             </li>
             <li>
               <a href={`https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NzczOTE0NA==&scene=124#wechat_redirect`} target="_blank">
-                <img src={WeChat} alt="" />
+                <img className="footer-social-icon" src={WeChat} alt="" />
               </a>
             </li>
             <li>
               <a href="https://weibo.com/u/7399881035?is_all=1" target="_blank">
-                <img src={Weibo} alt="" />
+                <img className="footer-social-icon" src={Weibo} alt="" />
               </a>
             </li>
             <li>
               <a href="https://www.facebook.com/tastingkitchen/" target="_blank">
-                <img src={Facebook} alt="" />
+                <img className="footer-social-icon" src={Facebook} alt="" />
               </a>
             </li>
           </ul>
