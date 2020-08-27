@@ -58,10 +58,17 @@ export const loginWithFacebook = (setError) => {
     return
   }
   auth.authorize({
-      connection: 'facebook'
+    connection: 'facebook'
   }, err => {
     const errorText = (err.description.rules && err.description.rules.length > 0 && err.description.rules[0].message) || err.description || '';
     setError(errorText);
+  });
+}
+
+export const loginWithWeibo = (setError) => {
+  if(!isBrowser) return;
+  auth.authorize({ connection: 'weibo' }, err => {
+    console.log(err);
   });
 }
 

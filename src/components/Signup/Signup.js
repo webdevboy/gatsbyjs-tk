@@ -10,13 +10,13 @@ import './Signup.scss';
 
 function Signup({ setError }) {
   const [t, i18n] = useTranslation('auth');
-  const [email, setEmail] = useState({ value: '', isValid: false, error: 'Please enter a valid Email Address', changed: false });
-  const [password, setPassword] = useState({ value: '', isValid: false, error: 'Invalid Password. The password should be at least eight characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).', changed: false });
-  const [passwordConfirm, setPasswordConfirm] = useState({ value: '', isValid: false, error: 'Invalid Password.', changed: false });
-  const [firstname, setFirstname] = useState({ value: '', isValid: false, error: 'Please enter your First name', changed: false });
-  const [lastname, setLastname] = useState({ value: '', isValid: false, error: 'Please enter your Last name', changed: false });
-  const [country, setCountry] = useState({ value: '', isValid: false, error: 'Please choose a country', changed: false });
-  const [city, setCity] = useState({ value: '', isValid: false, error: 'Please enter your Last name', changed: false });
+  const [email, setEmail] = useState({ value: '', isValid: false, error: t('validation-email'), changed: false });
+  const [password, setPassword] = useState({ value: '', isValid: false, error: t('validation-password-long'), changed: false });
+  const [passwordConfirm, setPasswordConfirm] = useState({ value: '', isValid: false, error: t('validation-password-short'), changed: false });
+  const [firstname, setFirstname] = useState({ value: '', isValid: false, error:  t('Please enter your First name'), changed: false });
+  const [lastname, setLastname] = useState({ value: '', isValid: false, error: t('Please enter your Last name'), changed: false });
+  const [country, setCountry] = useState({ value: '', isValid: false, error: t('Please choose a country'), changed: false });
+  const [city, setCity] = useState({ value: '', isValid: false, error: t('Please enter a City'), changed: false });
   const [receiveEmails, setReceiveEmails] = useState(true);
   const [receiveUpdates, setReceiveUpdates] = useState(true);
 
@@ -27,7 +27,7 @@ function Signup({ setError }) {
     setEmail({
       value,
       isValid,
-      error: isValid ? '' : 'Please enter a valid Email Address',
+      error: isValid ? '' : t('validation-email'),
       changed: true,
     });
   };
@@ -40,7 +40,7 @@ function Signup({ setError }) {
     setPassword({
       value,
       isValid,
-      error: isValid ? '' : 'Invalid Password. The password should be at least eight characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).',
+      error: isValid ? '' : t('validation-password-long'),
       changed: true,
     });
   };
@@ -52,7 +52,7 @@ function Signup({ setError }) {
     setPasswordConfirm({
       value,
       isValid,
-      error: isValid ? '' : 'Invalid Password.',
+      error: isValid ? '' : t('validation-password-short'),
       changed: true,
     });
   };
@@ -63,7 +63,7 @@ function Signup({ setError }) {
     setFirstname({
       value,
       isValid,
-      error: isValid ? '' : 'Please enter your First name',
+      error: isValid ? '' : t('Please enter your First name'),
       changed: true,
     });
   };
@@ -74,7 +74,7 @@ function Signup({ setError }) {
     setLastname({
       value,
       isValid,
-      error: isValid ? '' : 'Please enter your Last name',
+      error: isValid ? '' : t('Please enter your Last name'),
       changed: true,
     });
   }
@@ -85,7 +85,7 @@ function Signup({ setError }) {
     setCountry({
       value,
       isValid,
-      error: isValid ? '' : 'Please choose a country',
+      error: isValid ? '' : t('Please choose a country'),
       changed: true,
     })
   }
@@ -96,7 +96,7 @@ function Signup({ setError }) {
     setCity({
       value,
       isValid,
-      error: isValid ? '' : 'Please enter a City',
+      error: isValid ? '' : t('Please enter a City'),
       changed: true,
     });
   }

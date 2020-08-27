@@ -3,17 +3,17 @@ import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 
 import './Login.scss';
-import { login, loginWithFacebook } from '../../utils/auth';
+import { login, loginWithFacebook, loginWithWeibo } from '../../utils/auth';
 import Input from 'src/components/common/Input/Input';
 import Checkbox from 'src/components/common/Checkbox/Checkbox';
 import getLangLink from '../../utils/getLangLink';
 
 function Login({ setError }) {
 
-  const [remember, setRemember] = useState(true);
-  const [username, setUsername] = useState({ value: '', isValid: false, error: 'Please enter a valid Email Address', changed: false });
-  const [password, setPassword] = useState({ value: '', isValid: false, error: 'Incorrect Password', changed: false });
   const [t, i18n] = useTranslation('auth');
+  const [remember, setRemember] = useState(true);
+  const [username, setUsername] = useState({ value: '', isValid: false, error: t('validation-email'), changed: false });
+  const [password, setPassword] = useState({ value: '', isValid: false, error: t('validation-password-short'), changed: false });
 
   const changeUsername = e => {
     const { value } = e.target;
@@ -22,7 +22,7 @@ function Login({ setError }) {
     setUsername({
       value,
       isValid,
-      error: isValid ? '' : 'Please enter a valid Email Address',
+      error: isValid ? '' : t('validation-email'),
       changed: true,
     });
   }
@@ -35,10 +35,18 @@ function Login({ setError }) {
     setPassword({
       value,
       isValid,
-      error: isValid ? '' : 'Invalid Password. The password should be at least eight characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).',
+      error: isValid ? '' : t('validation-password-short'),
       changed: true,
     });
   };
+
+  const facebookLogin = () => {
+    loginWithFacebook(setError);
+  }
+
+  const weiboLogin = () => {
+    loginWithWeibo(setError);
+  }
 
   const submit = e => {
     let isFormValid = true;
@@ -84,9 +92,10 @@ function Login({ setError }) {
             <Checkbox checked={remember} onClick={() => {setRemember(!remember)}} />
             <label htmlFor="login__remember__checkbox" onClick={() => {setRemember(!remember)}}>{t('remember-me')}</label>
           </div>
-          <button type="button" className="login__facebook" onClick={() => {loginWithFacebook(setError)}}>
+          <button type="button" className="login__facebook" onClick={facebookLogin}>
             {t('login-facebook')}
           </button>
+          <button type="button" className="login__weibo" onClick={weiboLogin}>{t('login-weibo')}</button>
         </form>
       </div>
     </>
