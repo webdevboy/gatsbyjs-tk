@@ -43,7 +43,7 @@ function MenuEn() {
       {wordpress.menus.nodes[0].menuItems.nodes.map(node => {
         if (node.url.includes('mailto')) {
           return (
-            <a target="_blank" href={getUrlPath(node.url)}>{node.label}</a>
+            <a key={node.id} target="_blank" href={getUrlPath(node.url)}>{node.label}</a>
           )
         } else {
           return (
