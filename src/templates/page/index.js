@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState, useRef } from 'react';
-import { navigate } from 'gatsby';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import Layout from 'src/components/Layout';
@@ -10,7 +9,6 @@ import * as cx from 'classnames';
 
 import { PageHero } from 'src/components';
 import FrontPage from './FrontPage';
-import { getDevPasswordAccepted } from 'src/utils/getDevPasswordAccepted';
 
 import { heroAnimationDuration } from 'src/utils/styleVars';
 
@@ -103,13 +101,6 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 };
   
 class Page extends Component {
-  componentWillMount() {
-    if(!getDevPasswordAccepted()) {
-      if (typeof window !== 'undefined') {
-        navigate('/developing');
-      }
-    }
-  }
   render() {
     const { pageContext } = this.props;
     const { title, components, fbPost } = pageContext;
