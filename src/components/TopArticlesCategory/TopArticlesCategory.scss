@@ -25,6 +25,7 @@
   }
 
   .top-articles {
+    grid-template-columns: 0.95fr 1.05fr;
     .article__title {
       font-weight: $sans-serif-bold;
     }
@@ -327,7 +328,7 @@
     }
     @media #{$viewport-xlarge} {
       padding: 40px 40px 0 20px;
-      grid-template-columns: 1fr 1fr 1fr 220px 220px 220px;
+      grid-template-columns: repeat(3, 228.7px) 231.33px 231.33px 231.33px;
       column-gap: normal;
     }
     
@@ -335,9 +336,11 @@
       margin: 0 auto;
       width: 100%;
       max-width: 1440px;
+      min-width: 1440px;
     }
     .top__articles__category__item {
       position: relative;
+      
       .more-divider {
         position: absolute;
         height: 45px;
@@ -350,6 +353,12 @@
       &:nth-child(4), &:nth-child(5), &:nth-child(6) {
         .more-divider {
           display: block;
+        }
+      }
+      &:nth-child(6n) {
+        border-right: 1px solid transparent;
+        .more-divider {
+          display: none;
         }
       }
     }
