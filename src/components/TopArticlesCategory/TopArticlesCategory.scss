@@ -291,7 +291,7 @@
       border-right: 1px solid rgba(151, 151, 151, 0.2);
       padding: 0 20px 40px;
 
-      &:last-child {
+      &:last-child, &:nth-child(6n) {
         border-right: 0px;
       }
     }
@@ -347,7 +347,7 @@
         background-color: rgba(151, 151, 151, 0.2);
         display: none;
       }
-      &:nth-child(4), &:nth-child(5), &:nth-child(6) {
+      &:nth-child(4), &:nth-child(5) {
         .more-divider {
           display: block;
         }
