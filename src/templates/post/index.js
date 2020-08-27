@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import { navigate } from 'gatsby';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import PostWrapper from './PostWrapper';
-import { getDevPasswordAccepted } from 'src/utils/getDevPasswordAccepted';
 import useWindow from 'src/hooks/useWindow';
 
 const Post = ({ pageContext }) => {
@@ -26,11 +24,6 @@ const Post = ({ pageContext }) => {
     _window._scrollTop = scrollTop;
   }
   
-  useEffect(() => {
-    if(!getDevPasswordAccepted()) {
-      navigate('/developing');
-    }
-  }, []);
   useEffect(() => {
     scrollTop();
   }, [pageContext.id]);
