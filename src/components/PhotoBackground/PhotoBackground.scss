@@ -40,6 +40,13 @@
         line-height: 25px;
         letter-spacing: 0;
       }
+
+      p {
+        color: $color-cutline;
+        @media #{$viewport-medium} {
+          color: unset;
+        }
+      }
     }
   }
 }
