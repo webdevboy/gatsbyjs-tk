@@ -157,7 +157,7 @@ html {
   }
 
   // prevent saving of images 
-  img {
+  img:not(.footer-social-icon) {
     pointer-events: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
