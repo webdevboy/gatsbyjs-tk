@@ -170,7 +170,7 @@
             border-right: 1px solid rgba(151, 151, 151, 0.2);
             padding: 0 20px 40px;
 
-            &:nth-child(3n) {
+            &:nth-child(3n), &:last-child {
               border-right: 0px;
             }
           }
