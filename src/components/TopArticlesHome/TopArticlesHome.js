@@ -211,12 +211,6 @@ export default function TopArticles(props) {
               }}
             />
           ))}
-          {formattedARticles.length === 4 &&
-            <div className="fake-border" />
-          }
-          {formattedARticles.length === 5 &&
-            <div className="fake-border" />
-          }
         </div>
       </div>
     </div>

@@ -214,12 +214,6 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                 />
               </div>
             ))}
-            {formattedArticles.length === 4 &&
-              <div className="fake-border" />
-            }
-            {formattedArticles.length === 5 &&
-              <div className="fake-border" />
-            }
           </div>
         </div>
       </div>
