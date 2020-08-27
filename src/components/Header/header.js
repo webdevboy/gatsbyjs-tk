@@ -85,11 +85,13 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const _window = useWindow() || {};
   const [t, i18n] = useTranslation();
 
-  // if(_window) {
-  //   window.addEventListener('scroll', () => {
-  //     setShowShare(false);
-  //   });
-  // }
+  useEffect(() => {
+    if (_window) {
+      _window.addEventListener('scroll', () => {
+        setShowShare(false);
+      });
+    }
+  }, []);
 
   const getLogoPosY = () => {
     const smallOffset = 100; // based on logo width 150px
