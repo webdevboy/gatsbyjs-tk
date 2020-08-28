@@ -215,7 +215,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
             <div className="header__article__title" dangerouslySetInnerHTML={{ __html: title }} />
             <div className="header__article__shares">
               <div className="header__article__shares__title">
-                Share:
+                {`${t('article:share')}:`}
               </div>
               <div className="header__article__mobile-share" onClick={() => setShowShare(!showShare)}>
                 <img src={Share} />
