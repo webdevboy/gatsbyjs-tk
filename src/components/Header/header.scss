@@ -384,10 +384,11 @@ $max_font: 22px;
     }
 
     &.on-hero {
-      transform: translate(-50%, -55vh);
+      transform: translate(-50%, -60vh);
       width: 178px;
 
       @media #{$viewport-medium} {
+        transform: translate(-50%, -55vh);
         width: 300px;
       }
     }

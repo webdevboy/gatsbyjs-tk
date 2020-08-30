@@ -24,23 +24,20 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 
   const layouts = components.contents || [];
 
-  const getLogoSize = () => {
-    if (_window.innerWidth < 834) {
-      return 178;
-    }
-    return 300;
-  };
-
   useEffect(() => {
     document.querySelector('#main-wrapper').classList.add('is-front-page');
 
     if (_window) {
       _window.addEventListener('scroll', () => {
         const logo = document.querySelector('.fp-logo-container');
+        const logoSize = _window.innerWidth < 834 ? 178 : 300;
+        const topPosition = _window.innerWidth < 834 ? 60 : 55;
+        const speed = _window.innerWidth < 834 ? 7 : 13.2;
+
         let scrollTop = _window.scrollY,
                 minWidth = 55,
-                newWidth = Math.max(minWidth, getLogoSize() - scrollTop/3);
-        const styleTranslate = `translate(-50%, ${Math.min(0, -55 + scrollTop/13.2)}vh) scale(${newWidth/300})`;
+                newWidth = Math.max(minWidth, logoSize - scrollTop/3);
+        const styleTranslate = `translate(-50%, ${Math.min(0, -topPosition + scrollTop/speed)}vh) scale(${newWidth/logoSize})`;
         logo.style['-webkit-transform'] = styleTranslate;
         logo.style['-moz-transform'] = styleTranslate;
         logo.style['-ms-transform'] = styleTranslate;
