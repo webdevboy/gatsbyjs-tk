@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState, useRef } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import Layout from 'src/components/Layout';
+import useWindow from 'src/hooks/useWindow';
 import SEO from 'src/components/seo';
 import PageLayouts from 'src/components/PageLayouts';
 import { Swipeable } from 'react-swipeable';
@@ -10,75 +11,61 @@ import * as cx from 'classnames';
 import { PageHero } from 'src/components';
 import FrontPage from './FrontPage';
 
-import { heroAnimationDuration } from 'src/utils/styleVars';
-
 const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   const { title, components } = pageContext;
   const [scrollWrapper, setScrollWrapper] = useState(null);
-  const [smoothScrollInited, setSmoothScrollInited] = useState(false);
-  const [isHeroAnimationInProgress, setIsHeroAnimationInProgress] = useState(false);
   const [homeHeroLoaded, setHomeHeroLoaded] = useState(false);
   const [showHero, setShowHero] = useState(true);
+  const [pageScrolled, setPageScrolled] = useState(false);
   const containerRef = useRef(null);
+  const _window = useWindow() || {};
   
   const [containerIsScrollable, setContainerIsScrollable] = useState(false);
 
   const layouts = components.contents || [];
 
-  const handleWheelEvent = (event) => {
-    const isScrolled = containerRef && containerRef.current && containerRef.current.scrollTop > 0;
-    if(event.deltaY < 0 && !isScrolled) {
-      setShowHero(true);
+  const getLogoSize = () => {
+    if (_window.innerWidth < 834) {
+      return 178;
     }
+    return 300;
   };
 
-
   useEffect(() => {
-    setScrollWrapper(containerRef.current);
-    document.querySelector('html').classList.add('no-scrolling');
     document.querySelector('#main-wrapper').classList.add('is-front-page');
 
+    if (_window) {
+      _window.addEventListener('scroll', () => {
+        const logo = document.querySelector('.fp-logo-container');
+        let scrollTop = _window.scrollY,
+                minWidth = 55,
+                newWidth = Math.max(minWidth, getLogoSize() - scrollTop/3);
+        const styleTranslate = `translate(-50%, ${Math.min(0, -55 + scrollTop/13.2)}vh) scale(${newWidth/300})`;
+        logo.style['-webkit-transform'] = styleTranslate;
+        logo.style['-moz-transform'] = styleTranslate;
+        logo.style['-ms-transform'] = styleTranslate;
+        logo.style['-o-transform'] = styleTranslate;
+        logo.style.transform = styleTranslate;
+
+        scrollTop > 10 ? setPageScrolled(true) : setPageScrolled(false);
+        scrollTop >= _window.innerHeight ? setShowHero(false) : setShowHero(true);
+      });
+    }
+
     return () => {
-      document.querySelector('html').classList.remove('no-scrolling');
       document.querySelector('#main-wrapper').classList.remove('is-front-page');
       document.querySelector('#main-wrapper').style.transform = 'initial';
     };
   }, []);
 
-  useEffect(() => {
-    const htmlElement = document.querySelector('html');
-    document.querySelector('#main-wrapper').style.transform = showHero
-      ? `translateY(0px)`
-      : `translateY(-100vh)`;
-
-    if (!showHero) {
-      setTimeout(() => {
-        setContainerIsScrollable(true);
-      }, heroAnimationDuration);
-    } else {
-      setContainerIsScrollable(false);
-    }
-  }, [showHero]);
   return (
     <>
-        <PageHero data={heroData[0]} hideHero={() => {setShowHero(false);}} scrollContainer={containerRef.current} setHomeHeroLoaded={setHomeHeroLoaded} />
-        <Swipeable
-          className="swipe-container"
-          onSwipedDown={() => {
-            if (containerRef.current && containerRef.current.scrollTop <= 0) {
-              if(!isHeroAnimationInProgress) {
-                setShowHero(true);
-              }
-              if(smoothScrollInited) {
-                setSmoothScrollInited(true);
-              }
-            }
-          }}
-        >
+        <PageHero data={heroData[0]} scrollContainer={containerRef.current} setHomeHeroLoaded={setHomeHeroLoaded} />
+        <Swipeable className="swipe-container">
           <div
-            className={cx('swipe-wrapper', { 'overflow-scroll': containerIsScrollable })}
+            className={cx('swipe-wrapper')}
             ref={containerRef}
-            onWheel={handleWheelEvent}
+            id="content"
           >
             <ParallaxProvider scrollContainer={scrollWrapper}>
               <FrontPage
@@ -91,6 +78,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
                   layouts,
                   updateParallaxState,
                   homeHeroLoaded,
+                  pageScrolled
                 }}
               />
             </ParallaxProvider>

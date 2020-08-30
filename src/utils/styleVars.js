@@ -1,1 +1,1 @@
-export const heroAnimationDuration = 2000
+export const heroAnimationDuration = 1500
