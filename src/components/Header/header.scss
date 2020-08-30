@@ -370,8 +370,6 @@ $max_font: 22px;
   .fp-logo-container {
     position: absolute;
     left: 50%;
-    transition: all linear .2s;
-    -webkit-transition: all linear .2s;
     z-index: 1001;
     display: none;
     transform-style: preserve-3d;
