@@ -37,17 +37,11 @@
   }
 
   &.home-slide {
-    @media #{$viewport-medium} {
-      top: calc(50% - 40px);
-    }
-
     &.slide-in {
       padding-bottom: 25px;
       bottom: 0;
-      top: calc(50% + 38px);
       @media #{$viewport-medium} {
         left: 0;
-        top: calc(50% - 40px);;
         transform: translateX(0);
       }
     }

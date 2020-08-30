@@ -50,6 +50,19 @@ $max_font: 22px;
   transition: left 0.3s ease;
   &.header-absolute {
     position: absolute;
+
+    .header-hamburger {
+      opacity: 0;
+    }
+  }
+
+  &.header-fixed {
+    .header-hamburger {
+      opacity: 1;
+    }
+    .header__language-login {
+      opacity: 1;
+    }
   }
   &.overflow-visible {
     overflow: initial;
@@ -90,6 +103,7 @@ $max_font: 22px;
 
   .header-hamburger {
     display: block;
+    transition: all .4s ease;
     
     &.show {
       display: block;
@@ -110,6 +124,7 @@ $max_font: 22px;
     height: 100%;
     @media #{$viewport-medium} {
       display: flex;
+      opacity: 0;
     }
     &.scrolled {
       @media #{$viewport-medium} {
@@ -355,11 +370,14 @@ $max_font: 22px;
   .fp-logo-container {
     position: absolute;
     left: 50%;
-    top: 0;
-    transition: all $hero-animation-duration ease-out;
-    transform: translate(-50%, -50%);
+    transition: all linear .2s;
+    -webkit-transition: all linear .2s;
     z-index: 1001;
     display: none;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    will-change: transform;
+    min-width: 55px;
 
     &.loaded {
       display: flex;
@@ -368,20 +386,20 @@ $max_font: 22px;
     }
 
     &.on-hero {
+      transform: translate(-50%, -55vh);
       width: 178px;
 
       @media #{$viewport-medium} {
-        width: 290px;
+        width: 300px;
       }
-    }
-
-    &.on-header {
-      width: 55px;
     }
 
     .fp-logo {
       width: 100%;
       animation: logo-animation-show $hero-animation-duration cubic-bezier(.46,.09,.37,.91) forwards;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
     }
   }
 
@@ -405,7 +423,7 @@ $max_font: 22px;
     }
     &.first-init {
       opacity: 0;
-      animation: logo-title-animation-init 0.5s 3s ease-out forwards;
+      animation: logo-title-animation-init 0.5s 1.5s ease-out forwards;
     }
     &.hide-site-name {
       opacity: 1;

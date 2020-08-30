@@ -4,7 +4,6 @@ import LanguageToggle from 'src/components/LanguageToggle/LanguageToggle';
 import LoginLogout from 'src/components/LoginLogout/LoginLogout';
 import { Link } from 'gatsby';
 import useWindow from 'src/hooks/useWindow';
-import { heroAnimationDuration } from 'src/utils/styleVars';
 import { useLocation } from '@reach/router';
 import { useTranslation } from 'react-i18next';
 
@@ -75,8 +74,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
   )
 }
 
-function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted, homeHeroLoaded }) {
-  const [siteNameTop, setSiteNameTop] = useState(true);
+function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted, homeHeroLoaded, pageScrolled }) {
   const [showShare, setShowShare] = useState(false);
   const logoContainerRef = useRef(null);
   const articleHeaderRef = useRef(null);
@@ -92,17 +90,6 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       });
     }
   }, []);
-
-  const getLogoPosY = () => {
-    const smallOffset = 100; // based on logo width 150px
-    const mediumOffset = 180; // based on a logo width 290px
-
-    if (_window.innerWidth < 834) {
-      return _window.innerHeight / 2 + smallOffset;
-    }
-
-    return _window.innerHeight / 2 + mediumOffset;
-  };
 
   const openWeChatShareQR = e => {
     e.preventDefault();
@@ -138,23 +125,12 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       _window.open(`https://web.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
     }
   }
-  
-  useEffect(() => {
-    if (heroIsVisible && logoContainerRef && logoContainerRef.current) {
-      setTimeout(() => {
-        if(logoContainerRef.current) {
-          setSiteNameTop(logoContainerRef.current.getBoundingClientRect().bottom);
-        }
-      }, heroAnimationDuration);
-    }
-  }, [heroIsVisible]);
-
 
   return (
     <header className={cx(`header ${theme}`, {
       'overflow-visible': isFrontPage,
-      'header-absolute': isFrontPage,
-      'header-fixed': !isFrontPage,
+      'header-absolute': isFrontPage && heroIsVisible,
+      'header-fixed': !isFrontPage || !heroIsVisible,
       'shifted': shifted,
     })}>
       <div>
@@ -177,11 +153,6 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               'on-header': !heroIsVisible,
               'loaded': homeHeroLoaded,
             })}
-            style={{
-              // transform: isFrontPage && heroIsVisible ? `translate(-50%, )` : 'translate(-50%, -50%)',
-              top: isFrontPage && heroIsVisible ? `-${getLogoPosY()}px` : '50%',
-
-            }}
           >
             <AdaptiveImage
               src={LogoDesktop}
@@ -194,7 +165,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               src={LogoDesktopTitle}
               smallSrc={LogoMobileTitle}
               innerProps={{
-                className: cx('sitename', 'first-init', { 'show-site-name': heroIsVisible, 'hide-site-name': !heroIsVisible }),
+                className: cx('sitename', 'first-init', { 'show-site-name': !pageScrolled, 'hide-site-name': pageScrolled }),
               }}
             />
           </div>

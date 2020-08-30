@@ -59,26 +59,10 @@ html {
 
     #main-wrapper {
       &.is-front-page {
-        transition: transform $hero-animation-duration ease-out;
         background-color: $color-lightgray;
 
         .swipe-container {
           position: relative;
-          padding-top: $header-height;
-          .swipe-wrapper {
-            overflow-x: hidden;
-            overflow-y: scroll;
-            height: 100vh;
-
-            &.overflow-scroll {
-              overflow: scroll;
-              overflow: auto;
-              overflow: overlay;
-              @media #{$viewport-large} {
-                overflow: auto;
-              }
-            }
-          }
         }
       }
     }
