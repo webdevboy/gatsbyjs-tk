@@ -370,8 +370,6 @@ $max_font: 22px;
   .fp-logo-container {
     position: absolute;
     left: 50%;
-    transition: all linear .2s;
-    -webkit-transition: all linear .2s;
     z-index: 1001;
     display: none;
     transform-style: preserve-3d;
@@ -386,10 +384,11 @@ $max_font: 22px;
     }
 
     &.on-hero {
-      transform: translate(-50%, -55vh);
+      transform: translate(-50%, -60vh);
       width: 178px;
 
       @media #{$viewport-medium} {
+        transform: translate(-50%, -55vh);
         width: 300px;
       }
     }
