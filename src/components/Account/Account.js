@@ -52,9 +52,9 @@ function Account() {
         {user && user.user_metadata && (
           <div>{t('hello')} {user.user_metadata.firstname} ({t('not')} {user.user_metadata.firstname}? <a href="#" onClick={e => {e.preventDefault(); logout();}}>{t('sign-out')}</a>)</div>
         )}
-        <p>
+        {/* <p>
           {t('account_desc1')}
-        </p>
+        </p> */}
         <p>
           {t('account_desc2')}
         </p>
