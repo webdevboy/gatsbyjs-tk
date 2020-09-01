@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import { useLocation } from '@reach/router';
 import { Link, useStaticQuery } from "gatsby"
 import * as cx from "classnames"
+import useWindow from 'src/hooks/useWindow';
 
 import convertLinkLocale from 'src/utils/convertLinkLocale';
 import getIsPageAvailable from 'src/utils/getIsPageAvailable';
@@ -14,12 +15,13 @@ import "./Navigation.scss"
 
 export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu, closeMainNav }) {
   const [t, i18n] = useTranslation('article');
-  
+  const _window = useWindow() || {};
+
   const handleNavClick = (e, url) => {
     e.preventDefault();
     closeMainNav();
-    window.setTimeout(() => {
-       window.location.href = url;
+    _window.setTimeout(() => {
+       _window.location.href = url.replace(/\/$/, '');
     }, 300)
   }
 
