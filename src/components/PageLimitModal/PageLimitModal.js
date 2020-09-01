@@ -10,10 +10,11 @@ import Logo from 'src/svgs/tk_logo';
 
 import './PageLimitModal.scss';
 
-function PageLimitModal() {
+function PageLimitModal({ articleUrl }) {
   const [t, i18n] = useTranslation();
   const navigate = useNavigate();
   const goToLogin = () => {
+    localStorage.setItem('articleFallbackUrl', articleUrl);
     if(isBrowser) {
       navigate(getLangLink('/login', i18n.language));
     }

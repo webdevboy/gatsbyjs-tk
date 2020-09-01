@@ -187,6 +187,8 @@ function SociallyConnected({ fbPost }) {
   });
   
   
+  console.log(secondPost);
+
   return (
     <div className="socially-connected">
       <div className="container">
@@ -216,7 +218,7 @@ function SociallyConnected({ fbPost }) {
                     byline: secondPost.message,
                     imageUrl: secondPost.full_picture,
                     articleUrl: `https://www.facebook.com/tastingkitchen/`,
-                    date: `${moment(new Date(secondPost.created_time)).format('MMMM DD, YYYY')}`,
+                    date: `${moment(new Date(secondPost.created_time.slice(0, 16))).format('MMMM DD, YYYY')}`,
                   }}
                 />
               </div>

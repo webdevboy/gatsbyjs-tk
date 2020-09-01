@@ -19,7 +19,7 @@ export const auth = isBrowser
 
 export let auth0Manage = null;
 
-const goHome = () => navigate(`/${i18next.language === 'en' ? '' : i18next.language}`)
+const goHome = () => navigate(`/${i18next.language === 'en' ? '' : i18next.language}`);
 
 const tokens = {
   accessToken: false,
@@ -207,7 +207,8 @@ export const handleAuthentication = () => {
   if (!isBrowser) {
     return
   }
-  auth.parseHash(setSession(goHome))
+  const articleFallbackUrl = localStorage.getItem('articleFallbackUrl');
+  auth.parseHash(setSession(articleFallbackUrl ? () => {navigate(articleFallbackUrl)} : goHome));
 }
 
 export const getProfile = () => {
