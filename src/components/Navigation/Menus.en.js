@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"
 import { Link } from "gatsby"
 import * as cx from "classnames"
 
+import useWindow from 'src/hooks/useWindow';
 import { ItemWithSubNav } from './Navigation';
 import { isAuthenticated, logout } from 'src/utils/auth';
 import replaceAmpersand from 'src/utils/replaceAmpersand';
@@ -12,6 +13,7 @@ import Hamburger from 'src/components/common/Hamburger/Hamburger';
 import LanguageToggle from 'src/components/LanguageToggle/LanguageToggle';
 
 function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
+  const _window = useWindow() || {};
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [showLanguages, setShowLanguages] = useState(false);
   const subNavOpen = showLanguages || showSubMenu ? true : false;
@@ -55,8 +57,8 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
     e.preventDefault();
     closeNav();
 
-    window.setTimeout(() => {
-      window.location.href = url;
+    _window.setTimeout(() => {
+     _window.location.href = url.replace(/\/$/, '');
     }, 300)
   }
 
@@ -88,7 +90,7 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
           wordpress.menus.nodes[0].menuItems.nodes.filter(filterMenuItems).map(menu => {
             return menu.childItems.nodes.length <= 1 ? (
               <li key={menu.id}>
-                <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(menu.url), i18n.language)))}>
+                <Link to={convertLinkLocale(getUrlPath(menu.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(menu.url), i18n.language)))}>
                   {replaceAmpersand(menu.label)}
                 </Link>
               </li>
@@ -105,20 +107,20 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
           })}
         {!isAuthenticated() && (
           <li>
-            <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale('/login', i18n.language)))}>
+            <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale('/login', i18n.language)))}>
               {t('nav-login')}
             </Link>
           </li>
         )}
         {isAuthenticated() && (
           <li>
-            <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale('/account', i18n.language)))}>
+            <Link to={convertLinkLocale('/account', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale('/account', i18n.language)))}>
               {t('nav-account')}
             </Link>
           </li>
         )}
         <li>
-          <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale('/login', i18n.language)))}>
+          <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale('/login', i18n.language)))}>
             {t('nav-subscribe')}
           </Link>
         </li>
