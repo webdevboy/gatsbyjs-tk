@@ -44,7 +44,7 @@ export function ItemWithSubNav({ menu, getUrlPath, showSubMenu, setShowSubMenu, 
         {menu.childItems.nodes.map(node => {
           return (
             <li key={node.id}>
-              <Link to={convertLinkLocale(getUrlPath(node.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(node.url), i18n.language)))}>{replaceAmpersand(node.label)}</Link>
+              <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(node.url), i18n.language)))}>{replaceAmpersand(node.label)}</Link>
             </li>
           )
         })}

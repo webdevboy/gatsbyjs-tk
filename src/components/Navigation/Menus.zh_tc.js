@@ -88,7 +88,7 @@ function MenusZhTw({ theme, showNav, path, closeNav, filterMenuItems }) {
           wordpress.menus.nodes[0].menuItems.nodes.filter(filterMenuItems).map(menu => {
             return menu.childItems.nodes.length <= 1 ? (
               <li key={menu.id}>
-                <Link to={convertLinkLocale(getUrlPath(menu.url), i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(menu.url), i18n.language)))}>
+                <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath(menu.url), i18n.language)))}>
                   {replaceAmpersand(menu.label)}
                 </Link>
               </li>
@@ -105,20 +105,20 @@ function MenusZhTw({ theme, showNav, path, closeNav, filterMenuItems }) {
           })}
         {!isAuthenticated() && (
           <li>
-            <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
+            <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
               {t('nav-login')}
             </Link>
           </li>
         )}
         {isAuthenticated() && (
           <li>
-            <Link to={convertLinkLocale('/account', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/account'), i18n.language)))}>
+            <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/account'), i18n.language)))}>
               {t('nav-account')}
             </Link>
           </li>
         )}
         <li>
-          <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
+          <Link to='#' onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
             {t('nav-subscribe')}
           </Link>
         </li>
