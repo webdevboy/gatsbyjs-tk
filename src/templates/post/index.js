@@ -27,6 +27,9 @@ const Post = ({ pageContext }) => {
   useEffect(() => {
     scrollTop();
   }, [pageContext.id]);
+  useEffect(() => {
+    localStorage.setItem('articleFallbackUrl', '');
+  }, []);
   return (
     <div className="post-page-wrapper">
       <ParallaxProvider>

@@ -48,7 +48,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
         scrollTop >= _window.innerHeight ? setShowHero(false) : setShowHero(true);
       });
     }
-
+    localStorage.setItem('articleFallbackUrl', '');
     return () => {
       document.querySelector('#main-wrapper').classList.remove('is-front-page');
       document.querySelector('#main-wrapper').style.transform = 'initial';

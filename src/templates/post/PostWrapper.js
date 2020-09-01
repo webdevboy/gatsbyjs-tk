@@ -65,6 +65,7 @@ class PostWrapper extends Component {
     const { title, components, categories } = pageContext;
     const postHeroObj = pageContext.components.contents.find(c => c.fieldGroupName === "post_Components_Contents_ArticleHero");
     const layouts = components.contents || [];
+    console.log(pageContext);
     return (
       <Layout
         theme={pageContext.themeSelect.themeSelect}
@@ -81,7 +82,7 @@ class PostWrapper extends Component {
             updateParallaxState={this.updateParallaxState}
           />
         ))}
-        {pageLimitModal && <PageLimitModal />}
+        {pageLimitModal && <PageLimitModal articleUrl={pageContext.url} />}
       </Layout>
     )
   }

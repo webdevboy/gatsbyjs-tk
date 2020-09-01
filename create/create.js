@@ -184,7 +184,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
         // currently only handling translation in POSTS
         let path = post.language ? `${getLangCode(post.language.slug, defaultLanguage.slug)}/${post.slug}/` : `${post.slug}`
 
-        createPage({ path, component: postTemplate, context: post })
+        createPage({ path, component: postTemplate, context: { ...post, url: path }});
 
         reporter.info(`created: ${post.slug}`)
       })
