@@ -5,12 +5,24 @@
     max-width: 1024px;
     margin: 0px auto 100px;
     padding: 30px;
-    color: $color-cutline;
+    color: $color-darkgray;
     font-family: $font-serif;
 
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: $serif-regular;
+    }
+
+    h1, h2, h3 {
+      margin-top: 40px;
+    }
+
     p, ul {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    a {
+      color: $color-gold;
     }
 
     .headline {
