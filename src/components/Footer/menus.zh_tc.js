@@ -47,7 +47,7 @@ function MenuEn() {
           )
         } else {
           return (
-            <Link key={node.id} to={getUrlPath(node.url)}>{node.label}</Link>
+            <Link key={node.id} to={getUrlPath(node.url.replace(/\/$/, ''))}>{node.label}</Link>
           )
         }
       })}
