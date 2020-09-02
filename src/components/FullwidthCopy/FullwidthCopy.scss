@@ -6,11 +6,35 @@
     margin: 0px auto 100px;
     padding: 30px;
     color: $color-cutline;
-    font-family: $font-sans-serif;
+    font-family: $font-serif;
 
     p, ul {
       font-size: 12px;
       line-height: 18px;
+    }
+
+    .headline {
+      padding: 58px 0 50px 0;
+      color: $color-darkgray;
+      font-family: $font-serif;
+      font-size: 25px;
+      letter-spacing: 0;
+      line-height: 31px;
+      text-align: center;
+      font-weight: $serif-regular;
+      margin: 0;
+    
+      @media #{$viewport-medium} {
+        padding: 60px 0;
+        font-size: 32px;
+        line-height: 40px;
+      }
+    
+      @media #{$viewport-large} {
+        padding: 100px 0;
+        font-size: 48px;
+        line-height: 60px;
+      }
     }
   }
 }
