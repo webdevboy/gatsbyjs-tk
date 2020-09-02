@@ -71,7 +71,7 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a href={`https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5NzczOTE0NA==&scene=124#wechat_redirect`} target="_blank">
+              <a href={`https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=${document.location.href}`} target="_blank">
                 <img className="footer-social-icon" src={WeChat} alt="" />
               </a>
             </li>

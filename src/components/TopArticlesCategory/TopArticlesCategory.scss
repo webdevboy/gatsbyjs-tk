@@ -80,20 +80,11 @@
 
         .featured-article__image {
           width: 100%;
-          height: 503px;
           box-sizing: border-box;
           background-size: cover;
           background-position: center;
-          
           position: relative;
 
-          @media #{$viewport-medium} {
-            height: 730px;
-          }
-
-          @media #{$viewport-large} {
-            height: 550px;
-          }
 
           .feature-article__authors {
             position: absolute;
