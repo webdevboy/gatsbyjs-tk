@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import { Parallax } from 'react-scroll-parallax';
 import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
 import './EventsComponent.scss';
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 function EventsComponent({
   eventStartDate,
@@ -15,8 +17,10 @@ function EventsComponent({
   eventDescription1,
   eventDescription2,
   eventName,
+  eventPageSlug,
   updateParallaxState = () => {},
 }) {
+  const [t, i18n] = useTranslation();
   const startDateArr = eventStartDate.split('-');
   const endDateArr = eventEndDate.split('-');
   const startDate = startDateArr.length > 0 && moment().set({'year': startDateArr[2], 'month': startDateArr[0], 'date': startDateArr[1]});
@@ -62,7 +66,7 @@ function EventsComponent({
             <div className="event__desc2">{eventDescription2}</div>
           )}
 
-          <Link className="event__link" to="/events">
+          <Link className="event__link" to={convertLinkLocale(`/${eventPageSlug}`, i18n.language)}>
             View Calendar
           </Link>
         </div>
