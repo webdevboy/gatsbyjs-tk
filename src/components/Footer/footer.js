@@ -71,7 +71,7 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a href={`https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=${document.location.href}`} target="_blank">
+              <a href="https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=https://www.tasting-kitchen.com" target="_blank">
                 <img className="footer-social-icon" src={WeChat} alt="" />
               </a>
             </li>
