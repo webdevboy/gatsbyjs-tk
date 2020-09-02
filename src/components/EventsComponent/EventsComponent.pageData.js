@@ -10,6 +10,12 @@ module.exports = () => {
       eventBackground {
         sourceUrl
       }
+      eventBackgroundMedium {
+        sourceUrl
+      }
+      eventBackgroundMobile {
+        sourceUrl
+      }
     }
   `
 }

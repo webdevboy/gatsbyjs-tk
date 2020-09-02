@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import moment from 'moment';
 import { Parallax } from 'react-scroll-parallax';
+import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
 import './EventsComponent.scss';
 
@@ -9,6 +10,8 @@ function EventsComponent({
   eventStartDate,
   eventEndDate,
   eventBackground,
+  eventBackgroundMobile,
+  eventBackgroundMedium,
   eventDescription1,
   eventDescription2,
   eventName,
@@ -22,11 +25,17 @@ function EventsComponent({
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
         <Parallax className="events-component__img-wrapper" y={[-10, 5]}>
-          <img
-            className="events-component__img"
+          <AdaptiveImage
             src={eventBackground.sourceUrl}
-            alt=""
-            onLoad={updateParallaxState}
+            smallSrc={eventBackgroundMobile && eventBackgroundMobile.sourceUrl}
+            mediumSrc={eventBackgroundMedium && eventBackgroundMedium.sourceUrl}
+            innerProps={{
+              onLoad: updateParallaxState,
+              className: 'events-component__img',
+              style: {
+                width: '100%'
+              }
+            }}
           />
         </Parallax>
       )}
