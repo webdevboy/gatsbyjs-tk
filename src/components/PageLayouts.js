@@ -10,6 +10,7 @@ import {
   TastingNotes,
   Spacer,
   EventsComponent,
+  FullwidthCopy,
 } from "src/components"
 import {
   AboutTitle,
@@ -40,6 +41,7 @@ const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateP
     page_Components_Contents_TastingNotes: TastingNotes,
     page_Components_Contents_Spacer: Spacer,
     page_Components_Contents_Event: EventsComponent,
+    page_Components_Contents_FullwidthCopy: FullwidthCopy,
     page_Components_AboutContents_AboutTitle: AboutTitle,
     page_Components_AboutContents_AboutMain: AboutMain,
     page_Components_AboutContents_AboutColumns: AboutColumns,
