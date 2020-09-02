@@ -74,7 +74,7 @@ function SociallyConnectedItem({
           {type === 'facebook' && <img src={Facebook} alt="facebook" />}
         </div>
         {title && (
-          <div className="socially__columns__column__info_title">{title}</div>
+          <div className="socially__columns__column__info_title"><span class="socially__columns__column__info_at">@</span>{title}</div>
         )}
         <div className="socially__columns__column__info__social-date">
           {date}
