@@ -21,8 +21,18 @@
       line-height: 20px;
     }
 
+    ul li {
+      margin-bottom: 15px;
+    }
+
     a {
       color: $color-gold;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        color: $color-darkgray;
+        text-decoration: none;
+      }
     }
 
     .headline {
