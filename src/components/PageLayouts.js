@@ -21,7 +21,6 @@ import {
 
 const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateParallaxState }) => {
   const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found";
-  console.log(layoutData, 'LAYOUTDATA');
   // Default component
   const Default = () => (
     <div>
