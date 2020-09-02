@@ -16,3 +16,4 @@ export { default as IndividualArticle } from "src/components/IndividualArticle/I
 export { default as Ad } from "src/components/Ad/Ad"
 export { default as TastingNotes } from "src/components/TastingNotes/TastingNotes"
 export { default as EventsComponent } from "src/components/EventsComponent/EventsComponent"
+export { default as FullwidthCopy } from "src/components/FullwidthCopy/FullwidthCopy"

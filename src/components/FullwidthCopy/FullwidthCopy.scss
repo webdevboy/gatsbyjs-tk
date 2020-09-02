@@ -1,0 +1,16 @@
+@import "src/styles/variables";
+
+.fullwidth-copy {
+  .container {
+    max-width: 1024px;
+    margin: 0px auto 100px;
+    padding: 30px;
+    color: $color-cutline;
+    font-family: $font-sans-serif;
+
+    p, ul {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+}
