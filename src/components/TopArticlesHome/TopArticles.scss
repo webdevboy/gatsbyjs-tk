@@ -257,14 +257,13 @@
   .article__title {
     font-family: $font-sans-serif;
     font-size: 18px;
-    font-weight: $sans-serif-semibold;
+    font-weight: $serif-bold;
     line-height: 21px;
     margin-top: 10px;
 
     @media #{$viewport-medium} {
       font-size: 16px;
       line-height: 20px;
-      font-weight: $serif-bold;
     }
   }
 
