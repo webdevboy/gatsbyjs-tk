@@ -12,6 +12,7 @@ import getLangLink from 'src/utils/getLangLink';
 import Facebook from 'src/images/Facebook_icon_white.png';
 import Instagram from 'src/images/Instagram_icon_white.png';
 import WeChat from 'src/images/WeChat_icon_white.png';
+import WeChatQR from 'src/images/tk-wechat.jpg';
 import Weibo from 'src/images/Weibo_icon_white.png';
 import './footer.scss';
 
@@ -71,7 +72,7 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a href="https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=https://www.tasting-kitchen.com" target="_blank">
+              <a href={WeChatQR} target="_blank">
                 <img className="footer-social-icon" src={WeChat} alt="" />
               </a>
             </li>
