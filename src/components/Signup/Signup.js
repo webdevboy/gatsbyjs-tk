@@ -201,7 +201,7 @@ function Signup({ setError }) {
         </div>
         <div className="privacy-notice-text">
           {t('privacy-policy-description')}
-          <a href="#">{t('privacy-policy')}</a>.
+          {/* <a href="#">{t('privacy-policy')}</a>. */}
         </div>
         <button type="button" className="login__submit" onClick={handleSignup}>
           {t('register')}

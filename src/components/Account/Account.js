@@ -92,7 +92,7 @@ function Account() {
         </div>
         <div className="privacy-notice-text">
           {t('auth:privacy-policy-description')}
-          <a href="#">{t('auth:privacy-policy')}</a>.
+          {/* <a href="#">{t('auth:privacy-policy')}</a>. */}
         </div>
         <button type="button" className={cx('account__update__button', { disabled: userUpdating })} onClick={handleUserUpdate}>
           {t('update')}
