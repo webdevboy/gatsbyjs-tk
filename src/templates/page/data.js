@@ -1,4 +1,4 @@
-const PageTemplateFragment = (layouts, aboutLayouts) => `
+const PageTemplateFragment = (layouts, aboutLayouts, eventLayouts) => `
   fragment PageTemplateFragment on WordPress_Page {
     id
     title
@@ -25,6 +25,9 @@ const PageTemplateFragment = (layouts, aboutLayouts) => `
         aboutContents {
           ${aboutLayouts}
         }
+        eventContents {
+          ${eventLayouts}
+        }
       }
     }
     components {
@@ -33,6 +36,9 @@ const PageTemplateFragment = (layouts, aboutLayouts) => `
       }
       aboutContents {
         ${aboutLayouts}
+      }
+      eventContents {
+        ${eventLayouts}
       }
     }
   }

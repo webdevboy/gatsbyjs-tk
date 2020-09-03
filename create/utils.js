@@ -33,6 +33,21 @@ module.exports.getAllAboutLayoutsData = () => {
   return allLayoutsString
 }
 
+module.exports.getAllEventLayoutsData = () => {
+  const glob = require("glob")
+
+  let allLayoutsString = ""
+
+  const fileArray = glob.sync("./src/components/**/*.eventPageData.js")
+
+  fileArray.forEach(function (file) {
+    let queryStringFunction = require(path.resolve(file))
+    allLayoutsString = allLayoutsString + " \n " + queryStringFunction()
+  })
+
+  return allLayoutsString
+}
+
 module.exports.getCategoryLayoutData = () => {
   const glob = require("glob")
 

@@ -1,6 +1,6 @@
 const FB = require('fb');
 const path = require(`path`);
-const { getAllLayoutsData, getCategoryLayoutData, getAllAboutLayoutsData } = require("./utils")
+const { getAllLayoutsData, getCategoryLayoutData, getAllAboutLayoutsData, getAllEventLayoutsData } = require("./utils")
 
 const pageTemplate = require.resolve("../src/templates/page/")
 const postTemplate = require.resolve("../src/templates/post/")
@@ -11,7 +11,7 @@ const { PostTemplateFragment } = require("../src/templates/post/data")
 const { CategoryTemplateFragment } = require("../src/templates/category/data")
 
 const GET_PAGES = () => `
-  ${PageTemplateFragment(getAllLayoutsData("page"), getAllAboutLayoutsData())}
+  ${PageTemplateFragment(getAllLayoutsData("page"), getAllAboutLayoutsData(), getAllEventLayoutsData())}
   
   query GET_PAGES($first:Int $after:String) {
     wordpress {

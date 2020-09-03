@@ -186,8 +186,6 @@ function SociallyConnected({ fbPost }) {
     return false;
   });
   
-  
-  console.log(secondPost);
 
   return (
     <div className="socially-connected">

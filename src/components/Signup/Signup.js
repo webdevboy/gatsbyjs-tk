@@ -48,7 +48,6 @@ function Signup({ setError }) {
   const changePasswordConfirm = e => {
     const { value } = e.target;
     const isValid = value === password.value && value.length > 8;
-    console.log(value, password);
     setPasswordConfirm({
       value,
       isValid,

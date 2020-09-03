@@ -11,6 +11,7 @@ import {
   Spacer,
   EventsComponent,
   FullwidthCopy,
+  EventPageComponent,
 } from "src/components"
 import {
   AboutTitle,
@@ -19,14 +20,14 @@ import {
 } from 'src/components/AboutComponents';
 
 const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateParallaxState }) => {
-  const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found"
+  const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found";
   // Default component
   const Default = () => (
     <div>
       In PageLayouts the mapping of this component is missing: {layoutType}
     </div>
-  )
-  const Empty = () => <></>
+  );
+  const Empty = () => <></>;
 
   // Mapping the fieldGroupName(s) to our components
   const layouts = {
@@ -45,6 +46,7 @@ const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateP
     page_Components_AboutContents_AboutTitle: AboutTitle,
     page_Components_AboutContents_AboutMain: AboutMain,
     page_Components_AboutContents_AboutColumns: AboutColumns,
+    page_Components_EventContents_EventPageComponent: EventPageComponent,
     default: Default,
   }
 

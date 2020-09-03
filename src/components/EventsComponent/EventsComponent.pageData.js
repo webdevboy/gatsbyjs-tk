@@ -6,8 +6,15 @@ module.exports = () => {
       eventName
       eventEndDate
       eventStartDate
+      eventPageSlug
       fieldGroupName
       eventBackground {
+        sourceUrl
+      }
+      eventBackgroundMedium {
+        sourceUrl
+      }
+      eventBackgroundMobile {
         sourceUrl
       }
     }

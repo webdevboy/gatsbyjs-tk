@@ -1,19 +1,26 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import { Parallax } from 'react-scroll-parallax';
+import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
 import './EventsComponent.scss';
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 function EventsComponent({
   eventStartDate,
   eventEndDate,
   eventBackground,
+  eventBackgroundMobile,
+  eventBackgroundMedium,
   eventDescription1,
   eventDescription2,
   eventName,
+  eventPageSlug,
   updateParallaxState = () => {},
 }) {
+  const [t, i18n] = useTranslation();
   const startDateArr = eventStartDate.split('-');
   const endDateArr = eventEndDate.split('-');
   const startDate = startDateArr.length > 0 && moment().set({'year': startDateArr[2], 'month': startDateArr[0], 'date': startDateArr[1]});
@@ -22,11 +29,17 @@ function EventsComponent({
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
         <Parallax className="events-component__img-wrapper" y={[-10, 5]}>
-          <img
-            className="events-component__img"
+          <AdaptiveImage
             src={eventBackground.sourceUrl}
-            alt=""
-            onLoad={updateParallaxState}
+            smallSrc={eventBackgroundMobile && eventBackgroundMobile.sourceUrl}
+            mediumSrc={eventBackgroundMedium && eventBackgroundMedium.sourceUrl}
+            innerProps={{
+              onLoad: updateParallaxState,
+              className: 'events-component__img',
+              style: {
+                width: '100%'
+              }
+            }}
           />
         </Parallax>
       )}
@@ -53,7 +66,7 @@ function EventsComponent({
             <div className="event__desc2">{eventDescription2}</div>
           )}
 
-          <Link className="event__link" to="/events">
+          <Link className="event__link" to={convertLinkLocale(`/${eventPageSlug}`, i18n.language)}>
             View Calendar
           </Link>
         </div>
