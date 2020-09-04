@@ -23,8 +23,9 @@ function EventsComponent({
   const [t, i18n] = useTranslation();
   const startDateArr = eventStartDate.split('-');
   const endDateArr = eventEndDate.split('-');
-  const startDate = startDateArr.length > 0 && moment().set({'year': startDateArr[2], 'month': startDateArr[0], 'date': startDateArr[1]});
-  const endDate = endDateArr.length > 0 && moment().set({'year': endDateArr[2], 'month': endDateArr[0], 'date': endDateArr[1]});
+
+  const startDate = startDateArr.length > 0 && moment(new Date(eventStartDate)).add(1, 'days');
+  const endDate = endDateArr.length > 0 && moment(new Date(eventEndDate)).add(1, 'days');
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
