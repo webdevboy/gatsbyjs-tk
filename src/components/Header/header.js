@@ -128,7 +128,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
       if (isMobile) {
         window.location = `whatsapp://send?${document.title} - ${document.location.href}`
       } else {
-        _window.open(`https://web.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
+        _window.open(`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
       }
     }
   }
