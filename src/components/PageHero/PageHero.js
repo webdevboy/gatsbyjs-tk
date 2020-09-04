@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import * as cx from "classnames"
+import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
 import "./PageHero.scss";
 import { ScrollDownArrow } from 'src/components/common';
@@ -15,11 +16,13 @@ export default function PageHero({ data, setHomeHeroLoaded }) {
   return (
     <section className="page-hero">
       <div className="featured-image-container">
-        <img
-          className={cx("featured-image", { loaded })}
-          src={data.image.sourceUrl || ""}
-          alt={data.image.altText}
-          onLoad={handleHeroLoad}
+      <AdaptiveImage
+            src={data.image.sourceUrl}
+            smallSrc={data.mobileImage.sourceUrl && data.mobileImage.sourceUrl}
+            innerProps={{
+              onLoad: handleHeroLoad,
+              className: cx("featured-image", { loaded })
+            }}
         />
         <div className="page-hero__scroll-down">
           <ScrollDownArrow />
