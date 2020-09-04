@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import useWindow from 'src/hooks/useWindow';
 import { useLocation } from '@reach/router';
 import { useTranslation } from 'react-i18next';
+import { MEDIUM_BREAKPOINT } from 'src/utils/breakpoints';
 
 import './header.scss';
 import convertLinkLocale from 'src/utils/convertLinkLocale';
@@ -83,6 +84,8 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const _window = useWindow() || {};
   const [t, i18n] = useTranslation();
 
+  const isMobile = _window.innerWidth < MEDIUM_BREAKPOINT ? true : false;
+
   useEffect(() => {
     if (_window) {
       _window.addEventListener('scroll', () => {
@@ -122,7 +125,11 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const openWhatsappShare = e => {
     e.preventDefault();
     if(_window) {
-      _window.open(`https://web.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
+      if (isMobile) {
+        window.location = `whatsapp://send?${document.title} - ${document.location.href}`
+      } else {
+        _window.open(`https://web.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
+      }
     }
   }
 
