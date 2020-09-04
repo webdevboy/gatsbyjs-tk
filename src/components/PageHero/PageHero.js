@@ -18,7 +18,7 @@ export default function PageHero({ data, setHomeHeroLoaded }) {
       <div className="featured-image-container">
       <AdaptiveImage
             src={data.image.sourceUrl}
-            smallSrc={data.mobileImage.sourceUrl && data.mobileImage.sourceUrl}
+            smallSrc={data.mobileImage && data.mobileImage.sourceUrl}
             innerProps={{
               onLoad: handleHeroLoad,
               className: cx("featured-image", { loaded })
