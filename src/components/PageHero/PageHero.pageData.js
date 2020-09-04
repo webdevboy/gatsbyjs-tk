@@ -11,6 +11,10 @@ module.exports = () => {
         sourceUrl
         altText
       }
+      mobileImage {
+        sourceUrl
+        altText
+      }
     }
   `
 }
