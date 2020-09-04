@@ -31,7 +31,8 @@ function Login({ setError }) {
     const { value } = e.target;
     const pattern = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/);
     const patternSymbols = /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-    const isValid = pattern.test(value) && patternSymbols.test(value) && value.length > 8;
+    // const isValid = pattern.test(value) && patternSymbols.test(value) && value.length > 8;
+    const isValid = value.length > 8;
     setPassword({
       value,
       isValid,
