@@ -1,0 +1,46 @@
+@import 'src/styles/variables';
+
+.cookies-policy {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-account-gray;
+  z-index: 1000;
+  font-family: $font-sans-serif;
+  font-size: 14px;
+  .container {
+    padding: 30px 50px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @media #{$viewport-xlarge} {
+      width: 1440px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+  .cookies-policy__buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 30px;
+    button {
+      border-radius: 3px;
+      padding: 10px 15px;
+      margin: 0 7px;
+    }
+    .cookies-policy__buttons__accept {
+      background-color: $color-black;
+      color: $color-white;
+    }
+    .cookies-policy__buttons__close {
+      background-color: $color-white;
+      color: $color-black;
+      border: 2px solid $color-black;
+      font-weight: $sans-serif-semibold;
+    }
+  }
+}
+

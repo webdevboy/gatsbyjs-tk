@@ -10,6 +10,7 @@ import i18n from "./src/i18n";
 import converLinkLocale from './src/utils/convertLinkLocale';
 import supportedLngs from 'src/locales/supportedLngs';
 import { MEDIUM_BREAKPOINT } from './src/utils/breakpoints';
+import CookiesPolicy from './src/components/CookiesPolicy/CookiesPolicy';
 // import SmoothScroll from 'src/utils/smoothScroll';
 
 const LanguageWrapper = ({ children }) => (
@@ -53,7 +54,6 @@ class SessionCheck extends React.Component {
 
   componentDidMount() {  
     silentAuth(this.handleCheckSession);
-    
     if(typeof window !== "undefined" && window.innerWidth > MEDIUM_BREAKPOINT) {
       SmoothScroll({
         animationTime: 1600,
@@ -75,6 +75,7 @@ class SessionCheck extends React.Component {
           <LanguageWrapper>
             {this.props.children}
           </LanguageWrapper>
+          <CookiesPolicy />
         </React.Fragment>
       )
     )
