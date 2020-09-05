@@ -123,13 +123,9 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   }
 
   const openWhatsappShare = e => {
-    e.preventDefault();
-    if(_window) {
-      if (isMobile) {
-        window.location = `whatsapp://send?${document.title} - ${document.location.href}`
-      } else {
-        _window.open(`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
-      }
+    if(!isMobile && _window) {
+      e.preventDefault();
+      _window.open(`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
     }
   }
 
@@ -210,7 +206,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               <a href="#" onClick={openTwitterShare}>
                 <img src={Twitter} />
               </a>
-              <a href="#" onClick={openWhatsappShare}>
+              <a href={`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`} onClick={openWhatsappShare}>
                 <img src={Whatsapp} />
               </a>
             </div>

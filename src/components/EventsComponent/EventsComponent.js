@@ -20,13 +20,10 @@ function EventsComponent({
   eventPageSlug,
   updateParallaxState = () => {},
 }) {
-  const [t, i18n] = useTranslation(); 
-  const startDateArr = eventStartDate && eventStartDate.split('-');
-  const endDateArr = eventEndDate && eventEndDate.split('-');
+  const [t, i18n] = useTranslation();
 
-  const startDate = startDateArr && moment(new Date(`${startDateArr[0]}/${startDateArr[1]}/${startDateArr[2]}`));
-  const endDate = endDateArr && moment(new Date(`${endDateArr[0]}/${endDateArr[1]}/${endDateArr[2]}`));
-
+  const startDate = eventStartDate && moment(new Date(eventStartDate.replace('-', '/'))).add(1, 'days'); 
+  const endDate = eventEndDate && moment(new Date(eventEndDate.replace('-', '/'))).add(1, 'days');
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
@@ -49,7 +46,7 @@ function EventsComponent({
         <div>
           {eventStartDate && (
             <div className="events-component__date">
-              {startDate && startDate.format('MMM DD')} - {endDate && endDate.format('MMM DD')}
+              {`${startDate.utc().format('MMM DD')}${eventEndDate ? ` - ${endDate.utc().format('MMM DD')}` : ''}`}
             </div>
           )}
           {eventStartDate && (
