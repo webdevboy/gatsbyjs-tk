@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import moment from 'moment';
+import 'moment/locale/zh-cn';
 import { useTranslation } from 'react-i18next';
 import { Parallax } from 'react-scroll-parallax';
 import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
@@ -21,9 +22,11 @@ function EventsComponent({
   updateParallaxState = () => {},
 }) {
   const [t, i18n] = useTranslation();
-
+  
   const startDate = eventStartDate && moment(new Date(eventStartDate.replace('-', '/'))).add(1, 'days'); 
   const endDate = eventEndDate && moment(new Date(eventEndDate.replace('-', '/'))).add(1, 'days');
+  const lang = i18n.language !== 'en' ? 'zh-cn' : 'en';
+
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
@@ -46,7 +49,7 @@ function EventsComponent({
         <div>
           {eventStartDate && (
             <div className="events-component__date">
-              {`${startDate.utc().format('MMM DD')}${eventEndDate ? ` - ${endDate.utc().format('MMM DD')}` : ''}`}
+              {`${startDate.locale(lang).utc().format('MMM DD')}${eventEndDate ? ` - ${endDate.locale(lang).utc().format('MMM DD')}` : ''}`}
             </div>
           )}
           {eventStartDate && (
