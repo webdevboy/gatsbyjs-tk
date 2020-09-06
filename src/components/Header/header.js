@@ -47,18 +47,12 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
         if(headerOptRef && headerOptRef.current) {
           headerOptRef.current.classList.add('scrolled');
         }
-        if(logoRef && logoRef.current) {
-          logoRef.current.classList.add('scrolled');
-        }
       } else {
         if(articleHeaderRef && articleHeaderRef.current) {
           articleHeaderRef.current.classList.remove('scrolled');
         }
         if(headerOptRef && headerOptRef.current) {
           headerOptRef.current.classList.remove('scrolled');
-        }
-        if(logoRef && logoRef.current) {
-          logoRef.current.classList.remove('scrolled');
         }
       }
     });
