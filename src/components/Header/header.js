@@ -206,7 +206,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               <a href="#" onClick={openTwitterShare}>
                 <img src={Twitter} />
               </a>
-              <a href={`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`} onClick={openWhatsappShare}>
+              <a href={`https://api.whatsapp.com/send?&text=${document && document.title} - ${document && document.location.href}`} onClick={openWhatsappShare}>
                 <img src={Whatsapp} />
               </a>
             </div>
