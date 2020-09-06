@@ -10,7 +10,7 @@ function Photo({ url, altText, cutline, updateParallaxState = () => {} }) {
       <Parallax y={[-10, 5]}>
         <img src={url} alt={altText} onLoad={updateParallaxState} />
       </Parallax>
-      {cutline && <p className="cutline">{cutline}</p>}
+      {cutline && <p className="cutline" dangerouslySetInnerHTML={{ __html: cutline }}></p>}
     </div>
   );
 }
