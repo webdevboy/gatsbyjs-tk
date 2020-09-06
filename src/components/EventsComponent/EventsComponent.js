@@ -21,11 +21,12 @@ function EventsComponent({
   updateParallaxState = () => {},
 }) {
   const [t, i18n] = useTranslation();
-  const startDateArr = eventStartDate.split('-');
-  const endDateArr = eventEndDate.split('-');
+  const startDateArr = eventStartDate && eventStartDate.split('-');
+  const endDateArr = eventEndDate && eventEndDate.split('-');
 
-  const startDate = startDateArr.length > 0 && moment(new Date(eventStartDate)).add(1, 'days');
-  const endDate = endDateArr.length > 0 && moment(new Date(eventEndDate)).add(1, 'days');
+  const startDate = startDateArr.length > 0 && moment(new Date(`${startDateArr[0]}/${startDateArr[1]}/${startDateArr[2]}`));
+  const endDate = endDateArr.length > 0 && moment(new Date(`${endDateArr[0]}/${endDateArr[1]}/${endDateArr[2]}`));
+
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
@@ -48,11 +49,11 @@ function EventsComponent({
         <div>
           {eventStartDate && (
             <div className="events-component__date">
-              {`${startDate.utc().format('MMM DD')} - ${endDate.utc().format('MMM DD')}`}
+              {startDate && startDate.format('MMM DD')} - {endDate && endDate.format('MMM DD')}
             </div>
           )}
           {eventStartDate && (
-            <div className="events-component__day">{startDate.utc().format('D')}</div>
+            <div className="events-component__day">{startDate.format('D')}</div>
           )}
         </div>
         <div className="event">

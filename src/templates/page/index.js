@@ -38,11 +38,13 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
                 minWidth = 55,
                 newWidth = Math.max(minWidth, logoSize - scrollTop/3);
         const styleTranslate = `translate(-50%, ${Math.min(0, -topPosition + scrollTop/speed)}vh) scale(${newWidth/logoSize})`;
-        logo.style['-webkit-transform'] = styleTranslate;
-        logo.style['-moz-transform'] = styleTranslate;
-        logo.style['-ms-transform'] = styleTranslate;
-        logo.style['-o-transform'] = styleTranslate;
-        logo.style.transform = styleTranslate;
+        if(logo) {
+          logo.style['-webkit-transform'] = styleTranslate;
+          logo.style['-moz-transform'] = styleTranslate;
+          logo.style['-ms-transform'] = styleTranslate;
+          logo.style['-o-transform'] = styleTranslate;
+          logo.style.transform = styleTranslate;
+        }
 
         scrollTop > 10 ? setPageScrolled(true) : setPageScrolled(false);
         scrollTop >= _window.innerHeight ? setShowHero(false) : setShowHero(true);
