@@ -129,6 +129,8 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
     }
   }
 
+  const isDocument = typeof document !== `undefined`;
+
   return (
     <header className={cx(`header ${theme}`, {
       'overflow-visible': isFrontPage,
@@ -206,7 +208,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               <a href="#" onClick={openTwitterShare}>
                 <img src={Twitter} />
               </a>
-              <a href={`https://api.whatsapp.com/send?&text=${document && document.title} - ${document && document.location.href}`} onClick={openWhatsappShare}>
+              <a href={`https://api.whatsapp.com/send?&text=${isDocument && document.title} - ${isDocument && document.location.href}`} onClick={openWhatsappShare}>
                 <img src={Whatsapp} />
               </a>
             </div>
