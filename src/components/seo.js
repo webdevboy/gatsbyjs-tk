@@ -13,7 +13,7 @@ import { useStaticQuery, graphql } from "gatsby"
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
-function SEO({ description, lang, meta, title, imageUrl }) {
+function SEO({ description, lang, meta, title, imageUrl, type, articleUrl }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -51,11 +51,15 @@ function SEO({ description, lang, meta, title, imageUrl }) {
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: type || `website`,
         },
         {
           property: 'og:image',
           content: imageUrl,
+        },
+        {
+          property: 'og:url',
+          content: document ? document.location.href : 'http://tasting-kitchen.com/',
         },
         {
           name: `twitter:card`,

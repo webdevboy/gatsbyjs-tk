@@ -65,13 +65,19 @@ class PostWrapper extends Component {
     const { title, components, categories } = pageContext;
     const postHeroObj = pageContext.components.contents.find(c => c.fieldGroupName === "post_Components_Contents_ArticleHero");
     const layouts = components.contents || [];
+    console.log(postHeroObj);
     return (
       <Layout
         theme={pageContext.themeSelect.themeSelect}
         title={replaceAmpersand(title) || "Untitled"}
         isArticlePage
       >
-        <SEO title={replaceAmpersand(title) || "Untitled"} description={postHeroObj && postHeroObj.byline} imageUrl={postHeroObj && postHeroObj.heroImage && postHeroObj.heroImage.sourceUrl} />
+        <SEO
+          title={replaceAmpersand(title) || "Untitled"}
+          description={postHeroObj && postHeroObj.byline}
+          imageUrl={postHeroObj && (postHeroObj.socialHeroImage && postHeroObj.socialHeroImage.sourceUrl || postHeroObj.heroImage && postHeroObj.heroImage.sourceUrl)}
+          type="article"
+        />
         {layouts.filter(l => l.fieldGroupName && l.fieldGroupName !== "post_Components_Contents_CircleThumbnail").map((layout, index) => (
           <PostLayouts
             key={index}
