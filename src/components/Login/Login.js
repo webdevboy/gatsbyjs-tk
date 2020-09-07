@@ -96,7 +96,7 @@ function Login({ setError }) {
           <button type="button" className="login__facebook" onClick={facebookLogin}>
             {t('login-facebook')}
           </button>
-          <button type="button" className="login__weibo" onClick={weiboLogin}>{t('login-weibo')}</button>
+          {/* <button type="button" className="login__weibo" onClick={weiboLogin}>{t('login-weibo')}</button> */}
         </form>
       </div>
     </>

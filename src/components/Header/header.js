@@ -24,6 +24,7 @@ import Weibo from 'src/images/Weibo_icon_gray.png';
 import Twitter from 'src/images/twitter.png';
 import Whatsapp from 'src/images/whatsapp.png';
 import Share from 'src/images/share.svg';
+import Pinterest from 'src/images/pinterest-circular-logo.png';
 
 function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOptRef }) {
   const _window = useWindow();
@@ -69,7 +70,7 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
   )
 }
 
-function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted, homeHeroLoaded, pageScrolled }) {
+function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageScroll, heroIsVisible, title, shifted, homeHeroLoaded, pageScrolled, articleImageUrl }) {
   const [showShare, setShowShare] = useState(false);
   const logoContainerRef = useRef(null);
   const articleHeaderRef = useRef(null);
@@ -99,6 +100,13 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
     e.preventDefault();
     if(_window) {
       _window.open(`http://service.weibo.com/share/share.php?title=${title}&url=${document.location.href}`, 'Weibo', 'height:700, width:700');
+    }
+  }
+
+  const openPinterestShare = e => {
+    e.preventDefault();
+    if(_window) {
+      _window.open(`https://www.pinterest.com/pin/create/button/?description=${title}&media=${articleImageUrl}&url=${document.location.href}`, 'Weibo', 'height:700, width:700');
     }
   }
 
@@ -196,8 +204,8 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               <a href="#" onClick={openWeChatShareQR}>
                 <img src={WeChat} />
               </a>
-              <a href="#" onClick={openWeiboShare}>
-                <img src={Weibo} />
+              <a href="#" onClick={openPinterestShare}>
+                <img src={Pinterest} />
               </a>
               <a href="#" onClick={openTwitterShare}>
                 <img src={Twitter} />

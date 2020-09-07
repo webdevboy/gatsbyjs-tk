@@ -45,7 +45,6 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
           logo.style['-o-transform'] = styleTranslate;
           logo.style.transform = styleTranslate;
         }
-
         scrollTop > 10 ? setPageScrolled(true) : setPageScrolled(false);
         scrollTop >= _window.innerHeight ? setShowHero(false) : setShowHero(true);
       });

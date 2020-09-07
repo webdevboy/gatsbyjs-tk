@@ -13,6 +13,10 @@ module.exports = () => {
         sourceUrl
         altText
       }
+      socialHeroImage {
+        sourceUrl
+        altText
+      }
     }
   `
 }
