@@ -59,7 +59,7 @@ function SEO({ description, lang, meta, title, imageUrl, type, articleUrl }) {
         },
         {
           property: 'og:url',
-          content: document ? document.location.href : 'http://tasting-kitchen.com/',
+          content: articleUrl || 'http://tasting-kitchen.com/',
         },
         {
           name: `twitter:card`,

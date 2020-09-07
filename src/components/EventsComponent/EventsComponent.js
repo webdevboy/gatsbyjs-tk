@@ -21,11 +21,9 @@ function EventsComponent({
   updateParallaxState = () => {},
 }) {
   const [t, i18n] = useTranslation();
-  const startDateArr = eventStartDate.split('-');
-  const endDateArr = eventEndDate.split('-');
 
-  const startDate = startDateArr.length > 0 && moment(new Date(eventStartDate)).add(1, 'days');
-  const endDate = endDateArr.length > 0 && moment(new Date(eventEndDate)).add(1, 'days');
+  const startDate = eventStartDate && moment(new Date(eventStartDate)).add(1, 'days');
+  const endDate = eventStartDate && moment(new Date(eventEndDate)).add(1, 'days');
   return (
     <div className="events-component">
       {eventBackground && eventBackground.sourceUrl && (
