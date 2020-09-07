@@ -47,18 +47,12 @@ function ScrollProgressBar({ articleHeaderRef, scrollBlockRef, logoRef, headerOp
         if(headerOptRef && headerOptRef.current) {
           headerOptRef.current.classList.add('scrolled');
         }
-        if(logoRef && logoRef.current) {
-          logoRef.current.classList.add('scrolled');
-        }
       } else {
         if(articleHeaderRef && articleHeaderRef.current) {
           articleHeaderRef.current.classList.remove('scrolled');
         }
         if(headerOptRef && headerOptRef.current) {
           headerOptRef.current.classList.remove('scrolled');
-        }
-        if(logoRef && logoRef.current) {
-          logoRef.current.classList.remove('scrolled');
         }
       }
     });
@@ -123,15 +117,13 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   }
 
   const openWhatsappShare = e => {
-    e.preventDefault();
-    if(_window) {
-      if (isMobile) {
-        window.location = `whatsapp://send?${document.title} - ${document.location.href}`
-      } else {
-        _window.open(`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
-      }
+    if(!isMobile && _window) {
+      e.preventDefault();
+      _window.open(`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
     }
   }
+
+  const isDocument = typeof document !== `undefined`;
 
   return (
     <header className={cx(`header ${theme}`, {
@@ -210,7 +202,7 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
               <a href="#" onClick={openTwitterShare}>
                 <img src={Twitter} />
               </a>
-              <a href="#" onClick={openWhatsappShare}>
+              <a href={`https://api.whatsapp.com/send?&text=${isDocument && document.title} - ${isDocument && document.location.href}`} onClick={openWhatsappShare}>
                 <img src={Whatsapp} />
               </a>
             </div>

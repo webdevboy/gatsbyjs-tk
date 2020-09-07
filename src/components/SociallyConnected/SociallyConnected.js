@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Swiper from "react-id-swiper";
 import moment from 'moment';
+import 'moment/locale/zh-cn';
 import { navigate, useStaticQuery, graphql } from "gatsby";
 import { useTranslation } from "react-i18next";
 
@@ -185,6 +186,8 @@ function SociallyConnected({ fbPost }) {
     }
     return false;
   });
+
+  const lang = i18n.language !== 'en' ? 'zh-cn' : 'en';
   
 
   return (
@@ -202,7 +205,7 @@ function SociallyConnected({ fbPost }) {
                     byline: convertByline(tkPost.node.caption),
                     imageUrl: tkPost.node.original,
                     articleUrl: `https://www.instagram.com/p/${tkPost.node.id}/`,
-                    date: `${moment(new Date(+`${tkPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
+                    date: `${moment(new Date(+`${tkPost.node.timestamp}000`)).locale(lang).format('MMMM DD, YYYY')}`,
                   }}
                 />
               </div>
@@ -216,7 +219,7 @@ function SociallyConnected({ fbPost }) {
                     byline: secondPost.message,
                     imageUrl: secondPost.full_picture,
                     articleUrl: `https://www.facebook.com/tastingkitchen/`,
-                    date: `${moment(new Date(secondPost.created_time.slice(0, 16))).format('MMMM DD, YYYY')}`,
+                    date: `${moment(new Date(secondPost.created_time.slice(0, 16))).locale(lang).format('MMMM DD, YYYY')}`,
                   }}
                 />
               </div>
@@ -230,7 +233,7 @@ function SociallyConnected({ fbPost }) {
                     byline: convertByline(markPost.node.caption),
                     imageUrl: markPost.node.original,
                     articleUrl: `https://www.instagram.com/p/${markPost.node.id}/`,
-                    date: `${moment(new Date(+`${markPost.node.timestamp}000`)).format('MMMM DD, YYYY')}`,
+                    date: `${moment(new Date(+`${markPost.node.timestamp}000`)).locale(lang).format('MMMM DD, YYYY')}`,
                   }}
                 />
               </div>
