@@ -29,12 +29,12 @@ function MenusZhCn({ theme, showNav, path, closeNav, filterMenuItems }) {
             id
             name
             slug
-            menuItems {
+            menuItems(first: 50) {
               nodes {
                 url
                 id
                 label
-                childItems {
+                childItems(first: 50) {
                   nodes {
                     url
                     id

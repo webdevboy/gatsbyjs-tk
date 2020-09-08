@@ -75,7 +75,7 @@ class SessionCheck extends React.Component {
           <LanguageWrapper>
             {this.props.children}
           </LanguageWrapper>
-          <CookiesPolicy />
+          {/* <CookiesPolicy /> */}
         </React.Fragment>
       )
     )

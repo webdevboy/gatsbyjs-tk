@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Tasting Kitchen (TK)`,
-    description: `Tasting Kitchen (TK) is Asia’s foremost epicurean lifestyle and travel magazine. Published every two months in English and Chinese,TK is a celebration of the world’s finest restaurants, greatest chefs, and most delicious food.`,
+    description: `Tasting Kitchen (TK) is Asia’s premier epicurean lifestyle brand, presenting the best in food and drink, art and design, and luxury travel across the globe.`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -16,6 +16,7 @@ module.exports = {
         head: true,
       },
     },
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
     {
@@ -31,13 +32,6 @@ module.exports = {
         url: process.env.GATSBY_WP_GRAPHQL_ENDPOINT,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-s3`,
-    //   options: {
-    //     bucketName: process.env.S3_HOSTING_ENDPOINT,
-    //   },
-    // },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -45,6 +39,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-s3`,
+    //   options: {
+    //     bucketName: process.env.S3_HOSTING_ENDPOINT,
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

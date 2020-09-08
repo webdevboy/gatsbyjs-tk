@@ -11,7 +11,7 @@ function LoginHeader({ isLogin, setIsLogin, error }) {
       <h2>{t('auth:my-account')}</h2>
       {error && (
         <div className="login__error" id="login__error">
-          {error}
+          {error === 'Invalid sign up' ? t('auth:signup-error') : error}
         </div>
       )}
       <div className="login-header__toggle">

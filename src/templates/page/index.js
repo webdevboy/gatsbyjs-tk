@@ -24,6 +24,21 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 
   const layouts = components.contents || [];
 
+  const scrollTop = () => {
+    const scrollBlock = document.querySelector('.page-scroll');
+    const swipeWrapper = document.querySelector('.swipe-wrapper');
+    if(!_window) return;
+    if(swipeWrapper) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    else if(scrollBlock) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
   useEffect(() => {
     document.querySelector('#main-wrapper').classList.add('is-front-page');
 
@@ -45,12 +60,12 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
           logo.style['-o-transform'] = styleTranslate;
           logo.style.transform = styleTranslate;
         }
-
         scrollTop > 10 ? setPageScrolled(true) : setPageScrolled(false);
         scrollTop >= _window.innerHeight ? setShowHero(false) : setShowHero(true);
       });
     }
     localStorage.setItem('articleFallbackUrl', '');
+    scrollTop();
     return () => {
       document.querySelector('#main-wrapper').classList.remove('is-front-page');
       document.querySelector('#main-wrapper').style.transform = 'initial';

@@ -92,6 +92,7 @@ export const signup = (email, password, firstname, lastname, country, city, rece
       }
   }, err => {
     if(err) {
+      console.log(err);
       const errorText = err.description && (err.description.rules && err.description.rules.length > 0 && err.description.rules[0].message) || err.description || '';
       setError(errorText);
     }

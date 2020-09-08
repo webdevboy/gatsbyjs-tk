@@ -9,7 +9,7 @@ import Navigation from "src/components/Navigation/Navigation";
 
 import "src/styles/index.scss";
 
-function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded, removeTopPadding, pageScrolled }) {
+function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisible, pageScroll, homeHeroLoaded, removeTopPadding, pageScrolled, articleImageUrl }) {
   const [showNav, setShowNav] = useState(false);
   const [t, i18n] = useTranslation();
 
@@ -45,6 +45,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
         setShowNav={() => setShowNav(!showNav)}
         isFrontPage={isFrontPage}
         isArticlePage={isArticlePage}
+        articleImageUrl={articleImageUrl}
         heroIsVisible={heroIsVisible}
         pageScroll={pageScroll}
         shifted={showNav}

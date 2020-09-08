@@ -20,9 +20,6 @@ const Post = ({ pageContext }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
-  if(_window) {
-    _window._scrollTop = scrollTop;
-  }
   
   useEffect(() => {
     scrollTop();

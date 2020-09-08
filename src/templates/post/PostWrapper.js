@@ -33,14 +33,14 @@ class PostWrapper extends Component {
   static propTypes = {
     parallaxController: PropTypes.object,
   }
-  componentDidMount() {
-    this.incAriclesViewedCount();
-  }
-  componentDidUpdate(prevProps) {
-    if(this.props.pageContext.title !== prevProps.pageContext.title) {
-      this.incAriclesViewedCount();
-    }
-  }
+  // componentDidMount() {
+  //   this.incAriclesViewedCount();
+  // }
+  // componentDidUpdate(prevProps) {
+  //   if(this.props.pageContext.title !== prevProps.pageContext.title) {
+  //     this.incAriclesViewedCount();
+  //   }
+  // }
   setPageLimitModal = value => this.setState({ pageLimitModal: value });
   incAriclesViewedCount = () => {
     // Increase articles viewed count 
@@ -65,13 +65,21 @@ class PostWrapper extends Component {
     const { title, components, categories } = pageContext;
     const postHeroObj = pageContext.components.contents.find(c => c.fieldGroupName === "post_Components_Contents_ArticleHero");
     const layouts = components.contents || [];
+    console.log(postHeroObj);
     return (
       <Layout
         theme={pageContext.themeSelect.themeSelect}
         title={replaceAmpersand(title) || "Untitled"}
+        articleImageUrl={postHeroObj && postHeroObj.heroImage && postHeroObj.heroImage.sourceUrl}
         isArticlePage
       >
-        <SEO title={replaceAmpersand(title) || "Untitled"} description={postHeroObj && postHeroObj.byline} imageUrl={postHeroObj && postHeroObj.heroImage && postHeroObj.heroImage.sourceUrl} />
+        <SEO
+          title={replaceAmpersand(title) || "Untitled"}
+          description={postHeroObj && postHeroObj.byline}
+          imageUrl={postHeroObj && (postHeroObj.socialHeroImage && postHeroObj.socialHeroImage.sourceUrl || postHeroObj.heroImage && postHeroObj.heroImage.sourceUrl)}
+          articleUrl={typeof window !== "undefined" && window ? window.location.href : null}
+          type="article"
+        />
         {layouts.filter(l => l.fieldGroupName && l.fieldGroupName !== "post_Components_Contents_CircleThumbnail").map((layout, index) => (
           <PostLayouts
             key={index}
