@@ -3,7 +3,6 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import useWindow from 'src/hooks/useWindow';
 
 import CategoryWrapper from './CategoryWrapper';
-import useWindow from 'src/hooks/useWindow';
 
 const Category = ({ pageContext }) => {
   const _window = useWindow();
