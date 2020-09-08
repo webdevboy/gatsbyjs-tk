@@ -9,11 +9,12 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
 
-function SEO({ description, lang, meta, title, imageUrl, type, articleUrl }) {
+function SEO({ description, lang, meta, title, imageUrl, type, articleUrl, articleLang }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -28,7 +29,7 @@ function SEO({ description, lang, meta, title, imageUrl, type, articleUrl }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
   return (
     <Helmet
       htmlAttributes={{
@@ -46,6 +47,10 @@ function SEO({ description, lang, meta, title, imageUrl, type, articleUrl }) {
           content: title,
         },
         {
+          property: 'og:url',
+          content: articleUrl ? `https://tasting-kitchen.com${convertLinkLocale(articleUrl, articleLang || 'en')}` : 'https://tasting-kitchen.com/',
+        },
+        {
           property: `og:description`,
           content: metaDescription,
         },
@@ -56,10 +61,6 @@ function SEO({ description, lang, meta, title, imageUrl, type, articleUrl }) {
         {
           property: 'og:image',
           content: imageUrl,
-        },
-        {
-          property: 'og:url',
-          content: articleUrl || 'http://tasting-kitchen.com/',
         },
         {
           name: `twitter:card`,
