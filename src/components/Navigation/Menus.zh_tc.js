@@ -120,9 +120,7 @@ function MenusZhTw({ theme, showNav, path, closeNav, filterMenuItems }) {
           </li>
         )}
         <li>
-          <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
-            {t('nav-subscribe')}
-          </Link>
+          <a href="mailto:subscriptions@tasting-kitchen.com" target="_blank">{t('nav-subscribe')}</a>
         </li>
         <li className={cx({
           "with-menu": true,
