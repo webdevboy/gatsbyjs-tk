@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Tasting Kitchen (TK)`,
-    description: `Tasting Kitchen (TK) is Asia’s foremost epicurean lifestyle and travel magazine. Published every two months in English and Chinese,TK is a celebration of the world’s finest restaurants, greatest chefs, and most delicious food.`,
+    description: `Tasting Kitchen (TK) is Asia’s premier epicurean lifestyle brand, presenting the best in food and drink, art and design, and luxury travel across the globe.`,
     author: `@gatsbyjs`,
   },
   plugins: [

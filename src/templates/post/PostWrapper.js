@@ -33,14 +33,14 @@ class PostWrapper extends Component {
   static propTypes = {
     parallaxController: PropTypes.object,
   }
-  componentDidMount() {
-    this.incAriclesViewedCount();
-  }
-  componentDidUpdate(prevProps) {
-    if(this.props.pageContext.title !== prevProps.pageContext.title) {
-      this.incAriclesViewedCount();
-    }
-  }
+  // componentDidMount() {
+  //   this.incAriclesViewedCount();
+  // }
+  // componentDidUpdate(prevProps) {
+  //   if(this.props.pageContext.title !== prevProps.pageContext.title) {
+  //     this.incAriclesViewedCount();
+  //   }
+  // }
   setPageLimitModal = value => this.setState({ pageLimitModal: value });
   incAriclesViewedCount = () => {
     // Increase articles viewed count 
