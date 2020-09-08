@@ -16,6 +16,7 @@ module.exports = {
         head: true,
       },
     },
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
     {
@@ -31,13 +32,6 @@ module.exports = {
         url: process.env.GATSBY_WP_GRAPHQL_ENDPOINT,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-s3`,
-    //   options: {
-    //     bucketName: process.env.S3_HOSTING_ENDPOINT,
-    //   },
-    // },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -45,6 +39,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-s3`,
+    //   options: {
+    //     bucketName: process.env.S3_HOSTING_ENDPOINT,
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
