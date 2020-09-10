@@ -36,7 +36,7 @@ function Layout({ children, theme, title, isFrontPage, isArticlePage, heroIsVisi
   }
 
   return (
-    <div className={cx({ 'chinese-language': i18n.language !== 'en' })}>
+    <div className={cx({ 'chinese-language': i18n.language === 'zh', 'chinese-language-tc': i18n.language === 'zh_tc' })}>
       <Navigation theme={theme || 'light'} showNav={showNav} closeNav={() => setShowNav(false)} />
       <Header
         theme={theme || "light"}
