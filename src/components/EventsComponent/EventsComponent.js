@@ -21,7 +21,7 @@ function EventsComponent({
   eventPageSlug,
   updateParallaxState = () => {},
 }) {
-  const [t, i18n] = useTranslation();
+  const [t, i18n] = useTranslation(['common']);
   
   const startDate = eventStartDate && moment(new Date(eventStartDate.replace('-', '/'))).add(1, 'days'); 
   const endDate = eventEndDate && moment(new Date(eventEndDate.replace('-', '/'))).add(1, 'days');
@@ -69,7 +69,7 @@ function EventsComponent({
           )}
 
           <Link className="event__link" to={convertLinkLocale(`/${eventPageSlug}`, i18n.language)}>
-            View Calendar
+            {t('event-view-calendar')}
           </Link>
         </div>
       </div>
