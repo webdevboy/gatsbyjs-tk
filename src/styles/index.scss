@@ -55,6 +55,14 @@ html {
       &.dark {
         background-color: $color-black;
       }
+
+      a {
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     #main-wrapper {

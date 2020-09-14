@@ -107,6 +107,7 @@
 
     .mobile-copy {
       display: block;
+      overflow-wrap: break-word;
 
       @media #{$viewport-small} {
         display: none;
