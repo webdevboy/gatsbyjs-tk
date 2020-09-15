@@ -15,6 +15,9 @@ module.exports = () => {
         sourceUrl
         altText
       }
+      socialImage {
+        sourceUrl
+      }
     }
   `
 }

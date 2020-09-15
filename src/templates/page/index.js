@@ -71,7 +71,6 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
       document.querySelector('#main-wrapper').style.transform = 'initial';
     };
   }, []);
-
   return (
     <>
         <PageHero data={heroData[0]} scrollContainer={containerRef.current} setHomeHeroLoaded={setHomeHeroLoaded} />
@@ -92,7 +91,8 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
                   layouts,
                   updateParallaxState,
                   homeHeroLoaded,
-                  pageScrolled
+                  pageScrolled,
+                  pageHero: heroData[0]
                 }}
               />
             </ParallaxProvider>

@@ -17,7 +17,7 @@ class FrontPage extends Component {
     }
   };
   render() {
-    const { showHero, pageContext, containerRef, title, containerIsScrollable, layouts, homeHeroLoaded, pageScrolled } = this.props;
+    const { showHero, pageContext, containerRef, title, containerIsScrollable, layouts, homeHeroLoaded, pageScrolled, pageHero } = this.props;
     return (
       <Layout
         theme="light"
@@ -28,7 +28,7 @@ class FrontPage extends Component {
         homeHeroLoaded={homeHeroLoaded}
         pageScrolled={pageScrolled}
       >
-        <SEO title={title || 'Untitled'} />
+        <SEO title={title || 'Untitled'} imageUrl={pageHero && pageHero.socialImage && pageHero.socialImage.sourceUrl} />
         {layouts.map((layout, index) => (
           <PageLayouts key={index} layoutData={layout} fbPost={pageContext.fbPost} containerIsScrollable={containerIsScrollable} updateParallaxState={this.updateParallaxState} />
         ))}
