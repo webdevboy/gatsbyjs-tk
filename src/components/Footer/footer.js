@@ -64,6 +64,17 @@ function Footer() {
             </div>
           </div> */}
         </div>
+        <div className="cities cb-1">
+          <div>{t('shanghai')}</div>
+          <div>{t('beijing')}</div>
+          <div>{t('guangzhou')}</div>
+          <div>{t('shenzhen')}</div>
+        </div>
+        <div className="cities cb-2">
+          <div>{t('chengdu')}</div>
+          <div>{t('hongkong')}</div>
+          <div>{t('macau')}</div>
+        </div>
         <div className="social-container">
           <ul>
             <li>
@@ -91,7 +102,7 @@ function Footer() {
         <p className="about">{t('footer-about')}</p>
         <div className="logo">
           <SiteLogo fill="white" />
-          <span>TASTING KITCHEN</span>
+          <span>MEDIA GROUP</span>
         </div>
         <p className="copyright">
           &copy; {date.getFullYear()} Tasting Kitchen. All Rights Reserved

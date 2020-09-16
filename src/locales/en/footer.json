@@ -8,5 +8,12 @@
   "faqs": "FAQs",
   "info": "Info",
   "subscribe": "Subscribe",
-  "advertise-contact": "Advertise / Contact"
+  "advertise-contact": "Advertise / Contact",
+  "beijing": "Beijing",
+  "shanghai": "Shanghai",
+  "guangzhou": "Guangzhou",
+  "shenzhen": "Shenzhen",
+  "chengdu": "Chengdu",
+  "hongkong": "Hong Kong",
+  "macau": "Macau"
 }
