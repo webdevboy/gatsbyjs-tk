@@ -74,6 +74,7 @@ function Footer() {
           <div>{t('chengdu')}</div>
           <div>{t('hongkong')}</div>
           <div>{t('macau')}</div>
+          <div>{t('taipei')}</div>
         </div>
         <div className="social-container">
           <ul>
