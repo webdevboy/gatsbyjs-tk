@@ -7,6 +7,7 @@ module.exports = {
     title: `Tasting Kitchen (TK)`,
     description: `Tasting Kitchen (TK) is Asia’s premier epicurean lifestyle brand, presenting the best in food and drink, art and design, and luxury travel across the globe.`,
     author: `@gatsbyjs`,
+    siteUrl: 'https://www.tasting-kitchen.com/',
   },
   plugins: [
     {
@@ -19,6 +20,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-root-import`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-source-graphql`,
       options: {
@@ -31,13 +33,6 @@ module.exports = {
         // Url to query from
         url: process.env.GATSBY_WP_GRAPHQL_ENDPOINT,
       },
-    },
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'http://tasting-kitchen.com/',
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
     },
     {
       resolve: `gatsby-source-filesystem`,

@@ -96,7 +96,6 @@ module.exports = async ({ actions, graphql, reporter }) => {
   FB.api(`${process.env.GATSBY_FACEBOOK_PAGE_ID}/feed?fields=full_picture,id,message,created_time`, function (res) {
     if(res && !res.err) {
       fbPost = res.data.length > 0 && res.data.find(post => post.message);
-      console.log(fbPost);
     }
   });
 
