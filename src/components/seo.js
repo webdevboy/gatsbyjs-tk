@@ -43,6 +43,10 @@ function SEO({ description, lang, meta, title, imageUrl, type, articleUrl, artic
           content: metaDescription,
         },
         {
+          name: `keywords`,
+          content: `Tasting Kitchen, TK, Tasting Kitchen TK`,
+        },
+        {
           property: `og:title`,
           content: title,
         },
