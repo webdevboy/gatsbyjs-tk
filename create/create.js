@@ -93,9 +93,10 @@ module.exports = async ({ actions, graphql, reporter }) => {
 
   // GET ONE FB POST
   FB.setAccessToken(process.env.GATSBY_FACEBOOK_GRAPH_TOKEN);
-  FB.api(`${process.env.GATSBY_FACEBOOK_PAGE_ID}/feed`, { limit: 1, fields: ['id', 'message', 'created_time', 'full_picture'] }, function (res) {
+  FB.api(`${process.env.GATSBY_FACEBOOK_PAGE_ID}/feed?fields=full_picture,id,message,created_time`, function (res) {
     if(res && !res.err) {
-      fbPost = res.data.length > 0 && res.data[0];
+      fbPost = res.data.length > 0 && res.data.find(post => post.message);
+      console.log(fbPost);
     }
   });
 
