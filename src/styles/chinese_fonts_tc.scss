@@ -8,15 +8,19 @@
       .info-block__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
+        letter-spacing: 1px;
       }
       .info-block__title__subtitle {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-medium!important;
+        letter-spacing: 1px;
       }
       .info-block__description {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
         a {
           font-weight: $sans-serif-bold!important;
+          letter-spacing: 1px;
         }
         strong {
           font-weight: 700;
@@ -28,13 +32,16 @@
   
       .info-block__editorial__block {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
         .info-block__editorial__block__name {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
       }
   
       .info-block__newsletter {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -43,11 +50,13 @@
       .img-wrapper {
         .cutline {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
       }
       .copyblock {
         p {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
       }
     }
@@ -56,33 +65,41 @@
     h1 {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
+      letter-spacing: 1px;
     }
   }
   .account-container {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
     .account__update__button {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
+      letter-spacing: 1px;
     }
   }
   .reset-password {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
     .reset-password__update__button {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
+      letter-spacing: 1px;
     }
   }
   .article__description {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
+    letter-spacing: 1px;
   }
   .article__category {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
+    letter-spacing: 1px;
   }
   .article__title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
+    letter-spacing: 1px;
     @media #{$viewport-medium} {
       font-weight: $sans-serif-semibold!important;
     }
@@ -90,108 +107,136 @@
   .article__more {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-bold!important;
+    letter-spacing: 1px;
   }
   .ad__img {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
+    letter-spacing: 1px;
   }
   .chefs__title {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
+    letter-spacing: 1px;
   }
   .chefs__columns__column__info_cutline {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-regular!important;
+    letter-spacing: 1px;
   }
 
   .chefs__columns__column__info_title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
+    letter-spacing: 1px;
   }
 
   .chefs__columns__column__info_description {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
+    letter-spacing: 1px;
   }
 
   .chefs__columns__column__info_more {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-bold!important;
+    letter-spacing: 1px;
   }
   .copy-columns {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .headline {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
+    letter-spacing: 1px;
   }
 
   .subhead {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
 
   .copy {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .events-component__date {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .events-component__day {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .event {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .event__title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
+    letter-spacing: 1px;
   }
   .event__desc1 {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
 
   .event__desc2 {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
 
   .event__link {
     font-weight: $sans-serif-bold!important;
+    letter-spacing: 1px;
   }
   .events-page {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .events-page__body__cutline {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .events-page__body__title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-bold!important;
+    letter-spacing: 1px;
   }
   .events-page__body__block__text {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-medium!important;
+    letter-spacing: 1px;
   }
   .events-page__body__description {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .events-page__controls {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-medium!important;
+    letter-spacing: 1px;
   }
   .fifty-fifty {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
     .copy-block {
       .wrapper {
         h4 {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-bold!important;
+          letter-spacing: 1px;
         }
   
         p {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
+          letter-spacing: 1px;
           b {
             font-weight: $chinese-font-bold!important;
+            letter-spacing: 1px;
           }
         }
       }
@@ -205,31 +250,37 @@
 
       p {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
 
       a {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
 
     .site-links {
       .tabs {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
 
       .about {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
+        letter-spacing: 1px;
       }
 
       .logo {
         span {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
       }
 
       .copyright {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -238,21 +289,25 @@
       .fullscreen-article__info__category {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-regular!important;
+        letter-spacing: 1px;
       }
   
       .fullscreen-article__info__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
+        letter-spacing: 1px;
       }
   
       .fullscreen-article__info__description {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
+        letter-spacing: 1px;
       }
   
       .fullscreen-article__info__more {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -260,10 +315,12 @@
     .header__article {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-medium!important;
+      letter-spacing: 1px;
       .header__article__shares {
         .header__article__shares__title {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-medium!important;
+          letter-spacing: 1px;
         }
       }
     }
@@ -271,6 +328,7 @@
       .title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-regular!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -279,20 +337,24 @@
       .individual-article__info__cutline {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-regular!important;
+        letter-spacing: 1px;
       }
       .individual-article__info__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
+        letter-spacing: 1px;
       }
   
       .individual-article__info__description {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
+        letter-spacing: 1px;
       }
   
       .individual-article__info__more {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -300,12 +362,14 @@
     .language__selected {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
+      letter-spacing: 1px;
     }
     .language__dropdown {
       li {
         span {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-semibold!important;
+          letter-spacing: 1px;
         }
       }
     }
@@ -314,78 +378,95 @@
     .login__input {
       input, select {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
     .login__submit {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
+      letter-spacing: 1px;
     }
     .login__lost-password {
       font-family: $font-sans-serif!important;
+      letter-spacing: 1px;
     }
     .login__remember {
       label {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
     .login__facebook {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
+      letter-spacing: 1px;
     }
     .login__weibo {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
+      letter-spacing: 1px;
     }
   }
   .login-header {
     h2 {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
+      letter-spacing: 1px;
     }
     .login__error {
       font-family: $font-sans-serif!important;
+      letter-spacing: 1px;
     }
     .login-header__toggle {
       div {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
+        letter-spacing: 1px;
       }
     }
   }
   .header__user {
     a {
       font-family: $font-sans-serif!important;
+      letter-spacing: 1px;
     }
   }
   .header__login-link {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
     
   .lost-password {
     .lost-password__title {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
+      letter-spacing: 1px;
     }
     .lost-password__email-sent {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
+      letter-spacing: 1px;
     }
     .lost-password__submit {
       font-family: $font-sans-serif!important;
+      letter-spacing: 1px;
     }
   }
   .navigation {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
     ul {
       li {
         > button {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-semibold!important;
+          letter-spacing: 1px;
         }
       }
       > li {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -394,14 +475,17 @@
       .not-found__modal-body {
         .not-found__modal-body__aplogize {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
         .not-found__modal-body__title {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-thin!important;
+          letter-spacing: 1px;
         }
         .not-found__modal-body__description {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
+          letter-spacing: 1px;
         }
       }
     }
@@ -411,11 +495,13 @@
       .page-limit-modal__body {
         .page-limit-modal__body__description {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
         .page-limit-modal__body__buttons {
           .page-limit-modal__body__buttons__button {
             font-family: $font-sans-serif!important;
             font-weight: $sans-serif-semibold!important;
+            letter-spacing: 1px;
           }
         }
       }
@@ -425,6 +511,7 @@
     .cell {
       span {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -433,34 +520,41 @@
       h4 {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
+        letter-spacing: 1px;
       }
       p {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
   } 
   .photo {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .post-hero {
     .block {
       .block-wrapper {
         .category-name {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
   
         .headline,
         .byline {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-bold!important;
+          letter-spacing: 1px;
         }
         .byline {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
+          letter-spacing: 1px;
         }
         .attribution {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-regular!important;
+          letter-spacing: 1px;
         }
       }
     }
@@ -469,6 +563,7 @@
     blockquote {
       p {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -476,22 +571,26 @@
     .login__input {
       input, select {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
     .login__input-select {
       select {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     }
     .login__submit {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
+      letter-spacing: 1px;
     }
   }
   .socially-connected {
     .socially__title {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
+      letter-spacing: 1px;
     }
   
     .socially__columns {
@@ -499,21 +598,25 @@
         .socially__columns__column__info {
           .socially__columns__column__info__social-date {
             font-family: $font-sans-serif!important;
+            letter-spacing: 1px;
           }
   
           .socially__columns__column__info_title {
             font-family: $font-sans-serif!important;
             font-weight: $sans-serif-semibold!important;
+            letter-spacing: 1px;
           }
   
           .socially__columns__column__info_description {
             font-family: $font-sans-serif!important;
             font-weight: $serif-regular!important;
+            letter-spacing: 1px;
           }
   
           .socially__columns__column__info_more {
             font-family: $font-sans-serif!important;
             font-weight: $sans-serif-bold!important;
+            letter-spacing: 1px;
           }
         }
       }
@@ -523,24 +626,29 @@
     .tasting-notes__title {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
+      letter-spacing: 1px;
     }
     .tasting-notes__slider-container {
       .tasting-notes__note {
         .tasting-notes__note__cutline {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-regular!important;
+          letter-spacing: 1px;
         }
         .tasting-notes__note__title {
           font-family: $font-sans-serif!important;
           font-weight: $chinese-font-bold!important;
+          letter-spacing: 1px;
         }
         .tasting-notes__note__byline {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
+          letter-spacing: 1px;
         }
         .tasting-notes__note__more {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-bold!important;
+          letter-spacing: 1px;
         }
       }
     }
@@ -549,6 +657,7 @@
     .top-articles {
       .article__title {
         font-weight: $chinese-font-bold!important;
+        letter-spacing: 1px;
       }
       .featured-article {
         .featured-article__inner {
@@ -556,6 +665,7 @@
             .feature-article__authors {
               font-family: $font-sans-serif!important;
               font-weight: $sans-serif-light!important;
+              letter-spacing: 1px;
             }
           }
         }
@@ -564,11 +674,13 @@
     .top-articles__more {
       .article__category {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
     
       .article__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
+        letter-spacing: 1px;
         @media #{$viewport-medium} {
           font-weight: $chinese-font-bold!important;
         }
@@ -576,10 +688,12 @@
       .article__description {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
+        letter-spacing: 1px;
       }
       .article__more {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
+        letter-spacing: 1px;
       }
     }
   }
@@ -587,16 +701,19 @@
     h1 {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
+      letter-spacing: 1px;
     }
     .content-block {
       .img-wrapper {
         .cutline {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
       }
       .copyblock {
         p {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
       }
     }
@@ -605,32 +722,39 @@
     .account__input {
       input {
         font-family: $font-sans-serif!important;
+        letter-spacing: 1px;
       }
       
       .account__input__select {
         select {
           font-family: $font-sans-serif!important;
+          letter-spacing: 1px;
         }
       }
     }
     .account__title {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
+      letter-spacing: 1px;
     }
     .account__description, .reset-password__description {
       font-family: $font-sans-serif!important;
+      letter-spacing: 1px;
     }
     .account__toggles {
       .account__toggle {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
+        letter-spacing: 1px;
       }
     }
   }
   .signup__checkbox-container {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
   .privacy-notice-text {
     font-family: $font-sans-serif!important;
+    letter-spacing: 1px;
   }
 }
