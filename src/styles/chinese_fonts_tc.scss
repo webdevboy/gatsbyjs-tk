@@ -8,19 +8,19 @@
       .info-block__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
       .info-block__title__subtitle {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-medium!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
       .info-block__description {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
         a {
           font-weight: $sans-serif-bold!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         strong {
           font-weight: 700;
@@ -32,16 +32,16 @@
   
       .info-block__editorial__block {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
         .info-block__editorial__block__name {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
   
       .info-block__newsletter {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -50,13 +50,13 @@
       .img-wrapper {
         .cutline {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
       .copyblock {
         p {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
@@ -65,41 +65,41 @@
     h1 {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   }
   .account-container {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
     .account__update__button {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   }
   .reset-password {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
     .reset-password__update__button {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   }
   .article__description {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .article__category {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .article__title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
     @media #{$viewport-medium} {
       font-weight: $sans-serif-semibold!important;
     }
@@ -107,136 +107,136 @@
   .article__more {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-bold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .ad__img {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .chefs__title {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .chefs__columns__column__info_cutline {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-regular!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 
   .chefs__columns__column__info_title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 
   .chefs__columns__column__info_description {
     font-family: $font-sans-serif!important;
     font-weight: $serif-regular!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 
   .chefs__columns__column__info_more {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-bold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .copy-columns {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .headline {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 
   .subhead {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 
   .copy {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-component__date {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-component__day {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .event {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .event__title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-semibold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .event__desc1 {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 
   .event__desc2 {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 
   .event__link {
     font-weight: $sans-serif-bold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-page {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-page__body__cutline {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-page__body__title {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-bold!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-page__body__block__text {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-medium!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-page__body__description {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .events-page__controls {
     font-family: $font-sans-serif!important;
     font-weight: $sans-serif-medium!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .fifty-fifty {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
     .copy-block {
       .wrapper {
         h4 {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-bold!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
   
         p {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
           b {
             font-weight: $chinese-font-bold!important;
-            letter-spacing: 1px;
+            letter-spacing: 1px !important;
           }
         }
       }
@@ -250,37 +250,37 @@
 
       p {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
 
       a {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
 
     .site-links {
       .tabs {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
 
       .about {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
 
       .logo {
         span {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
 
       .copyright {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -289,25 +289,25 @@
       .fullscreen-article__info__category {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-regular!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
   
       .fullscreen-article__info__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
   
       .fullscreen-article__info__description {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
   
       .fullscreen-article__info__more {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -315,12 +315,12 @@
     .header__article {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-medium!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
       .header__article__shares {
         .header__article__shares__title {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-medium!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
@@ -328,7 +328,7 @@
       .title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-regular!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -337,24 +337,24 @@
       .individual-article__info__cutline {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-regular!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
       .individual-article__info__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
   
       .individual-article__info__description {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
   
       .individual-article__info__more {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -362,14 +362,14 @@
     .language__selected {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .language__dropdown {
       li {
         span {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-semibold!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
@@ -378,95 +378,95 @@
     .login__input {
       input, select {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
     .login__submit {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .login__lost-password {
       font-family: $font-sans-serif!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .login__remember {
       label {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
     .login__facebook {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .login__weibo {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   }
   .login-header {
     h2 {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .login__error {
       font-family: $font-sans-serif!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .login-header__toggle {
       div {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
   .header__user {
     a {
       font-family: $font-sans-serif!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   }
   .header__login-link {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
     
   .lost-password {
     .lost-password__title {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .lost-password__email-sent {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .lost-password__submit {
       font-family: $font-sans-serif!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   }
   .navigation {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
     ul {
       li {
         > button {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-semibold!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
       > li {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -475,17 +475,17 @@
       .not-found__modal-body {
         .not-found__modal-body__aplogize {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .not-found__modal-body__title {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-thin!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .not-found__modal-body__description {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
@@ -495,13 +495,13 @@
       .page-limit-modal__body {
         .page-limit-modal__body__description {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .page-limit-modal__body__buttons {
           .page-limit-modal__body__buttons__button {
             font-family: $font-sans-serif!important;
             font-weight: $sans-serif-semibold!important;
-            letter-spacing: 1px;
+            letter-spacing: 1px !important;
           }
         }
       }
@@ -511,7 +511,7 @@
     .cell {
       span {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -520,41 +520,41 @@
       h4 {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
       p {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   } 
   .photo {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .post-hero {
     .block {
       .block-wrapper {
         .category-name {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
   
         .headline,
         .byline {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-bold!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .byline {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .attribution {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-regular!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
@@ -563,7 +563,7 @@
     blockquote {
       p {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -571,26 +571,26 @@
     .login__input {
       input, select {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
     .login__input-select {
       select {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
     .login__submit {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-semibold!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   }
   .socially-connected {
     .socially__title {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
   
     .socially__columns {
@@ -598,25 +598,25 @@
         .socially__columns__column__info {
           .socially__columns__column__info__social-date {
             font-family: $font-sans-serif!important;
-            letter-spacing: 1px;
+            letter-spacing: 1px !important;
           }
   
           .socially__columns__column__info_title {
             font-family: $font-sans-serif!important;
             font-weight: $sans-serif-semibold!important;
-            letter-spacing: 1px;
+            letter-spacing: 1px !important;
           }
   
           .socially__columns__column__info_description {
             font-family: $font-sans-serif!important;
             font-weight: $serif-regular!important;
-            letter-spacing: 1px;
+            letter-spacing: 1px !important;
           }
   
           .socially__columns__column__info_more {
             font-family: $font-sans-serif!important;
             font-weight: $sans-serif-bold!important;
-            letter-spacing: 1px;
+            letter-spacing: 1px !important;
           }
         }
       }
@@ -626,29 +626,29 @@
     .tasting-notes__title {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .tasting-notes__slider-container {
       .tasting-notes__note {
         .tasting-notes__note__cutline {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-regular!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .tasting-notes__note__title {
           font-family: $font-sans-serif!important;
           font-weight: $chinese-font-bold!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .tasting-notes__note__byline {
           font-family: $font-sans-serif!important;
           font-weight: $serif-regular!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
         .tasting-notes__note__more {
           font-family: $font-sans-serif!important;
           font-weight: $sans-serif-bold!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
@@ -657,7 +657,7 @@
     .top-articles {
       .article__title {
         font-weight: $chinese-font-bold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
       .featured-article {
         .featured-article__inner {
@@ -665,7 +665,7 @@
             .feature-article__authors {
               font-family: $font-sans-serif!important;
               font-weight: $sans-serif-light!important;
-              letter-spacing: 1px;
+              letter-spacing: 1px !important;
             }
           }
         }
@@ -674,13 +674,13 @@
     .top-articles__more {
       .article__category {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     
       .article__title {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
         @media #{$viewport-medium} {
           font-weight: $chinese-font-bold!important;
         }
@@ -688,12 +688,12 @@
       .article__description {
         font-family: $font-sans-serif!important;
         font-weight: $serif-regular!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
       .article__more {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-bold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
@@ -701,19 +701,19 @@
     h1 {
       font-family: $font-sans-serif!important;
       font-weight: $serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .content-block {
       .img-wrapper {
         .cutline {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
       .copyblock {
         p {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
@@ -722,39 +722,39 @@
     .account__input {
       input {
         font-family: $font-sans-serif!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
       
       .account__input__select {
         select {
           font-family: $font-sans-serif!important;
-          letter-spacing: 1px;
+          letter-spacing: 1px !important;
         }
       }
     }
     .account__title {
       font-family: $font-sans-serif!important;
       font-weight: $sans-serif-regular!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .account__description, .reset-password__description {
       font-family: $font-sans-serif!important;
-      letter-spacing: 1px;
+      letter-spacing: 1px !important;
     }
     .account__toggles {
       .account__toggle {
         font-family: $font-sans-serif!important;
         font-weight: $sans-serif-semibold!important;
-        letter-spacing: 1px;
+        letter-spacing: 1px !important;
       }
     }
   }
   .signup__checkbox-container {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
   .privacy-notice-text {
     font-family: $font-sans-serif!important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
   }
 }
