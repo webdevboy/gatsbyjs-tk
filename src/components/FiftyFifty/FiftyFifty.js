@@ -36,7 +36,7 @@ function FiftyFifty({
           }}
         ></div>
         <div className="wrapper">
-          <h4 style={{ color: copyColor }}>{headline}</h4>
+          <h4 style={{ color: copyColor }} dangerouslySetInnerHTML={{ __html: headline }} />
           <p
             style={{ color: copyColor }}
             dangerouslySetInnerHTML={{ __html: copyBlock }}
