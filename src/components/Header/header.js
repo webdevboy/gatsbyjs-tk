@@ -196,22 +196,22 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
                 {`${t('article:share')}:`}
               </div>
               <div className="header__article__mobile-share" onClick={() => setShowShare(!showShare)}>
-                <img src={Share} />
+                <img src={Share} alt="share icon" />
               </div>
               <a href="#" onClick={openFacebookShare}>
-                <img src={Facebook} />
+                <img src={Facebook} alt="facebook icon" />
               </a>
               <a href="#" onClick={openWeChatShareQR}>
-                <img src={WeChat} />
+                <img src={WeChat} alt="wechat icon" />
               </a>
               <a href="#" onClick={openPinterestShare}>
-                <img src={Pinterest} />
+                <img src={Pinterest} alt="pinterest icon" />
               </a>
               <a href="#" onClick={openTwitterShare}>
-                <img src={Twitter} />
+                <img src={Twitter} alt="twitter icon" />
               </a>
               <a href={`https://api.whatsapp.com/send?&text=${isDocument && document.title} - ${isDocument && document.location.href}`} onClick={openWhatsappShare}>
-                <img src={Whatsapp} />
+                <img src={Whatsapp} alt="whatsapp icon" />
               </a>
             </div>
           </div>

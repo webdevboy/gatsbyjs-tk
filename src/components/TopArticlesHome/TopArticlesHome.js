@@ -32,6 +32,7 @@ function Article({
             <img
               className="top_articles__columns__column__image"
               src={imageUrl}
+              alt=""
             />
           </Parallax>
         )}
@@ -168,6 +169,7 @@ export default function TopArticles(props) {
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
                       onLoad={updateParallaxState}
+                      alt=""
                     />
                   </Parallax>
                   {/* {featuredArticleFormatted.authors && (
@@ -190,12 +192,11 @@ export default function TopArticles(props) {
               )}
               {featuredArticleFormatted.articleUrl && (
                 <div className="article__more">
-                  <Link
-                    to={featuredArticleFormatted.articleUrl}
+                  <span
                     className="article__more__link"
                   >
                     {t('read-more')}
-                  </Link>
+                  </span>
                 </div>
               )}
             </div>
