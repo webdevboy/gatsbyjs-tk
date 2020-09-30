@@ -23,8 +23,8 @@ export default function CopyColumns({ columns, theme }) {
               />
             </span>
           )}
-          {col.headline && <h4 className="headline">{col.headline}</h4>}
-          {col.subheader && <p className="subhead">{col.subheader}</p>}
+          {col.headline && <h4 className="headline" dangerouslySetInnerHTML={{ __html: col.headline }} />}
+          {col.subheader && <p className="subhead" dangerouslySetInnerHTML={{ __html: col.subheader }} />}
           {col.mobileCopy && <div
             className="mobile-copy"
             dangerouslySetInnerHTML={{ __html: col.mobileCopy && col.mobileCopy.replace && col.mobileCopy.replace('<tab>', '<tab />') }} 

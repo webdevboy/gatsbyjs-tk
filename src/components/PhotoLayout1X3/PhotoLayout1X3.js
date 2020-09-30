@@ -14,7 +14,7 @@ function PhotoLayout1X3Slide({ photo, updateParallaxState }) {
           onLoad={updateParallaxState}
         />
       </Parallax>
-      <p className="cutline">{photo.cutline}</p>
+      <p className="cutline" dangerouslySetInnerHTML={{ __html: photo.cutline }} />
     </div>
   );
 }

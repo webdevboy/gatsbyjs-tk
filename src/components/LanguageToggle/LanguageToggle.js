@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next"
 import { useNavigate, useLocation } from '@reach/router';
 import cx from 'classnames';
 import useWindow from 'src/hooks/useWindow';
+import convertLinkLocale from 'src/utils/convertLinkLocale';
 
 import "./LanguageToggle.scss"
 
@@ -41,7 +42,8 @@ function LanguageToggle({ theme, pageScroll }) {
     setLanguage(lang);
     i18n.changeLanguage(lang.slug);
     if(_window) {
-      _window.location.pathname = `/${lang.slug === 'en' ? '' : lang.slug}`;
+      const { pathname } = _window.location;
+      _window.location.pathname = convertLinkLocale(pathname, lang.slug);
     }
   }
 
