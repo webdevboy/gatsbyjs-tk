@@ -5,6 +5,7 @@
     background-color: $color-gold;
     text-align: center;
     padding: 30px 20px 60px;
+    box-sizing: border-box;
 
     @media #{$viewport-medium} {
       display: grid;
@@ -88,6 +89,7 @@
   .site-links {
     background-color: $color-gray;
     padding: 60px 20px;
+    box-sizing: border-box;
 
     @media #{$viewport-medium} {
       display: grid;

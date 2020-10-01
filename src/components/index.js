@@ -18,3 +18,4 @@ export { default as TastingNotes } from "src/components/TastingNotes/TastingNote
 export { default as EventsComponent } from "src/components/EventsComponent/EventsComponent"
 export { default as FullwidthCopy } from "src/components/FullwidthCopy/FullwidthCopy"
 export { default as EventPageComponent } from "src/components/EventsPageComponent/EventsPageComponent"
+export { default as DestionationBanner } from "src/components/DestionationBanner/DestionationBanner";
