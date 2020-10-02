@@ -1,4 +1,5 @@
 import React from "react"
+import { useController } from 'react-scroll-parallax'
 import {
   // PageHero,
   TopArticlesHome,
@@ -12,6 +13,7 @@ import {
   EventsComponent,
   FullwidthCopy,
   EventPageComponent,
+  DestionationBanner,
 } from "src/components"
 import {
   AboutTitle,
@@ -20,6 +22,7 @@ import {
 } from 'src/components/AboutComponents';
 
 const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateParallaxState }) => {
+  const { parallaxController } = useController();
   const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found";
   // Default component
   const Default = () => (
@@ -35,6 +38,7 @@ const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateP
     // page_Components_Contents_HomepageHero: PageHero,
     page_Components_Contents_HomepageHero: Empty,
     page_Components_Contents_TopArticles: TopArticlesHome,
+    page_Components_Contents_DestinationBanner: DestionationBanner,
     page_Components_Contents_Chefs: Chefs,
     page_Components_Contents_SociallyConnected: SociallyConnected,
     page_Components_Contents_IndividualArticle: IndividualArticle,
@@ -55,7 +59,7 @@ const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateP
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={"light"} type={"page"} fbPost={fbPost} containerIsScrollable={containerIsScrollable} updateParallaxState={updateParallaxState} />
+  return <ComponentTag {...layoutData} theme={"light"} type={"page"} fbPost={fbPost} containerIsScrollable={containerIsScrollable} updateParallaxState={parallaxController && parallaxController.update} />
 }
 
-export default PageLayouts
+export default PageLayouts;

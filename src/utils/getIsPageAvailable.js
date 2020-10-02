@@ -1,3 +1,5 @@
+import { GATSBY_WP_ENDPOINT } from 'src/utils/constants';
+
 const getIsPageAvailable = (pages, url) => {
   if(pages && pages.length > 0) {
     const page = pages.find(p => {
