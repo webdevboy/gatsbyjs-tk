@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { path } from 'ramda';
 import { useTranslation } from 'react-i18next';
+import { Parallax } from 'react-scroll-parallax';
 
 import replaceAmpersand from 'src/utils/replaceAmpersand';
 import { getFormattedArticle } from 'src/utils/formatArticle';
@@ -10,7 +11,7 @@ import './DestionationBanner.scss';
 import DestionationBannerArticles from './DestionationBannerArticles';
 import AdaptiveImage from 'src/components/common/AdaptiveImage/AdaptiveImage';
 
-function DestionationArticles({ cutline, title, backgroundImages, linkArticle, typeColor, linkArticlesOrder }) {
+function DestionationArticles({ cutline, title, backgroundImages, linkArticle, typeColor, linkArticlesOrder, updateParallaxState }) {
   const { t, i18n } = useTranslation('article');
   const desktopImageUrl = path(['desktop', 'sourceUrl'], backgroundImages);
   const tabletImageUrl = path(['tablet', 'sourceUrl'], backgroundImages);
@@ -23,17 +24,19 @@ function DestionationArticles({ cutline, title, backgroundImages, linkArticle, t
   return (
     <div className="destionation-articles-container">
       <div className="destionation-articles_head" style={{ color: typeColor || '#FFFFFF' }}>
-        <AdaptiveImage
-          src={desktopImageUrl}
-          mediumSrc={tabletImageUrl}
-          smallSrc={mobileImageUrl}
-          innerProps={{
-            className: "destionation-articles_head__img"
-          }}
-        />
+        <Parallax y={[-5, 5]} className="destionation-articles_head__img__container">
+          <AdaptiveImage
+            src={desktopImageUrl}
+            mediumSrc={tabletImageUrl}
+            smallSrc={mobileImageUrl}
+            innerProps={{
+              className: "destionation-articles_head__img"
+            }}
+          />
+        </Parallax>
         <div className="destionation-articles_head__info">
           <div className="destionation-articles_head__info__heading">
-            <div className="destionation-articles_head__info__category" dangerouslySetInnerHTML={{ __html: cutline ? replaceAmpersand(headArticleTitle) : '' }} />
+            <div className="destionation-articles_head__info__category" dangerouslySetInnerHTML={{ __html: cutline ? replaceAmpersand(cutline) : '' }} />
             <div className="destionation-articles_head__info__title">
               {title}
             </div>
@@ -77,7 +80,7 @@ function DestionationArticles({ cutline, title, backgroundImages, linkArticle, t
           </Link>
         </div>
       )}
-      <DestionationBannerArticles {...{ articles }} />
+      <DestionationBannerArticles {...{ articles, updateParallaxState }} />
     </div>
   )
 }

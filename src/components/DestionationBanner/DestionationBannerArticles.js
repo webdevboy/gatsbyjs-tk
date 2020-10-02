@@ -3,13 +3,14 @@ import classNames from 'classnames';
 import { map, path } from 'ramda';
 import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
+import { Parallax } from 'react-scroll-parallax';
 
 import replaceAmpersand from 'src/utils/replaceAmpersand';
 import { getFormattedArticle } from 'src/utils/formatArticle';
 
 import './DestionationBannerArticles.scss';
 
-const DestionationBannerArticle = ({ article, main }) => {
+const DestionationBannerArticle = ({ article, main, updateParallaxState }) => {
   const [articleImageHeight, setArticleImageHeight] = useState(0);
   const articleImageRef = useRef(null);
   const { t, i18n } = useTranslation('article');
@@ -30,13 +31,16 @@ const DestionationBannerArticle = ({ article, main }) => {
     <Link to={articleUrl} className="destionation-articles__main__article__link">
       <div className={classNames('destionation-articles__main__article', { 'destionation-articles__main__article--bottom-padding': !main })}>
         {articleImageUrl && (
-          <img
-            src={articleImageUrl}
-            ref={articleImageRef}
-            className={classNames('destionation-articles__main__article__img', { 'destionation-articles__main__article__img--circle': isArticleCircle })}
-            style={{ height: isArticleCircle ? articleImageHeight : 'auto' }}
-            alt=""
-          />
+          <Parallax y={[-5, 5]} className="destionation-articles__main__article__img-container">
+            <img
+              src={articleImageUrl}
+              ref={articleImageRef}
+              onLoad={updateParallaxState}
+              className={classNames('destionation-articles__main__article__img', { 'destionation-articles__main__article__img--circle': isArticleCircle })}
+              style={{ height: isArticleCircle ? articleImageHeight : 'auto' }}
+              alt=""
+            />
+          </Parallax>
         )}
         {articleCutline && (
           <div className="destionation-articles__main__article__cutline" dangerouslySetInnerHTML={{ __html: replaceAmpersand(articleCutline) }} />
@@ -58,7 +62,7 @@ const DestionationBannerArticle = ({ article, main }) => {
   );
 }
 
-function DestionationBannerArticles({ articles }) {
+function DestionationBannerArticles({ articles, updateParallaxState }) {
   const articlesArr = [...articles];
   const mainArticles = articlesArr.splice(0, 3);
   let leftArticles = [];
@@ -80,24 +84,24 @@ function DestionationBannerArticles({ articles }) {
     <div className="destionation-articles">
       <div className="destionation-articles__main">
         {map(item => (
-          <DestionationBannerArticle article={getFormattedArticle(item.article)} key={item.article.id} main />
+          <DestionationBannerArticle article={getFormattedArticle(item.article)} updateParallaxState={updateParallaxState} key={item.article.id} main />
         ), mainArticles)}
       </div>
       <div className="destionation-articles__mobile">
         <div>
           {map(item => (
-            <DestionationBannerArticle article={getFormattedArticle(item.article)} key={item.article.id} />
+            <DestionationBannerArticle article={getFormattedArticle(item.article)} updateParallaxState={updateParallaxState} key={item.article.id} />
           ), leftArticles)}
         </div>
         <div>
           {map(item => (
-            <DestionationBannerArticle article={getFormattedArticle(item.article)} key={item.article.id} />
+            <DestionationBannerArticle article={getFormattedArticle(item.article)} updateParallaxState={updateParallaxState} key={item.article.id} />
           ), rightArticles)}
         </div>
       </div>
       <div className="destionation-articles__tablet">
         {map(item => (
-          <DestionationBannerArticle article={getFormattedArticle(item.article)} key={item.article.id} />
+          <DestionationBannerArticle article={getFormattedArticle(item.article)} updateParallaxState={updateParallaxState} key={item.article.id} />
         ), articlesArr)}
       </div>
     </div>
