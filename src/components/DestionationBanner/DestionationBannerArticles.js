@@ -67,7 +67,6 @@ function DestionationBannerArticles({ articles, updateParallaxState }) {
   const mainArticles = articlesArr.splice(0, 3);
   let leftArticles = [];
   let rightArticles = [];
-
   const sortArticles = () => {
     for(let i = 0; i < articlesArr.length; i++) {
       if((i + 1) % 2 === 0) {

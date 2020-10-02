@@ -10,6 +10,7 @@ import * as cx from 'classnames';
 
 import { PageHero } from 'src/components';
 import FrontPage from './FrontPage';
+import DefaultPage from './DefaultPage';
 
 const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   const { title, components } = pageContext;
@@ -118,12 +119,13 @@ class Page extends Component {
           <FrontPageProvider pageContext={pageContext} heroData={heroData} />
         ) : (
           <ParallaxProvider>
-            <Layout theme="light" isFrontPage={false}>
-              <SEO title={title || 'Untitled'} />
-              {[...layouts, ...aboutLayouts, ...eventsLayouts].map((layout, index) => (
-                <PageLayouts key={index} layoutData={layout} fbPost={fbPost} updateParallaxState={() => {}} />
-              ))}
-            </Layout>
+            <DefaultPage
+              {...{
+                title,
+                fbPost,
+                layouts: [...layouts, ...aboutLayouts, ...eventsLayouts],
+              }}
+            />
           </ParallaxProvider>
         )}
       </>
