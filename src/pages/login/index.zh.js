@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useNavigate } from '@reach/router';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from "react-i18next";
 
 import { isAuthenticated, isBrowser } from 'src/utils/auth';
+import SEO from "src/components/seo";
 import Layout from '../../components/Layout';
 import LoginHeader from '../../components/LoginHeader/LoginHeader';
 import LoginComponent from '../../components/Login/Login';
@@ -12,6 +14,7 @@ import '../../styles/pages/login.scss';
 
 function Login() {
   const navigate = useNavigate();
+  const [t, i18n] = useTranslation();
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState('');
   useEffect(() => {
@@ -25,10 +28,8 @@ function Login() {
   }
   return (
     <Layout removeTopPadding>
+      <SEO title={`Tasting Kitchen ${t('nav-login')}`} />
       <LoginHeader {...{ isLogin, setIsLogin, error }} />
-      <Helmet>
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-      </Helmet>
       <div
         className={cx('login-signup-container', { 'login--active': isLogin })}
       >
