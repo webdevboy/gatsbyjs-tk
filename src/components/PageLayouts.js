@@ -1,5 +1,4 @@
 import React from "react"
-import { useController } from 'react-scroll-parallax'
 import {
   // PageHero,
   TopArticlesHome,
@@ -22,7 +21,6 @@ import {
 } from 'src/components/AboutComponents';
 
 const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateParallaxState }) => {
-  const { parallaxController } = useController();
   const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found";
   // Default component
   const Default = () => (
@@ -59,7 +57,7 @@ const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateP
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={"light"} type={"page"} fbPost={fbPost} containerIsScrollable={containerIsScrollable} updateParallaxState={parallaxController && parallaxController.update} />
+  return <ComponentTag {...layoutData} theme={"light"} type={"page"} fbPost={fbPost} containerIsScrollable={containerIsScrollable} updateParallaxState={updateParallaxState} />
 }
 
 export default PageLayouts;

@@ -755,4 +755,59 @@
     font-family: $font-sans-serif!important;
     letter-spacing: 1px !important;
   }
+
+  .destionation-articles-container {
+    .destionation-articles_head__info {
+      .destionation-articles_head__info__category {
+        font-family: $font-sans-serif!important;
+        font-weight: $sans-serif-light!important;
+      }
+      
+      .destionation-articles_head__info__title {
+        font-family: $font-sans-serif!important;
+      }
+      .destionation-articles_head__info__article {
+        .destionation-articles_head__info__article__title {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-medium!important;
+        }
+        .destionation-articles_head__info__article__byline {
+          font-family: $font-sans-serif!important;
+        }
+        .destionation-articles_head__info__article__more {
+          font-family: $font-sans-serif!important;
+          font-weight: $sans-serif-semibold!important;
+        }
+      }
+    }
+
+    .destionation-articles_head_article {
+      font-family: $font-sans-serif!important;
+      .destionation-articles_head__article__title {
+        font-weight: $sans-serif-bold!important;
+      }
+      .destionation-articles_head__article__description {
+        font-family: $font-sans-serif!important;
+      }
+      .destionation-articles_head__article__more {
+        font-weight: $sans-serif-bold!important;
+      }
+    }
+  }
+
+
+  .destionation-articles {
+    .destionation-articles__main__article {
+      font-family: $font-sans-serif!important;
+      .destionation-articles__main__article__title {
+        font-weight: $sans-serif-medium!important;
+      }
+      .destionation-articles__main__article__byline {
+        font-family: $font-sans-serif!important;
+      }
+      .destionation-articles__main__article__more {
+        font-weight: $sans-serif-medium!important;
+      }
+    }
+  }
 }
