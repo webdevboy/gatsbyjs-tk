@@ -176,6 +176,7 @@ export default function TopArticles({ category, updateParallaxState = () => {} }
                       className="featured-article__image"
                       src={featuredArticleFormatted.imageUrl}
                       onLoad={updateParallaxState}
+                      alt=""
                     />
                   </Parallax>
                   {/* {featuredArticleFormatted.authors && (

@@ -31,6 +31,7 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
                 src={individualArticleImage.sourceUrl}
                 onLoad={updateParallaxState}
                 onClick={goToArticle}
+                alt=""
               />
             </Parallax>
           )}
@@ -59,15 +60,11 @@ function IndividualArticle({ article, individualArticleImage, updateParallaxStat
             )}
             {formattedArticle.articleUrl && (
               <div className="individual-article__info__more">
-                <Link
+                <span
                   className="individual-article__info__more__link"
-                  to={convertLinkLocale(
-                    formattedArticle.articleUrl,
-                    i18n.language
-                  )}
                 >
                   {t('read-more')}
-                </Link>
+                </span>
               </div>
             )}
           </Link>
