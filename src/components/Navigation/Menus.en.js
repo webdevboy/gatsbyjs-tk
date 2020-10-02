@@ -48,13 +48,6 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
       }
     }
   `);
-    console.log(wordpress.menus &&
-      wordpress.menus.nodes &&
-      wordpress.menus.nodes.length &&
-      wordpress.menus.nodes[0] &&
-      wordpress.menus.nodes[0].menuItems &&
-      wordpress.menus.nodes[0].menuItems.nodes.length &&
-      wordpress.menus.nodes[0].menuItems.nodes)
   const getUrlPath = url => {
     return url.replace(wordpress.generalSettings.url, "");
   }

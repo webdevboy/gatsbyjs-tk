@@ -36,7 +36,7 @@ function DestionationArticles({ cutline, title, backgroundImages, linkArticle, t
         </Parallax>
         <div className="destionation-articles_head__info">
           <div className="destionation-articles_head__info__heading">
-            <div className="destionation-articles_head__info__category" dangerouslySetInnerHTML={{ __html: cutline ? replaceAmpersand(headArticleTitle) : '' }} />
+            <div className="destionation-articles_head__info__category" dangerouslySetInnerHTML={{ __html: cutline ? replaceAmpersand(cutline) : '' }} />
             <div className="destionation-articles_head__info__title">
               {title}
             </div>
