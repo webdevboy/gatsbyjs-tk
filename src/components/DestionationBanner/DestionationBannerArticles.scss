@@ -1,0 +1,103 @@
+@import 'src/styles/variables';
+
+.destionation-articles {
+  background-color: $color-lightgray;
+  padding: 40px 20px 20px 20px;
+  @media #{$viewport-medium} {
+    padding: 41px 43px 100px 43px;
+  }
+  @media #{$viewport-xlarge} {
+    padding: 60px 53px 100px 53px;
+  }
+  .destionation-articles__main {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 43px;
+    margin-bottom: 75px;
+    @media #{$viewport-medium} {
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 41px;
+      row-gap: 76px;
+      margin-bottom: 40px;
+    }
+  }
+  .destionation-articles__mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 40px;
+    width: 100%;
+    @media #{$viewport-medium} {
+      display: none;
+    }
+  }
+  .destionation-articles__tablet {
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 41px;
+    row-gap: 61px;
+    @media #{$viewport-medium} {
+      display: grid;
+    }
+    @media #{$viewport-xlarge} {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+  .destionation-articles__main__article__link {
+    text-decoration: none;
+  }
+  .destionation-articles__main__article {
+    color: $color-darkgray;
+    font-family: $font-sans-serif;
+    cursor: pointer;
+    &.destionation-articles__main__article--bottom-padding {
+      padding-bottom: 40px;
+      @media #{$viewport-medium} {
+        padding-bottom: 0;
+      }
+    }
+    .destionation-articles__main__article__img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      &.destionation-articles__main__article__img--circle {
+        border-radius: 50%;
+      }
+    }
+    .destionation-articles__main__article__cutline {
+      font-size: 9px;
+      letter-spacing: 0.5px;
+      line-height: 11px;
+      margin-top: 20px;
+      text-transform: uppercase;
+      
+    }
+    .destionation-articles__main__article__title {
+      font-size: 16px;
+      font-weight: $sans-serif-medium;
+      letter-spacing: 0;
+      line-height: 20px;
+      margin-top: 10px;
+    }
+    .destionation-articles__main__article__byline {
+      font-family: $font-serif;
+      font-size: 12px;
+      letter-spacing: 0;
+      line-height: 18px;
+      margin-top: 20px;
+    }
+    .destionation-articles__main__article__more {
+      font-size: 12px;
+      font-weight: $sans-serif-medium;
+      letter-spacing: 0;
+      line-height: 15px;
+      margin-top: 20px;
+      text-transform: capitalize;
+      cursor: pointer;
+    }
+    @media #{$viewport-medium} {
+      color: $color-cutline;
+    }
+  }
+}
+
