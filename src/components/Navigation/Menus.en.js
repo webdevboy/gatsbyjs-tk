@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { useTranslation } from "react-i18next"
 import { Link } from "gatsby"
 import * as cx from "classnames"
-import { GATSBY_WP_ENDPOINT } from 'src/utils/constants';
 
 import useWindow from 'src/hooks/useWindow';
 import { ItemWithSubNav } from './Navigation';
@@ -57,7 +56,7 @@ function MenusEn({ theme, showNav, path, closeNav, filterMenuItems }) {
       wordpress.menus.nodes[0].menuItems.nodes.length &&
       wordpress.menus.nodes[0].menuItems.nodes)
   const getUrlPath = url => {
-    return url.replace(GATSBY_WP_ENDPOINT, "");
+    return url.replace(wordpress.generalSettings.url, "");
   }
 
   const handleNavClick = (e, url) => {

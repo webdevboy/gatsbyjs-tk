@@ -117,12 +117,14 @@ class Page extends Component {
         {pageContext.isFrontPage && heroData.length ? (
           <FrontPageProvider pageContext={pageContext} heroData={heroData} />
         ) : (
-          <Layout theme="light" isFrontPage={false}>
-            <SEO title={title || 'Untitled'} />
-            {[...layouts, ...aboutLayouts, ...eventsLayouts].map((layout, index) => (
-              <PageLayouts key={index} layoutData={layout} fbPost={fbPost} updateParallaxState={() => {}} />
-            ))}
-          </Layout>
+          <ParallaxProvider>
+            <Layout theme="light" isFrontPage={false}>
+              <SEO title={title || 'Untitled'} />
+              {[...layouts, ...aboutLayouts, ...eventsLayouts].map((layout, index) => (
+                <PageLayouts key={index} layoutData={layout} fbPost={fbPost} updateParallaxState={() => {}} />
+              ))}
+            </Layout>
+          </ParallaxProvider>
         )}
       </>
     );
