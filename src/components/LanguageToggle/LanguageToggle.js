@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
-import { useStaticQuery } from "gatsby"
-import { Link, graphql } from "gatsby"
-import { ArrowDown } from "src/svgs"
-import { useTranslation } from "react-i18next"
+import React, { useState, useEffect } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { contains, path } from 'ramda';
+import { ArrowDown } from "src/svgs";
+import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from '@reach/router';
 import cx from 'classnames';
 import useWindow from 'src/hooks/useWindow';
@@ -43,7 +43,11 @@ function LanguageToggle({ theme, pageScroll }) {
     i18n.changeLanguage(lang.slug);
     if(_window) {
       const { pathname } = _window.location;
-      _window.location.pathname = convertLinkLocale(pathname, lang.slug);
+      const pathnameCleared = pathname.replace('-zh-tc', '').replace('-zh', '');
+      _window.location.pathname =
+        contains('category', pathnameCleared) && lang.slug !== 'en' ?
+        `${convertLinkLocale(pathnameCleared, lang.slug)}-${lang.slug.replace('_', '-')}` :
+        convertLinkLocale(pathnameCleared, lang.slug);
     }
   }
 

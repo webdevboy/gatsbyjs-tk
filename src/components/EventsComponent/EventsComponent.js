@@ -23,8 +23,8 @@ function EventsComponent({
 }) {
   const [t, i18n] = useTranslation(['common']);
   
-  const startDate = eventStartDate && moment(new Date(eventStartDate.replace('-', '/'))).add(1, 'days'); 
-  const endDate = eventEndDate && moment(new Date(eventEndDate.replace('-', '/'))).add(1, 'days');
+  const startDate = eventStartDate && moment(new Date(eventStartDate.replace(/\-/g, '/'))).add(1, 'days'); 
+  const endDate = eventEndDate && moment(new Date(eventEndDate.replace(/\-/g, '/'))).add(1, 'days');
   const lang = i18n.language !== 'en' ? 'zh-cn' : 'en';
 
   return (

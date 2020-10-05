@@ -50,9 +50,11 @@ function DestionationArticles({ cutline, title, backgroundImages, linkArticle, t
                 <div className="destionation-articles_head__info__article__byline" dangerouslySetInnerHTML={{ __html: replaceAmpersand(headArticleByline) }} />
               )}
               {(headArticleTitle || headArticleByline) && (
-                <button type="button" className="destionation-articles_head__info__article__more">
-                  {t('read-more')}
-                </button>
+                <Link to={linkArticle.uri}>
+                  <button type="button" className="destionation-articles_head__info__article__more">
+                    {t('read-more')}
+                  </button>
+                </Link>
               )}
             </div>
           )}

@@ -134,6 +134,9 @@
         margin: 20px auto 0 auto;
         text-transform: capitalize;
       }
+      a {
+        text-decoration: none;
+      }
     }
     @media #{$viewport-medium} {
       display: flex;
