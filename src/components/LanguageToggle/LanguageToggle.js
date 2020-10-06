@@ -44,10 +44,12 @@ function LanguageToggle({ theme, pageScroll }) {
     if(_window) {
       const { pathname } = _window.location;
       const pathnameCleared = pathname.replace('-zh-tc', '').replace('-zh', '');
+      const lastLetterSlash = pathnameCleared[pathnameCleared.length - 1] === '/';
+      const path = lastLetterSlash ? pathnameCleared.slice(0, pathnameCleared.length - 1) : pathnameCleared;
       _window.location.pathname =
-        contains('category', pathnameCleared) && lang.slug !== 'en' ?
-        `${convertLinkLocale(pathnameCleared, lang.slug)}-${lang.slug.replace('_', '-')}` :
-        convertLinkLocale(pathnameCleared, lang.slug);
+        contains('category', path) && lang.slug !== 'en' ?
+        `${convertLinkLocale(path, lang.slug)}-${lang.slug.replace('_', '-')}` :
+        convertLinkLocale(path, lang.slug);
     }
   }
 
