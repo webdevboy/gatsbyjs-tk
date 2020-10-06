@@ -1,10 +1,8 @@
-import { GATSBY_WP_ENDPOINT } from 'src/utils/constants';
-
 const getIsPageAvailable = (pages, url) => {
   if(pages && pages.length > 0) {
     const page = pages.find(p => {
       const decodedPath = decodeURIComponent(p.path);
-      return `${decodedPath}/` === url;
+      return `${decodedPath}/` === url.replace('https://q13.aa0.myftpupload.com', '');
     });
     return !!page;
   }
