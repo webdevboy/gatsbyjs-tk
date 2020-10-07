@@ -176,7 +176,7 @@
           li {
             &.go-back {
               width: 100%;
-              border-bottom: 1px solid $color-nav-back-border;
+              border-bottom: 0.5px solid $color-nav-back-border;
               button {
                 font-weight: $sans-serif-medium;
                 color: $color-light-black;
