@@ -157,7 +157,7 @@ function MenusZhTw({ theme, showNav, path, closeNav, filterMenuItems }) {
           </ul>
         </li>
         {isAuthenticated() && (
-          <li onClick={logout}>
+          <li className="passive-nav-item" onClick={logout}>
             {t('logout')}
           </li>
         )}
