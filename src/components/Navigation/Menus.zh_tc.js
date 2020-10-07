@@ -105,26 +105,35 @@ function MenusZhTw({ theme, showNav, path, closeNav, filterMenuItems }) {
                 />
               )
           })}
-        {!isAuthenticated() && (
           <li>
+            <div className="divider" />
+          </li>
+          <li className="passive-nav-item">
+            <Link to={convertLinkLocale('/zh_tc/about', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale('/about', i18n.language)))}>
+              {t('nav-about')}
+            </Link>
+          </li>
+        {!isAuthenticated() && (
+          <li className="passive-nav-item">
             <Link to={convertLinkLocale('/login', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/login'), i18n.language)))}>
               {t('nav-login')}
             </Link>
           </li>
         )}
         {isAuthenticated() && (
-          <li>
+          <li className="passive-nav-item">
             <Link to={convertLinkLocale('/account', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/account'), i18n.language)))}>
               {t('nav-account')}
             </Link>
           </li>
         )}
-        <li>
+        <li className="passive-nav-item">
           <a href="mailto:subscriptions@tasting-kitchen.com" target="_blank">{t('nav-subscribe')}</a>
         </li>
         <li className={cx({
           "with-menu": true,
-          "mobile-language": true
+          "mobile-language": true,
+          "passive-nav-item": true,
         })}>
           <button className="open-menu" onClick={() => setShowLanguages(true)}>
             {t('nav-language')}
@@ -148,7 +157,7 @@ function MenusZhTw({ theme, showNav, path, closeNav, filterMenuItems }) {
           </ul>
         </li>
         {isAuthenticated() && (
-          <li onClick={logout}>
+          <li className="passive-nav-item" onClick={logout}>
             {t('logout')}
           </li>
         )}

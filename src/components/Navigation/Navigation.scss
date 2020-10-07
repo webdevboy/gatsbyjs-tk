@@ -130,7 +130,7 @@
     }
 
     > li {
-      border-bottom:1px solid #D8D8D8;
+      // border-bottom:1px solid #D8D8D8;
       list-style: none;
       padding: 14px 0;
       color: $color-light-black;
@@ -144,6 +144,20 @@
       }
       &:last-child {
         border-bottom: none;
+      }
+
+      .divider {
+        height: 1px;
+        background-color: $color-black;
+        width: 100%;
+        margin: 7px 0;
+      }
+
+      &.passive-nav-item {
+        color: $color-nav-passive;
+        button.open-menu {
+          color: $color-nav-passive;
+        }
       }
 
       &.language-li {
@@ -162,7 +176,7 @@
           li {
             &.go-back {
               width: 100%;
-
+              border-bottom: 0.5px solid $color-nav-back-border;
               button {
                 font-weight: $sans-serif-medium;
                 color: $color-light-black;
