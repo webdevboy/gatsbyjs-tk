@@ -52,7 +52,7 @@ function SEO({ description, lang, meta, title, imageUrl, type, articleUrl, artic
         },
         {
           property: 'og:url',
-          content: articleUrl ? `https://tasting-kitchen.com${convertLinkLocale(articleUrl, articleLang || 'en')}` : 'https://tasting-kitchen.com/',
+          content: articleUrl ? `https://tasting-kitchen.com${articleUrl[0] === '/' ? articleUrl : `/${articleUrl}`}` : 'https://tasting-kitchen.com/',
         },
         {
           property: `og:description`,
