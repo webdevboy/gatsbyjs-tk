@@ -81,6 +81,10 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
 
   const isMobile = _window.innerWidth < MEDIUM_BREAKPOINT ? true : false;
 
+  const getFormattedUrl = url => {
+    return url[url.length - 1] === '/' ? url : `${url}/`;
+  }
+
   useEffect(() => {
     if (_window) {
       _window.addEventListener('scroll', () => {
@@ -92,42 +96,48 @@ function Header({ theme, showNav, setShowNav, isFrontPage, isArticlePage, pageSc
   const openWeChatShareQR = e => {
     e.preventDefault();
     if(_window) {
-      _window.open(`https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=${document.location.href}`, 'WeChat Share QR Code', 'height:700, width:700');
+      const url = getFormattedUrl(document.location.href);
+      _window.open(`https://chart.googleapis.com/chart?cht=qr&chs=180x180&chl=${url}`, 'WeChat Share QR Code', 'height:700, width:700');
     }
   }
 
   const openWeiboShare = e => {
     e.preventDefault();
     if(_window) {
-      _window.open(`http://service.weibo.com/share/share.php?title=${title}&url=${document.location.href}`, 'Weibo', 'height:700, width:700');
+      const url = getFormattedUrl(document.location.href);
+      _window.open(`http://service.weibo.com/share/share.php?title=${title}&url=${url}`, 'Weibo', 'height:700, width:700');
     }
   }
 
   const openPinterestShare = e => {
     e.preventDefault();
     if(_window) {
-      _window.open(`https://www.pinterest.com/pin/create/button/?description=${title}&media=${articleImageUrl}&url=${document.location.href}`, 'Weibo', 'height:700, width:700');
+      const url = getFormattedUrl(document.location.href);
+      _window.open(`https://www.pinterest.com/pin/create/button/?description=${title}&media=${articleImageUrl}&url=${url}`, 'Weibo', 'height:700, width:700');
     }
   }
 
   const openFacebookShare = e => {
     e.preventDefault();
     if(_window) {
-      _window.open(`https://www.facebook.com/sharer/sharer.php?u=${document.location.href}`, 'Facebook',  'height:700, width:700');
+      const url = getFormattedUrl(document.location.href);
+      _window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, 'Facebook',  'height:700, width:700');
     }
   }
 
   const openTwitterShare = e => {
     e.preventDefault();
     if(_window) {
-      _window.open(`https://twitter.com/intent/tweet?text=${document.location.href}`, 'Twitter',  'height:700, width:700');
+      const url = getFormattedUrl(document.location.href);
+      _window.open(`https://twitter.com/intent/tweet?text=${url}`, 'Twitter',  'height:700, width:700');
     }
   }
 
   const openWhatsappShare = e => {
     if(!isMobile && _window) {
+      const url = getFormattedUrl(document.location.href);
       e.preventDefault();
-      _window.open(`https://api.whatsapp.com/send?&text=${document.title} - ${document.location.href}`, 'Whatsapp', 'height:700, width:700');
+      _window.open(`https://api.whatsapp.com/send?&text=${document.title} - ${url}`, 'Whatsapp', 'height:700, width:700');
     }
   }
 
