@@ -114,7 +114,6 @@ class Page extends Component {
     const layouts = components.contents || [];
     const aboutLayouts = components.aboutContents || [];
     const eventsLayouts = components.eventContents || [];
-    console.log(pageContext);
     return (
       <>
         {pageContext.isFrontPage && heroData.length ? (
