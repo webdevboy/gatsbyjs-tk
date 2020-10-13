@@ -36,6 +36,10 @@ module.exports = () => {
     cutline
     title
     typeColor
+    socialDescription
+    socialImage {
+      sourceUrl
+    }
     backgroundImages {
       desktop {
         sourceUrl

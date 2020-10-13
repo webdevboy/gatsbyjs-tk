@@ -110,9 +110,11 @@ class Page extends Component {
     const heroData = pageContext.components.contents.filter(
       (o) => o.fieldGroupName === 'page_Components_Contents_HomepageHero'
     );
+    const destionationsData = pageContext.components.contents.filter(o => o.fieldGroupName === 'page_Components_Contents_DestinationBanner');
     const layouts = components.contents || [];
     const aboutLayouts = components.aboutContents || [];
     const eventsLayouts = components.eventContents || [];
+    console.log(pageContext);
     return (
       <>
         {pageContext.isFrontPage && heroData.length ? (
@@ -123,6 +125,8 @@ class Page extends Component {
               {...{
                 title,
                 fbPost,
+                destionationsData,
+                pageUri: pageContext.uri,
                 layouts: [...layouts, ...aboutLayouts, ...eventsLayouts],
               }}
             />

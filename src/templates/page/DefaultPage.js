@@ -17,10 +17,17 @@ class DefaultPage extends Component {
     }
   };
   render() {
-    const { title, layouts, fbPost } = this.props;
+    const { title, layouts, fbPost, destionationsData, pageUri } = this.props;
+    const isDestionationPage = destionationsData && destionationsData.length > 0;
+    const destionation = destionationsData && destionationsData.length > 0 && destionationsData[0];
     return (
       <Layout theme="light" isFrontPage={false}>
-        <SEO title={title || 'Untitled'} />
+        <SEO
+          title={title || 'Untitled'}
+          articleUrl={isDestionationPage ? pageUri : null}
+          imageUrl={destionation && destionation.socialImage && destionation.socialImage.sourceUrl}
+          description={destionation && destionation.socialDescription}
+        />
         {layouts.map((layout, index) => (
           <PageLayouts key={index} layoutData={layout} fbPost={fbPost} updateParallaxState={this.updateParallaxState} />
         ))}
