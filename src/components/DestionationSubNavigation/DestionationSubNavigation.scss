@@ -1,0 +1,13 @@
+@import 'src/styles/variables';
+
+.destionation-sub-navigation-container {
+  padding: 100px 0;
+  .destionation-sub-navigation {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 1385px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+

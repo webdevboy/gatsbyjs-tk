@@ -19,3 +19,4 @@ export { default as EventsComponent } from "src/components/EventsComponent/Event
 export { default as FullwidthCopy } from "src/components/FullwidthCopy/FullwidthCopy"
 export { default as EventPageComponent } from "src/components/EventsPageComponent/EventsPageComponent"
 export { default as DestionationBanner } from "src/components/DestionationBanner/DestionationBanner";
+export { default as DestionationSubNavigation } from "src/components/DestionationSubNavigation/DestionationSubNavigation";

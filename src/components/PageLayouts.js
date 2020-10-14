@@ -13,6 +13,7 @@ import {
   FullwidthCopy,
   EventPageComponent,
   DestionationBanner,
+  DestionationSubNavigation,
 } from "src/components"
 import {
   AboutTitle,
@@ -37,6 +38,7 @@ const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateP
     page_Components_Contents_HomepageHero: Empty,
     page_Components_Contents_TopArticles: TopArticlesHome,
     page_Components_Contents_DestinationBanner: DestionationBanner,
+    page_Components_Contents_DestionationSubNavigation: DestionationSubNavigation,
     page_Components_Contents_Chefs: Chefs,
     page_Components_Contents_SociallyConnected: SociallyConnected,
     page_Components_Contents_IndividualArticle: IndividualArticle,
