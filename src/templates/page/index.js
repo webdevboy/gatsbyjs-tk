@@ -1,5 +1,7 @@
 import React, { Component, useEffect, useState, useRef } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { globalHistory } from '@reach/router';
+import i18next from 'i18next';
 
 import Layout from 'src/components/Layout';
 import useWindow from 'src/hooks/useWindow';
@@ -8,6 +10,7 @@ import PageLayouts from 'src/components/PageLayouts';
 import { Swipeable } from 'react-swipeable';
 import * as cx from 'classnames';
 
+import setLanguage from 'src/utils/setLanguage';
 import { PageHero } from 'src/components';
 import FrontPage from './FrontPage';
 import DefaultPage from './DefaultPage';
@@ -20,7 +23,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   const [pageScrolled, setPageScrolled] = useState(false);
   const containerRef = useRef(null);
   const _window = useWindow() || {};
-  
+
   const [containerIsScrollable, setContainerIsScrollable] = useState(false);
 
   const layouts = components.contents || [];
@@ -42,7 +45,6 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 
   useEffect(() => {
     document.querySelector('#main-wrapper').classList.add('is-front-page');
-
     if (_window) {
       _window.addEventListener('scroll', () => {
         const logo = document.querySelector('.fp-logo-container');
@@ -104,6 +106,9 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 };
   
 class Page extends Component {
+  componentDidMount() {
+    setLanguage(globalHistory.location.pathname, i18next);
+  }
   render() {
     const { pageContext } = this.props;
     const { title, components, fbPost } = pageContext;

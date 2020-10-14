@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from '@reach/router';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from '@reach/router';
 import cx from 'classnames';
 import { Helmet } from 'react-helmet';
-import { isAuthenticated, isBrowser } from '../../utils/auth';
+import { isAuthenticated, isBrowser } from 'src/utils/auth';
+import setLanguage from 'src/utils/setLanguage';
 
 import Layout from '../../components/Layout';
 import AccountComponent from '../../components/Account/Account';
@@ -11,11 +13,14 @@ import AccountResetPassword from '../../components/AccountResetPassword/AccountR
 import '../../styles/pages/account.scss';
 
 function Account() {
-  const [t] = useTranslation(['account', 'auth']);
+  const [t, i18n] = useTranslation(['account', 'auth']);
   const navigate = useNavigate();
+  const location = useLocation();
   const [isAccountView, setAccountView] = useState(true);
 
   useEffect(() => {
+    console.log('ASDASDASD')
+    setLanguage(location.pathname, i18n);
     if (!isAuthenticated() && isBrowser) {
       navigate('/login');
     }
