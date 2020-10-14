@@ -3,7 +3,8 @@ import cx from 'classnames';
 import { useNavigate } from '@reach/router';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from "react-i18next";
-
+import { useLocation } from '@reach/router';
+import setLanguage from 'src/utils/setLanguage';
 
 import { isAuthenticated, isBrowser } from 'src/utils/auth';
 import SEO from "src/components/seo";
@@ -15,10 +16,12 @@ import '../../styles/pages/login.scss';
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [t, i18n] = useTranslation();
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState('');
   useEffect(() => {
+    setLanguage(location.pathname, i18n);
     if (isAuthenticated() && isBrowser) {
       navigate('/');
     }

@@ -37,13 +37,12 @@ class SessionCheck extends React.Component {
 
   UNSAFE_componentWillMount() {
     if(typeof window !== undefined) {
-      console.log(globalHistory);
       globalHistory.listen(({ action }) => {
         if(action === 'PUSH') {
           const { pathname } = window.location;
           const pageLngCode = pathname.split('/')[1] === '' ? 'en' : pathname.split('/')[1];
           const lngCode = supportedLngs.find(lng => lng === pageLngCode) || 'en';
-          i18next.changeLanguage(lngCode);
+          // i18next.changeLanguage(lngCode);
         }
       });
     }
