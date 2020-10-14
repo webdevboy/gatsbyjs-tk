@@ -37,6 +37,7 @@ class SessionCheck extends React.Component {
 
   UNSAFE_componentWillMount() {
     if(typeof window !== undefined) {
+      console.log(globalHistory);
       globalHistory.listen(({ action }) => {
         if(action === 'PUSH') {
           const { pathname } = window.location;
