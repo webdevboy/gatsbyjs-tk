@@ -5,6 +5,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 
 import PostWrapper from './PostWrapper';
 import useWindow from 'src/hooks/useWindow';
+import useComponentWillMount from 'src/hooks/useComponentWillMount';
 import setLanguage from 'src/utils/setLanguage';
 
 const Post = ({ pageContext }) => {
@@ -25,12 +26,11 @@ const Post = ({ pageContext }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
-  
+  useComponentWillMount(() => {setLanguage(location.pathname, i18n)});
   useEffect(() => {
     scrollTop();
   }, [pageContext.id]);
   useEffect(() => {
-    setLanguage(location.pathname, i18n);
     localStorage.setItem('articleFallbackUrl', '');
   }, []);
   return (

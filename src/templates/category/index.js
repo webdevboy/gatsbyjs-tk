@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router';
 import { useTranslation } from 'react-i18next';
 import useWindow from 'src/hooks/useWindow';
 import setLanguage from 'src/utils/setLanguage';
+import useComponentWillMount from 'src/hooks/useComponentWillMount';
 
 import CategoryWrapper from './CategoryWrapper';
 
@@ -25,9 +26,8 @@ const Category = ({ pageContext }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
-
+  useComponentWillMount(() => {setLanguage(location.pathname, i18n)});
   useEffect(() => {
-    setLanguage(location.pathname, i18n);
     localStorage.setItem('articleFallbackUrl', '');
     scrollTop();
   }, []);

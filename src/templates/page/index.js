@@ -106,7 +106,7 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
 };
   
 class Page extends Component {
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     setLanguage(globalHistory.location.pathname, i18next);
   }
   render() {

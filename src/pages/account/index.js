@@ -6,11 +6,12 @@ import cx from 'classnames';
 import { Helmet } from 'react-helmet';
 import { isAuthenticated, isBrowser } from 'src/utils/auth';
 import setLanguage from 'src/utils/setLanguage';
+import useComponentWillMount from 'src/hooks/useComponentWillMount';
 
-import Layout from '../../components/Layout';
-import AccountComponent from '../../components/Account/Account';
-import AccountResetPassword from '../../components/AccountResetPassword/AccountResetPassword';
-import '../../styles/pages/account.scss';
+import Layout from 'src/components/Layout';
+import AccountComponent from 'src/components/Account/Account';
+import AccountResetPassword from 'src/components/AccountResetPassword/AccountResetPassword';
+import 'src/styles/pages/account.scss';
 
 function Account() {
   const [t, i18n] = useTranslation(['account', 'auth']);
@@ -18,9 +19,8 @@ function Account() {
   const location = useLocation();
   const [isAccountView, setAccountView] = useState(true);
 
+  useComponentWillMount(() => {setLanguage(location.pathname, i18n)});
   useEffect(() => {
-    console.log('ASDASDASD')
-    setLanguage(location.pathname, i18n);
     if (!isAuthenticated() && isBrowser) {
       navigate('/login');
     }

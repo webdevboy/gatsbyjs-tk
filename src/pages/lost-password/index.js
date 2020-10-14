@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useTranslation } from 'react-i18next';
 import setLanguage from 'src/utils/setLanguage';
+import useComponentWillMount from 'src/hooks/useComponentWillMount';
 
-import Layout from '../../components/Layout';
+import Layout from 'src/components/Layout';
 import LostPassword from 'src/components/LostPassword/LostPassword';
 
 function LostPasswordPage() {
   const location = useLocation();
   const [t, i18n] = useTranslation();
-  useEffect(() => {
-    setLanguage(location.pathname, i18n);
-  }, []);
+  useComponentWillMount(() => {setLanguage(location.pathname, i18n)});
   return (
     <Layout>
       <Helmet>
