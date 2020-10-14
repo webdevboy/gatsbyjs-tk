@@ -4,10 +4,10 @@ const setLanguage = (pathname = '', i18n) => {
   const pathnameSplitted = pathname.split('/');
   const lngCode = pathnameSplitted.length > 1 && pathnameSplitted[1];
   const isSupportedLng = supportedLngs.indexOf(lngCode) !== -1;
-  if(lngCode && isSupportedLng) {
+  if(lngCode && isSupportedLng && i18n && i18n.changeLanguage) {
     i18n.changeLanguage(lngCode);
   }
-  else {
+  else if(i18n && i18n.changeLanguage) {
     i18n.changeLanguage('en');
   }
 };

@@ -10,6 +10,7 @@ import PageLayouts from 'src/components/PageLayouts';
 import { Swipeable } from 'react-swipeable';
 import * as cx from 'classnames';
 
+import { isBrowser } from 'src/utils/auth';
 import setLanguage from 'src/utils/setLanguage';
 import { PageHero } from 'src/components';
 import FrontPage from './FrontPage';
@@ -107,7 +108,9 @@ const FrontPageProvider = ({ pageContext, heroData, updateParallaxState }) => {
   
 class Page extends Component {
   UNSAFE_componentWillMount() {
-    setLanguage(globalHistory.location.pathname, i18next);
+    if(isBrowser) {
+      setLanguage(globalHistory.location.pathname, i18next);
+    }
   }
   render() {
     const { pageContext } = this.props;
