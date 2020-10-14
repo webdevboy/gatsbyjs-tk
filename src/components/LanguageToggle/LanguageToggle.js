@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import { contains, path } from 'ramda';
 import { ArrowDown } from "src/svgs";
 import { useTranslation } from "react-i18next";
@@ -40,16 +40,16 @@ function LanguageToggle({ theme, pageScroll }) {
   const chnageLanguage = lang => {
     setDropdown(false);
     setLanguage(lang);
-    i18n.changeLanguage(lang.slug);
     if(_window) {
       const { pathname } = _window.location;
       const pathnameCleared = pathname.replace('-zh-tc', '').replace('-zh', '');
       const lastLetterSlash = pathnameCleared[pathnameCleared.length - 1] === '/';
       const path = lastLetterSlash ? pathnameCleared.slice(0, pathnameCleared.length - 1) : pathnameCleared;
-      _window.location.pathname =
-        contains('category', path) && lang.slug !== 'en' ?
-        `${convertLinkLocale(path, lang.slug)}-${lang.slug.replace('_', '-')}` :
-        convertLinkLocale(path, lang.slug);
+      const redirectUrl = contains('category', path) && lang.slug !== 'en' ?
+      `${convertLinkLocale(path, lang.slug)}-${lang.slug.replace('_', '-')}` :
+      convertLinkLocale(path, lang.slug);
+
+      navigate(redirectUrl || '/');
     }
   }
 
