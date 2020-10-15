@@ -1,0 +1,50 @@
+@import 'src/styles/variables';
+
+.destination-introduction {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .destination-introduction__copy {
+    width: 500px;
+    text-align: center;
+    .destination-introduction__copy__title {
+      margin-bottom: 41px;
+      font-family: $font-sans-serif;
+      font-size: 32px;
+      font-weight: $sans-serif-medium;
+      letter-spacing: 0;
+      line-height: 39px;
+      text-align: center;
+    }
+    .destination-introduction__copy__body {
+      font-family: $font-serif;
+      font-size: 12px;
+      letter-spacing: 0.1px;
+      line-height: 18px;
+      text-align: center;
+    }
+    .destination-introduction__copy__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 50px;
+      margin-top: 40px;
+      .destination-introduction__copy__info__item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-family: $font-sans-serif;
+        font-size: 10px;
+        letter-spacing: 0;
+        line-height: 16px;
+        img {
+          height: 21px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
