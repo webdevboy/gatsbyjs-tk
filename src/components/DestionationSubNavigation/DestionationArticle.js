@@ -3,7 +3,6 @@ import React from 'react';
 import PostLayout from 'src/components/PostLayouts';
 
 function DestionationArticle({ article }) {
-  console.log(article);
   if(!article) return null;
   return (
     <div className="destionation-sub-navigation__article">
@@ -11,8 +10,8 @@ function DestionationArticle({ article }) {
       {article.components.contents.map((layout, index) => (
         <PostLayout {...{
           key: index,
-          layoutData: article.categories,
-          categories: [],
+          layoutData: layout,
+          categories: article.categories,
           updateParallaxState: () => {},
         }} />
       ))}
