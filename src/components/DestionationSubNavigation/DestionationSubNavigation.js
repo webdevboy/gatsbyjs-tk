@@ -31,8 +31,6 @@ function DestionationSubNavigation({ navigationItems }) {
                 {...{
                   title: path(['navigationItem', 'title'], item),
                   titleColor: path(['navigationItem', 'titleColor'], item),
-                  titleHoverOpacity: path(['navigationItem', 'titleHoverOpacity'], item),
-                  titleIdleOpacity: path(['navigationItem', 'titleIdleOpacity'], item),
                   imageUrl: path(['navigationItem', 'image', 'sourceUrl'], item),
                   imageRolloverUrl: path(['navigationItem', 'imageRollover', 'sourceUrl'], item),
                   article: path(['navigationItem', 'article'], item),

@@ -52,8 +52,6 @@ module.exports = () => {
         fieldGroupName
         title
         titleColor
-        titleIdleOpacity
-        titleHoverOpacity
         image {
           sourceUrl
         }
