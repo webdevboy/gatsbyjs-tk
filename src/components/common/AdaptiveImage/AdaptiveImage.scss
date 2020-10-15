@@ -1,22 +1,9 @@
 @import 'src/styles/variables.scss';
 
-.adaptive-desktop-image {
-  display: none;
-  @media #{$viewport-large} {
-    display: inline;
-  }
-}
-
-.adaptive-tablet-image {
-  display: none;
-  @media #{$viewport-medium} {
-    display: inline;
-  }
-}
-
-.adaptive-mobile-image {
-  display: inline;
-  @media #{$viewport-medium} {
-    display: none;
+.adaptive-image {
+  display: flex;
+  img {
+    object-fit: cover;
+    object-position: center;
   }
 }
