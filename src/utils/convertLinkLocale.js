@@ -3,7 +3,9 @@ import supportedLngs from '../locales/supportedLngs.json';
 function convertLinkLocale(url, languageCode) {
   let clearedUrl = url;
   for(let i = 0; i < supportedLngs.length; i++) {
-    clearedUrl = clearedUrl.replace(`/${supportedLngs[i]}`, '');
+    if(clearedUrl.split('/').indexOf(supportedLngs[i]) !== -1) {
+      clearedUrl = clearedUrl.replace(`/${supportedLngs[i]}`, '');
+    }
   }
   
   if(languageCode !== 'en') {
