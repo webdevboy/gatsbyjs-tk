@@ -25,14 +25,17 @@ function AdaptiveImage({ src, smallSrc, mediumSrc, innerProps }) {
       }
     }
   }, []);
+  console.log(width < MEDIUM_BREAKPOINT, 'SMALL');
+  console.log(width < LARGE_BREAKPOINT && width > MEDIUM_BREAKPOINT && mediumSrc, 'MEDIUM');
   if(width < MEDIUM_BREAKPOINT && smallSrc) {
     return <img src={smallSrc} alt="" {...innerProps} />
   }
   else if(width < LARGE_BREAKPOINT && width > MEDIUM_BREAKPOINT && mediumSrc) {
     return <img src={mediumSrc} alt="" {...innerProps} />
   }
-  
-  return  <img src={src} alt="" {...innerProps} />;
+  else if(width > LARGE_BREAKPOINT) {
+    return <img src={src} alt="" {...innerProps} />;
+  }
 } 
 
 export default AdaptiveImage;
