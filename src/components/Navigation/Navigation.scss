@@ -191,13 +191,14 @@
           position: fixed;
           left: 100%;
           width: 100%;
-          height: calc(100% - 100px);
+          height: calc(100% - 65px);
           overflow-y: auto;
           transition: left 0.5s ease-in-out;
-          top: 77px;
+          top: 65px;
           z-index: 1;
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
+          padding-top: 12px;
           
           &::-webkit-scrollbar {
             display: none;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import cx from 'classnames';
 
 import {
   MEDIUM_BREAKPOINT,
@@ -24,12 +25,13 @@ function AdaptiveImage({ src, smallSrc, mediumSrc, innerProps }) {
       }
     }
   }, []);
-  if(width < LARGE_BREAKPOINT && width > MEDIUM_BREAKPOINT && mediumSrc) {
-    return <img src={mediumSrc} alt="" {...innerProps} />
-  }
-  else if(width < MEDIUM_BREAKPOINT && smallSrc) {
+  if(width < MEDIUM_BREAKPOINT && smallSrc) {
     return <img src={smallSrc} alt="" {...innerProps} />
   }
+  else if(width < LARGE_BREAKPOINT && width > MEDIUM_BREAKPOINT && mediumSrc) {
+    return <img src={mediumSrc} alt="" {...innerProps} />
+  }
+  
   return  <img src={src} alt="" {...innerProps} />;
 } 
 
