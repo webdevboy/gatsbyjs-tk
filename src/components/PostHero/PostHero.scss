@@ -23,6 +23,7 @@
   }
   .parallax-outer {
     min-height: 660px;
+    background-color: $color-bg-light;
     @media #{$viewport-medium} {
       min-height: 380px;
     }
