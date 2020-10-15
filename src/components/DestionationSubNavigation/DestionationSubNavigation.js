@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swiper from 'react-id-swiper';
 import { path } from 'ramda';
 
 import './DestionationSubNavigation.scss';
 import DestionationSubNavigationItem from './DestionationSubNavigationItem';
+import DestionationArticle from './DestionationArticle';
 
 function DestionationSubNavigation({ navigationItems }) {
+  const [selectedArticle, setSelectedArticle] = useState(null);
   const params = {
     spaceBetween: 0,
     noSwiping: false,
@@ -26,12 +28,16 @@ function DestionationSubNavigation({ navigationItems }) {
                   imageUrl: path(['navigationItem', 'image', 'sourceUrl'], item),
                   imageRolloverUrl: path(['navigationItem', 'imageRollover', 'sourceUrl'], item),
                   article: path(['navigationItem', 'article'], item),
+                  onClick: () => {setSelectedArticle(item.navigationItem.article)},
+                  selected: (selectedArticle && selectedArticle.id) === (item.navigationItem.article && item.navigationItem.article.id),
                 }}
               />
             </div>
           ))}
         </Swiper>
-        
+        {selectedArticle && (
+          <DestionationArticle article={selectedArticle} />
+        )}
       </div>
     </div>
   )

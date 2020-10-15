@@ -1,8 +1,9 @@
 import React from 'react';
+import cx from 'classnames';
 
-function DestionationSubNavigationItem({ title, imageUrl, imageRolloverUrl }) {
+function DestionationSubNavigationItem({ title, imageUrl, imageRolloverUrl, onClick, selected }) {
   return (
-    <div className="destionation-sub-navigation__item">
+    <div className={cx('destionation-sub-navigation__item', { 'destionation-sub-navigation__item--selected': selected })} onClick={onClick}>
       <div className="destionation-sub-navigation__item__img">
         <img src={imageUrl} alt="" />
         <img src={imageRolloverUrl} alt="" className="destionation-sub-navigation__item__img__hover" />
