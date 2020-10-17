@@ -22,6 +22,8 @@
   }
   .column-copy-single {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     @media #{$viewport-medium} {
       width: 485px;
     }
