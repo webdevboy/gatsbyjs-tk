@@ -22,6 +22,15 @@
     }
   }
   .parallax-outer {
+    min-height: 600px;
+    // background-color: $color-bg-light;
+    @media #{$viewport-medium} {
+      min-height: 380px;
+    }
+
+    @media #{$viewport-large} {
+      min-height: 600px;
+    }
     .parallax-inner {
       position: relative;
 

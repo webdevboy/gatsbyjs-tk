@@ -10,6 +10,7 @@ import {
   PhotoLayout1X3,
   TastingNotes,
   Spacer,
+  ColumnCopy,
 } from "src/components"
 
 const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => {
@@ -37,6 +38,7 @@ const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => 
     post_Components_Contents_1x3Layout: PhotoLayout1X3,
     post_Components_Contents_TastingNotes: TastingNotes,
     post_Components_Contents_Spacer: Spacer,
+    post_Components_Contents_ColumnCopy: ColumnCopy,
     default: Default,
   }
 
