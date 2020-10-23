@@ -160,6 +160,11 @@ function MenusZhCn({ theme, showNav, path, closeNav, filterMenuItems }) {
             {t('logout')}
           </li>
         )}
+        <li className="passive-nav-item">
+          <Link to={convertLinkLocale('/italian-fruit-contest', i18n.language)} onClick={((e) => handleNavClick(e, convertLinkLocale(getUrlPath('/italian-fruit-contest'), i18n.language)))}>
+            Italian Fruit Contest (SC)
+          </Link>
+        </li>
       </ul>
     </nav>
   ) : (
