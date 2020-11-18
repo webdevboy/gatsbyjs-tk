@@ -34,7 +34,7 @@ export default function Hero({
   return (
     <section className={`post-hero ${theme}`}>
       <Parallax y={[-26, 20]}>
-        <div className={cx('image-container', { loaded })} ref={imgContainerRef}>
+        <div className="image-container" ref={imgContainerRef}>
             <div className={cx('image-scale-contianer', { loaded })}>
               {heroImage && heroImage.sourceUrl && (
                 <AdaptiveImage
