@@ -5,7 +5,7 @@ import { isBrowser } from 'src/utils/auth';
 import './CopyColumns.scss';
 
 export default function CopyColumns({ columns, theme }) {
-  const mobileCopyExists = columns.find(allCopy => allCopy.mobileCopy != null);
+  const mobileCopyExists = columns && columns.find(allCopy => allCopy.mobileCopy != null);
 
   return (
     <section className={`copy-columns columns-${columns ? columns.length : 0} ${theme}`}>

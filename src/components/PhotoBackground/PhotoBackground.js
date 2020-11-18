@@ -82,7 +82,7 @@ function PhotoPopup({ title, content }) {
               })}
             />
           </button>
-          <h4>{title}</h4>
+          <h4 dangerouslySetInnerHTML={{ __html: title }}></h4>
           <p dangerouslySetInnerHTML={{ __html: content }}></p>
           <div className="notch"></div>
         </div>
