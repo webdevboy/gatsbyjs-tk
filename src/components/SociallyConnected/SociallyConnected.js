@@ -1,13 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
+import { path } from 'ramda';
+import axios from 'axios';
 import Swiper from "react-id-swiper";
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-import { navigate, useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import { useTranslation } from "react-i18next";
 
 import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints";
 import useWindow from 'src/hooks/useWindow';
-import convertLinkLocale from 'src/utils/convertLinkLocale';
 import {
   TASTING_KITCHEN_INSTAGRAM_ID,
   MARK_HAMMONS_INSTAGRAM_ID,
@@ -15,13 +17,13 @@ import {
 import Instagram from 'src/images/Instagram_icon_gray.png';
 import Facebook from 'src/images/Facebook_icon_gray.png';
 
-import "../Chefs/Chefs.scss"
-import "./SociallyConnected.scss"
+import "../Chefs/Chefs.scss";
+import "./SociallyConnected.scss";
 
 function SociallyConnectedItem({
   type,
   title,
-  byline,
+  caption,
   imageUrl,
   articleUrl,
   date,
@@ -80,9 +82,9 @@ function SociallyConnectedItem({
         <div className="socially__columns__column__info__social-date">
           {date}
         </div>
-        {byline && (
+        {caption && (
           <div className="socially__columns__column__info_description">
-            <span>{byline.length > descriptionMaxLength ? `${byline.slice(0, descriptionMaxLength)}...` : byline}</span>
+            <span>{caption.length > descriptionMaxLength ? `${caption.slice(0, descriptionMaxLength)}...` : caption}</span>
           </div>
         )}
 
@@ -96,37 +98,38 @@ function SociallyConnectedItem({
   )
 }
 
-function SociallyConnected({ fbPost }) {
+function SociallyConnected() {
   const [t, i18n] = useTranslation('common');
-  const { allInstaNode } = useStaticQuery(graphql`
-    query {
-      allInstaNode {
-        edges {
-          node {
-            likes
-            id
-            username
-            comments
-            original
-            preview
-            caption
-            mediaType
-            thumbnails {
-              config_height
-              config_width
-              src
-            }
-            timestamp
-            type
-          }
-        }
-      }
+  const [fbPost, setFbPost] = useState(null);
+  const [tkPost, setTkPost] = useState(null);
+  const [markPost, setMarkPost] = useState(null);
+  const [swiperInit, setSwiperInit] = useState(false);
+  const _window = useWindow();
+
+  const lang = i18n.language !== 'en' ? 'zh-cn' : 'en';
+
+  const convertCaption = byline => {
+    const newByline = byline.split(/\r?\n/);
+    return newByline.length > 0 ? newByline[0] : ''; 
+  }
+
+  const converInstPost = post => {
+    const captions = path(['edge_media_to_caption', 'edges'], post);
+    const caption = captions && captions.length > 0 && captions[0].node.text;
+    return {
+      caption: convertCaption(caption),
+      imageUrl: post.thumbnail_src,
+      articleUrl: `https://www.instagram.com/p/${post.shortcode}/`,
+      date: `${moment(new Date(+`${post.taken_at_timestamp}000`)).locale(lang).format('MMMM DD, YYYY')}`,
     }
-  `);
+  }
+
   const params = {
     spaceBetween: 20,
     slidesPerView: 'auto',
     noSwiping: false,
+    shouldSwiperUpdate: true,
+    rebuildOnUpdate: true,
     scrollbar: {
       el: ".socially__scrollbar",
       hide: false,
@@ -157,88 +160,83 @@ function SociallyConnected({ fbPost }) {
     },
   }
 
-  const convertByline = byline => {
-    const newByline = byline.split(/\r?\n/);
-    return newByline.length > 0 ? newByline[0] : ''; 
-  }
-  const posts = allInstaNode && allInstaNode.edges && allInstaNode.edges;
-  posts.sort((firstPost, secondPost) => {
-    const firstPostDate = moment(new Date(+`${firstPost.node.timestamp}000`));
-    const secondPostDate = moment(new Date(+`${secondPost.node.timestamp}000`));
-    if(secondPostDate.isBefore(firstPostDate)) {
-      return -1;
-    }
-    else if(firstPostDate.isBefore(secondPostDate)) {
-      return 1;
-    }
-    return 0;
-  });
-  const tkPost = posts.find(post => {
-    if(post.node.username.toString() === TASTING_KITCHEN_INSTAGRAM_ID) {
-      return post;
-    }
-    return false;
-  });
-  const secondPost = fbPost;
-  const markPost = posts.find(post => {
-    if(post.node.username.toString() === MARK_HAMMONS_INSTAGRAM_ID) {
-      return post;
-    }
-    return false;
-  });
+  useEffect(() => {
+    if(_window) {
+      _window.fbAsyncInit = function() {
+        _window.FB.init({
+          appId            : '603773567003337',
+          version          : 'v8.0'
+        });
+        _window.FB.api('/me?fields=feed.limit(1){full_picture,id,message,created_time}', 'GET', {
+          access_token: process.env.GATSBY_FACEBOOK_GRAPH_TOKEN,
+        }, async res => {
+          const posts = path(['feed', 'data'], res);
+          const tkInstResp = await axios.get('https://www.instagram.com/tastingkitchen/?__a=1');
+          const markInstResp = await axios.get('https://www.instagram.com/mark_hammons/?__a=1');
+          const tkInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], tkInstResp);
+          const markInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], markInstResp);
+          const tkPost = tkInstPosts && tkInstPosts.length > 0 && tkInstPosts[0].node;
+          const markPost = markInstPosts && markInstPosts.length > 0 && markInstPosts[0].node;
+          if(posts && posts.length > 0) {
+            setFbPost(posts[0]);
+            setTkPost(tkPost);
+            setMarkPost(markPost);
 
-  const lang = i18n.language !== 'en' ? 'zh-cn' : 'en';
-  
+            setSwiperInit(true);
+          }
+        });
+      };
+    }
+  }, []);
 
   return (
     <div className="socially-connected">
+      <Helmet>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js" />
+      </Helmet>
       <div className="container">
         <div className="socially__title">{t('socially-connected')}</div>
         <div className="socially__columns">    
-          <Swiper {...params}>
-            {tkPost && (
-              <div>
-                <SociallyConnectedItem
-                  {...{
-                    type: 'instagram',
-                    title: 'tastingkitchen',
-                    byline: convertByline(tkPost.node.caption),
-                    imageUrl: tkPost.node.original,
-                    articleUrl: `https://www.instagram.com/p/${tkPost.node.id}/`,
-                    date: `${moment(new Date(+`${tkPost.node.timestamp}000`)).locale(lang).format('MMMM DD, YYYY')}`,
-                  }}
-                />
-              </div>
-            )}
-            {secondPost && (
-              <div>
-                <SociallyConnectedItem
-                  {...{
-                    type: 'facebook',
-                    title: 'tastingkitchen',
-                    byline: secondPost.message,
-                    imageUrl: secondPost.full_picture,
-                    articleUrl: `https://www.facebook.com/tastingkitchen/`,
-                    date: `${moment(new Date(secondPost.created_time.slice(0, 16))).locale(lang).format('MMMM DD, YYYY')}`,
-                  }}
-                />
-              </div>
-            )}
-            {markPost && (
-              <div>
-                <SociallyConnectedItem
-                  {...{
-                    type: 'instagram',
-                    title: 'mark_hammons',
-                    byline: convertByline(markPost.node.caption),
-                    imageUrl: markPost.node.original,
-                    articleUrl: `https://www.instagram.com/p/${markPost.node.id}/`,
-                    date: `${moment(new Date(+`${markPost.node.timestamp}000`)).locale(lang).format('MMMM DD, YYYY')}`,
-                  }}
-                />
-              </div>
-            )}
-          </Swiper>
+          {swiperInit && (
+            <Swiper {...params} className="swiper-obj">
+              {tkPost && (
+                <div>
+                  <SociallyConnectedItem
+                    {...{
+                      type: 'instagram',
+                      title: 'tastingkitchen',
+                      ...converInstPost(tkPost),
+                    }}
+                  />
+                </div>
+              )}
+              {fbPost && (
+                <div>
+                  <SociallyConnectedItem
+                    {...{
+                      type: 'facebook',
+                      title: 'tastingkitchen',
+                      caption: fbPost.message,
+                      imageUrl: fbPost.full_picture,
+                      articleUrl: `https://www.facebook.com/tastingkitchen/`,
+                      date: `${moment(new Date(fbPost.created_time.slice(0, 16))).locale(lang).format('MMMM DD, YYYY')}`,
+                    }}
+                  />
+                </div>
+              )}
+              {markPost && (
+                <div>
+                  <SociallyConnectedItem
+                    {...{
+                      type: 'instagram',
+                      title: 'mark_hammons',
+                      ...converInstPost(markPost),
+                    }}
+                  />
+                </div>
+              )}
+            </Swiper>
+          )}
         </div>
       </div>
     </div>

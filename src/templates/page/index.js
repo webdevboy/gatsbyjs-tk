@@ -114,7 +114,7 @@ class Page extends Component {
   }
   render() {
     const { pageContext } = this.props;
-    const { title, components, fbPost } = pageContext;
+    const { title, components } = pageContext;
     const heroData = pageContext.components.contents.filter(
       (o) => o.fieldGroupName === 'page_Components_Contents_HomepageHero'
     );
@@ -131,7 +131,6 @@ class Page extends Component {
             <DefaultPage
               {...{
                 title,
-                fbPost,
                 destionationsData,
                 pageUri: pageContext.uri,
                 layouts: [...layouts, ...aboutLayouts, ...eventsLayouts],

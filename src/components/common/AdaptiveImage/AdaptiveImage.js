@@ -35,7 +35,7 @@ function AdaptiveImage({ src, smallSrc, mediumSrc, innerProps, skeletonActive })
     return <img src={src} alt="" {...innerProps} />;
   }
   
-  return <img src={smallSrc} alt="" {...innerProps} />;
+  return null;
 } 
 
 export default AdaptiveImage;
