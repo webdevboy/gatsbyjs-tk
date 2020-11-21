@@ -13,6 +13,7 @@ import useWindow from 'src/hooks/useWindow';
 import {
   TASTING_KITCHEN_INSTAGRAM_ID,
   MARK_HAMMONS_INSTAGRAM_ID,
+  FB_ACCESS_TOKEN,
 } from 'src/utils/constants';
 import Instagram from 'src/images/Instagram_icon_gray.png';
 import Facebook from 'src/images/Facebook_icon_gray.png';
@@ -168,7 +169,7 @@ function SociallyConnected() {
           version          : 'v8.0'
         });
         _window.FB.api('/me?fields=feed.limit(1){full_picture,id,message,created_time}', 'GET', {
-          access_token: process.env.GATSBY_FACEBOOK_GRAPH_TOKEN,
+          access_token: FB_ACCESS_TOKEN,
         }, async res => {
           const posts = path(['feed', 'data'], res);
           const tkInstResp = await axios.get('https://www.instagram.com/tastingkitchen/?__a=1');
@@ -177,13 +178,19 @@ function SociallyConnected() {
           const markInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], markInstResp);
           const tkPost = tkInstPosts && tkInstPosts.length > 0 && tkInstPosts[0].node;
           const markPost = markInstPosts && markInstPosts.length > 0 && markInstPosts[0].node;
+          console.log(posts[0]);
+          console.log(tkPost);
+          console.log(markPost);
           if(posts && posts.length > 0) {
             setFbPost(posts[0]);
-            setTkPost(tkPost);
-            setMarkPost(markPost);
-
-            setSwiperInit(true);
           }
+          if(tkPost) {
+            setTkPost(tkPost);
+          }
+          if(markPost) {
+            setMarkPost(markPost);
+          }
+          setSwiperInit(true);
         });
       };
     }
