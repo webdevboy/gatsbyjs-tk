@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { withController } from 'react-scroll-parallax';
 
 import Layout from 'src/components/Layout';
 import SEO from 'src/components/seo';
 import PageLayouts from 'src/components/PageLayouts';
+import '../../libs/facebook-sdk';
 
 class FrontPage extends Component {
   static propTypes = {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
 import { path } from 'ramda';
 import axios from 'axios';
 import Swiper from "react-id-swiper";
@@ -11,8 +10,8 @@ import { useTranslation } from "react-i18next";
 import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints";
 import useWindow from 'src/hooks/useWindow';
 import {
-  TASTING_KITCHEN_INSTAGRAM_ID,
-  MARK_HAMMONS_INSTAGRAM_ID,
+  TASTING_KITCHEN_INSTAGRAM,
+  MARK_HAMMONS_INSTAGRAM,
   FB_ACCESS_TOKEN,
 } from 'src/utils/constants';
 import Instagram from 'src/images/Instagram_icon_gray.png';
@@ -163,46 +162,39 @@ function SociallyConnected() {
 
   useEffect(() => {
     if(_window) {
-      _window.fbAsyncInit = function() {
-        _window.FB.init({
-          appId            : '603773567003337',
-          version          : 'v8.0'
-        });
-        _window.FB.api('/me?fields=feed.limit(1){full_picture,id,message,created_time}', 'GET', {
-          access_token: FB_ACCESS_TOKEN,
-        }, async res => {
-          const posts = path(['feed', 'data'], res);
-          const tkInstResp = await axios.get('https://www.instagram.com/tastingkitchen/?__a=1');
-          const markInstResp = await axios.get('https://www.instagram.com/mark_hammons/?__a=1');
-          const tkInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], tkInstResp);
-          const markInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], markInstResp);
-          const tkPost = tkInstPosts && tkInstPosts.length > 0 && tkInstPosts[0].node;
-          const markPost = markInstPosts && markInstPosts.length > 0 && markInstPosts[0].node;
-          console.log(posts[0]);
-          console.log(tkPost);
-          console.log(markPost);
-          if(posts && posts.length > 0) {
-            setFbPost(posts[0]);
-          }
-          if(tkPost) {
-            setTkPost(tkPost);
-          }
-          if(markPost) {
-            setMarkPost(markPost);
-          }
-          setSwiperInit(true);
-        });
-      };
+      _window.FB.init({
+        appId            : '603773567003337',
+        version          : 'v8.0'
+      });
+      _window.FB.api('/me?fields=feed.limit(1){full_picture,id,message,created_time}', 'GET', {
+        access_token: FB_ACCESS_TOKEN,
+      }, async res => {
+        const posts = path(['feed', 'data'], res);
+        const tkInstResp = await axios.get(`https://www.instagram.com/${TASTING_KITCHEN_INSTAGRAM}/?__a=1`);
+        const markInstResp = await axios.get(`https://www.instagram.com/${MARK_HAMMONS_INSTAGRAM}/?__a=1`);
+        const tkInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], tkInstResp);
+        const markInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], markInstResp);
+        const tkPost = tkInstPosts && tkInstPosts.length > 0 && tkInstPosts[0].node;
+        const markPost = markInstPosts && markInstPosts.length > 0 && markInstPosts[0].node;
+        if(posts && posts.length > 0) {
+          setFbPost(posts[0]);
+        }
+        if(tkPost) {
+          setTkPost(tkPost);
+        }
+        if(markPost) {
+          setMarkPost(markPost);
+        }
+        setSwiperInit(true);
+      });
     }
   }, []);
 
   return (
     <div className="socially-connected">
-      <Helmet>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js" />
-      </Helmet>
       <div className="container">
         <div className="socially__title">{t('socially-connected')}</div>
+        {!swiperInit && <div className="socially-connected__loading">Loading...</div>}
         <div className="socially__columns">    
           {swiperInit && (
             <Swiper {...params} className="swiper-obj">
