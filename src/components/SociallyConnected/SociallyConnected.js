@@ -185,10 +185,20 @@ function SociallyConnected() {
         if(markPost) {
           setMarkPost(markPost);
         }
-        setSwiperInit(true);
+        setTimeout(() => {
+          setSwiperInit(true);
+        }, 100);
       });
     }
   }, []);
+
+  useEffect(() => {
+    const swiperDOMRef = document.querySelector('.swiper-container');
+    if(swiperDOMRef) {
+      const swiperObj = swiperDOMRef.swiper;
+      swiperObj.update();
+    }
+  }, [fbPost, tkPost, markPost]);
 
   return (
     <div className="socially-connected">
