@@ -6,7 +6,6 @@ import { withController } from 'react-scroll-parallax';
 import Layout from 'src/components/Layout';
 import SEO from 'src/components/seo';
 import PageLayouts from 'src/components/PageLayouts';
-import '../../libs/facebook-sdk';
 
 class FrontPage extends Component {
   static propTypes = {

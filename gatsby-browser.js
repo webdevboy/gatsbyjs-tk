@@ -12,6 +12,7 @@ import convertLinkLocale from './src/utils/convertLinkLocale';
 import supportedLngs from 'src/locales/supportedLngs';
 import { MEDIUM_BREAKPOINT } from './src/utils/breakpoints';
 import CookiesPolicy from './src/components/CookiesPolicy/CookiesPolicy';
+import { initFacebookSDK } from './src/libs/facebook-sdk';
 // import SmoothScroll from 'src/utils/smoothScroll';
 
 const LanguageWrapper = ({ children }) => (
@@ -37,6 +38,7 @@ class SessionCheck extends React.Component {
 
   UNSAFE_componentWillMount() {
     if(typeof window !== undefined) {
+      initFacebookSDK();
       globalHistory.listen(({ action }) => {
         if(action === 'PUSH') {
           const { pathname } = window.location;
