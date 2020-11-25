@@ -120,7 +120,7 @@ function SociallyConnected() {
       caption: convertCaption(caption),
       imageUrl: post.thumbnail_src,
       articleUrl: `https://www.instagram.com/p/${post.shortcode}/`,
-      date: `${moment(new Date(+`${post.taken_at_timestamp}000`)).format(lang === 'en' ? 'MMMM DD, YYYY' : 'M月 DD, YYYY')}`,
+      date: `${moment(new Date(+`${post.taken_at_timestamp}000`)).locale(lang).format(lang === 'en' ? 'MMMM DD, YYYY' : 'M月 DD, YYYY')}`,
     }
   }
 
@@ -228,7 +228,7 @@ function SociallyConnected() {
                       caption: fbPost.message,
                       imageUrl: fbPost.full_picture,
                       articleUrl: `https://www.facebook.com/tastingkitchen/`,
-                      date: `${moment(new Date(fbPost.created_time.slice(0, 16))).format(lang === 'en' ? 'MMMM DD, YYYY' : 'M月 DD, YYYY')}`,
+                      date: `${moment(new Date(fbPost.created_time.slice(0, 16))).locale(lang).format(lang === 'en' ? 'MMMM DD, YYYY' : 'M月 DD, YYYY')}`,
                     }}
                   />
                 </div>
