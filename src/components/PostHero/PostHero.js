@@ -40,6 +40,7 @@ export default function Hero({
                 <AdaptiveImage
                   src={heroImage.sourceUrl}
                   smallSrc={mobileHeroImage ? mobileHeroImage && mobileHeroImage.sourceUrl : heroImage && heroImage.sourceUrl}
+                  mediumSrc={heroImage.sourceUrl}
                   innerProps={{
                     onLoad: handleImageLoad,
                   }}
