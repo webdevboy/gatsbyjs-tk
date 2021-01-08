@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { path } from 'ramda';
+import { path, head } from 'ramda';
 import axios from 'axios';
 import Swiper from "react-id-swiper";
 import moment from 'moment';
@@ -10,9 +10,11 @@ import { useTranslation } from "react-i18next";
 import { MEDIUM_BREAKPOINT, XLARGE_BREAKPOINT } from "src/utils/breakpoints";
 import useWindow from 'src/hooks/useWindow';
 import {
-  TASTING_KITCHEN_INSTAGRAM,
-  MARK_HAMMONS_INSTAGRAM,
+  TASTING_KITCHEN_INSTAGRAM_ID,
+  MARK_HAMMONS_INSTAGRAM_ID,
   FB_ACCESS_TOKEN,
+  RAPID_API_KEY,
+  RAPID_API_HOST,
 } from 'src/utils/constants';
 import Instagram from 'src/images/Instagram_icon_gray.png';
 import Facebook from 'src/images/Facebook_icon_gray.png';
@@ -169,21 +171,32 @@ function SociallyConnected() {
       _window.FB.api('/me?fields=feed.limit(1){full_picture,id,message,created_time}', 'GET', {
         access_token: FB_ACCESS_TOKEN,
       }, async res => {
+        const rapidApi = axios.create({
+          baseURL: 'https://instagram40.p.rapidapi.com/',
+          timeout: 10000,
+          headers: {
+            'x-rapidapi-key': RAPID_API_KEY,
+            'x-rapidapi-host': RAPID_API_HOST,
+            'useQueryString': true,
+          }
+        });
         const posts = path(['feed', 'data'], res);
-        const tkInstResp = await axios.get(`https://www.instagram.com/${TASTING_KITCHEN_INSTAGRAM}/?__a=1`);
-        const markInstResp = await axios.get(`https://www.instagram.com/${MARK_HAMMONS_INSTAGRAM}/?__a=1`);
-        const tkInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], tkInstResp);
-        const markInstPosts = path(['data', 'graphql', 'user', 'edge_owner_to_timeline_media', 'edges'], markInstResp);
-        const tkPost = tkInstPosts && tkInstPosts.length > 0 && tkInstPosts[0].node;
-        const markPost = markInstPosts && markInstPosts.length > 0 && markInstPosts[0].node;
+        const tkInstResp = await rapidApi.get(`/account-medias?userid=${TASTING_KITCHEN_INSTAGRAM_ID}&first=1`);
+        const markInstResp = await rapidApi.get(`/account-medias?userid=${MARK_HAMMONS_INSTAGRAM_ID}&first=1`);
+
+        const tkPost = head(path(['data', 'edges'])(tkInstResp));
+        const markPost = head(path(['data', 'edges'])(markInstResp));
+        const tkPostNode = tkPost ? tkPost.node : null;
+        const markPostNode = markPost ? markPost.node : null;
+
         if(posts && posts.length > 0) {
           setFbPost(posts[0]);
         }
-        if(tkPost) {
-          setTkPost(tkPost);
+        if(tkPostNode) {
+          setTkPost(tkPostNode);
         }
-        if(markPost) {
-          setMarkPost(markPost);
+        if(markPostNode) {
+          setMarkPost(markPostNode);
         }
         setTimeout(() => {
           setSwiperInit(true);
