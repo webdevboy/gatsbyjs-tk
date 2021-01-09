@@ -13,7 +13,7 @@ export default function Carousel({ carousel }) {
         centerPadding: "30%",
         slidesToShow: 1,
         speed: 1500,
-        autoplaySpeed: 10000,
+        autoplaySpeed: 7000,
         accessibility: true,
         initialSlide: 1,
         autoplay: true,
