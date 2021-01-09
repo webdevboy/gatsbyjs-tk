@@ -12,6 +12,7 @@ import {
   Spacer,
   ColumnCopy,
   Carousel,
+  YouTubeVideo,
 } from "src/components"
 
 const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => {
@@ -41,6 +42,7 @@ const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => 
     post_Components_Contents_Spacer: Spacer,
     post_Components_Contents_ColumnCopy: ColumnCopy,
     post_Components_Contents_Carousel: Carousel,
+    post_Components_Contents_YoutubeVideo: YouTubeVideo,
     default: Default,
   }
 

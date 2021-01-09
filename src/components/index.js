@@ -23,3 +23,4 @@ export { default as DestionationSubNavigation } from "src/components/Destionatio
 export { default as DestinationIntroduction } from "src/components/DestinationIntroduction/DestinationIntroduction";
 export { default as ColumnCopy } from "src/components/ColumnCopy/ColumnCopy";
 export { default as Carousel } from "src/components/Carousel/Carousel";
+export { default as YouTubeVideo } from "src/components/YouTubeVideo/YouTubeVideo";
