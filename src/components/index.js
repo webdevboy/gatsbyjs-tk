@@ -22,3 +22,4 @@ export { default as DestionationBanner } from "src/components/DestionationBanner
 export { default as DestionationSubNavigation } from "src/components/DestionationSubNavigation/DestionationSubNavigation";
 export { default as DestinationIntroduction } from "src/components/DestinationIntroduction/DestinationIntroduction";
 export { default as ColumnCopy } from "src/components/ColumnCopy/ColumnCopy";
+export { default as Carousel } from "src/components/Carousel/Carousel";
