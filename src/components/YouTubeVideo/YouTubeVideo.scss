@@ -1,0 +1,65 @@
+@import 'src/styles/variables';
+
+.yt-video-section {
+    text-align: center;
+    padding: 100px 20px;
+    font-family: $font-serif;
+
+    @media #{$viewport-small} {
+        padding: 60px 20px;
+    }
+
+    .video-headline {
+        font-size: 25px;
+        line-height: 25px;
+        margin: 0px;
+        font-weight: normal;
+
+        @media #{$viewport-small} {
+            font-size: 32px;
+            line-height: 32px;
+        }
+    }
+
+    .video-subhead {
+        font-size: 12px;
+        line-height: 18px;
+        font-family: $font-sans-serif;
+        font-weight: normal;
+        margin-top: 10px;
+        color: $color-account-gray;
+    }
+
+    .video-wrapper {
+        margin: 30px auto 0px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+        @media #{$viewport-small} {
+            max-width: 640px;
+        }
+
+        @media #{$viewport-medium} {
+            max-width: 768px;
+        }
+
+        @media #{$viewport-large} {
+            max-width: 990px;
+        }
+
+        &:after {
+            padding-top: 56.25%;
+            display: block;
+            content: '';
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
