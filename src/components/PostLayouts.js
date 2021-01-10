@@ -13,6 +13,7 @@ import {
   ColumnCopy,
   Carousel,
   YouTubeVideo,
+  FullscreenPhoto,
 } from "src/components"
 
 const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => {
@@ -43,6 +44,7 @@ const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => 
     post_Components_Contents_ColumnCopy: ColumnCopy,
     post_Components_Contents_Carousel: Carousel,
     post_Components_Contents_YoutubeVideo: YouTubeVideo,
+    post_Components_Contents_FullscreenPhoto: FullscreenPhoto,
     default: Default,
   }
 

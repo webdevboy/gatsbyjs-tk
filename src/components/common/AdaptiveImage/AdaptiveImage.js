@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {
+  TABLET_BREAKPOINT,
   MEDIUM_BREAKPOINT,
   LARGE_BREAKPOINT,
 } from 'src/utils/breakpoints';
@@ -25,10 +26,10 @@ function AdaptiveImage({ src, smallSrc, mediumSrc, innerProps, skeletonActive })
     }
   }, []);
 
-  if(width < MEDIUM_BREAKPOINT && smallSrc) {
+  if(width < TABLET_BREAKPOINT && smallSrc) {
     return <img src={smallSrc} alt="" {...innerProps} />
   }
-  else if(width < LARGE_BREAKPOINT && width > MEDIUM_BREAKPOINT && mediumSrc) {
+  else if(width < LARGE_BREAKPOINT && width > TABLET_BREAKPOINT && mediumSrc) {
     return <img src={mediumSrc} alt="" {...innerProps} />
   }
   else if(width > LARGE_BREAKPOINT) {
