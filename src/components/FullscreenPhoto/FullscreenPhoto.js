@@ -73,7 +73,7 @@ export default function PhotoBackground({
           <div className="headline-one" style={{ color: headlineOneColor }}>{headlineOne}</div>
           <div className="headline-two" style={{ color: headlineTwoColor }}>{headlineTwo}</div>
         </div>
-        <Parallax y={[-16, 20]}>
+        <Parallax y={[-15, 20]}>
         <AdaptiveImage
             src={desktopImage.sourceUrl}
             mediumSrc={tabletImage && tabletImage.sourceUrl}
