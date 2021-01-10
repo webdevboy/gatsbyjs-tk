@@ -25,3 +25,4 @@ export { default as ColumnCopy } from "src/components/ColumnCopy/ColumnCopy";
 export { default as Carousel } from "src/components/Carousel/Carousel";
 export { default as YouTubeVideo } from "src/components/YouTubeVideo/YouTubeVideo";
 export { default as FullscreenPhoto } from "src/components/FullscreenPhoto/FullscreenPhoto";
+export { default as ImageSubnav } from "src/components/ImageSubnav/ImageSubnav";
