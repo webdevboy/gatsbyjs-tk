@@ -14,6 +14,7 @@ import {
   Carousel,
   YouTubeVideo,
   FullscreenPhoto,
+  ImageSubnav,
 } from "src/components"
 
 const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => {
@@ -45,6 +46,7 @@ const PostLayouts = ({ layoutData, categories, theme, updateParallaxState }) => 
     post_Components_Contents_Carousel: Carousel,
     post_Components_Contents_YoutubeVideo: YouTubeVideo,
     post_Components_Contents_FullscreenPhoto: FullscreenPhoto,
+    post_Components_Contents_ImageSubnav: ImageSubnav,
     default: Default,
   }
 
