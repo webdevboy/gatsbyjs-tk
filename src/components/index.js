@@ -24,3 +24,4 @@ export { default as DestinationIntroduction } from "src/components/DestinationIn
 export { default as ColumnCopy } from "src/components/ColumnCopy/ColumnCopy";
 export { default as Carousel } from "src/components/Carousel/Carousel";
 export { default as YouTubeVideo } from "src/components/YouTubeVideo/YouTubeVideo";
+export { default as FullscreenPhoto } from "src/components/FullscreenPhoto/FullscreenPhoto";
