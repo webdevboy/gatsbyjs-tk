@@ -72,6 +72,6 @@ module.exports = {
         prefixDefault: false,
         useLangKeyLayout: false,
       },
-    },
+    }
   ],
 };

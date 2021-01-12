@@ -5,6 +5,3 @@ export const MARK_HAMMONS_INSTAGRAM = 'mark_hammons';
 
 export const FACEBOOK_APP_ID = '603773567003337';
 export const FB_ACCESS_TOKEN = 'EAAS8LGISx9wBAAsd9D0mZAyplYf2wujkABPQE7JDfeN6FvCbuQPGunyWTqXTOSyMnPGx0EFcZBX5uEYP8bSGoQoAtg6OTIYZBv4VUVnJSZBNa1kZB3CLZBPBXFTZAPOPmOOeHZBMwqaGvKKbNzVSFdQsJWDvAwjfAylVK8XfPOVxCOZBwijcyilCE6UHy0ZA3Um6gZD';
-
-export const RAPID_API_KEY = 'c00cbf0fe5msha889c6f679fd61dp1c608fjsn478a1410c4b5';
-export const RAPID_API_HOST = 'instagram40.p.rapidapi.com';
