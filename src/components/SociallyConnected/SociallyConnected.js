@@ -13,8 +13,6 @@ import {
   TASTING_KITCHEN_INSTAGRAM_ID,
   MARK_HAMMONS_INSTAGRAM_ID,
   FB_ACCESS_TOKEN,
-  RAPID_API_KEY,
-  RAPID_API_HOST,
 } from 'src/utils/constants';
 import Instagram from 'src/images/Instagram_icon_gray.png';
 import Facebook from 'src/images/Facebook_icon_gray.png';
@@ -171,21 +169,17 @@ function SociallyConnected() {
       _window.FB.api('/me?fields=feed.limit(1){full_picture,id,message,created_time}', 'GET', {
         access_token: FB_ACCESS_TOKEN,
       }, async res => {
-        const rapidApi = axios.create({
-          baseURL: 'https://instagram40.p.rapidapi.com/',
-          timeout: 10000,
-          headers: {
-            'x-rapidapi-key': RAPID_API_KEY,
-            'x-rapidapi-host': RAPID_API_HOST,
-            'useQueryString': true,
-          }
-        });
         const posts = path(['feed', 'data'], res);
-        const tkInstResp = await rapidApi.get(`/account-medias?userid=${TASTING_KITCHEN_INSTAGRAM_ID}&first=1`);
-        const markInstResp = await rapidApi.get(`/account-medias?userid=${MARK_HAMMONS_INSTAGRAM_ID}&first=1`);
 
-        const tkPost = head(path(['data', 'edges'])(tkInstResp));
-        const markPost = head(path(['data', 'edges'])(markInstResp));
+        const tkInstResp = await axios.get(`https://instagram.com/graphql/query/?query_id=17888483320059182&variables={"id":${TASTING_KITCHEN_INSTAGRAM_ID},"first":100,"after":null}`);
+        const markInstResp = await axios.get(`https://instagram.com/graphql/query/?query_id=17888483320059182&variables={"id":${MARK_HAMMONS_INSTAGRAM_ID},"first":100,"after":null}`);
+        
+        const tkPosts = path(['data', 'data', 'user', 'edge_owner_to_timeline_media', 'edges'])(tkInstResp);
+        const tkPost = head(tkPosts);
+        
+        const markPosts = path(['data', 'data', 'user', 'edge_owner_to_timeline_media', 'edges'])(markInstResp);
+        const markPost = head(markPosts);
+        
         const tkPostNode = tkPost ? tkPost.node : null;
         const markPostNode = markPost ? markPost.node : null;
 
