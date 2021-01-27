@@ -36,7 +36,7 @@ export default function ImageSubnav({ imageSubnav }) {
             <Slider {...settings}>
                 {imageSubnav && imageSubnav.map((item, i) => (
                     <div key={i} className="group">
-                        {item.article.subNavigationImage && (
+                        {item.article && item.article.subNavigationImage && (
                             <div className="img-container">
                                 <a href={item.article.uri} className="">
                                     <img
