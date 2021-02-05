@@ -6,6 +6,7 @@ import replaceAmpersand from 'src/utils/replaceAmpersand';
 import Layout from "src/components/Layout";
 import SEO from "src/components/seo";
 import CategoryLayouts from "src/components/CategoryLayouts";
+import { TopArticlesCategory } from "src/components"
 
 
 class Category extends Component {
@@ -15,12 +16,16 @@ class Category extends Component {
   updateParallaxState = () => this.props.parallaxController.update();
   render() {
     const { pageContext } = this.props;
-    const { name } = pageContext;
+    const { name, categoryComponents } = pageContext;
+    const layouts = categoryComponents.components || [];
     return (
       <div className="category-page-wrapper">
         <Layout>
           <SEO title={replaceAmpersand(name) || "Untitled"} />
-          <CategoryLayouts categoryData={pageContext} updateParallaxState={this.updateParallaxState} />
+          {layouts.map((layout, index) => (
+            <CategoryLayouts key={index} layoutData={layout} />
+          ))}
+          <TopArticlesCategory category={pageContext} updateParallaxState={this.updateParallaxState} />
         </Layout>
       </div>
     )
