@@ -37,6 +37,23 @@ const CategoryTemplateFragment = layouts => `
     uri
     name
     description
+    categoryComponents {
+      components {
+        ... on WordPress_Category_Categorycomponents_Components_Ad {
+          adUrl
+          fieldGroupName
+          desktopAd {
+            sourceUrl
+          }
+          mobileAd {
+            sourceUrl
+          }
+          tabletAd {
+            sourceUrl
+          }
+        }
+      }
+    }
     language {
       code
       name
