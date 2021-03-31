@@ -72,6 +72,18 @@ module.exports = {
         prefixDefault: false,
         useLangKeyLayout: false,
       },
-    }
+    },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `301730536`,
+      },
+    },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `4294036017`,
+      },
+    },
   ],
 };

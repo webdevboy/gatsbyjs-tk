@@ -27,7 +27,7 @@ import {
   AboutColumns,
 } from 'src/components/AboutComponents';
 
-const PageLayouts = ({ layoutData, theme, containerIsScrollable, updateParallaxState }) => {
+const PageLayouts = ({ layoutData, theme, fbPost, containerIsScrollable, updateParallaxState }) => {
   const layoutType = layoutData && layoutData.fieldGroupName || "No field group name found";
   // Default component
   const Default = () => (
@@ -71,7 +71,7 @@ const PageLayouts = ({ layoutData, theme, containerIsScrollable, updateParallaxS
     ? layouts[layoutType]
     : layouts["default"]
 
-  return <ComponentTag {...layoutData} theme={"light"} type={"page"} containerIsScrollable={containerIsScrollable} updateParallaxState={updateParallaxState} />
+  return <ComponentTag {...layoutData} theme={"light"} type={"page"} fbPost={fbPost} containerIsScrollable={containerIsScrollable} updateParallaxState={updateParallaxState} />
 }
 
 export default PageLayouts;

@@ -31,7 +31,7 @@ class FrontPage extends Component {
       >
         <SEO title={title || 'Untitled'} imageUrl={pageHero && pageHero.socialImage && pageHero.socialImage.sourceUrl} />
         {layouts.map((layout, index) => (
-          <PageLayouts key={index} layoutData={layout} containerIsScrollable={containerIsScrollable} updateParallaxState={this.updateParallaxState} />
+          <PageLayouts key={index} layoutData={layout} fbPost={pageContext.fbPost} containerIsScrollable={containerIsScrollable} updateParallaxState={this.updateParallaxState} />
         ))}
       </Layout>
     )

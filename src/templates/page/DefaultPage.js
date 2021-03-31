@@ -17,7 +17,7 @@ class DefaultPage extends Component {
     }
   };
   render() {
-    const { title, layouts, destionationsData, pageUri } = this.props;
+    const { title, layouts, fbPost, destionationsData, pageUri } = this.props;
     const isDestionationPage = destionationsData && destionationsData.length > 0;
     const destionation = destionationsData && destionationsData.length > 0 && destionationsData[0];
     return (
@@ -29,7 +29,7 @@ class DefaultPage extends Component {
           description={destionation && destionation.socialDescription}
         />
         {layouts.map((layout, index) => (
-          <PageLayouts key={index} layoutData={layout} updateParallaxState={this.updateParallaxState} />
+          <PageLayouts key={index} layoutData={layout} fbPost={fbPost} updateParallaxState={this.updateParallaxState} />
         ))}
       </Layout>
     )
