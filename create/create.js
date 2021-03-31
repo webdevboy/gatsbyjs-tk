@@ -1,4 +1,7 @@
 
+const FB = require('fb');
+const path = require(`path`);
+
 const { getAllLayoutsData, getCategoryLayoutData, getAllAboutLayoutsData, getAllEventLayoutsData } = require("./utils")
 
 const pageTemplate = require.resolve("../src/templates/page/")
@@ -83,10 +86,19 @@ module.exports = async ({ actions, graphql, reporter }) => {
   const allPages = [];
   const allPosts = [];
   const allCategories = [];
+  let fbPost = null;
 
   const postsQuery = GET_POSTS()
   const pagesQuery = GET_PAGES()
   const categoriesQuery = GET_CATEGORIES()
+
+  // GET ONE FB POST
+  FB.setAccessToken(process.env.GATSBY_FACEBOOK_GRAPH_TOKEN);
+  FB.api(`${process.env.GATSBY_FACEBOOK_PAGE_ID}/feed?fields=full_picture,id,message,created_time`, function (res) {
+    if(res && !res.err) {
+      fbPost = res.data.length > 0 && res.data.find(post => post.message);
+    }
+  });
 
   /**
    * This is the method from Gatsby that we're going
@@ -188,13 +200,13 @@ module.exports = async ({ actions, graphql, reporter }) => {
 
         if(!page || !page.slug) return;
 
-        createPage({ path: getPath(page), component: pageTemplate, context: page })
+        createPage({ path: getPath(page), component: pageTemplate, context: { ...page, fbPost } })
 
         if(page.translations && page.translations.length > 0 && page.isFrontPage && page.language.slug === 'en') {
           page.translations.map(pageTranslation => {
             const pageContext = { ...pageTranslation, isFrontPage: page.isFrontPage };
             if(pageContext.slug) {
-              createPage({ path: getPath(pageContext), component: pageTemplate, context: pageContext });
+              createPage({ path: getPath(pageContext), component: pageTemplate, context: { ...pageContext, fbPost } });
             }
           })
         }
