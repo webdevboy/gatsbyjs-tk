@@ -121,7 +121,7 @@ function SociallyConnected({ fbPost }) {
       }
     }
   `);
-  const allInstaNode = queryResponse?.allInstaNode || { edges: [] };
+  const allInstaNode = (queryResponse && queryResponse.allInstaNode) || { edges: [] };
   
   const params = {
     spaceBetween: 20,

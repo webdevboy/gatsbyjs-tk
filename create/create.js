@@ -96,7 +96,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
   FB.setAccessToken(process.env.GATSBY_FACEBOOK_GRAPH_TOKEN);
   FB.api(`${process.env.GATSBY_FACEBOOK_PAGE_ID}/feed?fields=full_picture,id,message,created_time`, function (res) {
     if(res && !res.err) {
-      fbPost = res?.data?.length > 0 && res.data.find(post => post.message);
+      fbPost = res && res.data && res.data.length && res.data.length > 0 && res.data.find(post => post.message);
     }
   });
 
@@ -174,7 +174,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
         },
       } = data
 
-      categories?.nodes && categories.nodes.map(page => allCategories.push(page))
+      categories && categories.nodes ? categories.nodes.map(page => allCategories.push(page)) : [];
       return allCategories
     })
 
@@ -202,7 +202,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
 
         createPage({ path: getPath(page), component: pageTemplate, context: { ...page, fbPost } })
 
-        if(page.translations && page?.translations?.length > 0 && page.isFrontPage && page.language.slug === 'en') {
+        if(page.translations && page.translations.length > 0 && page.isFrontPage && page.language.slug === 'en') {
           page.translations.map(pageTranslation => {
             const pageContext = { ...pageTranslation, isFrontPage: page.isFrontPage };
             if(pageContext.slug) {
