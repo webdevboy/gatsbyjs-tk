@@ -96,7 +96,7 @@ function SociallyConnectedItem({
 
 function SociallyConnected({ fbPost }) {
   const [t, i18n] = useTranslation('common');
-  const { allInstaNode } = useStaticQuery(graphql`
+  const queryResponse = useStaticQuery(graphql`
     query {
       allInstaNode {
         edges {
@@ -121,6 +121,7 @@ function SociallyConnected({ fbPost }) {
       }
     }
   `);
+  const allInstaNode = queryResponse?.allInstaNode || { edges: [] };
   
   const params = {
     spaceBetween: 20,
