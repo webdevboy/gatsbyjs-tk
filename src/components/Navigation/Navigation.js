@@ -1,7 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { useLocation } from '@reach/router';
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import * as cx from "classnames"
 import useWindow from 'src/hooks/useWindow';
 
