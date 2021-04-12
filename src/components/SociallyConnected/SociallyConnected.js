@@ -96,32 +96,32 @@ function SociallyConnectedItem({
 
 function SociallyConnected({ fbPost }) {
   const [t, i18n] = useTranslation('common');
-  const queryResponse = useStaticQuery(graphql`
-    query {
-      allInstaNode {
-        edges {
-          node {
-            likes
-            id
-            username
-            comments
-            original
-            preview
-            caption
-            mediaType
-            thumbnails {
-              config_height
-              config_width
-              src
-            }
-            timestamp
-            type
-          }
-        }
-      }
-    }
-  `);
-  const allInstaNode = (queryResponse && queryResponse.allInstaNode) || { edges: [] };
+  // const queryResponse = useStaticQuery(graphql`
+  //   query {
+  //     allInstaNode {
+  //       edges {
+  //         node {
+  //           likes
+  //           id
+  //           username
+  //           comments
+  //           original
+  //           preview
+  //           caption
+  //           mediaType
+  //           thumbnails {
+  //             config_height
+  //             config_width
+  //             src
+  //           }
+  //           timestamp
+  //           type
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
+  // const allInstaNode = (queryResponse && queryResponse.allInstaNode) || { edges: [] };
   
   const params = {
     spaceBetween: 20,
@@ -163,31 +163,31 @@ function SociallyConnected({ fbPost }) {
     const newByline = byline.split(/\r?\n/);
     return newByline.length > 0 ? newByline[0] : ''; 
   }
-  const posts = allInstaNode && allInstaNode.edges && allInstaNode.edges;
-  posts.sort((firstPost, secondPost) => {
-    const firstPostDate = moment(new Date(+`${firstPost.node.timestamp}000`));
-    const secondPostDate = moment(new Date(+`${secondPost.node.timestamp}000`));
-    if(secondPostDate.isBefore(firstPostDate)) {
-      return -1;
-    }
-    else if(firstPostDate.isBefore(secondPostDate)) {
-      return 1;
-    }
-    return 0;
-  });
-  const tkPost = posts.find(post => {
-    if(post.node.username.toString() === TASTING_KITCHEN_INSTAGRAM_ID) {
-      return post;
-    }
-    return false;
-  });
+  // const posts = allInstaNode && allInstaNode.edges && allInstaNode.edges;
+  // posts.sort((firstPost, secondPost) => {
+  //   const firstPostDate = moment(new Date(+`${firstPost.node.timestamp}000`));
+  //   const secondPostDate = moment(new Date(+`${secondPost.node.timestamp}000`));
+  //   if(secondPostDate.isBefore(firstPostDate)) {
+  //     return -1;
+  //   }
+  //   else if(firstPostDate.isBefore(secondPostDate)) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
+  // const tkPost = posts.find(post => {
+  //   if(post.node.username.toString() === TASTING_KITCHEN_INSTAGRAM_ID) {
+  //     return post;
+  //   }
+  //   return false;
+  // });
   const secondPost = fbPost;
-  const markPost = posts.find(post => {
-    if(post.node.username.toString() === MARK_HAMMONS_INSTAGRAM_ID) {
-      return post;
-    }
-    return false;
-  });
+  // const markPost = posts.find(post => {
+  //   if(post.node.username.toString() === MARK_HAMMONS_INSTAGRAM_ID) {
+  //     return post;
+  //   }
+  //   return false;
+  // });
 
   useEffect(() => {
     const swiperDOMRef = document.querySelector('.swiper-container');
@@ -195,7 +195,7 @@ function SociallyConnected({ fbPost }) {
       const swiperObj = swiperDOMRef.swiper;
       swiperObj.update();
     }
-  }, [fbPost, tkPost, markPost]);
+  }, [fbPost]);
 
   const lang = i18n.language !== 'en' ? 'zh-cn' : 'en';
 
@@ -205,7 +205,19 @@ function SociallyConnected({ fbPost }) {
         <div className="socially__title">{t('socially-connected')}</div>
         <div className="socially__columns">    
             <Swiper {...params}>
-              {tkPost && (
+              <div>
+                <SociallyConnectedItem
+                  {...{
+                    type: 'instagram',
+                    title: 'tastingkitchen',
+                    byline: 'On the 38th floor of The Grand Suites at Four Seasons is Vista 38. The exclusive dining space now offers guests a Sichuan-inspired menu crafted by Chef Lan Minglu. An authority on Sichuan food, Chef Lan is famed for his innovative cooking techniques in the philosophy of “Sichuan flavors, global ingredients, contemporary presentation.”',
+                    imageUrl: 'https://scontent-arn2-2.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/157008485_1162369397513700_2595410941032923422_n.jpg?tp=1&_nc_ht=scontent-arn2-2.cdninstagram.com&_nc_cat=100&_nc_ohc=bxewYWH18HsAX8xOMAN&edm=AP_V10EAAAAA&ccb=7-4&oh=cec09e2fd33c374665bbce677f3ed083&oe=6099BB27&_nc_sid=4f375e',
+                    articleUrl: `https://www.instagram.com/p/CL_jUvDjJp5/`,
+                    date: 'March 4 2021',
+                  }}
+                />
+              </div>
+              {/* {tkPost && (
                 <div>
                   <SociallyConnectedItem
                     {...{
@@ -218,7 +230,7 @@ function SociallyConnected({ fbPost }) {
                     }}
                   />
                 </div>
-              )}
+              )} */}
               {secondPost && (
                 <div>
                   <SociallyConnectedItem
@@ -232,8 +244,8 @@ function SociallyConnected({ fbPost }) {
                     }}
                   />
                 </div>
-              )}
-              {markPost && (
+              )} 
+              {/* {markPost && (
                 <div>
                   <SociallyConnectedItem
                     {...{
@@ -246,7 +258,19 @@ function SociallyConnected({ fbPost }) {
                     }}
                   />
                 </div>
-              )}
+              )} */}
+              <div>
+                <SociallyConnectedItem
+                  {...{
+                    type: 'instagram',
+                    title: 'mark_hammons',
+                    byline: 'Debussy and Zao Wou-Ki Have a Dialogue An intimate evening of music and art at the Villepin Gallery, with a stunning performance by pianist Chen Jie and a guest appearance by actor Michael Wong Appreciation to Arthur Villepin for creating genuine moments',
+                    imageUrl: 'https://scontent-arn2-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/123945595_190793319353306_7087755065999047466_n.jpg?tp=1&_nc_ht=scontent-arn2-1.cdninstagram.com&_nc_cat=102&_nc_ohc=9ESuacBb-i0AX_OOi7S&edm=AP_V10EAAAAA&ccb=7-4&oh=6eb3b66fdbb80ccd459c8c55b859e51d&oe=6098CA1B&_nc_sid=4f375e',
+                    articleUrl: `https://www.instagram.com/p/CHQKmTlDWy9/`,
+                    date: 'November 6 2020',
+                  }}
+                />
+              </div>
             </Swiper>
         </div>
       </div>
